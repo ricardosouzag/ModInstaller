@@ -43,7 +43,7 @@ namespace WindowsFormsApp3
                     mods.Add(System.IO.Path.GetFileName(mod));
                 }
                 label3.Text = "Selected file(s): \n" + String.Join("\n", mods.ToArray());
-                button4.Enabled = ((folderBrowserDialog1.SelectedPath != "folderBrowserDialog1") && (openFileDialog2.FileName != "openFileDialog2"));
+                button4.Enabled = ((folderBrowserDialog1.SelectedPath != "") && (openFileDialog2.FileName != "openFileDialog2"));
             }
         }
 
@@ -65,7 +65,7 @@ namespace WindowsFormsApp3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Use this application to install API mods.\nNavigate to your Steam/GOG Hollow Knight installation path using the first button.\nUsing the second button you can select the Modding API and using the third button you can select which mods to install.\nAfter that, simply click the Install button and it should automatically install everything in the correct paths.");
+            MessageBox.Show("Use this application to install API mods.");
         }
     }
 }
