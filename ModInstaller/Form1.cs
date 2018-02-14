@@ -78,8 +78,15 @@ namespace ModInstaller
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(this);
-            form2.Show();
+            if (folderBrowserDialog1.SelectedPath == "")
+            {
+                MessageBox.Show("Please select an install path.");
+            }
+            else
+            {
+                Form2 form2 = new Form2(this);
+                form2.Show();
+            }
         }
         public string modFolder;
         public string APIFolder;
