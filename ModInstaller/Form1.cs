@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp3
+namespace ModInstaller
 {
     public partial class Form1 : Form
     {
@@ -21,9 +21,16 @@ namespace WindowsFormsApp3
         private void button1_Click_1(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
+            APIFolder = folderBrowserDialog1.SelectedPath + "\\hollow_knight_data\\managed";
+            modFolder = APIFolder + "\\Mods";
             label1.Text = "Install path: \n" + folderBrowserDialog1.SelectedPath;
-            button4.Enabled = ((folderBrowserDialog1.SelectedPath != "folderBrowserDialog1") && (openFileDialog2.FileName != "openFileDialog2"));
+            button4.Enabled = ((folderBrowserDialog1.SelectedPath != "") && (openFileDialog2.FileName != "openFileDialog2"));
+            System.IO.Directory.CreateDirectory(modFolder);
+            System.IO.Directory.CreateDirectory(APIFolder);
+            System.IO.Directory.CreateDirectory(modFolder + "\\Disabled");
         }
+
+
 
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -37,12 +44,12 @@ namespace WindowsFormsApp3
             openFileDialog2.ShowDialog();
             if (openFileDialog2.FileName != "openFileDialog2")
             {
-                List<string> mods = new List<string>();
+                List<string> newMods = new List<string>();
                 foreach (string mod in openFileDialog2.FileNames)
                 {
-                    mods.Add(System.IO.Path.GetFileName(mod));
+                    newMods.Add(System.IO.Path.GetFileNameWithoutExtension(mod));
                 }
-                label3.Text = "Selected file(s): \n" + String.Join("\n", mods.ToArray());
+                label3.Text = "Selected file(s): \n" + String.Join("\n", newMods.ToArray());
                 button4.Enabled = ((folderBrowserDialog1.SelectedPath != "") && (openFileDialog2.FileName != "openFileDialog2"));
             }
         }
@@ -65,6 +72,16 @@ namespace WindowsFormsApp3
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            settings = new Settings();
         }
+        public Settings settings;
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(this);
+            form2.Show();
+        }
+        public string modFolder;
+        public string APIFolder;
     }
 }

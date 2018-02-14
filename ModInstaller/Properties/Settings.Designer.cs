@@ -25,13 +25,36 @@ namespace ModInstaller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("\"\"")]
+        public string modFolder {
             get {
-                return ((string)(this["setting"]));
+                return ((string)(this["modFolder"]));
             }
             set {
-                this["setting"] = value;
+                this["modFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"\"")]
+        public string APIFolder {
+            get {
+                return ((string)(this["APIFolder"]));
+            }
+            set {
+                this["APIFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection installedMods {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["installedMods"]));
+            }
+            set {
+                this["installedMods"] = value;
             }
         }
     }
