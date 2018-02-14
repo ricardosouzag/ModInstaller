@@ -65,7 +65,6 @@ namespace WindowsFormsApp3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Use this application to install API mods.");
         }
     }
 }
