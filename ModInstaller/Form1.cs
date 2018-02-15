@@ -21,13 +21,16 @@ namespace ModInstaller
         private void button1_Click_1(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
-            APIFolder = folderBrowserDialog1.SelectedPath + "\\hollow_knight_data\\managed";
-            modFolder = APIFolder + "\\Mods";
-            label1.Text = "Install path: \n" + folderBrowserDialog1.SelectedPath;
-            button4.Enabled = ((folderBrowserDialog1.SelectedPath != "") && (openFileDialog2.FileName != "openFileDialog2"));
-            System.IO.Directory.CreateDirectory(modFolder);
-            System.IO.Directory.CreateDirectory(APIFolder);
-            System.IO.Directory.CreateDirectory(modFolder + "\\Disabled");
+            Properties.Settings.Default.installFolder = folderBrowserDialog1.SelectedPath;
+            Properties.Settings.Default.APIFolder = Properties.Settings.Default.installFolder + "\\hollow_knight_data\\managed";
+            Properties.Settings.Default.modFolder = Properties.Settings.Default.APIFolder + "\\Mods";
+            Properties.Settings.Default.Save();
+            button4.Enabled = ((Properties.Settings.Default.installFolder != "") && (openFileDialog2.FileName != "openFileDialog2"));
+            System.IO.Directory.CreateDirectory(Properties.Settings.Default.modFolder);
+            System.IO.Directory.CreateDirectory(Properties.Settings.Default.APIFolder);
+            System.IO.Directory.CreateDirectory(Properties.Settings.Default.modFolder + "\\Disabled");
+            label1.Text = "Install path: \n" + Properties.Settings.Default.installFolder;
+            button5.Enabled = Properties.Settings.Default.installFolder != "";
         }
 
 
@@ -50,7 +53,7 @@ namespace ModInstaller
                     newMods.Add(System.IO.Path.GetFileNameWithoutExtension(mod));
                 }
                 label3.Text = "Selected file(s): \n" + String.Join("\n", newMods.ToArray());
-                button4.Enabled = ((folderBrowserDialog1.SelectedPath != "") && (openFileDialog2.FileName != "openFileDialog2"));
+                button4.Enabled = ((Properties.Settings.Default.installFolder != "") && (openFileDialog2.FileName != "openFileDialog2"));
             }
         }
 
@@ -72,7 +75,7 @@ namespace ModInstaller
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            settings = new Settings();
+            
         }
         public Settings settings;
 
@@ -88,7 +91,5 @@ namespace ModInstaller
                 form2.Show();
             }
         }
-        public string modFolder;
-        public string APIFolder;
     }
 }

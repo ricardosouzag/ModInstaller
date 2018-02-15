@@ -81,7 +81,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Install path: \n";
+            this.label1.Text = "Install path: \n" + Properties.Settings.Default.installFolder;
             // 
             // button1
             // 
@@ -163,6 +163,7 @@
             // 
             // button5
             // 
+            this.button5.Enabled = Properties.Settings.Default.installFolder != "";
             this.button5.AutoSize = true;
             this.button5.Location = new System.Drawing.Point(12, 346);
             this.button5.Name = "button5";

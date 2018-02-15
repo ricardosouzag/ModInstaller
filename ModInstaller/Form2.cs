@@ -39,23 +39,26 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            PopulateCheckBox(InstalledMods, mainForm.modFolder, "*.dll");
+            PopulateCheckBox(InstalledMods, Properties.Settings.Default.modFolder, "*.dll");
             for (int i = 0; i < InstalledMods.Items.Count; i++)
             {
                 InstalledMods.SetItemCheckState(i, CheckState.Checked);
             }
-            PopulateCheckBox(InstalledMods, mainForm.modFolder + "\\Disabled", "*.dll");
+            PopulateCheckBox(InstalledMods, Properties.Settings.Default.modFolder + "\\Disabled", "*.dll");
         }
 
         private void InstalledMods_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked)
             {
-                System.IO.File.Move(mainForm.modFolder + "\\Disabled\\" + installedMods[e.Index],mainForm.modFolder + "\\" + installedMods[e.Index]);
+                if (System.IO.File.Exists(Properties.Settings.Default.modFolder + "\\Disabled\\" + installedMods[e.Index]))
+                {
+                    System.IO.File.Move(Properties.Settings.Default.modFolder + "\\Disabled\\" + installedMods[e.Index], Properties.Settings.Default.modFolder + "\\" + installedMods[e.Index]);
+                }
             }
             else
             {
-                System.IO.File.Move(mainForm.modFolder + "\\" + installedMods[e.Index], mainForm.modFolder + "\\Disabled\\" + installedMods[e.Index]);
+                System.IO.File.Move(Properties.Settings.Default.modFolder + "\\" + installedMods[e.Index], Properties.Settings.Default.modFolder + "\\Disabled\\" + installedMods[e.Index]);
             }
         }
 
