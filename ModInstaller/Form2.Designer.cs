@@ -65,6 +65,7 @@
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.InstalledMods.ItemCheck += InstalledMods_ItemCheck;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
         }
 
