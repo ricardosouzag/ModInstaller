@@ -19,8 +19,13 @@ namespace ModInstaller
             FileInfo[] Files = dinfo.GetFiles(FileType);
             foreach (FileInfo file in Files)
             {
-                modlist.Items.Add((System.IO.Path.GetFileNameWithoutExtension(file.Name)));
-                installedMods.Add(file.Name);
+                if (!installedMods.Contains(file.Name))
+                {
+                    modlist.Items.Add((System.IO.Path.GetFileNameWithoutExtension(file.Name)));
+                    installedMods.Add(file.Name);
+                }
+                else
+                    File.Delete(Folder + @"/" + file.Name);
             }
         }
 
@@ -53,7 +58,7 @@ namespace ModInstaller
         {
             if (e.NewValue == CheckState.Checked)
             {
-                if (System.IO.File.Exists(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]))
+                if (System.IO.File.Exists(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
                 {
                     System.IO.File.Move(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index], Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]);
                 }
