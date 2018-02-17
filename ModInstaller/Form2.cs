@@ -15,17 +15,17 @@ namespace ModInstaller
     {
         private void PopulateCheckBox(CheckedListBox modlist, string Folder, string FileType)
         {
-            DirectoryInfo dinfo = new DirectoryInfo(Folder);
-            FileInfo[] Files = dinfo.GetFiles(FileType);
+            DirectoryInfo dinfo = new DirectoryInfo(path: Folder);
+            FileInfo[] Files = dinfo.GetFiles(searchPattern: FileType);
             foreach (FileInfo file in Files)
             {
-                if (!installedMods.Contains(file.Name))
+                if (!installedMods.Contains(item: file.Name))
                 {
-                    modlist.Items.Add((System.IO.Path.GetFileNameWithoutExtension(file.Name)));
-                    installedMods.Add(file.Name);
+                    modlist.Items.Add(item: (Path.GetFileNameWithoutExtension(file.Name)));
+                    installedMods.Add(item: file.Name);
                 }
                 else
-                    File.Delete(Folder + @"/" + file.Name);
+                    File.Delete(path: Folder + $@"/{file.Name}");
             }
         }
 
@@ -49,8 +49,8 @@ namespace ModInstaller
             {
                 InstalledMods.SetItemCheckState(i, CheckState.Checked);
             }
-            if (!System.IO.Directory.Exists(Properties.Settings.Default.modFolder + @"\Disabled"))
-                System.IO.Directory.CreateDirectory(Properties.Settings.Default.modFolder + @"\Disabled");
+            if (!Directory.Exists(Properties.Settings.Default.modFolder + @"\Disabled"))
+                Directory.CreateDirectory(Properties.Settings.Default.modFolder + @"\Disabled");
             PopulateCheckBox(InstalledMods, Properties.Settings.Default.modFolder + @"\Disabled", "*.dll");
         }
 
@@ -58,7 +58,7 @@ namespace ModInstaller
         {
             if (e.NewValue == CheckState.Checked)
             {
-                if (System.IO.File.Exists(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
+                if (File.Exists(path: Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(path: Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
                 {
                     System.IO.File.Move(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index], Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]);
                 }

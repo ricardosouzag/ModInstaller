@@ -23,14 +23,14 @@ namespace ModInstaller
             if (folderBrowserDialog1.SelectedPath != "")
             {
                 Properties.Settings.Default.installFolder = folderBrowserDialog1.SelectedPath;
-                Properties.Settings.Default.APIFolder = Properties.Settings.Default.installFolder + @"\hollow_knight_data\managed";
-                Properties.Settings.Default.modFolder = Properties.Settings.Default.APIFolder + @"\Mods";
+                Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\managed";
+                Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
                 Properties.Settings.Default.Save();
-                MessageBox.Show("Hollow Knight installation path:\n" + Properties.Settings.Default.installFolder);
+                MessageBox.Show(text: $"Hollow Knight installation path:\n{Properties.Settings.Default.installFolder}");
                 this.Close();
             }
             else
-                MessageBox.Show("Please select your installation folder to proceed.");
+                MessageBox.Show(text: "Please select your installation folder to proceed.");
         }
     }
 }
