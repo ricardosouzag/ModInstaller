@@ -33,6 +33,7 @@
             this.InstalledMods = new System.Windows.Forms.CheckedListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            this.CenterToScreen();
             // 
             // groupBox1
             // 

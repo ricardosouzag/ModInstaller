@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,17 +18,6 @@ namespace ModInstaller
             InitializeComponent();
         }
 
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            button4.Enabled = ((Properties.Settings.Default.installFolder != "") && (openFileDialog2.FileName != "openFileDialog2"));
-            System.IO.Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-            System.IO.Directory.CreateDirectory(Properties.Settings.Default.APIFolder);
-            System.IO.Directory.CreateDirectory(Properties.Settings.Default.modFolder + "\\Disabled");
-        }
-
-
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
@@ -45,7 +35,7 @@ namespace ModInstaller
                 {
                     newMods.Add(System.IO.Path.GetFileNameWithoutExtension(mod));
                 }
-                label3.Text = "Selected file(s):\n" + String.Join("\n", newMods.ToArray());
+                label3.Text = "Selected file(s):\n " + String.Join("\n", newMods.ToArray());
                 button4.Enabled = (openFileDialog2.FileName != "");
             }
         }
@@ -68,21 +58,84 @@ namespace ModInstaller
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (System.IO.Directory.Exists("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hollow Knight"))
+            //Finding the local installation path for Hollow Knight
+            if (Properties.Settings.Default.installFolder == "")
             {
-                Properties.Settings.Default.installFolder = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hollow Knight";
-                Properties.Settings.Default.APIFolder = Properties.Settings.Default.installFolder + "\\hollow_knight_data\\managed";
-                Properties.Settings.Default.modFolder = Properties.Settings.Default.APIFolder + "\\Mods";
-                Properties.Settings.Default.Save();
-                MessageBox.Show("Found Hollow Knight folder!\n" + Properties.Settings.Default.installFolder);
+                DriveInfo[] allDrives = DriveInfo.GetDrives();
+
+                foreach (DriveInfo d in allDrives)
+                {
+                    if (d.DriveFormat == "NTFS")
+                    {
+                        if (System.IO.Directory.Exists(d.Name + @"Program Files (x86)\Steam\steamapps\common\Hollow Knight"))
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Is this your Hollow Knight installation path?\n" + d.Name + @"Program Files (x86)\Steam\steamapps\common\Hollow Knight", "Path confirmation", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                Properties.Settings.Default.installFolder = d.Name + @"Program Files (x86)\Steam\steamapps\common\Hollow Knight";
+                            }
+                            else if (dialogResult == DialogResult.No)
+                            {
+                                Form3 form3 = new Form3();
+                                this.Hide();
+                                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
+                                form3.Show();
+                            }
+                        }
+                        else if (System.IO.Directory.Exists(d.Name + @"Program Files\Steam\steamapps\common\Hollow Knight"))
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Is this your Hollow Knight installation path?\n" + d.Name + @"Program Files\Steam\steamapps\common\Hollow Knight", "Path confirmation", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                Properties.Settings.Default.installFolder = d.Name + @"Program Files\Steam\steamapps\common\Hollow Knight";
+                            }
+                            else if (dialogResult == DialogResult.No)
+                            {
+                                Form3 form3 = new Form3();
+                                this.Hide();
+                                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
+                                form3.Show();
+                            }
+                        }
+                        else if (System.IO.Directory.Exists(d.Name + @"Steam\steamapps\common\Hollow Knight"))
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Is this your Hollow Knight installation path?\n" + d.Name + @"Steam\steamapps\common\Hollow Knight", "Path confirmation", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                Properties.Settings.Default.installFolder = d.Name + @"Steam\steamapps\common\Hollow Knight";
+                            }
+                            else if (dialogResult == DialogResult.No)
+                            {
+                                Form3 form3 = new Form3();
+                                this.Hide();
+                                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
+                                form3.Show();
+                            }
+                        }
+                        Properties.Settings.Default.APIFolder = Properties.Settings.Default.installFolder + @"\hollow_knight_data\managed";
+                        Properties.Settings.Default.modFolder = Properties.Settings.Default.APIFolder + @"\Mods";
+                        Properties.Settings.Default.Save();
+                        break;
+                    }
+                    break;
+                }
             }
-            else
-            {
-                Form3 form3 = new Form3();
-                this.Hide();
-                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
-                form3.Show();
-            }
+                
+        }
+
+        void label_Paint(object sender, PaintEventArgs e)
+        {
+            //To show long paths for API
+            Label label = (Label)sender;
+            using (SolidBrush b = new SolidBrush(label.BackColor))
+                e.Graphics.FillRectangle(b, label.ClientRectangle);
+            TextRenderer.DrawText(
+                e.Graphics,
+                label.Text,
+                label.Font,
+                label.ClientRectangle,
+                label.ForeColor,
+                TextFormatFlags.PathEllipsis);
         }
 
         void form3_FormClosed(object sender, FormClosedEventArgs e)

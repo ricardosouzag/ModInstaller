@@ -33,6 +33,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            this.CenterToScreen();
             // 
             // label1
             // 
@@ -69,8 +70,10 @@
             this.ResumeLayout(false);
             this.PerformLayout();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-
+            this.ControlBox = false;
         }
+
+
 
         #endregion
 
