@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,16 +36,47 @@ namespace ModInstaller
                 {
                     newMods.Add(item: Path.GetFileNameWithoutExtension(mod));
                 }
-                label3.Text = $"Selected file(s):\n {String.Join(separator: "\n", value: newMods.ToArray())}";
+                label3.Text = "Selected file(s):\n " + String.Join(separator: "\n", value: newMods.ToArray());
                 button4.Enabled = (openFileDialog2.FileName != "");
             }
+        }
+
+        public static void MoveDirectory(string source, string target)
+        {
+            var sourcePath = source.TrimEnd('\\', ' ');
+            var targetPath = target.TrimEnd('\\', ' ');
+            var files = Directory.EnumerateFiles(sourcePath, "*", SearchOption.AllDirectories)
+                                 .GroupBy(s => Path.GetDirectoryName(s));
+            foreach (var folder in files)
+            {
+                var targetFolder = folder.Key.Replace(sourcePath, targetPath);
+                Directory.CreateDirectory(targetFolder);
+                foreach (var file in folder)
+                {
+                    var targetFile = Path.Combine(targetFolder, Path.GetFileName(file));
+                    if (File.Exists(targetFile)) File.Delete(targetFile);
+                    File.Move(file, targetFile);
+                }
+            }
+            Directory.Delete(source, true);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             foreach (string mod in openFileDialog2.FileNames)
             {
-                File.Copy(sourceFileName: mod, destFileName: Path.Combine(path1: Properties.Settings.Default.modFolder, path2: Path.GetFileName(mod)), overwrite: true);
+                ZipFile.ExtractToDirectory(sourceArchiveFileName: mod,destinationDirectoryName: $@"C:\temp");
+                IEnumerable<string> mods = Directory.EnumerateDirectories($@"C:\temp");
+                IEnumerable<string> res = Directory.EnumerateFiles($@"C:\temp");
+                foreach (string Mod in mods)
+                {
+                    MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
+                }
+                foreach (string Res in res)
+                {
+                    File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Res)}", true);
+                }
+                Directory.Delete($@"C:\temp", true);
             }
             if (openFileDialog1.FileName == "")
             MessageBox.Show(text: "Succesfully installed mods!");
@@ -53,6 +85,7 @@ namespace ModInstaller
                 File.Copy(sourceFileName: openFileDialog1.FileName, destFileName: Path.Combine(path1: Properties.Settings.Default.APIFolder, path2: Path.GetFileName(openFileDialog1.FileName)), overwrite: true);
                 MessageBox.Show(text: "Succesfully installed API and mods!");
             }
+            label3.Text = "Mods to install:";
 
         }
 
@@ -73,13 +106,7 @@ namespace ModInstaller
                             if (dialogResult == DialogResult.Yes)
                             {
                                 Properties.Settings.Default.installFolder = $@"{d.Name}Program Files (x86)\Steam\steamapps\common\Hollow Knight";
-                            }
-                            else if (dialogResult == DialogResult.No)
-                            {
-                                Form3 form3 = new Form3();
-                                this.Hide();
-                                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
-                                form3.Show();
+                                Properties.Settings.Default.Save();
                             }
                         }
                         else if (Directory.Exists(path: $@"{d.Name}Program Files\Steam\steamapps\common\Hollow Knight"))
@@ -88,13 +115,7 @@ namespace ModInstaller
                             if (dialogResult == DialogResult.Yes)
                             {
                                 Properties.Settings.Default.installFolder = $@"{d.Name}Program Files\Steam\steamapps\common\Hollow Knight";
-                            }
-                            else if (dialogResult == DialogResult.No)
-                            {
-                                Form3 form3 = new Form3();
-                                this.Hide();
-                                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
-                                form3.Show();
+                                Properties.Settings.Default.Save();
                             }
                         }
                         else if (Directory.Exists(path: $@"{d.Name}Steam\steamapps\common\Hollow Knight"))
@@ -103,21 +124,25 @@ namespace ModInstaller
                             if (dialogResult == DialogResult.Yes)
                             {
                                 Properties.Settings.Default.installFolder = $@"{d.Name}Steam\steamapps\common\Hollow Knight";
-                            }
-                            else if (dialogResult == DialogResult.No)
-                            {
-                                Form3 form3 = new Form3();
-                                this.Hide();
-                                form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
-                                form3.Show();
+                                Properties.Settings.Default.Save();
                             }
                         }
-                        Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\managed";
-                        Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
-                        Properties.Settings.Default.Save();
-                        break;
                     }
-                    break;
+                    if (Properties.Settings.Default.installFolder != "")
+                        break;
+                }
+                if (Properties.Settings.Default.installFolder == "")
+                {
+                    Form3 form3 = new Form3();
+                    this.Hide();
+                    form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
+                    form3.Show();
+                }
+                else
+                {
+                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\managed";
+                    Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
+                    Properties.Settings.Default.Save();
                 }
             }
                 

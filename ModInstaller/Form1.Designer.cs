@@ -46,13 +46,13 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "Assembly-CSharp|*.dll|All files|*.*";
+            this.openFileDialog1.Filter = "Modding API|*.zip|All files|*.*";
             this.openFileDialog1.Title = "Select the modding API (If it\'s not already installed)";
             // 
             // openFileDialog2
             // 
-            this.openFileDialog2.DefaultExt = "dll";
-            this.openFileDialog2.Filter = "Mod files|*.dll|All files|*.*";
+            this.openFileDialog2.DefaultExt = "zip";
+            this.openFileDialog2.Filter = "Mod files|*.zip|All files|*.*";
             this.openFileDialog2.Multiselect = true;
             this.openFileDialog2.Title = "Select the mods you wish to install";
             // 
