@@ -51,8 +51,7 @@
             // 
             // openFileDialog2
             // 
-            this.openFileDialog2.DefaultExt = "zip";
-            this.openFileDialog2.Filter = "Mod files|*.zip|All files|*.*";
+            this.openFileDialog2.Filter = "Mod files|*.zip; *.dll|All files|*.*";
             this.openFileDialog2.Multiselect = true;
             this.openFileDialog2.Title = "Select the mods you wish to install";
             // 
@@ -107,7 +106,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(254, 26);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Select the modding API (If it\'s not already installed)";
+            this.button2.Text = $@"Select the modding API (If it's not already installed)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -129,7 +128,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(127, 23);
             this.button5.TabIndex = 3;
-            this.button5.Text = "Manage Installed Mods";
+            this.button5.Text = "Manage Installed API Mods";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 

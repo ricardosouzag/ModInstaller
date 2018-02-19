@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System.Collections.Generic;
 namespace ModInstaller.Properties {
     
     
@@ -44,17 +44,6 @@ namespace ModInstaller.Properties {
             }
             set {
                 this["APIFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection installedMods {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["installedMods"]));
-            }
-            set {
-                this["installedMods"] = value;
             }
         }
         

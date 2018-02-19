@@ -65,18 +65,8 @@ namespace ModInstaller
         {
             foreach (string mod in openFileDialog2.FileNames)
             {
-                ZipFile.ExtractToDirectory(sourceArchiveFileName: mod,destinationDirectoryName: $@"C:\temp");
-                IEnumerable<string> mods = Directory.EnumerateDirectories($@"C:\temp");
-                IEnumerable<string> res = Directory.EnumerateFiles($@"C:\temp");
-                foreach (string Mod in mods)
-                {
-                    MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
-                }
-                foreach (string Res in res)
-                {
-                    File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Res)}", true);
-                }
-                Directory.Delete($@"C:\temp", true);
+                installMods(mod, temp);
+
             }
             if (openFileDialog1.FileName == "")
             MessageBox.Show(text: "Succesfully installed mods!");
@@ -144,9 +134,47 @@ namespace ModInstaller
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
                     Properties.Settings.Default.Save();
                 }
-            }
-                
+            }  
         }
+
+        void installMods (string mod, string tempFolder)
+        {
+            if (Path.GetExtension(mod) == ".zip")
+            {
+                ZipFile.ExtractToDirectory(sourceArchiveFileName: mod, destinationDirectoryName: tempFolder);
+                IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
+                IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
+                string installPath = (mod.Contains("753") ? Properties.Settings.Default.APIFolder : Properties.Settings.Default.modFolder);
+                if (!res.Any(f => f.Contains(".dll")))
+                {
+                    string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
+                    foreach (string dll in modDll)
+                        File.Copy(dll, $@"{installPath}\{Path.GetFileName(dll)}", true);
+                    foreach (string Mod in mods)
+                    {
+                        string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
+                        if (Dll.Length == 0)
+                        {
+                            MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
+                        }
+                    }
+                    foreach (string Res in res)
+                    {
+                        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Res)}", true);
+                    }
+                    Directory.Delete(tempFolder, true);
+                }
+                else
+                {
+                    foreach (string Res in res)
+                    {
+                        File.Copy(Res, $@"{installPath}", true);
+                    }
+                    Directory.Delete(tempFolder, true);
+                }
+            }
+        }
+
 
         void label_Paint(object sender, PaintEventArgs e)
         {
@@ -174,5 +202,7 @@ namespace ModInstaller
             Form2 form2 = new Form2(this);
             form2.Show();
         }
+
+        public string temp = $@"C:\temp";
     }
 }

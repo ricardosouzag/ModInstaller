@@ -15,7 +15,7 @@ namespace ModInstaller
     {
         public string modFolder;
         public string APIFolder;
-        public string installedMods;
+        public List<string> installedMods;
         public string installPath;
     }
 }
