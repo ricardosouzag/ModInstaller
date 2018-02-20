@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.Collections.Generic;
+
 namespace ModInstaller.Properties {
     
     
@@ -56,6 +56,18 @@ namespace ModInstaller.Properties {
             }
             set {
                 this["installFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string temp {
+            get {
+                return ((string)(this["temp"]));
+            }
+            set {
+                this["temp"] = value;
             }
         }
     }

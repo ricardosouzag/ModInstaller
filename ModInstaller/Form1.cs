@@ -19,13 +19,6 @@ namespace ModInstaller
             InitializeComponent();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.FileName != "")
-            label2.Text = $"Selected file:\n{openFileDialog1.FileName}";
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             openFileDialog2.ShowDialog();
@@ -54,7 +47,18 @@ namespace ModInstaller
                 foreach (var file in folder)
                 {
                     var targetFile = Path.Combine(targetFolder, Path.GetFileName(file));
-                    if (File.Exists(targetFile)) File.Delete(targetFile);
+                    if (File.Exists(targetFile))
+                    {
+                        if(!File.Exists($@"{targetFolder}\{Path.GetFileName(targetFile)}.vanilla"))
+                        {
+                            File.Move(targetFile, $@"{targetFolder}\{Path.GetFileName(targetFile)}.vanilla");                            
+                        }
+                        else
+                        {
+                            File.Delete(targetFile);
+                        }
+
+                    }
                     File.Move(file, targetFile);
                 }
             }
@@ -65,22 +69,20 @@ namespace ModInstaller
         {
             foreach (string mod in openFileDialog2.FileNames)
             {
-                installMods(mod, temp);
-
+                installMods(mod, Properties.Settings.Default.temp);
             }
-            if (openFileDialog1.FileName == "")
+            if (!api)
             MessageBox.Show(text: "Succesfully installed mods!");
             else
-            {
-                File.Copy(sourceFileName: openFileDialog1.FileName, destFileName: Path.Combine(path1: Properties.Settings.Default.APIFolder, path2: Path.GetFileName(openFileDialog1.FileName)), overwrite: true);
-                MessageBox.Show(text: "Succesfully installed API and mods!");
-            }
+            MessageBox.Show(text: "Succesfully installed mods and API!");
+            button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
             label3.Text = "Mods to install:";
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+            fillDefaultPaths();
             //Finding the local installation path for Hollow Knight
             if (Properties.Settings.Default.installFolder == "")
             {
@@ -90,31 +92,12 @@ namespace ModInstaller
                 {
                     if (d.DriveFormat == "NTFS")
                     {
-                        if (Directory.Exists(path: $@"{d.Name}Program Files (x86)\Steam\steamapps\common\Hollow Knight"))
+                        foreach (string path in defaultPaths)
                         {
-                            DialogResult dialogResult = MessageBox.Show(text: "Is this your Hollow Knight installation path?\n" + $@"{d.Name}Program Files (x86)\Steam\steamapps\common\Hollow Knight", caption: "Path confirmation", buttons: MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
+                        if (Directory.Exists(path: $@"{d.Name}{path}"))
                             {
-                                Properties.Settings.Default.installFolder = $@"{d.Name}Program Files (x86)\Steam\steamapps\common\Hollow Knight";
-                                Properties.Settings.Default.Save();
-                            }
-                        }
-                        else if (Directory.Exists(path: $@"{d.Name}Program Files\Steam\steamapps\common\Hollow Knight"))
-                        {
-                            DialogResult dialogResult = MessageBox.Show(text: "Is this your Hollow Knight installation path?\n" + $@"{d.Name}Program Files\Steam\steamapps\common\Hollow Knight", caption: "Path confirmation", buttons: MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                Properties.Settings.Default.installFolder = $@"{d.Name}Program Files\Steam\steamapps\common\Hollow Knight";
-                                Properties.Settings.Default.Save();
-                            }
-                        }
-                        else if (Directory.Exists(path: $@"{d.Name}Steam\steamapps\common\Hollow Knight"))
-                        {
-                            DialogResult dialogResult = MessageBox.Show(text: "Is this your Hollow Knight installation path?\n" + $@"{d.Name}Steam\steamapps\common\Hollow Knight", caption: "Path confirmation", buttons: MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                Properties.Settings.Default.installFolder = $@"{d.Name}Steam\steamapps\common\Hollow Knight";
-                                Properties.Settings.Default.Save();
+                                setDefaultPath(path: $@"{d.Name}{path}");
+                                Properties.Settings.Default.temp = $@"{d.Name}temp";
                             }
                         }
                     }
@@ -134,47 +117,143 @@ namespace ModInstaller
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
                     Properties.Settings.Default.Save();
                 }
-            }  
+            }
+            button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
         }
 
-        void installMods (string mod, string tempFolder)
+        void setDefaultPath (string path)
+        {
+            DialogResult dialogResult = MessageBox.Show(text: "Is this your Hollow Knight installation path?\n" + path, caption: "Path confirmation", buttons: MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Properties.Settings.Default.installFolder = path;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        public void installMods (string mod, string tempFolder)
         {
             if (Path.GetExtension(mod) == ".zip")
             {
                 ZipFile.ExtractToDirectory(sourceArchiveFileName: mod, destinationDirectoryName: tempFolder);
                 IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
                 IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
-                string installPath = (mod.Contains("753") ? Properties.Settings.Default.APIFolder : Properties.Settings.Default.modFolder);
-                if (!res.Any(f => f.Contains(".dll")))
+                if (mod.Contains("Modding API"))
                 {
-                    string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
-                    foreach (string dll in modDll)
-                        File.Copy(dll, $@"{installPath}\{Path.GetFileName(dll)}", true);
-                    foreach (string Mod in mods)
+                    api = true;
+                    MoveDirectory(mods.ElementAt<string>(0), $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\");
+                    foreach (string Res in res)
                     {
-                        string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
-                        if (Dll.Length == 0)
+                        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                        File.Delete(Res);
+                    }
+                    Directory.Delete(tempFolder,true);
+                }
+                else if (mod.Contains("753"))
+                {
+                    if (!res.Any(f => f.Contains(".dll")))
+                    {
+                        string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
+                        foreach (string dll in modDll)
+                        {
+                            if (!File.Exists($@"{ Properties.Settings.Default.APIFolder}\{ Path.GetFileNameWithoutExtension(dll)}.vanilla"))
+                                File.Move($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(dll)}", $@"{ Properties.Settings.Default.APIFolder}\{ Path.GetFileNameWithoutExtension(dll)}.vanilla");
+                            File.Copy(dll, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(dll)}", true);
+                        }
+                        foreach (string Mod in mods)
                         {
                             MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
                         }
+                        foreach (string Res in res)
+                        {
+                            File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                            File.Delete(Res);
+                        }
+                        Directory.Delete(tempFolder, true);
                     }
-                    foreach (string Res in res)
+                    else
                     {
-                        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Res)}", true);
+                        foreach (string Res in res)
+                        {
+                            File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                            File.Delete(Res);
+                        }
+                        Directory.Delete(tempFolder, true);
                     }
-                    Directory.Delete(tempFolder, true);
                 }
                 else
                 {
-                    foreach (string Res in res)
+                    if (!res.Any(f => f.Contains(".dll")))
                     {
-                        File.Copy(Res, $@"{installPath}", true);
+                        string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
+                        foreach (string dll in modDll)
+                            File.Copy(dll, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(dll)}", true);
+                        foreach (string Mod in mods)
+                        {
+                            string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
+                            if (Dll.Length == 0)
+                            {
+                                MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
+                            }
+                        }
+                        foreach (string Res in res)
+                        {
+                            
+                            File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                            File.Delete(Res);
+                        }
+                        Directory.Delete(tempFolder, true);
                     }
-                    Directory.Delete(tempFolder, true);
+                    else
+                    {
+                        foreach (string Res in res)
+                        {
+                            if (Res.Contains("*.txt"))
+                                File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                            else
+                                File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
+                            File.Delete(Res);
+                        }
+                        Directory.Delete(tempFolder, true);
+                    }
                 }
+            }
+            else
+            {
+                if (mod.Contains("Assembly"))
+                {
+                    if (File.Exists($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}"))
+                    {
+                        if (File.Exists($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}.vanilla"))
+                            File.Delete($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}");
+                        else
+                            File.Move($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}", $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}.vanilla");
+                    }
+                    File.Copy(mod, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}", true);
+                }
+                else
+                    File.Copy(mod, Properties.Settings.Default.modFolder);
+            }
+                
+        }
+
+        void restoreBackups()
+        {
+            string[] backup = Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories);
+            foreach (string file in backup)
+            {
+                if (File.Exists(Path.GetFileNameWithoutExtension(Path.GetFullPath(file))))
+                File.Delete(Path.GetFileNameWithoutExtension(Path.GetFullPath(file)));
+                File.Move(file, $@"{Path.GetFileNameWithoutExtension(Path.GetFullPath(file))}");
             }
         }
 
+        void fillDefaultPaths()
+        {
+            defaultPaths.Add($@"Program Files(x86)\Steam\steamapps\common\Hollow Knight");
+            defaultPaths.Add($@"Program Files\Steam\steamapps\common\Hollow Knight");
+            defaultPaths.Add($@"Steam\steamapps\common\Hollow Knight");
+        }
 
         void label_Paint(object sender, PaintEventArgs e)
         {
@@ -194,6 +273,7 @@ namespace ModInstaller
         void form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+            Properties.Settings.Default.temp = Path.GetPathRoot(Properties.Settings.Default.installFolder);
         }
         public Settings settings;
 
@@ -203,6 +283,14 @@ namespace ModInstaller
             form2.Show();
         }
 
-        public string temp = $@"C:\temp";
+        private void button1_Click(object send, EventArgs e)
+        {
+            restoreBackups();
+            MessageBox.Show("Backups restored successfully!");            
+            button1.Enabled = false;
+        }
+
+        public List<string> defaultPaths = new List<string>();
+        bool api;
     }
 }
