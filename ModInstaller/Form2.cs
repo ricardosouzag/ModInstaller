@@ -33,6 +33,7 @@ namespace ModInstaller
                     File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension($@"{Properties.Settings.Default.installFolder}\API.zip")}){Path.GetExtension(Res)}", true);
                     File.Delete(Res);
                 }
+                Directory.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
                 Directory.Delete(Properties.Settings.Default.temp, true);
                 MessageBox.Show("Modding API successfully installed!");
             }

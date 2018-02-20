@@ -80,8 +80,7 @@ namespace ModInstaller
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            
+        {            
             fillDefaultPaths();
             //Finding the local installation path for Hollow Knight
             if (Properties.Settings.Default.installFolder == "")
@@ -232,7 +231,7 @@ namespace ModInstaller
                     File.Copy(mod, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}", true);
                 }
                 else
-                    File.Copy(mod, Properties.Settings.Default.modFolder);
+                    File.Copy(mod, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(mod)}");
             }
                 
         }
@@ -250,7 +249,7 @@ namespace ModInstaller
 
         void fillDefaultPaths()
         {
-            defaultPaths.Add($@"Program Files(x86)\Steam\steamapps\common\Hollow Knight");
+            defaultPaths.Add($@"Program Files (x86)\Steam\steamapps\common\Hollow Knight");
             defaultPaths.Add($@"Program Files\Steam\steamapps\common\Hollow Knight");
             defaultPaths.Add($@"Steam\steamapps\common\Hollow Knight");
         }
