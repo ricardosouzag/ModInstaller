@@ -62,6 +62,7 @@
             this.InstalledMods.Name = "InstalledMods";
             this.InstalledMods.Size = new System.Drawing.Size(179, 259);
             this.InstalledMods.TabIndex = 1;
+            InstalledMods.ItemCheck += InstalledMods_ItemCheck;
             // 
             // button1
             // 

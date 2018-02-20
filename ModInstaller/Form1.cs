@@ -242,9 +242,9 @@ namespace ModInstaller
             string[] backup = Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories);
             foreach (string file in backup)
             {
-                if (File.Exists(Path.GetFileNameWithoutExtension(Path.GetFullPath(file))))
-                File.Delete(Path.GetFileNameWithoutExtension(Path.GetFullPath(file)));
-                File.Move(file, $@"{Path.GetFileNameWithoutExtension(Path.GetFullPath(file))}");
+                if (File.Exists($@"{Path.GetDirectoryName(file)}\{Path.GetFileNameWithoutExtension(file)}"))
+                File.Delete($@"{Path.GetDirectoryName(file)}\{Path.GetFileNameWithoutExtension(file)}");
+                File.Move(file, $@"{Path.GetDirectoryName(file)}\{Path.GetFileNameWithoutExtension(file)}");
             }
         }
 
@@ -275,11 +275,16 @@ namespace ModInstaller
             this.Show();
             Properties.Settings.Default.temp = Path.GetPathRoot(Properties.Settings.Default.installFolder);
         }
-        public Settings settings;
+
+        void form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2(this);
+            form2.FormClosed += new FormClosedEventHandler(form2_FormClosed);
             form2.Show();
         }
 
