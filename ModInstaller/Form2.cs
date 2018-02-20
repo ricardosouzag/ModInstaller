@@ -228,5 +228,21 @@ namespace ModInstaller
 
         private List<string> installedMods = new List<string>();
         private Dictionary<string,string> downloadList = new Dictionary<string, string>();
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4", $@"{Properties.Settings.Default.installFolder}\API.zip");
+            ZipFile.ExtractToDirectory(sourceArchiveFileName: $@"{Properties.Settings.Default.installFolder}\API.zip", destinationDirectoryName: Properties.Settings.Default.temp);
+            IEnumerable<string> mods = Directory.EnumerateDirectories(Properties.Settings.Default.temp);
+            IEnumerable<string> res = Directory.EnumerateFiles(Properties.Settings.Default.temp);
+            MoveDirectory(mods.ElementAt<string>(0), $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\");
+            foreach (string Res in res)
+            {
+                File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension($@"{Properties.Settings.Default.installFolder}\API.zip")}){Path.GetExtension(Res)}", true);
+                File.Delete(Res);
+            }
+            Directory.Delete(Properties.Settings.Default.temp, true);
+        }
     }
 }
