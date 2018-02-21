@@ -24,17 +24,22 @@ namespace ModInstaller
             {
                 WebClient webClient = new WebClient();
                 webClient.DownloadFile("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4", $@"{Properties.Settings.Default.installFolder}\API.zip");
-                ZipFile.ExtractToDirectory(sourceArchiveFileName: $@"{Properties.Settings.Default.installFolder}\API.zip", destinationDirectoryName: Properties.Settings.Default.temp);
-                IEnumerable<string> mods = Directory.EnumerateDirectories(Properties.Settings.Default.temp);
-                IEnumerable<string> res = Directory.EnumerateFiles(Properties.Settings.Default.temp);
-                MoveDirectory(mods.ElementAt<string>(0), $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\");
-                foreach (string Res in res)
-                {
-                    File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension($@"{Properties.Settings.Default.installFolder}\API.zip")}){Path.GetExtension(Res)}", true);
-                    File.Delete(Res);
-                }
-                Directory.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
-                Directory.Delete(Properties.Settings.Default.temp, true);
+                installMods($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
+                //ZipFile.ExtractToDirectory(sourceArchiveFileName: $@"{Properties.Settings.Default.installFolder}\API.zip", destinationDirectoryName: Properties.Settings.Default.temp);
+                //IEnumerable<string> mods = Directory.EnumerateDirectories(Properties.Settings.Default.temp);
+                //IEnumerable<string> res = Directory.EnumerateFiles(Properties.Settings.Default.temp);
+                //MoveDirectory(mods.ElementAt<string>(0), $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\");
+                //foreach (string Res in res)
+                //{
+                //    MessageBox.Show($@"Installing {Res}");
+                //    File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension($@"{Properties.Settings.Default.installFolder}\API.zip")}){Path.GetExtension(Res)}", true);
+                //    MessageBox.Show($@"Installing {Res}");
+                //    if (File.Exists(Res))
+                //    File.Delete(Res.ToString());
+                //    MessageBox.Show($@"Installing {Res}");
+                //}                              
+                //Directory.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
+                //Directory.Delete(Properties.Settings.Default.temp, true);
                 MessageBox.Show("Modding API successfully installed!");
             }
         }
@@ -50,7 +55,6 @@ namespace ModInstaller
                     modlist.Items.Add(item: Path.GetFileNameWithoutExtension(file.Name));
                     installedMods.Add(item: file.Name);
                     installList.Items.Add("Installed");
-
                 }
                 else
                     File.Delete(path: Folder + $@"/{file.Name}");
@@ -59,14 +63,13 @@ namespace ModInstaller
 
         private void PopulateCheckBoxLink(CheckedListBox modlist, CheckedListBox installList, Dictionary<string, string> downloadList)
         {
-            foreach (KeyValuePair<string,string> kvp in downloadList)
+            foreach (KeyValuePair<string, string> kvp in downloadList)
             {
                 if (!installedMods.Contains(item: $@"{kvp.Value}.dll"))
                 {
                     modlist.Items.Add(item: kvp.Value);
                     installedMods.Add(item: $@"{kvp.Value}.dll");
                     installList.Items.Add("Not Installed");
-
                 }
             }
         }
@@ -108,40 +111,56 @@ namespace ModInstaller
         {
             if (e.NewValue == CheckState.Checked)
             {
-                if (InstallList.Items[e.Index].ToString() == "Installed")
+                if (File.Exists(path: Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(path: Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
                 {
-                    if (File.Exists(path: Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(path: Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
-                    {
-                        File.Move(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index], Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]);
-                    }
+                    File.Move(Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index], Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]);
                 }
-                else
-                {
-                    WebClient webClient = new WebClient();
-                    foreach (KeyValuePair<string, string> kvp in downloadList)
-                    {
-                        if (kvp.Value == Path.GetFileNameWithoutExtension(installedMods[e.Index]))
-                        {
-                            DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Value}?", caption: "Confirm installation" ,buttons: MessageBoxButtons.YesNo);
-                            if (result == DialogResult.Yes)
-                            {
-                                webClient.DownloadFile(kvp.Key, $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
-                                installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);
-                                File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
-                                MessageBox.Show($@"{kvp.Value} successfully installed!");
-                                InstallList.Items[e.Index] = "Installed";
-                            }
-                            else
-                                e.NewValue = CheckState.Unchecked;
-                        }
-                    }
-                }
-                
             }
-            else
+            else if (File.Exists(path: $@"{Properties.Settings.Default.modFolder}\{installedMods[e.Index]}"))
             {
                 File.Move(Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index], Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]);
             }
+        }
+
+        private void InstallList_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (InstallList.Items[e.Index].ToString() != "Installed" && e.NewValue == CheckState.Checked)
+            {
+                WebClient webClient = new WebClient();
+                foreach (KeyValuePair<string, string> kvp in downloadList)
+                {
+                    if (kvp.Value == Path.GetFileNameWithoutExtension(installedMods[e.Index]))
+                    {
+                        DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Value}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            webClient.DownloadFile(kvp.Key, $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
+                            installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);
+                            File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
+                            MessageBox.Show($@"{kvp.Value} successfully installed!");
+                            InstallList.Items[e.Index] = "Installed";
+                            InstallList.SetItemChecked(e.Index, true);
+                            InstalledMods.SetItemChecked(e.Index, true);
+                        }
+                        else
+                            e.NewValue = CheckState.Unchecked;
+                    }
+                }
+            }
+            else if (e.NewValue == CheckState.Unchecked)
+            {
+                DialogResult result = MessageBox.Show(text: $@"Do you want to remove {Path.GetFileNameWithoutExtension(installedMods[e.Index])} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    File.Delete($@"{Properties.Settings.Default.modFolder}\{installedMods[e.Index]}");
+                    MessageBox.Show($@"{Path.GetFileNameWithoutExtension(installedMods[e.Index])} successfully uninstalled!");
+                    InstallList.Items[e.Index] = "Not Installed";
+                    InstalledMods.SetItemChecked(e.Index, false);
+                }
+                else
+                    e.NewValue = CheckState.Unchecked;
+            }
+                
         }
 
         public void installMods(string mod, string tempFolder)
@@ -166,7 +185,6 @@ namespace ModInstaller
                     }
                     foreach (string Res in res)
                     {
-
                         File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
                         File.Delete(Res);
                     }
@@ -241,12 +259,17 @@ namespace ModInstaller
             PopulateCheckBox(InstalledMods, InstallList, Properties.Settings.Default.modFolder, "*.dll");
             for (int i = 0; i < InstalledMods.Items.Count; i++)
             {
-                InstalledMods.SetItemCheckState(i, CheckState.Checked);
+                InstalledMods.SetItemChecked(i, true);
+                InstallList.SetItemChecked(i, true);
             }
             if (!Directory.Exists(Properties.Settings.Default.modFolder + @"\Disabled"))
                 Directory.CreateDirectory(Properties.Settings.Default.modFolder + @"\Disabled");
             PopulateCheckBox(InstalledMods, InstallList, Properties.Settings.Default.modFolder + @"\Disabled", "*.dll");
             PopulateCheckBoxLink(InstalledMods, InstallList, downloadList);
+            for (int i = 0; i < InstallList.Items.Count ; i++)
+            {
+                InstallList.SetItemChecked(i, InstallList.Items[i].ToString() == "Installed");
+            }           
         }
 
         private List<string> installedMods = new List<string>();

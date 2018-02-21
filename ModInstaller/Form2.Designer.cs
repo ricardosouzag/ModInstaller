@@ -54,6 +54,7 @@
             this.InstallList.Name = "InstallList";
             this.InstallList.Size = new System.Drawing.Size(96, 259);
             this.InstallList.TabIndex = 2;
+            InstallList.ItemCheck += InstallList_ItemCheck;
             // 
             // InstalledMods
             // 
