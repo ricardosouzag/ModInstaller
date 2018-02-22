@@ -96,7 +96,11 @@ namespace ModInstaller
                         if (Directory.Exists(path: $@"{d.Name}{path}"))
                             {
                                 setDefaultPath(path: $@"{d.Name}{path}");
+                                if (Directory.Exists($@"{d.Name}temp"))
+                                    Properties.Settings.Default.temp = $@"{d.Name}tempMods";
+                                else
                                 Properties.Settings.Default.temp = $@"{d.Name}temp";
+                                Properties.Settings.Default.Save();
                             }
                         }
                     }
@@ -112,9 +116,13 @@ namespace ModInstaller
                 }
                 else
                 {
-                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\managed";
+                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\Managed";
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
                     Properties.Settings.Default.Save();
+                    if (!Directory.Exists(Properties.Settings.Default.modFolder))
+                    {
+                        Directory.CreateDirectory(Properties.Settings.Default.modFolder);
+                    }
                 }
             }
             button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
@@ -231,7 +239,7 @@ namespace ModInstaller
                     File.Copy(mod, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}", true);
                 }
                 else
-                    File.Copy(mod, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(mod)}");
+                    File.Copy(mod, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(mod)}", true);
             }
                 
         }
@@ -249,8 +257,8 @@ namespace ModInstaller
 
         void fillDefaultPaths()
         {
-            defaultPaths.Add($@"Program Files (x86)\Steam\steamapps\common\Hollow Knight");
-            defaultPaths.Add($@"Program Files\Steam\steamapps\common\Hollow Knight");
+            defaultPaths.Add($@"Program Files (x86)\Steam\steamapps\Common\Hollow Knight");
+            defaultPaths.Add($@"Program Files\Steam\steamapps\Common\Hollow Knight");
             defaultPaths.Add($@"Steam\steamapps\common\Hollow Knight");
         }
 
@@ -272,7 +280,13 @@ namespace ModInstaller
         void form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
-            Properties.Settings.Default.temp = Path.GetPathRoot(Properties.Settings.Default.installFolder);
+            if (Directory.Exists($@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp"))
+            {
+                Properties.Settings.Default.temp = $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}tempMods";
+            }
+            else
+            Properties.Settings.Default.temp = $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp";
+            Properties.Settings.Default.Save();
         }
 
         void form2_FormClosed(object sender, FormClosedEventArgs e)

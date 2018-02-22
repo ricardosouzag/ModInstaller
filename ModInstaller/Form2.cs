@@ -24,22 +24,8 @@ namespace ModInstaller
             {
                 WebClient webClient = new WebClient();
                 webClient.DownloadFile("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4", $@"{Properties.Settings.Default.installFolder}\API.zip");
-                installMods($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
-                //ZipFile.ExtractToDirectory(sourceArchiveFileName: $@"{Properties.Settings.Default.installFolder}\API.zip", destinationDirectoryName: Properties.Settings.Default.temp);
-                //IEnumerable<string> mods = Directory.EnumerateDirectories(Properties.Settings.Default.temp);
-                //IEnumerable<string> res = Directory.EnumerateFiles(Properties.Settings.Default.temp);
-                //MoveDirectory(mods.ElementAt<string>(0), $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\");
-                //foreach (string Res in res)
-                //{
-                //    MessageBox.Show($@"Installing {Res}");
-                //    File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension($@"{Properties.Settings.Default.installFolder}\API.zip")}){Path.GetExtension(Res)}", true);
-                //    MessageBox.Show($@"Installing {Res}");
-                //    if (File.Exists(Res))
-                //    File.Delete(Res.ToString());
-                //    MessageBox.Show($@"Installing {Res}");
-                //}                              
-                //Directory.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
-                //Directory.Delete(Properties.Settings.Default.temp, true);
+                installAPI($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
+                File.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
                 MessageBox.Show("Modding API successfully installed!");
             }
         }
@@ -126,6 +112,7 @@ namespace ModInstaller
         {
             if (InstallList.Items[e.Index].ToString() != "Installed" && e.NewValue == CheckState.Checked)
             {
+                
                 WebClient webClient = new WebClient();
                 foreach (KeyValuePair<string, string> kvp in downloadList)
                 {
@@ -134,8 +121,11 @@ namespace ModInstaller
                         DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Value}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
+                            
                             webClient.DownloadFile(kvp.Key, $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
+                            
                             installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);
+                            
                             File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
                             MessageBox.Show($@"{kvp.Value} successfully installed!");
                             InstallList.Items[e.Index] = "Installed";
@@ -163,18 +153,63 @@ namespace ModInstaller
                 
         }
 
+        public void installAPI(string api, string tempFolder)
+        {
+            ZipFile.ExtractToDirectory(sourceArchiveFileName: api, destinationDirectoryName: tempFolder);
+            IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
+            IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
+            if (!res.Any(f => f.Contains(".dll")))
+            {
+                string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
+                foreach (string dll in modDll)
+                    File.Copy(dll, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(dll)}", true);
+                foreach (string Mod in mods)
+                {
+                    string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
+                    if (Dll.Length == 0)
+                    {
+                        MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
+                    }
+                }
+                foreach (string Res in res)
+                {
+                    File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(api)}){Path.GetExtension(Res)}", true);
+                    File.Delete(Res);
+                }
+                Directory.Delete(tempFolder, true);
+            }
+            else
+            {
+                foreach (string Res in res)
+                {
+                    if (Res.Contains("*.txt"))
+                        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(api)}){Path.GetExtension(Res)}", true);
+                    else
+                        File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
+                    File.Delete(Res);
+                }
+                Directory.Delete(tempFolder, true);
+            }
+        }
+
         public void installMods(string mod, string tempFolder)
         {
+            if (!Directory.Exists(Properties.Settings.Default.modFolder)) Directory.CreateDirectory(Properties.Settings.Default.modFolder);
             if (Path.GetExtension(mod) == ".zip")
             {
+                
                 ZipFile.ExtractToDirectory(sourceArchiveFileName: mod, destinationDirectoryName: tempFolder);
                 IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
                 IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);                                
                 if (!res.Any(f => f.Contains(".dll")))
                 {
+                    
                     string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
                     foreach (string dll in modDll)
+                    {
+                        
                         File.Copy(dll, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(dll)}", true);
+                    }
                     foreach (string Mod in mods)
                     {
                         string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
@@ -185,9 +220,11 @@ namespace ModInstaller
                     }
                     foreach (string Res in res)
                     {
+                        
                         File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
                         File.Delete(Res);
                     }
+                    
                     Directory.Delete(tempFolder, true);
                 }
                 else
