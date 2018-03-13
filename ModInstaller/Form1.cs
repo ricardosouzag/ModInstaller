@@ -19,6 +19,14 @@ namespace ModInstaller
             InitializeComponent();
         }
 
+        private Form2 mainForm = null;
+
+        public Form1(Form callingForm)
+        {
+            mainForm = callingForm as Form2;
+            InitializeComponent();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             openFileDialog2.ShowDialog();
@@ -80,62 +88,8 @@ namespace ModInstaller
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
-            fillDefaultPaths();
-            //Finding the local installation path for Hollow Knight
-            if (Properties.Settings.Default.installFolder == "")
-            {
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-
-                foreach (DriveInfo d in allDrives)
-                {
-                    if (d.DriveFormat == "NTFS")
-                    {
-                        foreach (string path in defaultPaths)
-                        {
-                        if (Directory.Exists(path: $@"{d.Name}{path}"))
-                            {
-                                setDefaultPath(path: $@"{d.Name}{path}");
-                                if (Directory.Exists($@"{d.Name}temp"))
-                                    Properties.Settings.Default.temp = $@"{d.Name}tempMods";
-                                else
-                                Properties.Settings.Default.temp = $@"{d.Name}temp";
-                                Properties.Settings.Default.Save();
-                            }
-                        }
-                    }
-                    if (Properties.Settings.Default.installFolder != "")
-                        break;
-                }
-                if (Properties.Settings.Default.installFolder == "")
-                {
-                    Form3 form3 = new Form3();
-                    this.Hide();
-                    form3.FormClosed += new FormClosedEventHandler(form3_FormClosed);
-                    form3.Show();
-                }
-                else
-                {
-                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\Managed";
-                    Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
-                    Properties.Settings.Default.Save();
-                    if (!Directory.Exists(Properties.Settings.Default.modFolder))
-                    {
-                        Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-                    }
-                }
-            }
+        {               
             button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
-        }
-
-        void setDefaultPath (string path)
-        {
-            DialogResult dialogResult = MessageBox.Show(text: "Is this your Hollow Knight installation path?\n" + path, caption: "Path confirmation", buttons: MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Properties.Settings.Default.installFolder = path;
-                Properties.Settings.Default.Save();
-            }
         }
 
         public void installMods (string mod, string tempFolder)
@@ -255,13 +209,6 @@ namespace ModInstaller
             }
         }
 
-        void fillDefaultPaths()
-        {
-            defaultPaths.Add($@"Program Files (x86)\Steam\steamapps\Common\Hollow Knight");
-            defaultPaths.Add($@"Program Files\Steam\steamapps\Common\Hollow Knight");
-            defaultPaths.Add($@"Steam\steamapps\common\Hollow Knight");
-        }
-
         void label_Paint(object sender, PaintEventArgs e)
         {
             //To show long paths for API
@@ -277,30 +224,6 @@ namespace ModInstaller
                 TextFormatFlags.PathEllipsis);
         }
 
-        void form3_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Show();
-            if (Directory.Exists($@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp"))
-            {
-                Properties.Settings.Default.temp = $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}tempMods";
-            }
-            else
-            Properties.Settings.Default.temp = $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp";
-            Properties.Settings.Default.Save();
-        }
-
-        void form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Form2 form2 = new Form2(this);
-            form2.FormClosed += new FormClosedEventHandler(form2_FormClosed);
-            form2.Show();
-        }
-
         private void button1_Click(object send, EventArgs e)
         {
             restoreBackups();
@@ -308,7 +231,6 @@ namespace ModInstaller
             button1.Enabled = false;
         }
 
-        public List<string> defaultPaths = new List<string>();
         bool api;
     }
 }
