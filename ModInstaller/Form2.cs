@@ -23,7 +23,7 @@ namespace ModInstaller
             if (result == DialogResult.Yes)
             {
                 WebClient webClient = new WebClient();
-                webClient.DownloadFile("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4", $@"{Properties.Settings.Default.installFolder}\API.zip");
+                webClient.DownloadFile(new Uri("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4"), $@"{Properties.Settings.Default.installFolder}\API.zip");
                 installAPI($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
                 File.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
                 MessageBox.Show("Modding API successfully installed!");
@@ -72,6 +72,7 @@ namespace ModInstaller
             downloadList.Add("https://drive.google.com/uc?export=download&id=1YsthSD5-k8vVtK4orQBz_mZIF4_w-I4P", "BonfireMod");
             downloadList.Add("https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz", "Blackmoth");
             downloadList.Add("https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV", "HellMod");
+            downloadList.Add("https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9", "EnemyRandomizer");
         }
 
         public Form2()
@@ -150,6 +151,15 @@ namespace ModInstaller
             {
                 
                 WebClient webClient = new WebClient();
+                ProgressBar progressBar = new ProgressBar();
+                webClient.DownloadProgressChanged += (s, f) =>
+                {
+                    progressBar.Value = f.ProgressPercentage;
+                };
+                webClient.DownloadFileCompleted += (s, f) =>
+                {
+                    progressBar.Visible = false;
+                };
                 foreach (KeyValuePair<string, string> kvp in downloadList)
                 {
                     if (kvp.Value == Path.GetFileNameWithoutExtension(installedMods[e.Index]))
@@ -158,7 +168,7 @@ namespace ModInstaller
                         if (result == DialogResult.Yes)
                         {
                             
-                            webClient.DownloadFile(kvp.Key, $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
+                            webClient.DownloadFile(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
                             
                             installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);
                             
@@ -283,26 +293,21 @@ namespace ModInstaller
                     if (folder == "Mods")
                     {
                         MoveDirectory(folder, Properties.Settings.Default.modFolder);
-                        MessageBox.Show($@"Moved {folder} to {Properties.Settings.Default.modFolder}");
                     }
                     else if (folder == "Managed")
                     {
                         MoveDirectory(folder, Properties.Settings.Default.APIFolder);
-                        MessageBox.Show($@"Moved {folder} to {Properties.Settings.Default.APIFolder}");
                     }
                     else
                     {
                         MoveDirectory(folder, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(folder)}");
-                        MessageBox.Show($@"Moved {folder} to {Properties.Settings.Default.installFolder}\{Path.GetFileName(folder)}");
                     }
                 }
                 foreach (string Res in res)
                 {
-                    MessageBox.Show($@"Resource found: {Res}. Extension: {Path.GetExtension(Res)}");
                     if (Path.GetExtension(Res) == ".txt")
                     {
                         File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
-                        MessageBox.Show($@"Moved {Res} to {Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}");
                     }
                     else
                     {
