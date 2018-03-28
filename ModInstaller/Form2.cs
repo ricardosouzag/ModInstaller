@@ -15,15 +15,18 @@ namespace ModInstaller
 {
     public partial class Form2 : Form
     {
-
+        void Download(Uri uri,string path)
+        {
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile(uri, path);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                WebClient webClient = new WebClient();
-                webClient.DownloadFile(new Uri("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4"), $@"{Properties.Settings.Default.installFolder}\API.zip");
+                Download(new Uri("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4"), $@"{Properties.Settings.Default.installFolder}\API.zip");
                 installAPI($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
                 File.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
                 MessageBox.Show("Modding API successfully installed!");
@@ -148,18 +151,7 @@ namespace ModInstaller
         private void InstallList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (InstallList.Items[e.Index].ToString() != "Installed" && e.NewValue == CheckState.Checked)
-            {
-                
-                WebClient webClient = new WebClient();
-                ProgressBar progressBar = new ProgressBar();
-                webClient.DownloadProgressChanged += (s, f) =>
-                {
-                    progressBar.Value = f.ProgressPercentage;
-                };
-                webClient.DownloadFileCompleted += (s, f) =>
-                {
-                    progressBar.Visible = false;
-                };
+            {         
                 foreach (KeyValuePair<string, string> kvp in downloadList)
                 {
                     if (kvp.Value == Path.GetFileNameWithoutExtension(installedMods[e.Index]))
@@ -168,7 +160,7 @@ namespace ModInstaller
                         if (result == DialogResult.Yes)
                         {
                             
-                            webClient.DownloadFile(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
+                            Download(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
                             
                             installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);
                             
