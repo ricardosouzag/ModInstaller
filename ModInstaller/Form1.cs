@@ -99,16 +99,27 @@ namespace ModInstaller
                 ZipFile.ExtractToDirectory(sourceArchiveFileName: mod, destinationDirectoryName: tempFolder);
                 IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
                 IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
-                if (mod.Contains("Modding API"))
+                if (res.Any(file => file.Contains("Assembly")))
                 {
                     api = true;
-                    MoveDirectory(mods.ElementAt<string>(0), $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\");
+                    string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
+                    foreach (string dll in modDll)
+                    {
+                        if (!File.Exists($@"{ Properties.Settings.Default.APIFolder}\{ Path.GetFileNameWithoutExtension(dll)}.vanilla"))
+                            File.Move($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(dll)}", $@"{ Properties.Settings.Default.APIFolder}\{ Path.GetFileNameWithoutExtension(dll)}.vanilla");
+                        File.Copy(dll, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(dll)}", true);
+                        File.Delete(dll);
+                    }
+                    foreach (string Mod in mods)
+                    {
+                        MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
+                    }
                     foreach (string Res in res)
                     {
                         File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
                         File.Delete(Res);
                     }
-                    Directory.Delete(tempFolder,true);
+                    Directory.Delete(tempFolder, true);
                 }
                 else if (mod.Contains("753"))
                 {

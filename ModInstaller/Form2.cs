@@ -43,6 +43,7 @@ namespace ModInstaller
                 {
                     modlist.Items.Add(item: Path.GetFileNameWithoutExtension(file.Name));
                     installedMods.Add(item: file.Name);
+                    if (downloadList.Values.Any(name => name == file.Name))
                     installList.Items.Add("Installed");
                 }
                 else
@@ -76,6 +77,7 @@ namespace ModInstaller
             downloadList.Add("https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz", "Blackmoth");
             downloadList.Add("https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV", "HellMod");
             downloadList.Add("https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9", "EnemyRandomizer");
+            downloadList.Add("https://drive.google.com/uc?export=download&id=1mZgGfNDpR4QyTfQ0qPP9vkMw8900iTPM", "Mantis Gods");
         }
 
         public Form2()
@@ -123,11 +125,11 @@ namespace ModInstaller
                     Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\Managed";
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
                     Properties.Settings.Default.Save();
-                    if (!Directory.Exists(Properties.Settings.Default.modFolder))
-                    {
-                        Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-                    }
                 }
+            }
+            if (!Directory.Exists(Properties.Settings.Default.modFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.modFolder);
             }
             GetDownloadLinks();
             fillModManager();
