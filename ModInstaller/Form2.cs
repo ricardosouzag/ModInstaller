@@ -43,7 +43,7 @@ namespace ModInstaller
                 {
                     installedMods.Add(file.Name);
                     modlist.Items.Add(Path.GetFileNameWithoutExtension(file.Name), check);
-                    installList.Items.Add("Installed", downloadList.Values.Any(mod => mod == Path.GetFileNameWithoutExtension(file.Name)) ? check : CheckState.Indeterminate);
+                    installList.Items.Add("Installed", downloadList.Values.Any(mod => mod == Path.GetFileNameWithoutExtension(file.Name)) ? CheckState.Checked : CheckState.Indeterminate);
                 }
                 else
                     File.Delete(path: Folder + $@"/{file.Name}");
@@ -166,10 +166,8 @@ namespace ModInstaller
                         if (result == DialogResult.Yes)
                         {
                             
-                            Download(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
-                            
-                            installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);
-                            
+                            Download(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");                            
+                            installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);                            
                             File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
                             MessageBox.Show($@"{kvp.Value} successfully installed!");
                             InstallList.Items[e.Index] = "Installed";
@@ -241,50 +239,10 @@ namespace ModInstaller
             if (Directory.Exists(Properties.Settings.Default.temp))
                 Directory.Delete(tempFolder, true);
             if (!Directory.Exists(Properties.Settings.Default.modFolder)) Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-            if (Path.GetExtension(mod) == ".zip")
             {
-                
                 ZipFile.ExtractToDirectory(sourceArchiveFileName: mod, destinationDirectoryName: tempFolder);
                 IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
-                IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);                                
-                //if (!res.Any(f => f.Contains(".dll")))
-                //{
-                    
-                //    string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
-                //    foreach (string dll in modDll)
-                //    {
-                        
-                //        File.Copy(dll, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(dll)}", true);
-                //    }
-                //    foreach (string Mod in mods)
-                //    {
-                //        string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
-                //        if (Dll.Length == 0)
-                //        {
-                //            MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
-                //        }
-                //    }
-                //    foreach (string Res in res)
-                //    {
-                        
-                //        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
-                //        File.Delete(Res);
-                //    }
-                    
-                //    Directory.Delete(tempFolder, true);
-                //}
-                //else
-                //{
-                //    foreach (string Res in res)
-                //    {
-                //        if (Res.Contains("*.txt"))
-                //            File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
-                //        else
-                //            File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
-                //        File.Delete(Res);
-                //    }
-                //    Directory.Delete(tempFolder, true);
-                //}
+                IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
 
                 foreach (string folder in mods)
                 {
@@ -303,7 +261,7 @@ namespace ModInstaller
                 }
                 foreach (string Res in res)
                 {
-                    if (Path.GetExtension(Res) == ".txt")
+                    if (Res.Contains(".txt") || Res.Contains(".md"))
                     {
                         File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
                     }
@@ -311,28 +269,11 @@ namespace ModInstaller
                     {
                         File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
                     }
-                        
+
                     File.Delete(Res);
                 }
                 Directory.Delete(tempFolder, true);
             }
-            else
-            {
-                if (mod.Contains("Assembly"))
-                {
-                    if (File.Exists($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}"))
-                    {
-                        if (File.Exists($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}.vanilla"))
-                            File.Delete($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}");
-                        else
-                            File.Move($@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}", $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}.vanilla");
-                    }
-                    File.Copy(mod, $@"{Properties.Settings.Default.APIFolder}\{Path.GetFileName(mod)}", true);
-                }
-                else
-                    File.Copy(mod, Properties.Settings.Default.modFolder);
-            }
-
         }
 
         public static void MoveDirectory(string source, string target)
