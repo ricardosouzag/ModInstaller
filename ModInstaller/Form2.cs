@@ -33,7 +33,7 @@ namespace ModInstaller
             }
         }
 
-        private void PopulateCheckBox(CheckedListBox modlist, CheckedListBox installList, string Folder, string FileType)
+        private void PopulateCheckBox(CheckedListBox modlist, CheckedListBox installList, string Folder, string FileType, CheckState check)
         {
             DirectoryInfo dinfo = new DirectoryInfo(Folder);
             FileInfo[] Files = dinfo.GetFiles(FileType);
@@ -41,9 +41,9 @@ namespace ModInstaller
             {
                 if (!installedMods.Contains(item: file.Name))
                 {
-                    modlist.Items.Add(item: Path.GetFileNameWithoutExtension(file.Name));
-                    installedMods.Add(item: file.Name);
-                    installList.Items.Add("Installed");
+                    installedMods.Add(file.Name);
+                    modlist.Items.Add(Path.GetFileNameWithoutExtension(file.Name), check);
+                    installList.Items.Add("Installed", downloadList.Values.Any(mod => mod == Path.GetFileNameWithoutExtension(file.Name)) ? check : CheckState.Indeterminate);
                 }
                 else
                     File.Delete(path: Folder + $@"/{file.Name}");
@@ -76,6 +76,7 @@ namespace ModInstaller
             downloadList.Add("https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz", "Blackmoth");
             downloadList.Add("https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV", "HellMod");
             downloadList.Add("https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9", "EnemyRandomizer");
+            downloadList.Add("https://drive.google.com/uc?export=download&id=1mZgGfNDpR4QyTfQ0qPP9vkMw8900iTPM", "Mantis_Gods");
         }
 
         public Form2()
@@ -123,11 +124,11 @@ namespace ModInstaller
                     Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}\hollow_knight_data\Managed";
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}\Mods";
                     Properties.Settings.Default.Save();
-                    if (!Directory.Exists(Properties.Settings.Default.modFolder))
-                    {
-                        Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-                    }
                 }
+            }
+            if (!Directory.Exists(Properties.Settings.Default.modFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.modFolder);
             }
             GetDownloadLinks();
             fillModManager();
@@ -135,7 +136,12 @@ namespace ModInstaller
 
         private void InstalledMods_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            if (e.NewValue == CheckState.Checked)
+            if (e.CurrentValue == CheckState.Indeterminate)
+            {
+                e.NewValue = CheckState.Indeterminate;
+                return;
+            }
+            else if (e.NewValue == CheckState.Checked)
             {
                 if (File.Exists(path: Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(path: Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
                 {
@@ -362,20 +368,11 @@ namespace ModInstaller
 
         private void fillModManager()
         {
-            PopulateCheckBox(InstalledMods, InstallList, Properties.Settings.Default.modFolder, "*.dll");
-            for (int i = 0; i < InstalledMods.Items.Count; i++)
-            {
-                InstalledMods.SetItemChecked(i, true);
-                InstallList.SetItemChecked(i, true);
-            }
+            PopulateCheckBox(InstalledMods, InstallList, Properties.Settings.Default.modFolder, "*.dll", CheckState.Checked);
             if (!Directory.Exists(Properties.Settings.Default.modFolder + @"\Disabled"))
                 Directory.CreateDirectory(Properties.Settings.Default.modFolder + @"\Disabled");
-            PopulateCheckBox(InstalledMods, InstallList, Properties.Settings.Default.modFolder + @"\Disabled", "*.dll");
-            PopulateCheckBoxLink(InstalledMods, InstallList, downloadList);
-            for (int i = 0; i < InstallList.Items.Count ; i++)
-            {
-                InstallList.SetItemChecked(i, InstallList.Items[i].ToString() == "Installed");
-            }           
+            PopulateCheckBox(InstalledMods, InstallList, Properties.Settings.Default.modFolder + @"\Disabled", "*.dll", CheckState.Unchecked);
+            PopulateCheckBoxLink(InstalledMods, InstallList, downloadList);        
         }
 
         void form1_FormClosed(object sender, FormClosedEventArgs e)
