@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace ModInstaller
 {
@@ -136,12 +137,7 @@ namespace ModInstaller
 
         private void InstalledMods_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            if (e.CurrentValue == CheckState.Indeterminate)
-            {
-                e.NewValue = CheckState.Indeterminate;
-                return;
-            }
-            else if (e.NewValue == CheckState.Checked)
+            if (e.NewValue == CheckState.Checked)
             {
                 if (File.Exists(path: Properties.Settings.Default.modFolder + @"\Disabled\" + installedMods[e.Index]) && !File.Exists(path: Properties.Settings.Default.modFolder + @"\" + installedMods[e.Index]))
                 {
@@ -156,7 +152,12 @@ namespace ModInstaller
 
         private void InstallList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            if (InstallList.Items[e.Index].ToString() != "Installed" && e.NewValue == CheckState.Checked)
+            if (e.CurrentValue == CheckState.Indeterminate)
+            {
+                e.NewValue = CheckState.Indeterminate;
+                return;
+            }
+            else if (InstallList.Items[e.Index].ToString() != "Installed" && e.NewValue == CheckState.Checked)
             {         
                 foreach (KeyValuePair<string, string> kvp in downloadList)
                 {
@@ -164,8 +165,7 @@ namespace ModInstaller
                     {
                         DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Value}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
-                        {
-                            
+                        {                            
                             Download(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");                            
                             installMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);                            
                             File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
@@ -184,7 +184,14 @@ namespace ModInstaller
                 DialogResult result = MessageBox.Show(text: $@"Do you want to remove {Path.GetFileNameWithoutExtension(installedMods[e.Index])} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    File.Delete($@"{Properties.Settings.Default.modFolder}\{installedMods[e.Index]}");
+                    List<string> mods = Directory.EnumerateFiles(Properties.Settings.Default.modFolder).ToList<string>();
+                    foreach (string mod in mods)
+                    {
+                        if (Regex.Replace(mod, @"\s|\\|\n|_", "") == Regex.Replace($@"{Properties.Settings.Default.modFolder}\{installedMods[e.Index]}", @"\s|\\|\n|_", ""))
+                        {
+                            File.Delete(mod);
+                        }
+                    }
                     MessageBox.Show($@"{Path.GetFileNameWithoutExtension(installedMods[e.Index])} successfully uninstalled!");
                     InstallList.Items[e.Index] = "Not Installed";
                     InstalledMods.SetItemChecked(e.Index, false);
@@ -244,33 +251,69 @@ namespace ModInstaller
                 IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
                 IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
 
-                foreach (string folder in mods)
+                //foreach (string folder in mods)
+                //{
+                //    if (folder == "Mods")
+                //    {
+                //        MoveDirectory(folder, Properties.Settings.Default.modFolder);
+                //    }
+                //    else if (folder == "Managed")
+                //    {
+                //        MoveDirectory(folder, Properties.Settings.Default.APIFolder);
+                //    }
+                //    else
+                //    {
+                //        MoveDirectory(folder, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(folder)}");
+                //    }
+                //}
+                //foreach (string Res in res)
+                //{
+                //    if (Res.Contains(".txt") || Res.Contains(".md"))
+                //    {
+                //        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                //    }
+                //    else
+                //    {
+                //        File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
+                //    }
+
+                //    File.Delete(Res);
+                //}
+                if (!res.Any(f => f.Contains(".dll")))
                 {
-                    if (folder == "Mods")
+                    string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
+                    foreach (string dll in modDll)
                     {
-                        MoveDirectory(folder, Properties.Settings.Default.modFolder);
+                        File.Copy(dll, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(dll)}", true);
                     }
-                    else if (folder == "Managed")
+                    foreach (string Mod in mods)
                     {
-                        MoveDirectory(folder, Properties.Settings.Default.APIFolder);
+                        string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
+                        if (Dll.Length == 0)
+                        {
+                            MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(Mod)}\");
+                        }
                     }
-                    else
-                    {
-                        MoveDirectory(folder, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileName(folder)}");
-                    }
-                }
-                foreach (string Res in res)
-                {
-                    if (Res.Contains(".txt") || Res.Contains(".md"))
+                    foreach (string Res in res)
                     {
                         File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                        File.Delete(Res);
                     }
-                    else
+                }
+                else
+                {
+                    foreach (string Res in res)
                     {
-                        File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
+                        if (Res.Contains("*.txt"))
+                        {
+                            File.Copy(Res, $@"{Properties.Settings.Default.installFolder}\{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
+                        }
+                        else
+                        {
+                            File.Copy(Res, $@"{Properties.Settings.Default.modFolder}\{Path.GetFileName(Res)}", true);
+                        }
+                        File.Delete(Res);
                     }
-
-                    File.Delete(Res);
                 }
                 Directory.Delete(tempFolder, true);
             }
