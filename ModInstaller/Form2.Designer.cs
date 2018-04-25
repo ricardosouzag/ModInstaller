@@ -43,7 +43,7 @@
             this.groupBox1.Controls.Add(this.InstalledMods);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(269, 290);
+            this.groupBox1.Size = new System.Drawing.Size(269, 354);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Installed Mods";
@@ -53,7 +53,7 @@
             this.InstallList.FormattingEnabled = true;
             this.InstallList.Location = new System.Drawing.Point(167, 19);
             this.InstallList.Name = "InstallList";
-            this.InstallList.Size = new System.Drawing.Size(96, 259);
+            this.InstallList.Size = new System.Drawing.Size(96, 319);
             this.InstallList.TabIndex = 2;
             InstallList.ItemCheck += InstallList_ItemCheck;
             // 
@@ -62,13 +62,13 @@
             this.InstalledMods.FormattingEnabled = true;
             this.InstalledMods.Location = new System.Drawing.Point(6, 19);
             this.InstalledMods.Name = "InstalledMods";
-            this.InstalledMods.Size = new System.Drawing.Size(179, 259);
+            this.InstalledMods.Size = new System.Drawing.Size(179, 319);
             this.InstalledMods.TabIndex = 1;
             InstalledMods.ItemCheck += InstalledMods_ItemCheck;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 308);
+            this.button1.Location = new System.Drawing.Point(12, 372);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(269, 23);
             this.button1.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 337);
+            this.button2.Location = new System.Drawing.Point(12, 401);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(270, 23);
             this.button2.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 369);
+            this.ClientSize = new System.Drawing.Size(294, 436);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -103,7 +103,6 @@
             this.ResumeLayout(false);
 
         }
-
 
 
         #endregion

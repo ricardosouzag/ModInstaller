@@ -7,10 +7,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Xml.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace ModInstaller
 {
@@ -27,7 +29,7 @@ namespace ModInstaller
             DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                Download(new Uri("https://drive.google.com/uc?export=download&id=1PUulDJDeHEfIEl1hAithE1XLT8AXqOZ4"), $@"{Properties.Settings.Default.installFolder}\API.zip");
+                Download(new Uri("https://drive.google.com/uc?export=download&id=1PzarbYowgxBS8iQBTKjAH2TDWnWu-2ZH"), $@"{Properties.Settings.Default.installFolder}\API.zip");
                 installAPI($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
                 File.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
                 MessageBox.Show("Modding API successfully installed!");
@@ -66,19 +68,34 @@ namespace ModInstaller
 
         private void GetDownloadLinks()
         {
-            downloadList.Add("https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpTGEwVHJXc05NeGM", "RandomizerMod");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpWXhoS2hyZ2JUMEU", "DebugMod");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpUVQ5ZGlEdlcxOXM", "CharmNotchMod");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=0B1-JBoX3q-gVYkUwSjNjZFNwTXM", "NightmareGodGrimm");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1yr832lq_jSCvX8Ve5qVIWlIl4kVVAmPD", "MoreSaves");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1isjE6W0LcaoOqxKELrr_vgDDvnEL3-oa", "HPBar");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1beVdRrkgaE0X0VZUMCklYI9CfOkQqbh1", "BossRush");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1YsthSD5-k8vVtK4orQBz_mZIF4_w-I4P", "BonfireMod");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz", "Blackmoth");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1-HAG8lugu7Tg0-AkLTZpsvo5T8_Bgvem", "EnemyHPBar"); 
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV", "HellMod");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9", "EnemyRandomizer");
-            downloadList.Add("https://drive.google.com/uc?export=download&id=1mZgGfNDpR4QyTfQ0qPP9vkMw8900iTPM", "Mantis_Gods");
+            XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+            XElement[] mods = dllist.Element("ModLinks").Element("ModList").Elements("ModLink").ToArray();
+            foreach (XElement mod in mods)
+            {
+                if (!mod.Element("Dependencies").IsEmpty)
+                {
+                    downloadList.Add(mod.Element("Link").Value.ToString(), Regex.Replace(mod.Element("Name").Value.ToString(), @"\s|\\|\n|_", ""));
+                }
+                else if (mod.Element("Name").Value == "Modding API")
+                {
+                    apilink = mod.Element("Link").Value;
+                }
+            }
+            //https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh
+
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpTGEwVHJXc05NeGM", "RandomizerMod");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpWXhoS2hyZ2JUMEU", "DebugMod");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpUVQ5ZGlEdlcxOXM", "CharmNotchMod");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=0B1-JBoX3q-gVYkUwSjNjZFNwTXM", "NightmareGodGrimm");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1yr832lq_jSCvX8Ve5qVIWlIl4kVVAmPD", "MoreSaves");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1isjE6W0LcaoOqxKELrr_vgDDvnEL3-oa", "HPBar");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1beVdRrkgaE0X0VZUMCklYI9CfOkQqbh1", "BossRush");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1YsthSD5-k8vVtK4orQBz_mZIF4_w-I4P", "BonfireMod");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz", "Blackmoth");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1BeFOhGulOCOzbuSdHgOUpnKZ8oRFvxeJ", "EnemyHPBar"); 
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV", "HellMod");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9", "EnemyRandomizer");
+            //downloadList.Add("https://drive.google.com/uc?export=download&id=1mZgGfNDpR4QyTfQ0qPP9vkMw8900iTPM", "Mantis_Gods");
         }
 
         public Form2()
@@ -132,6 +149,7 @@ namespace ModInstaller
             {
                 Directory.CreateDirectory(Properties.Settings.Default.modFolder);
             }
+            installedMods = new List<string>();
             GetDownloadLinks();
             fillModManager();
         }
@@ -185,7 +203,7 @@ namespace ModInstaller
                 DialogResult result = MessageBox.Show(text: $@"Do you want to remove {Path.GetFileNameWithoutExtension(installedMods[e.Index])} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    List<string> mods = Directory.EnumerateFiles(Properties.Settings.Default.modFolder).ToList<string>();
+                    List<string> mods = Directory.EnumerateFiles(Properties.Settings.Default.modFolder).ToList();
                     foreach (string mod in mods)
                     {
                         if (Regex.Replace(mod, @"\s|\\|\n|_", "") == Regex.Replace($@"{Properties.Settings.Default.modFolder}\{installedMods[e.Index]}", @"\s|\\|\n|_", ""))
@@ -199,8 +217,7 @@ namespace ModInstaller
                 }
                 else
                     e.NewValue = CheckState.Unchecked;
-            }
-                
+            }                
         }
 
         public void installAPI(string api, string tempFolder)
@@ -408,5 +425,6 @@ namespace ModInstaller
         public List<string> defaultPaths = new List<string>();
         private List<string> installedMods = new List<string>();
         private Dictionary<string,string> downloadList = new Dictionary<string, string>();
+        string apilink;
     }
 }
