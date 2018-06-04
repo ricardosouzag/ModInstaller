@@ -1,12 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ModInstaller
@@ -29,7 +22,7 @@ namespace ModInstaller
                 Properties.Settings.Default.Save();
                 if (!Directory.Exists(Properties.Settings.Default.modFolder)) Directory.CreateDirectory(Properties.Settings.Default.modFolder);
                 MessageBox.Show(text: $"Hollow Knight installation path:\n{Properties.Settings.Default.installFolder}");
-                this.Close();
+                Close();
             }
             else
                 MessageBox.Show(text: "Please select your installation folder to proceed.");

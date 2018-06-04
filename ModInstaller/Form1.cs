@@ -1,13 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ModInstaller
@@ -19,7 +15,7 @@ namespace ModInstaller
             InitializeComponent();
         }
 
-        private Form2 mainForm = null;
+        private Form2 mainForm;
 
         public Form1(Form callingForm)
         {

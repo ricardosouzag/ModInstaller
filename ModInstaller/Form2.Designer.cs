@@ -1,11 +1,15 @@
-﻿namespace ModInstaller
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace ModInstaller
 {
     partial class Form2
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -41,19 +45,22 @@
             // 
             this.groupBox1.Controls.Add(this.InstallList);
             this.groupBox1.Controls.Add(this.InstalledMods);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(269, 354);
+            //this.groupBox1.Size = new System.Drawing.Size(269, 354);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Installed Mods";
+            this.groupBox1.Text = "API-Compatible Mods";
+             this.groupBox1.MinimumSize = new Size( this.groupBox1.Width,  this.InstalledMods.Height);
+             this.groupBox1.MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+             this.groupBox1.AutoSize = true;
+             this.groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             // 
             // InstallList
             // 
             this.InstallList.FormattingEnabled = true;
             this.InstallList.Location = new System.Drawing.Point(167, 19);
             this.InstallList.Name = "InstallList";
-            this.InstallList.Size = new System.Drawing.Size(96, 319);
+            //this.InstallList.Size = new System.Drawing.Size(96, 319);
             this.InstallList.TabIndex = 2;
             InstallList.ItemCheck += InstallList_ItemCheck;
             // 
@@ -68,9 +75,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 372);
+            //this.button1.Location = new System.Drawing.Point(12, 372);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(269, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Install Modding API";
             this.button1.UseVisualStyleBackColor = true;
@@ -78,9 +84,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 401);
+            //this.button2.Location = new System.Drawing.Point(12, 401);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(270, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "Manually Install Mods";
             this.button2.UseVisualStyleBackColor = true;
@@ -90,11 +95,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 436);
+            //this.ClientSize = new System.Drawing.Size(294, 436);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Mod Manager";
@@ -107,10 +113,10 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckedListBox InstalledMods;
-        private System.Windows.Forms.CheckedListBox InstallList;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private GroupBox groupBox1;
+        private CheckedListBox InstalledMods;
+        private CheckedListBox InstallList;
+        private Button button1;
+        private Button button2;
     }
 }

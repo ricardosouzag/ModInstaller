@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
 namespace ModInstaller
 {
     partial class Form1
@@ -6,7 +8,7 @@ namespace ModInstaller
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -125,13 +127,13 @@ namespace ModInstaller
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
+        private OpenFileDialog openFileDialog1;
+        private OpenFileDialog openFileDialog2;
+        private GroupBox groupBox2;
+        private Label label3;
+        private Button button3;
+        private Button button4;
+        private Button button1;
     }
 }
 
