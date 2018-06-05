@@ -39,7 +39,7 @@ namespace ModInstaller
                 {
                     installedMods.Add(file.Name);
                     modlist.Items.Add(Path.GetFileNameWithoutExtension(file.Name), check);
-                    installList.Items.Add("Installed", downloadList.Values.Any(mod => mod == Path.GetFileNameWithoutExtension(file.Name)) ? CheckState.Checked : CheckState.Indeterminate);
+                    installList.Items.Add("Installed", downloadList.ContainsKey(Path.GetFileNameWithoutExtension(file.Name)) ? CheckState.Checked : CheckState.Indeterminate);
                 }
                 else
                     File.Delete(Folder + $@"/{file.Name}");
@@ -50,9 +50,9 @@ namespace ModInstaller
         {
             foreach (KeyValuePair<string, string> kvp in downloadList)
             {
-                if (installedMods.Contains($@"{kvp.Value}.dll")) continue;
-                modlist.Items.Add(kvp.Value, CheckState.Indeterminate);
-                installedMods.Add($@"{kvp.Value}.dll");
+                if (installedMods.Contains($@"{kvp.Key}.dll")) continue;
+                modlist.Items.Add(kvp.Key, CheckState.Indeterminate);
+                installedMods.Add($@"{kvp.Key}.dll");
                 installList.Items.Add("Check to install");
             }
         }
@@ -60,16 +60,17 @@ namespace ModInstaller
         private void GetDownloadLinks()
         {
             XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
-            XElement[] mods = dllist.Element("ModLinks").Element("ModList").Elements("ModLink").ToArray();
+            XElement[] mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
             foreach (XElement mod in mods)
             {
                 if (!mod.Element("Dependencies").IsEmpty)
                 {
-                    downloadList.Add(mod.Element("Link").Value, Regex.Replace(mod.Element("Name").Value, @"\s|\\|\n|_", ""));
+                    downloadList.Add(Regex.Replace(mod.Element("Name")?.Value, @"\s|\\|\n|_", ""), mod.Element("Link")?.Value);
+                    dependencies.Add(Regex.Replace(mod.Element("Name")?.Value, @"\s|\\|\n|_", ""), mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList());
                 }
-                else if (mod.Element("Name").Value == "Modding API")
+                else if (mod.Element("Name")?.Value == "Modding API")
                 {
-                    apilink = mod.Element("Link").Value;
+                    apilink = mod.Element("Link")?.Value;
                 }
             }
             //https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh
@@ -200,14 +201,45 @@ namespace ModInstaller
             {         
                 foreach (KeyValuePair<string, string> kvp in downloadList)
                 {
-                    if (kvp.Value != Path.GetFileNameWithoutExtension(installedMods[e.Index])) continue;
-                    DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Value}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
+                    if (kvp.Key != Path.GetFileNameWithoutExtension(installedMods[e.Index])) continue;
+                    DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Key}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
-                    {                            
-                        Download(new Uri(kvp.Key), $@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");                            
-                        InstallMods($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip", Properties.Settings.Default.temp);                            
-                        File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Value}.zip");
-                        MessageBox.Show($@"{kvp.Value} successfully installed!");
+                    {
+                        foreach (string dependency in dependencies[kvp.Key])
+                        {
+                            if (dependency == "Modding API")
+                            {
+                                if (Properties.Settings.Default.apiInstalled) continue;
+                                Download(new Uri(apilink),
+                                    $@"{Properties.Settings.Default.installFolder}\{dependency}.zip");
+                                InstallApi($@"{Properties.Settings.Default.installFolder}\{dependency}.zip",
+                                    Properties.Settings.Default.temp);
+                                File.Delete($@"{Properties.Settings.Default.installFolder}\{dependency}.zip");
+                            }
+                            else
+                            {
+                                if (installedMods.Contains(dependency + ".dll")) continue;
+                                DialogResult depInstall = MessageBox.Show(
+                                    text: $"Dependency {dependency} not found.\nDo you want to install {dependency}?",
+                                    caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
+                                if (depInstall != DialogResult.Yes) continue;
+                                Download(new Uri(downloadList[dependency]),
+                                    $@"{Properties.Settings.Default.modFolder}\{dependency}.zip");
+                                InstallMods($@"{Properties.Settings.Default.modFolder}\{dependency}.zip",
+                                    Properties.Settings.Default.temp);
+                                File.Delete($@"{Properties.Settings.Default.modFolder}\{dependency}.zip");
+                                InstallList.Items[InstalledMods.Items.IndexOf(dependency)] = "Installed";
+                                InstallList.SetItemChecked(InstalledMods.Items.IndexOf(dependency), true);
+                                InstalledMods.SetItemChecked(InstalledMods.Items.IndexOf(dependency), true);
+                            }
+
+                            MessageBox.Show($@"{dependency} successfully installed!");
+                            installedDependencies.Add(dependency);
+                        }
+                        Download(new Uri(kvp.Value), $@"{Properties.Settings.Default.modFolder}\{kvp.Key}.zip");
+                        InstallMods($@"{Properties.Settings.Default.modFolder}\{kvp.Key}.zip", Properties.Settings.Default.temp);                            
+                        File.Delete($@"{Properties.Settings.Default.modFolder}\{kvp.Key}.zip");
+                        MessageBox.Show($@"{kvp.Key} successfully installed!");
                         InstallList.Items[e.Index] = "Installed";
                         InstallList.SetItemChecked(e.Index, true);
                         InstalledMods.SetItemChecked(e.Index, true);
@@ -230,7 +262,7 @@ namespace ModInstaller
                         }
                     }
                     MessageBox.Show($@"{Path.GetFileNameWithoutExtension(installedMods[e.Index])} successfully uninstalled!");
-                    InstallList.Items[e.Index] = "Not Installed";
+                    InstallList.Items[e.Index] = "Check to install";
                     InstalledMods.SetItemChecked(e.Index, false);
                 }
                 else
@@ -277,6 +309,7 @@ namespace ModInstaller
                 }
                 Directory.Delete(tempFolder, true);
             }
+            Properties.Settings.Default.apiInstalled = true;
         }
 
         private static void InstallMods(string mod, string tempFolder)
@@ -434,6 +467,8 @@ namespace ModInstaller
         private List<string> defaultPaths = new List<string>();
         private List<string> installedMods = new List<string>();
         private Dictionary<string,string> downloadList = new Dictionary<string, string>();
+        private Dictionary<string,List<string>> dependencies = new Dictionary<string, List<string>>();
+        private List<string> installedDependencies = new List<string>();
         string apilink;
     }
 }
