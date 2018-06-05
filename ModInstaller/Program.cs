@@ -13,7 +13,7 @@ namespace ModInstaller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
+            Application.Run(new ModManager());
         }
     }
 }

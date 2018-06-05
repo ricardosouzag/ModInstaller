@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ModInstaller
 {
-    partial class Form1
+    partial class ManualInstall
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ModInstaller
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualInstall));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();

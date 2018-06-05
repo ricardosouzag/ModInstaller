@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace ModInstaller
 {
-    public partial class Form3 : Form
+    public partial class ManualPathLocation : Form
     {
-        public Form3()
+        public ManualPathLocation()
         {
             InitializeComponent();
         }

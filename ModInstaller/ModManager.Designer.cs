@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ModInstaller
 {
-    partial class Form2
+    partial class ModManager
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace ModInstaller
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModManager));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.InstallList = new System.Windows.Forms.CheckedListBox();
             this.InstalledMods = new System.Windows.Forms.CheckedListBox();
@@ -80,7 +80,7 @@ namespace ModInstaller
             this.button1.TabIndex = 1;
             this.button1.Text = "Install Modding API";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.InstallApiClick);
             // 
             // button2
             // 
@@ -89,9 +89,9 @@ namespace ModInstaller
             this.button2.TabIndex = 2;
             this.button2.Text = "Manually Install Mods";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.ManualInstallClick);
             // 
-            // Form2
+            // ModManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,7 +102,7 @@ namespace ModInstaller
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form2";
+            this.Name = "ModManager";
             this.Text = "Mod Manager";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);

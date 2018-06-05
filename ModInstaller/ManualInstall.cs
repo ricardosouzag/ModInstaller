@@ -8,18 +8,18 @@ using System.Windows.Forms;
 
 namespace ModInstaller
 {
-    public partial class Form1 : Form
+    public partial class ManualInstall : Form
     {
-        public Form1()
+        public ManualInstall()
         {
             InitializeComponent();
         }
 
-        private Form2 mainForm;
+        private ModManager mainForm;
 
-        public Form1(Form callingForm)
+        public ManualInstall(Form callingForm)
         {
-            mainForm = callingForm as Form2;
+            mainForm = callingForm as ModManager;
             InitializeComponent();
         }
 
