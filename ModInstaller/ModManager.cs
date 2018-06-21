@@ -24,7 +24,7 @@ namespace ModInstaller
         {
             FillDefaultPaths();
             GetLocalInstallation();
-            GetDownloadLinks();
+            FillDictionaries();
             PopulateList();
             ResizeUI();
         }
@@ -85,7 +85,7 @@ namespace ModInstaller
             Properties.Settings.Default.Save();
         }
 
-        private void GetDownloadLinks()
+        private void FillDictionaries()
         {
             XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
             XElement[] mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
@@ -93,8 +93,9 @@ namespace ModInstaller
             {
                 if (!mod.Element("Dependencies").IsEmpty)
                 {
-                    downloadList.Add(Regex.Replace(mod.Element("Name")?.Value, @"\s|\\|\n|_", ""), mod.Element("Link")?.Value);
-                    dependencies.Add(Regex.Replace(mod.Element("Name")?.Value, @"\s|\\|\n|_", ""), mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList());
+                    downloadList.Add(mod.Element("Name")?.Value, mod.Element("Link")?.Value);
+                    dependencies.Add(mod.Element("Name")?.Value, mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList());
+                    filenamesDictionary.Add(mod.Element("Name")?.Value, mod.Element("Filename")?.Elements("string").Select(filename => filename.Value).ToList());
                 }
                 else if (mod.Element("Name")?.Value == "Modding API")
                 {
@@ -102,7 +103,7 @@ namespace ModInstaller
                 }
                 if (mod.Elements().Any(f => f.Name == "Optional") && !mod.Element("Optional").IsEmpty)
                 {
-                    optional.Add(Regex.Replace(mod.Element("Name")?.Value, @"\s|\\|\n|_", ""), mod.Element("Optional")?.Elements("string").Select(dependency => Regex.Replace(dependency.Value, @"\s|\\|\n|_", "")).ToList());
+                    optional.Add(mod.Element("Name")?.Value, mod.Element("Optional")?.Elements("string").Select(dependency => dependency.Value).ToList());
                 }
             }
             downloadList.Keys.ToList().Sort();
@@ -118,44 +119,56 @@ namespace ModInstaller
 
             if (!Directory.Exists(Properties.Settings.Default.modFolder + @"/Disabled"))
                 Directory.CreateDirectory(Properties.Settings.Default.modFolder + @"/Disabled");
+
             DirectoryInfo disabledFolder = new DirectoryInfo(Properties.Settings.Default.modFolder + @"/Disabled");
             FileInfo[] disabledFiles = disabledFolder.GetFiles("*.dll");
 
             foreach (var modsFile in modsFiles)
             {
-                if (allMods.Any(f => f == modsFile.Name)) continue;
-                allMods.Add(modsFile.Name);
-                InstalledMods.Items.Add(Path.GetFileNameWithoutExtension(modsFile.Name), CheckState.Checked);
+                string modFilename = Path.GetFileNameWithoutExtension(modsFile.Name);
+                KeyValuePair<String,String> filename = new KeyValuePair<string, string>();
+
+                foreach (KeyValuePair<string, List<string>> keyValuePair in filenamesDictionary)
+                {
+                    if (keyValuePair.Value.Any(v => v == modFilename))
+                    {
+                        filename = new KeyValuePair<string, string>(keyValuePair.Key, keyValuePair.Value.Single(v => v == modFilename));
+                    }
+                }
+
+                if (allMods.Any(f => f == filename.Key)) continue;
+                allMods.Add(filename.Key);
+                installedMods.Add(filename.Key);
+                InstalledMods.Items.Add(filename.Key, CheckState.Checked);
                 InstallList.Items.Add("Installed", CheckState.Checked);
-                installedMods.Add(Path.GetFileNameWithoutExtension(modsFile.Name));
             }
 
             foreach (var file in disabledFiles)
             {
-                if (allMods.Any(f => f == file.Name)) continue;
-                allMods.Add(file.Name);
-                InstalledMods.Items.Add(Path.GetFileNameWithoutExtension(file.Name), CheckState.Unchecked);
+                string modFilename = Path.GetFileNameWithoutExtension(file.Name);
+                KeyValuePair<String, String> filename = new KeyValuePair<string, string>();
+
+                foreach (KeyValuePair<string, List<string>> keyValuePair in filenamesDictionary)
+                {
+                    if (keyValuePair.Value.Any(v => v == modFilename))
+                    {
+                        filename = new KeyValuePair<string, string>(keyValuePair.Key, keyValuePair.Value.Single(v => v == modFilename));
+                    }
+                }
+
+                if (allMods.Any(f => f == filename.Key)) continue;
+                allMods.Add(filename.Key);
+                installedMods.Add(filename.Key);
+                InstalledMods.Items.Add(filename.Key, CheckState.Unchecked);
                 InstallList.Items.Add("Installed", CheckState.Checked);
-                installedMods.Add(Path.GetFileNameWithoutExtension(file.Name));
             }
 
             foreach (string key in modsList)
             {
-                if (installedMods.Any(f => f.Equals(key, StringComparison.InvariantCultureIgnoreCase)))
-                {
-                    int modIndex = installedMods.IndexOf(installedMods.Single(f => f.Equals(key, StringComparison.InvariantCultureIgnoreCase)));
-
-                    InstalledMods.Items[modIndex] = key;
-                    allMods[modIndex] = key + ".dll";
-                    installedMods[modIndex] = key;
-                }
-                else
-                {
-                    InstalledMods.Items.Add(key, CheckState.Indeterminate);
-                    InstallList.Items.Add("Check to install", CheckState.Unchecked);
-                    allMods.Add(key + ".dll");
-                    installedMods.Add(key);
-                }
+                if (installedMods.Any(f => f.Equals(key))) continue;
+                InstalledMods.Items.Add(key, CheckState.Indeterminate);
+                InstallList.Items.Add("Check to install", CheckState.Unchecked);
+                allMods.Add(key);
             }
         }
 
@@ -188,27 +201,39 @@ namespace ModInstaller
                 e.NewValue = InstallList.GetItemCheckState(e.Index) == CheckState.Checked
                     ? e.NewValue
                     : CheckState.Indeterminate;
-            if (e.NewValue != CheckState.Checked) EnableMod(e);
-            else DisableMod(e);
-        }
-
-        private void EnableMod(ItemCheckEventArgs e)
-        {
-            if (e.NewValue != CheckState.Unchecked) return;
-            if (File.Exists($@"{Properties.Settings.Default.modFolder}/{allMods[e.Index]}"))
-            {
-                File.Move(Properties.Settings.Default.modFolder + @"/" + allMods[e.Index],
-                    Properties.Settings.Default.modFolder + @"/Disabled/" + allMods[e.Index]);
-            }
+            if (e.NewValue != CheckState.Checked) DisableMod(e);
+            else EnableMod(e);
         }
 
         private void DisableMod(ItemCheckEventArgs e)
         {
-            if (File.Exists(Properties.Settings.Default.modFolder + @"/Disabled/" + allMods[e.Index]) &&
-                !File.Exists(Properties.Settings.Default.modFolder + @"/" + allMods[e.Index]))
+            if (e.NewValue != CheckState.Unchecked) return;
+
+            string modname = InstalledMods.Items[e.Index].ToString();
+
+            foreach (string s in filenamesDictionary[modname])
             {
-                File.Move(Properties.Settings.Default.modFolder + @"/Disabled/" + allMods[e.Index],
-                    Properties.Settings.Default.modFolder + @"/" + allMods[e.Index]);
+                if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
+                {
+                    File.Move($@"{Properties.Settings.Default.modFolder}/{s}.dll",
+                        $@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
+                }
+            }
+            
+        }
+
+        private void EnableMod(ItemCheckEventArgs e)
+        {
+            string modname = InstalledMods.Items[e.Index].ToString();
+
+            foreach (string s in filenamesDictionary[modname])
+            {
+                if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll") &&
+                    !File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
+                {
+                    File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll",
+                        $@"{Properties.Settings.Default.modFolder}/{s}.dll");
+                }
             }
         }
 
@@ -234,13 +259,12 @@ namespace ModInstaller
 
         private void DownloadAndInstallMod(ItemCheckEventArgs e)
         {
-            foreach (KeyValuePair<string, string> kvp in downloadList)
-            {
-                if (kvp.Key != Path.GetFileNameWithoutExtension(allMods[e.Index])) continue;
-                DialogResult result = MessageBox.Show(text: $@"Do you want to install {kvp.Key}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
+            if (installedMods.Contains(InstalledMods.Items[e.Index])) return;
+            string modName = filenamesDictionary.Keys.Single(mod => mod == InstalledMods.Items[e.Index].ToString());
+                DialogResult result = MessageBox.Show(text: $@"Do you want to install {modName}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    foreach (string dependency in dependencies[kvp.Key])
+                    foreach (string dependency in dependencies[modName])
                     {
                         if (dependency == "Modding API")
                         {
@@ -256,29 +280,29 @@ namespace ModInstaller
                         }
                         else
                         {
-                            if (installedMods.Any(f => f.Equals(dependency, StringComparison.InvariantCultureIgnoreCase))) continue;
+                            if (installedMods.Any(f => f.Equals(dependency))) continue;
                             DialogResult depInstall = MessageBox.Show($"Dependency {dependency} not found.\nDo you want to install {dependency}?", "Confirm installation", MessageBoxButtons.YesNo);
                             if (depInstall != DialogResult.Yes) continue;
                             Install(dependency);
                         }
                     }
 
-                    if (optional.ContainsKey(kvp.Key))
+                    if (optional.ContainsKey(modName))
                     {
-                        foreach (string dependency in optional[kvp.Key])
+                        foreach (string dependency in optional[modName])
                         {
-                            if (installedMods.Any(f => f.Equals(dependency, StringComparison.InvariantCultureIgnoreCase))) continue;
+                            if (installedMods.Any(f => f.Equals(dependency))) continue;
                             DialogResult depInstall = MessageBox.Show($"The mod author suggests installing {dependency} together with this mod.\nDo you want to install {dependency}?", "Confirm installation", MessageBoxButtons.YesNo);
                             if (depInstall != DialogResult.Yes) continue;
                             Install(dependency);
                             MessageBox.Show($@"{dependency} successfully installed!");
                         }
                     }
-                    Install(kvp.Key);
+                    Install(modName);
                 }
                 else
                     e.NewValue = CheckState.Unchecked;
-            }
+            
         }
 
         private static void Download(Uri uri,string path)
@@ -302,21 +326,25 @@ namespace ModInstaller
 
         private void UninstallMod(ItemCheckEventArgs e)
         {
-            DialogResult result = MessageBox.Show(text: $@"Do you want to remove {Path.GetFileNameWithoutExtension(allMods[e.Index])} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
+            string modName = InstalledMods.Items[e.Index].ToString();
+
+            DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modName} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 List<string> mods = Directory.EnumerateFiles(Properties.Settings.Default.modFolder).ToList();
-                foreach (string mod in mods)
+
+                foreach (string mod in filenamesDictionary[modName])
                 {
-                    if (Regex.Replace(mod, @"\s|\\|\n|_", "") == Regex.Replace($@"{Properties.Settings.Default.modFolder}\{allMods[e.Index]}", @"\s|\\|\n|_", ""))
+                    if (mods.Contains(mod + ".dll"))
                     {
-                        File.Delete(mod);
+                        File.Delete(mod + ".dll");
                     }
                 }
-                MessageBox.Show($@"{Path.GetFileNameWithoutExtension(allMods[e.Index])} successfully uninstalled!");
+
+                MessageBox.Show($@"{modName} successfully uninstalled!");
                 InstallList.Items[e.Index] = "Check to install";
                 InstalledMods.SetItemCheckState(e.Index, CheckState.Indeterminate);
-                installedMods.Remove(Path.GetFileNameWithoutExtension(allMods[e.Index]));
+                installedMods.Remove(modName);
             }
             else
                 e.NewValue = CheckState.Checked;
@@ -492,6 +520,7 @@ namespace ModInstaller
         private Dictionary<string,string> downloadList = new Dictionary<string, string>();
         private Dictionary<string,List<string>> dependencies = new Dictionary<string, List<string>>();
         private Dictionary<string, List<string>> optional = new Dictionary<string, List<string>>();
+        private Dictionary<string, List<string>> filenamesDictionary = new Dictionary<string, List<string>>();
         string apilink;
 
         #endregion
