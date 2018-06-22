@@ -219,7 +219,6 @@ namespace ModInstaller
                         $@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
                 }
             }
-            
         }
 
         private void EnableMod(ItemCheckEventArgs e)
@@ -326,25 +325,25 @@ namespace ModInstaller
 
         private void UninstallMod(ItemCheckEventArgs e)
         {
-            string modName = InstalledMods.Items[e.Index].ToString();
+            if (e.NewValue != CheckState.Unchecked) return;
 
-            DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modName} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
+            string modname = InstalledMods.Items[e.Index].ToString();
+
+            DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modname} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                List<string> mods = Directory.EnumerateFiles(Properties.Settings.Default.modFolder).ToList();
-
-                foreach (string mod in filenamesDictionary[modName])
+                foreach (string s in filenamesDictionary[modname])
                 {
-                    if (mods.Contains(mod + ".dll"))
+                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
                     {
-                        File.Delete(mod + ".dll");
+                        File.Delete($@"{Properties.Settings.Default.modFolder}/{s}.dll");
                     }
                 }
 
-                MessageBox.Show($@"{modName} successfully uninstalled!");
+                MessageBox.Show($@"{modname} successfully uninstalled!");
                 InstallList.Items[e.Index] = "Check to install";
                 InstalledMods.SetItemCheckState(e.Index, CheckState.Indeterminate);
-                installedMods.Remove(modName);
+                installedMods.Remove(modname);
             }
             else
                 e.NewValue = CheckState.Checked;
