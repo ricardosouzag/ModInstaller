@@ -31,33 +31,33 @@ namespace ModInstaller
 
         private void FillDefaultPaths()
         {
-            defaultPaths.Add($@"Program Files (x86)\Steam\steamapps\Common\Hollow Knight");
-            defaultPaths.Add($@"Program Files\Steam\steamapps\Common\Hollow Knight");
-            defaultPaths.Add($@"Steam\steamapps\common\Hollow Knight");
+            defaultPaths.Add($@"Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
+            defaultPaths.Add($@"Program Files/Steam/steamapps/Common/Hollow Knight");
+            defaultPaths.Add($@"Steam/steamapps/common/Hollow Knight");
         }
 
         private void GetLocalInstallation()
         {
-            if (Properties.Settings.Default.installFolder == "")
+            if (String.IsNullOrEmpty(Properties.Settings.Default.installFolder))
             {
                 DriveInfo[] allDrives = DriveInfo.GetDrives();
 
                 foreach (DriveInfo d in allDrives)
                 {
-                    if (d.DriveFormat == "NTFS")
+                    if (d.DriveType == DriveType.Fixed || d.DriveType == DriveType.Removable)
                     {
                         foreach (string path in defaultPaths)
                         {
-                            if (!Directory.Exists(path: $@"{d.Name}{path}")) continue;
-                            SetDefaultPath(path: $@"{d.Name}{path}");
+                            if (!Directory.Exists($@"{d.Name}{path}")) continue;
+                            SetDefaultPath($@"{d.Name}{path}");
                             Properties.Settings.Default.temp = Directory.Exists($@"{d.Name}temp") ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
                             Properties.Settings.Default.Save();
                         }
                     }
-                    if (Properties.Settings.Default.installFolder != "")
+                    if (!String.IsNullOrEmpty(Properties.Settings.Default.installFolder))
                         break;
                 }
-                if (Properties.Settings.Default.installFolder == "")
+                if (String.IsNullOrEmpty(Properties.Settings.Default.installFolder))
                 {
                     ManualPathLocation form3 = new ManualPathLocation();
                     Hide();
@@ -66,7 +66,7 @@ namespace ModInstaller
                 }
                 else
                 {
-                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}/hollow_knight_data\Managed";
+                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}/hollow_knight_data/Managed";
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}/Mods";
                     Properties.Settings.Default.Save();
                 }
@@ -79,7 +79,7 @@ namespace ModInstaller
 
         private static void SetDefaultPath(string path)
         {
-            DialogResult dialogResult = MessageBox.Show(text: "Is this your Hollow Knight installation path?\n" + path, caption: "Path confirmation", buttons: MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Is this your Hollow Knight installation path?\n" + path, "Path confirmation", MessageBoxButtons.YesNo);
             if (dialogResult != DialogResult.Yes) return;
             Properties.Settings.Default.installFolder = path;
             Properties.Settings.Default.Save();
