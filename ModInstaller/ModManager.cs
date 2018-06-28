@@ -136,7 +136,7 @@ namespace ModInstaller
                     }
                 }
 
-                if (allMods.Any(f => f == filename.Key)) continue;
+                if (string.IsNullOrEmpty(filename.Key) || allMods.Any(f => f == filename.Key)) continue;
                 allMods.Add(filename.Key);
                 installedMods.Add(filename.Key);
                 InstalledMods.Items.Add(filename.Key, CheckState.Checked);
