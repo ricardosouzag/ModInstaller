@@ -280,8 +280,6 @@ namespace ModInstaller
                         else
                         {
                             if (installedMods.Any(f => f.Equals(dependency))) continue;
-                            DialogResult depInstall = MessageBox.Show($"Dependency {dependency} not found.\nDo you want to install {dependency}?", "Confirm installation", MessageBoxButtons.YesNo);
-                            if (depInstall != DialogResult.Yes) continue;
                             Install(dependency);
                         }
                     }
