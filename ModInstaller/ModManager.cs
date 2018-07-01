@@ -92,7 +92,7 @@ namespace ModInstaller
             {
                 if (!mod.Element("Dependencies").IsEmpty)
                 {
-                    modsList.Add(new ModsList
+                    modsList.Add(new Mod
                     {
                         Name = mod.Element("Name")?.Value,
                         Link = mod.Element("Link")?.Value,
@@ -110,7 +110,7 @@ namespace ModInstaller
 
         private void PopulateList()
         {
-            List<ModsList> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
+            List<Mod> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
             modsList = modsSortedList;
 
             DirectoryInfo modsFolder = new DirectoryInfo(Properties.Settings.Default.modFolder);
@@ -124,7 +124,7 @@ namespace ModInstaller
 
             foreach (var modsFile in modsFiles)
             {
-                ModsList mod = modsList.Single(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
+                Mod mod = modsList.Single(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
 
                 if (string.IsNullOrEmpty(mod.Name) || allMods.Any(f => f == mod.Name)) continue;
                 allMods.Add(mod.Name);
@@ -135,7 +135,7 @@ namespace ModInstaller
 
             foreach (var file in disabledFiles)
             {
-                ModsList mod = modsList.Single(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(file.Name)));
+                Mod mod = modsList.Single(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(file.Name)));
 
                 if (string.IsNullOrEmpty(mod.Name) || allMods.Any(f => f == mod.Name)) continue;
                 allMods.Add(mod.Name);
@@ -144,7 +144,7 @@ namespace ModInstaller
                 InstallList.Items.Add("Installed", CheckState.Checked);
             }
 
-            foreach (ModsList mod in modsList)
+            foreach (Mod mod in modsList)
             {
                 if (installedMods.Any(f => f.Equals(mod.Name))) continue;
                 InstalledMods.Items.Add(mod.Name, CheckState.Indeterminate);
@@ -241,7 +241,7 @@ namespace ModInstaller
         {
             if (installedMods.Contains(InstalledMods.Items[e.Index])) return;
             string modName = InstalledMods.Items[e.Index].ToString();
-            ModsList mod = modsList.Single(m => m.Name == modName);
+            Mod mod = modsList.Single(m => m.Name == modName);
 
                 DialogResult result = MessageBox.Show(text: $@"Do you want to install {modName}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -252,15 +252,13 @@ namespace ModInstaller
                         {
                             if (dependency == "Modding API")
                             {
-                                if (!Properties.Settings.Default.apiInstalled)
-                                {
-                                    Download(new Uri(apilink),
-                                        $@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
-                                    InstallApi($@"{Properties.Settings.Default.installFolder}/{dependency}.zip",
-                                        Properties.Settings.Default.temp);
-                                    File.Delete($@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
-                                    MessageBox.Show($@"{dependency} successfully installed!");
-                                }
+                                if (Properties.Settings.Default.apiInstalled) continue;
+                                Download(new Uri(apilink),
+                                    $@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
+                                InstallApi($@"{Properties.Settings.Default.installFolder}/{dependency}.zip",
+                                    Properties.Settings.Default.temp);
+                                File.Delete($@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
+                                MessageBox.Show($@"{dependency} successfully installed!");
                             }
                             else
                             {
@@ -312,7 +310,7 @@ namespace ModInstaller
             if (e.NewValue != CheckState.Unchecked) return;
 
             string modname = InstalledMods.Items[e.Index].ToString();
-            ModsList mod = modsList.Single(m => m.Name == modname);
+            Mod mod = modsList.Single(m => m.Name == modname);
 
             DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modname} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -501,7 +499,19 @@ namespace ModInstaller
         private List<string> defaultPaths = new List<string>();
         private List<string> allMods = new List<string>();
         private List<string> installedMods = new List<string>();
-        private  List<ModsList> modsList = new List<ModsList>();
+        private struct Mod
+        {
+            public string Name { get; set; }
+
+            public List<string> Filename { get; set; }
+
+            public string Link { get; set; }
+
+            public List<string> Dependencies { get; set; }
+
+            public List<string> Optional { get; set; }
+        }
+        private  List<Mod> modsList = new List<Mod>();
         string apilink;
 
         #endregion
