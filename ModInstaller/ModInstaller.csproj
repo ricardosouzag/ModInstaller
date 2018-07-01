@@ -71,6 +71,7 @@
     <Compile Include="ManualPathLocation.Designer.cs">
       <DependentUpon>ManualPathLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModsList.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ManualInstall.cs">
       <SubType>Form</SubType>
