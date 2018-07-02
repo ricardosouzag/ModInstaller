@@ -59,7 +59,7 @@ namespace ModInstaller
                     ManualPathLocation form3 = new ManualPathLocation();
                     Hide();
                     form3.FormClosed += ManualPathClosed;
-                    Application.Run(form3);
+                    form3.ShowDialog();
                 }
                 else
                 {
