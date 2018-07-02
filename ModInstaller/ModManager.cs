@@ -36,25 +36,7 @@ namespace ModInstaller
             // Default steam installation path for Linux.
             defaultPaths.Add(System.Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
         }
-
-        public static void DeleteDirectory(string target_dir)
-        {
-            string[] files = Directory.GetFiles(target_dir);
-            string[] dirs = Directory.GetDirectories(target_dir);
-
-            foreach (string file in files)
-            {
-                File.SetAttributes(file, FileAttributes.Normal);
-                File.Delete(file);
-            }
-
-            foreach (string dir in dirs)
-            {
-                DeleteDirectory(dir);
-            }
-
-            Directory.Delete(target_dir, false);
-        }
+        
 
         private void GetLocalInstallation()
         {
@@ -245,6 +227,25 @@ namespace ModInstaller
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
+        }
+
         #endregion
 
         #region Handling the left checkbox for enabling/disabling mods
@@ -267,11 +268,13 @@ namespace ModInstaller
 
             foreach (string s in modsList.Single(m => m.Name == modname).Filename)
             {
-                if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
+                if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll")) continue;
+                if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll"))
                 {
-                    File.Move($@"{Properties.Settings.Default.modFolder}/{s}.dll",
-                        $@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
+                    File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
                 }
+                File.Move($@"{Properties.Settings.Default.modFolder}/{s}.dll",
+                    $@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
             }
         }
 
@@ -281,12 +284,13 @@ namespace ModInstaller
 
             foreach (string s in modsList.Single(m => m.Name == modname).Filename)
             {
-                if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll") &&
-                    !File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
+                if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll")) continue;
+                if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
                 {
-                    File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll",
-                        $@"{Properties.Settings.Default.modFolder}/{s}.dll");
+                    File.Delete($@"{Properties.Settings.Default.modFolder}/{s}.dll");
                 }
+                File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll",
+                    $@"{Properties.Settings.Default.modFolder}/{s}.dll");
             }
         }
 
