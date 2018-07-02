@@ -33,6 +33,27 @@ namespace ModInstaller
             defaultPaths.Add($@"Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
             defaultPaths.Add($@"Program Files/Steam/steamapps/Common/Hollow Knight");
             defaultPaths.Add($@"Steam/steamapps/common/Hollow Knight");
+            // Default steam installation path for Linux.
+            defaultPaths.Add(System.Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
+        }
+
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
         }
 
         private void GetLocalInstallation()
@@ -47,7 +68,27 @@ namespace ModInstaller
                     {
                         if (!Directory.Exists($@"{d.Name}{path}")) continue;
                         SetDefaultPath($@"{d.Name}{path}");
-                        Properties.Settings.Default.temp = Directory.Exists($@"{d.Name}temp") ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
+
+                        // If user is on sane operating system with a /tmp folder, put temp files here.
+                        // Reasoning:
+                        // 1) /tmp usually has normal user write permissions. C:\temp might not.
+                        // 2) /tmp is usually on a ramdisk. Less disk writing is always better.
+                        if (Directory.Exists($@"{d.Name}tmp"))
+                        {
+                            if (Directory.Exists($@"{d.Name}tmp/HKmodinstaller"))
+                            {
+                                DeleteDirectory($@"{d.Name}tmp/HKmodinstaller");
+                            }
+
+                            Directory.CreateDirectory($@"{d.Name}tmp/HKmodinstaller");
+                            Properties.Settings.Default.temp = $@"{d.Name}tmp/HKmodinstaller";
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.temp = Directory.Exists($@"{d.Name}temp")
+                                ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
+                        }
+
                         Properties.Settings.Default.Save();
                     }
 
@@ -487,7 +528,23 @@ namespace ModInstaller
         private void ManualPathClosed(object sender, FormClosedEventArgs e)
         {
             Show();
-            Properties.Settings.Default.temp = Directory.Exists($@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp") ? $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}tempMods" : $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp";
+            if (Directory.Exists($@"/tmp"))
+            {
+                if (Directory.Exists($@"/tmp/HKmodinstaller"))
+                {
+                    DeleteDirectory($@"/tmp/HKmodinstaller");
+                }
+                Directory.CreateDirectory($@"/tmp/HKmodinstaller");
+                Properties.Settings.Default.temp = $@"/tmp/HKmodinstaller";
+            }
+            else
+            {
+                Properties.Settings.Default.temp =
+                    Directory.Exists($@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp")
+                        ? $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}tempMods"
+                        : $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp";
+            }
+
             Properties.Settings.Default.Save();
         }
 

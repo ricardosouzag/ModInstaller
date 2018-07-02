@@ -72,6 +72,8 @@ namespace ModInstaller
             this.InstalledMods.Size = new System.Drawing.Size(179, 319);
             this.InstalledMods.TabIndex = 1;
             InstalledMods.ItemCheck += InstalledMods_ItemCheck;
+            // Ensures the two side-by-side columns draw at the same height.
+            this.InstallList.Height = InstalledMods.Height;
             // 
             // button1
             // 
@@ -93,21 +95,24 @@ namespace ModInstaller
             // 
             // ModManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //this.ClientSize = new System.Drawing.Size(294, 436);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            this.MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModManager";
             this.Text = "Mod Manager";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.ControlBox = true;
+            // This is required to see close button
+            // on shells with non-standard button sizes. Including modded Windows and Linux.
+            this.PerformAutoScale();
         }
 
 
