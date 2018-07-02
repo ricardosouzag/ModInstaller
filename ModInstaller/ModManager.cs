@@ -33,6 +33,27 @@ namespace ModInstaller
             defaultPaths.Add($@"Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
             defaultPaths.Add($@"Program Files/Steam/steamapps/Common/Hollow Knight");
             defaultPaths.Add($@"Steam/steamapps/common/Hollow Knight");
+            // Default steam installation path for Linux.
+            defaultPaths.Add(System.Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
+        }
+
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
         }
 
         private void GetLocalInstallation()
@@ -47,7 +68,27 @@ namespace ModInstaller
                     {
                         if (!Directory.Exists($@"{d.Name}{path}")) continue;
                         SetDefaultPath($@"{d.Name}{path}");
-                        Properties.Settings.Default.temp = Directory.Exists($@"{d.Name}temp") ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
+
+                        // If user is on sane operating system with a /tmp folder, put temp files here.
+                        // Reasoning:
+                        // 1) /tmp usually has normal user write permissions. C:\temp might not.
+                        // 2) /tmp is usually on a ramdisk. Less disk writing is always better.
+                        if (Directory.Exists($@"{d.Name}tmp"))
+                        {
+                            if (Directory.Exists($@"{d.Name}tmp/HKmodinstaller"))
+                            {
+                                DeleteDirectory($@"{d.Name}tmp/HKmodinstaller");
+                            }
+
+                            Directory.CreateDirectory($@"{d.Name}tmp/HKmodinstaller");
+                            Properties.Settings.Default.temp = $@"{d.Name}tmp/HKmodinstaller";
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.temp = Directory.Exists($@"{d.Name}temp")
+                                ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
+                        }
+
                         Properties.Settings.Default.Save();
                     }
 
@@ -63,7 +104,7 @@ namespace ModInstaller
                 }
                 else
                 {
-                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}/hollow_knight_data/Managed";
+                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}/Mods";
                     Properties.Settings.Default.Save();
                 }
@@ -85,8 +126,25 @@ namespace ModInstaller
 
         private void FillModsList()
         {
-            XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
-            XElement[] mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
+            XElement[] mods;
+            try
+            {
+                XDocument dllist =
+                    XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+                mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
+            }
+            catch (Exception e)
+            {
+                DialogResult didClose = MessageBox.Show("Unable to download mod list.\nCheck your internet settings and press ok to try again.");
+                if (didClose == DialogResult.Abort || didClose == DialogResult.Cancel)
+                {
+                    System.Windows.Forms.Application.Exit();
+                    Environment.Exit(0);
+                }
+                FillModsList();
+                return;
+            }
+
             foreach (XElement mod in mods)
             {
                 if (!mod.Element("Dependencies").IsEmpty)
@@ -109,8 +167,24 @@ namespace ModInstaller
 
         private void PopulateList()
         {
-            List<Mod> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
-            modsList = modsSortedList;
+            try
+            {
+                List<Mod> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
+                modsList = modsSortedList;
+            }
+            catch (InvalidOperationException e)
+            {
+                DialogResult didClose = MessageBox.Show("Unable to populate mod list.\n" +
+                                                        "Check your internet settings and press ok to try again.");
+                if (didClose == DialogResult.Abort || didClose == DialogResult.Cancel)
+                {
+                    System.Windows.Forms.Application.Exit();
+                    Environment.Exit(0);
+                }
+                FillModsList();
+                PopulateList();
+                return;
+            }
 
             DirectoryInfo modsFolder = new DirectoryInfo(Properties.Settings.Default.modFolder);
             FileInfo[] modsFiles = modsFolder.GetFiles("*.dll");
@@ -466,9 +540,9 @@ namespace ModInstaller
         {
             DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
-            Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}\API.zip");
-            InstallApi($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
-            File.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
+            Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip");
+            InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
+            File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
             MessageBox.Show("Modding API successfully installed!");
         }
 
@@ -487,7 +561,23 @@ namespace ModInstaller
         private void ManualPathClosed(object sender, FormClosedEventArgs e)
         {
             Show();
-            Properties.Settings.Default.temp = Directory.Exists($@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp") ? $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}tempMods" : $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp";
+            if (Directory.Exists($@"/tmp"))
+            {
+                if (Directory.Exists($@"/tmp/HKmodinstaller"))
+                {
+                    DeleteDirectory($@"/tmp/HKmodinstaller");
+                }
+                Directory.CreateDirectory($@"/tmp/HKmodinstaller");
+                Properties.Settings.Default.temp = $@"/tmp/HKmodinstaller";
+            }
+            else
+            {
+                Properties.Settings.Default.temp =
+                    Directory.Exists($@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp")
+                        ? $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}tempMods"
+                        : $@"{Path.GetPathRoot(Properties.Settings.Default.installFolder)}temp";
+            }
+
             Properties.Settings.Default.Save();
         }
 
