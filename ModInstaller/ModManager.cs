@@ -63,7 +63,7 @@ namespace ModInstaller
                 }
                 else
                 {
-                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}/hollow_knight_data/Managed";
+                    Properties.Settings.Default.APIFolder = $@"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}/Mods";
                     Properties.Settings.Default.Save();
                 }
@@ -466,9 +466,9 @@ namespace ModInstaller
         {
             DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes) return;
-            Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}\API.zip");
-            InstallApi($@"{Properties.Settings.Default.installFolder}\API.zip", Properties.Settings.Default.temp);
-            File.Delete($@"{Properties.Settings.Default.installFolder}\API.zip");
+            Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip");
+            InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
+            File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
             MessageBox.Show("Modding API successfully installed!");
         }
 
