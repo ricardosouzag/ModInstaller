@@ -45,7 +45,6 @@ namespace ModInstaller
                 {
                     foreach (string path in defaultPaths)
                     {
-                        MessageBox.Show($"Procurando no caminho {d.Name}{path}");
                         if (!Directory.Exists($@"{d.Name}{path}")) continue;
                         SetDefaultPath($@"{d.Name}{path}");
                         Properties.Settings.Default.temp = Directory.Exists($@"{d.Name}temp") ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
