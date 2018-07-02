@@ -126,8 +126,25 @@ namespace ModInstaller
 
         private void FillModsList()
         {
-            XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
-            XElement[] mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
+            XElement[] mods;
+            try
+            {
+                XDocument dllist =
+                    XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+                mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
+            }
+            catch (Exception e)
+            {
+                DialogResult didClose = MessageBox.Show("Unable to download mod list.\nCheck your internet settings and press ok to try again.");
+                if (didClose == DialogResult.Abort || didClose == DialogResult.Cancel)
+                {
+                    System.Windows.Forms.Application.Exit();
+                    Environment.Exit(0);
+                }
+                FillModsList();
+                return;
+            }
+
             foreach (XElement mod in mods)
             {
                 if (!mod.Element("Dependencies").IsEmpty)
@@ -150,8 +167,24 @@ namespace ModInstaller
 
         private void PopulateList()
         {
-            List<Mod> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
-            modsList = modsSortedList;
+            try
+            {
+                List<Mod> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
+                modsList = modsSortedList;
+            }
+            catch (InvalidOperationException e)
+            {
+                DialogResult didClose = MessageBox.Show("Unable to populate mod list.\n" +
+                                                        "Check your internet settings and press ok to try again.");
+                if (didClose == DialogResult.Abort || didClose == DialogResult.Cancel)
+                {
+                    System.Windows.Forms.Application.Exit();
+                    Environment.Exit(0);
+                }
+                FillModsList();
+                PopulateList();
+                return;
+            }
 
             DirectoryInfo modsFolder = new DirectoryInfo(Properties.Settings.Default.modFolder);
             FileInfo[] modsFiles = modsFolder.GetFiles("*.dll");
