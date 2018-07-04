@@ -90,12 +90,11 @@ namespace ModInstaller
                     Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}/Mods";
                     Properties.Settings.Default.Save();
                 }
-                if (!Directory.Exists(Properties.Settings.Default.modFolder))
-                {
-                    Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-                }
             }
-            
+            if (!Directory.Exists(Properties.Settings.Default.modFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.modFolder);
+            }
         }
 
         private static void SetDefaultPath(string path)
