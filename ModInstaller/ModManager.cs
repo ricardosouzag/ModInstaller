@@ -115,13 +115,25 @@ namespace ModInstaller
             }
             catch (Exception e)
             {
-                DialogResult didClose = MessageBox.Show("Unable to download mod list.\nCheck your internet settings and press ok to try again.");
-                if (didClose == DialogResult.Abort || didClose == DialogResult.Cancel)
+                MessageBoxManager.Yes = "Offline Mode";
+                MessageBoxManager.No = "Retry";
+                MessageBoxManager.Cancel = "Abort";
+                MessageBoxManager.Register();
+                DialogResult didClose = MessageBox.Show("Unable to download mod list.", "Connection failed!", MessageBoxButtons.YesNoCancel);
+                switch (didClose)
                 {
-                    System.Windows.Forms.Application.Exit();
-                    Environment.Exit(0);
+                    case DialogResult.Yes:
+                        isOffline = true;
+                        return;
+                    case DialogResult.Cancel:
+                        Application.Exit();
+                        Environment.Exit(0);
+                        break;
+                    case DialogResult.No:
+                        FillModsList();
+                        return;
                 }
-                FillModsList();
+                MessageBoxManager.Unregister();
                 return;
             }
 
@@ -154,15 +166,22 @@ namespace ModInstaller
             }
             catch (InvalidOperationException e)
             {
-                DialogResult didClose = MessageBox.Show("Unable to populate mod list.\n" +
-                                                        "Check your internet settings and press ok to try again.");
-                if (didClose == DialogResult.Abort || didClose == DialogResult.Cancel)
+                DialogResult didClose = MessageBox.Show("Unable to download mod list. Would you like to use the ModInstaller offline?\nPress Yes to proceed.\nPress No to retry.\nPress Cancel to abort and quit.", "Connection error!", MessageBoxButtons.YesNoCancel);
+                switch (didClose)
                 {
-                    System.Windows.Forms.Application.Exit();
-                    Environment.Exit(0);
+                    case DialogResult.Yes:
+                        isOffline = true;
+                        return;
+                    case DialogResult.Abort:
+                    case DialogResult.Cancel:
+                        Application.Exit();
+                        Environment.Exit(0);
+                        break;
+                    case DialogResult.No:
+                        FillModsList();
+                        PopulateList();
+                        return;
                 }
-                FillModsList();
-                PopulateList();
                 return;
             }
 
@@ -238,6 +257,8 @@ namespace ModInstaller
                 InstallList.Items.Add("Check to install", CheckState.Unchecked);
                 allMods.Add(mod.Name);
             }
+
+            button1.Enabled = !isOffline;
         }
 
         private void ResizeUI()
@@ -259,7 +280,7 @@ namespace ModInstaller
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
-        public static void DeleteDirectory(string target_dir)
+        private static void DeleteDirectory(string target_dir)
         {
             string[] files = Directory.GetFiles(target_dir);
             string[] dirs = Directory.GetDirectories(target_dir);
@@ -668,6 +689,7 @@ namespace ModInstaller
         }
         private  List<Mod> modsList = new List<Mod>();
         string apilink;
+        private bool isOffline;
 
         #endregion
     }

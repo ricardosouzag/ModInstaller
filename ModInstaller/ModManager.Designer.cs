@@ -69,7 +69,7 @@ namespace ModInstaller
             this.InstalledMods.FormattingEnabled = true;
             this.InstalledMods.Location = new System.Drawing.Point(6, 19);
             this.InstalledMods.Name = "InstalledMods";
-            this.InstalledMods.Size = new System.Drawing.Size(179, 319);
+            this.InstalledMods.Size = new System.Drawing.Size(179,1);
             this.InstalledMods.TabIndex = 1;
             InstalledMods.ItemCheck += InstalledMods_ItemCheck;
             // Ensures the two side-by-side columns draw at the same height.
