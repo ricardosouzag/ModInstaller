@@ -50,6 +50,10 @@
     <ApplicationIcon>zote_circle_aSZ_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MessageBoxHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\source\repos\MessageBoxHandler\MessageBoxHandler\bin\Release\MessageBoxHandler.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -71,7 +75,6 @@
     <Compile Include="ManualPathLocation.Designer.cs">
       <DependentUpon>ManualPathLocation.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageBoxManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ManualInstall.cs">
       <SubType>Form</SubType>
