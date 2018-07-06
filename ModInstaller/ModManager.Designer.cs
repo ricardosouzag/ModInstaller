@@ -33,6 +33,7 @@ namespace ModInstaller
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModManager));
+            openFileDialog  = new OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.InstallList = new System.Windows.Forms.CheckedListBox();
             this.InstalledMods = new System.Windows.Forms.CheckedListBox();
@@ -40,6 +41,13 @@ namespace ModInstaller
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            //
+            //
+            //
+            this.openFileDialog.Filter = "Mod files|*.zip; *.dll|All files|*.*";
+            this.openFileDialog.Multiselect = true;
+            this.openFileDialog.Title = "Select the mods you wish to install";
+            openFileDialog.FileOk += DoManualInstall;
             // 
             // groupBox1
             // 
@@ -115,9 +123,12 @@ namespace ModInstaller
             this.PerformAutoScale();
         }
 
+        
+
 
         #endregion
 
+        private OpenFileDialog openFileDialog;
         private GroupBox groupBox1;
         private CheckedListBox InstalledMods;
         private CheckedListBox InstallList;

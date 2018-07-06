@@ -82,12 +82,6 @@
       <DependentUpon>ManualPathLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="ManualInstall.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManualInstall.Designer.cs">
-      <DependentUpon>ManualInstall.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,9 +93,6 @@
     <Compile Include="Settings1.cs" />
     <EmbeddedResource Include="ConnectionFailedForm.resx">
       <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManualInstall.resx">
-      <DependentUpon>ManualInstall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModManager.resx">
       <DependentUpon>ModManager.cs</DependentUpon>
