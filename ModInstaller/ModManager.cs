@@ -157,22 +157,10 @@ namespace ModInstaller
             }
             catch (InvalidOperationException e)
             {
-                DialogResult didClose = MessageBox.Show("Unable to download mod list. Would you like to use the ModInstaller offline?\nPress Yes to proceed.\nPress No to retry.\nPress Cancel to abort and quit.", "Connection error!", MessageBoxButtons.YesNoCancel);
-                switch (didClose)
-                {
-                    case DialogResult.Yes:
-                        isOffline = true;
-                        return;
-                    case DialogResult.Abort:
-                    case DialogResult.Cancel:
-                        Application.Exit();
-                        Environment.Exit(0);
-                        break;
-                    case DialogResult.No:
-                        FillModsList();
-                        PopulateList();
-                        return;
-                }
+                ConnectionFailedForm form4 = new ConnectionFailedForm(this);
+                form4.Closed += Form4_Closed;
+                Hide();
+                form4.ShowDialog();
                 return;
             }
 
