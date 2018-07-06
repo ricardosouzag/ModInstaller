@@ -104,7 +104,7 @@ namespace ModInstaller
             Properties.Settings.Default.Save();
         }
 
-        private void FillModsList()
+        public void FillModsList()
         {
             XElement[] mods;
             try
@@ -115,25 +115,10 @@ namespace ModInstaller
             }
             catch (Exception e)
             {
-                MessageBoxManager.Yes = "Offline Mode";
-                MessageBoxManager.No = "Retry";
-                MessageBoxManager.Cancel = "Abort";
-                MessageBoxManager.Register();
-                DialogResult didClose = MessageBox.Show("Unable to download mod list.", "Connection failed!", MessageBoxButtons.YesNoCancel);
-                switch (didClose)
-                {
-                    case DialogResult.Yes:
-                        isOffline = true;
-                        return;
-                    case DialogResult.Cancel:
-                        Application.Exit();
-                        Environment.Exit(0);
-                        break;
-                    case DialogResult.No:
-                        FillModsList();
-                        return;
-                }
-                MessageBoxManager.Unregister();
+                ConnectionFailedForm form4 = new ConnectionFailedForm(this);
+                form4.Closed += Form4_Closed;
+                Hide();
+                form4.ShowDialog();
                 return;
             }
 
@@ -155,6 +140,12 @@ namespace ModInstaller
                     apilink = mod.Element("Link")?.Value;
                 }
             }
+        }
+
+        private void Form4_Closed(object sender, EventArgs e)
+        {
+            if (isOffline) return;
+            FillModsList();
         }
 
         private void PopulateList()
@@ -636,13 +627,7 @@ namespace ModInstaller
         private void ManualInstallClick(object sender, EventArgs e)
         {
             ManualInstall form1 = new ManualInstall(this);
-            form1.FormClosed += ManualInstallClosed;
             form1.Show();
-        }
-
-        private void ManualInstallClosed(object sender, FormClosedEventArgs e)
-        {
-            button1.Enabled = (Directory.GetFiles(Properties.Settings.Default.installFolder, "*.vanilla", SearchOption.AllDirectories)).Length > 0;
         }
 
         private void ManualPathClosed(object sender, FormClosedEventArgs e)
@@ -689,7 +674,7 @@ namespace ModInstaller
         }
         private  List<Mod> modsList = new List<Mod>();
         string apilink;
-        private bool isOffline;
+        public bool isOffline;
 
         #endregion
     }
