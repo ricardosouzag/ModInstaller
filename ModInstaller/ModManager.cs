@@ -262,10 +262,20 @@ namespace ModInstaller
 
         private void ResizeUI()
         {
+            const int extraHeight = 13;
+            int modCount = allMods.Count;
+            // Manual size in case autosize fails
+            InstalledMods.Size = new System.Drawing.Size(179, extraHeight + (modCount * InstallList.ItemHeight));
+            InstallList.Size = new System.Drawing.Size(130, extraHeight + (modCount * InstallList.ItemHeight));
+            Point installPt = InstallList.Location;
+            installPt.X = InstalledMods.Location.X + InstalledMods.Size.Width;
+            InstallList.Location = installPt;
+            // Otherwise autosize
             groupBox1.AutoSize = true;
             groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             InstallList.AutoSize = true;
             InstalledMods.AutoSize = true;
+            // Set button locations
             button1.Size = new Size(groupBox1.Width, 23);
             button2.Size = new Size(groupBox1.Width, 23);
             groupBox1.Top = 3;
@@ -274,7 +284,6 @@ namespace ModInstaller
             button1.Left = 3;
             button2.Top = button1.Bottom;
             button2.Left = 3;
-
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }

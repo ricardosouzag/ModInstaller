@@ -63,15 +63,6 @@ namespace ModInstaller
              this.groupBox1.AutoSize = true;
              this.groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             // 
-            // InstallList
-            // 
-            this.InstallList.FormattingEnabled = true;
-            this.InstallList.Location = new System.Drawing.Point(167, 19);
-            this.InstallList.Name = "InstallList";
-            //this.InstallList.Size = new System.Drawing.Size(96, 319);
-            this.InstallList.TabIndex = 2;
-            InstallList.ItemCheck += InstallList_ItemCheck;
-            // 
             // InstalledMods
             // 
             this.InstalledMods.FormattingEnabled = true;
@@ -80,6 +71,15 @@ namespace ModInstaller
             this.InstalledMods.Size = new System.Drawing.Size(179,1);
             this.InstalledMods.TabIndex = 1;
             InstalledMods.ItemCheck += InstalledMods_ItemCheck;
+            // 
+            // InstallList
+            // 
+            this.InstallList.FormattingEnabled = true;
+            this.InstallList.Location = new System.Drawing.Point(150, 19);
+            this.InstallList.Name = "InstallList";
+            //this.InstallList.Size = new System.Drawing.Size(96, 319);
+            this.InstallList.TabIndex = 2;
+            InstallList.ItemCheck += InstallList_ItemCheck;
             // Ensures the two side-by-side columns draw at the same height.
             this.InstallList.Height = InstalledMods.Height;
             // 
