@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Security.Cryptography;
 
 namespace ModInstaller
 {
@@ -24,6 +25,7 @@ namespace ModInstaller
             FillDefaultPaths();
             GetLocalInstallation();
             FillModsList();
+            CheckApiInstalled();
             PopulateList();
             ResizeUI();
         }
@@ -138,6 +140,7 @@ namespace ModInstaller
                 else if (mod.Element("Name")?.Value == "Modding API")
                 {
                     apilink = mod.Element("Link")?.Value;
+                    apiMD5 = mod.Element("MD5")?.Value;
                 }
             }
         }
@@ -146,6 +149,18 @@ namespace ModInstaller
         {
             if (isOffline) return;
             FillModsList();
+        }
+
+        private void CheckApiInstalled()
+        {
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll"))
+                {
+                    var hash = md5.ComputeHash(stream);
+                    apiIsInstalled = String.Equals(BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant(), apiMD5, StringComparison.InvariantCultureIgnoreCase);
+                }
+            }
         }
 
         private void PopulateList()
@@ -392,11 +407,12 @@ namespace ModInstaller
             {
                 if (mod.Dependencies.Any())
                 {
+                    CheckApiInstalled();
                     foreach (string dependency in mod.Dependencies)
                     {
                         if (dependency == "Modding API")
                         {
-                            if (Properties.Settings.Default.apiInstalled) continue;
+                            if (apiIsInstalled) continue;
                             Download(new Uri(apilink),
                                 $@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
                             InstallApi($@"{Properties.Settings.Default.installFolder}/{dependency}.zip",
@@ -428,10 +444,10 @@ namespace ModInstaller
             else
                 e.NewValue = CheckState.Unchecked;
 
-            allMods.Clear();
-            installedMods.Clear();
             InstalledMods.Items.Clear();
             InstallList.Items.Clear();
+            allMods.Clear();
+            installedMods.Clear();
             PopulateList();
         }
 
@@ -486,16 +502,16 @@ namespace ModInstaller
             else
                 e.NewValue = CheckState.Checked;
 
-            allMods.Clear();
-            installedMods.Clear();
             InstalledMods.Items.Clear();
             InstallList.Items.Clear();
+            allMods.Clear();
+            installedMods.Clear();
             PopulateList();
         }
 
         #region Unpacking and moving/copying/deleting files
 
-        private static void InstallApi(string api, string tempFolder)
+        private void InstallApi(string api, string tempFolder)
         {
             ZipFile.ExtractToDirectory(api, tempFolder);
             IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
@@ -534,7 +550,7 @@ namespace ModInstaller
                 }
                 Directory.Delete(tempFolder, true);
             }
-            Properties.Settings.Default.apiInstalled = true;
+            apiIsInstalled = true;
             Properties.Settings.Default.Save();
         }
 
@@ -626,12 +642,21 @@ namespace ModInstaller
 
         private void InstallApiClick(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation", MessageBoxButtons.YesNo);
-            if (result != DialogResult.Yes) return;
-            Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip");
-            InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
-            File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
-            MessageBox.Show("Modding API successfully installed!");
+            CheckApiInstalled();
+            if (!apiIsInstalled)
+            {
+                DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation",
+                    MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes) return;
+                Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip");
+                InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
+                File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
+                MessageBox.Show("Modding API successfully installed!");
+            }
+            else
+            {
+                MessageBox.Show("Modding API is already installed!");
+            }
         }
 
         private void ManualInstallClick(object sender, EventArgs e)
@@ -711,8 +736,10 @@ namespace ModInstaller
             public List<string> Optional { get; set; }
         }
         private  List<Mod> modsList = new List<Mod>();
-        string apilink;
+        private string apilink;
+        private string apiMD5;
         public bool isOffline;
+        private bool apiIsInstalled;
 
         #endregion
     }
