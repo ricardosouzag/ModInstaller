@@ -132,15 +132,15 @@ namespace ModInstaller
                     {
                         Name = mod.Element("Name")?.Value,
                         Link = mod.Element("Link")?.Value,
-                        Filename = mod.Element("Filename")?.Elements("string").Select(filename => filename.Value).ToList(),
-                        Dependencies = mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList(),
-                        Optional = mod.Element("Optional")?.Elements("string").Select(dependency => dependency.Value).ToList() ?? new List<string>()
+                        Files = (mod.Element("Files")?.Elements("File")).ToDictionary(element => element.Element("Name")?.Value, element => element.Element("SHA1")?.Value),
+                    Dependencies = mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList(),
+                        Optional = mod.Element("Optional")?.Elements("string").Select(dependency => dependency.Value).ToList() ?? new List<string>(),
                     });
                 }
                 else if (mod.Element("Name")?.Value == "Modding API")
                 {
                     apilink = mod.Element("Link")?.Value;
-                    apiMD5 = mod.Element("MD5")?.Value;
+                    apiMD5 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
                 }
             }
         }
@@ -151,16 +151,23 @@ namespace ModInstaller
             FillModsList();
         }
 
-        private void CheckApiInstalled()
+        private bool MD5Equals(string file, string modmd5) => String.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
+
+        private string GetSHA1(string file)
         {
-            using (var md5 = MD5.Create())
+            using (var sha1 = SHA1.Create())
             {
-                using (var stream = File.OpenRead(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll"))
+                using (var stream = File.OpenRead(file))
                 {
-                    var hash = md5.ComputeHash(stream);
-                    apiIsInstalled = String.Equals(BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant(), apiMD5, StringComparison.InvariantCultureIgnoreCase);
+                    var hash = sha1.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
                 }
             }
+        }
+
+        private void CheckApiInstalled()
+        {
+            apiIsInstalled = MD5Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", apiMD5);
         }
 
         private void PopulateList()
@@ -206,18 +213,19 @@ namespace ModInstaller
             foreach (var modsFile in modsFiles)
             {
                 Mod mod = new Mod();
-                bool isGDriveMod = modsList.Any(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
+                bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
 
                 if (isGDriveMod)
                 {
-                    mod = modsList.Single(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
+                    mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
+                    CheckModUpdated(modsFile.FullName, mod);
                 }
                 else
                 {
                     mod = new Mod
                     {
                         Name = Path.GetFileNameWithoutExtension(modsFile.Name),
-                        Filename = new List<string> { Path.GetFileNameWithoutExtension(modsFile.Name) },
+                        Files = new Dictionary<string, string> { [Path.GetFileNameWithoutExtension(modsFile.Name)] = GetSHA1(modsFile.FullName) },
                         Link = "",
                         Dependencies = new List<string>(),
                         Optional = new List<string>()
@@ -234,18 +242,18 @@ namespace ModInstaller
             foreach (var file in disabledFiles)
             {
                 Mod mod = new Mod();
-                bool isGDriveMod = modsList.Any(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(file.Name)));
+                bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(file.Name)));
 
                 if (isGDriveMod)
                 {
-                    mod = modsList.Single(m => m.Filename.Contains(Path.GetFileNameWithoutExtension(file.Name)));
+                    mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(file.Name)));
                 }
                 else
                 {
                     mod = new Mod
                     {
                         Name = Path.GetFileNameWithoutExtension(file.Name),
-                        Filename = new List<string> { Path.GetFileNameWithoutExtension(file.Name) },
+                        Files = new Dictionary<string, string> { [Path.GetFileNameWithoutExtension(file.Name)] = GetSHA1(file.FullName) },
                         Link = "",
                         Dependencies = new List<string>(),
                         Optional = new List<string>()
@@ -257,6 +265,24 @@ namespace ModInstaller
                 installedMods.Add(mod.Name);
                 InstalledMods.Items.Add(mod.Name, CheckState.Unchecked);
                 InstallList.Items.Add("Installed", isGDriveMod ? CheckState.Checked : CheckState.Indeterminate);
+            }
+        }
+
+        private void CheckModUpdated(string filename, Mod mod)
+        {
+            if (!MD5Equals(filename, mod.Files[mod.Files.Keys.Single(f => f == Path.GetFileNameWithoutExtension(filename))]))
+            {
+                DialogResult update = MessageBox.Show($"{mod.Name} is outdated. Would you like to update it?", "Outdated mod",
+                    MessageBoxButtons.YesNo);
+                if (update == DialogResult.Yes)
+                {
+                    Install(mod.Name, true);
+                    InstalledMods.Items.Clear();
+                    InstallList.Items.Clear();
+                    allMods.Clear();
+                    installedMods.Clear();
+                    PopulateList();
+                }
             }
         }
 
@@ -329,7 +355,7 @@ namespace ModInstaller
 
             if (modsList.Any(m => m.Name == modname))
             {
-                foreach (string s in modsList.Single(m => m.Name == modname).Filename)
+                foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys)
                 {
                     if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll")) continue;
                     if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll"))
@@ -360,7 +386,7 @@ namespace ModInstaller
 
             if (modsList.Any(m => m.Name == modname))
             {
-                foreach (string s in modsList.Single(m => m.Name == modname).Filename)
+                foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys)
                 {
                     if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll")) continue;
                     if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
@@ -432,7 +458,7 @@ namespace ModInstaller
                         else
                         {
                             if (installedMods.Any(f => f.Equals(dependency))) continue;
-                            Install(dependency);
+                            Install(dependency, false);
                         }
                     }
                 }
@@ -444,11 +470,11 @@ namespace ModInstaller
                         if (installedMods.Any(f => f.Equals(dependency))) continue;
                         DialogResult depInstall = MessageBox.Show($"The mod author suggests installing {dependency} together with this mod.\nDo you want to install {dependency}?", "Confirm installation", MessageBoxButtons.YesNo);
                         if (depInstall != DialogResult.Yes) continue;
-                        Install(dependency);
+                        Install(dependency, false);
                         MessageBox.Show($@"{dependency} successfully installed!");
                     }
                 }
-                Install(modName);
+                Install(modName, false);
             }
             else
                 e.NewValue = CheckState.Unchecked;
@@ -466,7 +492,7 @@ namespace ModInstaller
             webClient.DownloadFile(uri, path);
         }
 
-        private void Install(string mod)
+        private void Install(string mod, bool isUpdate)
         {
             Download(new Uri(modsList.Single(m => m.Name == mod).Link),
                 $@"{Properties.Settings.Default.modFolder}/{mod}.zip");
@@ -476,13 +502,21 @@ namespace ModInstaller
 
             File.Delete($@"{Properties.Settings.Default.modFolder}/{mod}.zip");
 
-            InstallList.Items[InstalledMods.Items.IndexOf(mod)] = "Installed";
+            if (isUpdate)
+            {
+                MessageBox.Show($@"{mod} successfully updated!");
+            }
+            else
+            {
+                InstallList.Items[InstalledMods.Items.IndexOf(mod)] = "Installed";
 
-            InstallList.SetItemChecked(InstalledMods.Items.IndexOf(mod), true);
+                InstallList.SetItemChecked(InstalledMods.Items.IndexOf(mod), true);
 
-            InstalledMods.SetItemChecked(InstalledMods.Items.IndexOf(mod), true);
+                InstalledMods.SetItemChecked(InstalledMods.Items.IndexOf(mod), true);
 
-            MessageBox.Show($@"{mod} successfully installed!");
+                MessageBox.Show($@"{mod} successfully installed!");
+            }
+            
         }
 
         private void UninstallMod(ItemCheckEventArgs e)
@@ -495,7 +529,7 @@ namespace ModInstaller
             DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modname} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                foreach (string s in mod.Filename)
+                foreach (string s in mod.Files.Keys)
                 {
                     if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
                     {
@@ -736,7 +770,7 @@ namespace ModInstaller
         {
             public string Name { get; set; }
 
-            public List<string> Filename { get; set; }
+            public Dictionary<string, string> Files { get; set; }
 
             public string Link { get; set; }
 
@@ -745,6 +779,36 @@ namespace ModInstaller
             public List<string> Optional { get; set; }
         }
         private  List<Mod> modsList = new List<Mod>();
+
+        public enum Platform
+        {
+            Windows,
+            Linux,
+            Mac
+        }
+
+        public static Platform RunningPlatform()
+        {
+            switch (Environment.OSVersion.Platform)
+            {
+                case PlatformID.Unix:
+                    // Well, there are chances MacOSX is reported as Unix instead of MacOSX.
+                    // Instead of platform check, we'll do a feature checks (Mac specific root folders)
+                    if (Directory.Exists("/Applications")
+                        & Directory.Exists("/System")
+                        & Directory.Exists("/Users")
+                        & Directory.Exists("/Volumes"))
+                        return Platform.Mac;
+                    else
+                        return Platform.Linux;
+
+                case PlatformID.MacOSX:
+                    return Platform.Mac;
+
+                default:
+                    return Platform.Windows;
+            }
+        }
         private string apilink;
         private string apiMD5;
         public bool isOffline;
