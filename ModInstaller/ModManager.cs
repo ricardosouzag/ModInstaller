@@ -304,12 +304,15 @@ namespace ModInstaller
             // Set button locations
             button1.Size = new Size(groupBox1.Width, 23);
             button2.Size = new Size(groupBox1.Width, 23);
+            button3.Size = new Size(groupBox1.Width, 23);
             groupBox1.Top = 3;
             groupBox1.Left = 3;
             button1.Top = InstallList.Bottom + 9;
             button1.Left = 3;
             button2.Top = button1.Bottom;
             button2.Left = 3;
+            button3.Top = button2.Bottom;
+            button3.Left = 3;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
@@ -708,6 +711,35 @@ namespace ModInstaller
             openFileDialog.ShowDialog();
         }
 
+        void ChangePathClick(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.Reset();
+            folderBrowserDialog1.ShowDialog();
+            if (String.IsNullOrEmpty(folderBrowserDialog1.SelectedPath)) return;
+            if (File.Exists(folderBrowserDialog1.SelectedPath + @"/hollow_knight_Data/Managed/Assembly-CSharp.dll") && Path.GetFileName(folderBrowserDialog1.SelectedPath) == "Hollow Knight")
+            {
+                Properties.Settings.Default.installFolder = folderBrowserDialog1.SelectedPath;
+                Properties.Settings.Default.APIFolder =
+                    $@"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
+                Properties.Settings.Default.modFolder = $@"{Properties.Settings.Default.APIFolder}/Mods";
+                Properties.Settings.Default.Save();
+                if (!Directory.Exists(Properties.Settings.Default.modFolder))
+                    Directory.CreateDirectory(Properties.Settings.Default.modFolder);
+                MessageBox.Show(text: $"Hollow Knight installation path:\n{Properties.Settings.Default.installFolder}");
+                InstalledMods.Items.Clear();
+                InstallList.Items.Clear();
+                allMods.Clear();
+                installedMods.Clear();
+                PopulateList();
+            }
+            else
+            {
+                MessageBox.Show(@"Invalid path selected.
+Please select the correct installation path for Hollow Knight.");
+                ChangePathClick(new object(), EventArgs.Empty);
+            }
+        }
+
         private void DoManualInstall(object sender, System.EventArgs e)
         {
             if (openFileDialog.FileNames.Length >= 1)
@@ -780,35 +812,6 @@ namespace ModInstaller
         }
         private  List<Mod> modsList = new List<Mod>();
 
-        public enum Platform
-        {
-            Windows,
-            Linux,
-            Mac
-        }
-
-        public static Platform RunningPlatform()
-        {
-            switch (Environment.OSVersion.Platform)
-            {
-                case PlatformID.Unix:
-                    // Well, there are chances MacOSX is reported as Unix instead of MacOSX.
-                    // Instead of platform check, we'll do a feature checks (Mac specific root folders)
-                    if (Directory.Exists("/Applications")
-                        & Directory.Exists("/System")
-                        & Directory.Exists("/Users")
-                        & Directory.Exists("/Volumes"))
-                        return Platform.Mac;
-                    else
-                        return Platform.Linux;
-
-                case PlatformID.MacOSX:
-                    return Platform.Mac;
-
-                default:
-                    return Platform.Windows;
-            }
-        }
         private string apilink;
         private string apiMD5;
         public bool isOffline;
