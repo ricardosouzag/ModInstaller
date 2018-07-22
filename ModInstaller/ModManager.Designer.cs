@@ -34,11 +34,13 @@ namespace ModInstaller
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModManager));
             openFileDialog  = new OpenFileDialog();
+            this.folderBrowserDialog1 = new FolderBrowserDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.InstallList = new System.Windows.Forms.CheckedListBox();
             this.InstalledMods = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             //
@@ -101,6 +103,14 @@ namespace ModInstaller
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.ManualInstallClick);
             // 
+            // button3
+            //
+            this.button3.Name = "button3";
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Change Default Install Path";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.ChangePathClick);
+            // 
             // ModManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
@@ -108,6 +118,7 @@ namespace ModInstaller
             //this.ClientSize = new System.Drawing.Size(294, 436);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            Controls.Add(button3);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -129,10 +140,12 @@ namespace ModInstaller
         #endregion
 
         private OpenFileDialog openFileDialog;
+        private FolderBrowserDialog folderBrowserDialog1;
         private GroupBox groupBox1;
         private CheckedListBox InstalledMods;
         private CheckedListBox InstallList;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

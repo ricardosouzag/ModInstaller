@@ -76,8 +76,6 @@ namespace ModInstaller
             this.ControlBox = false;
         }
 
-
-
         #endregion
 
         private Label label1;
