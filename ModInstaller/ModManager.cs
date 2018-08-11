@@ -605,47 +605,33 @@ namespace ModInstaller
             if (Directory.Exists(Properties.Settings.Default.temp))
                 Directory.Delete(tempFolder, true);
             if (!Directory.Exists(Properties.Settings.Default.modFolder)) Directory.CreateDirectory(Properties.Settings.Default.modFolder);
-            {
-                ZipFile.ExtractToDirectory(mod, tempFolder);
-                IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder);
-                IEnumerable<string> res = Directory.EnumerateFiles(tempFolder);
+            
+            ZipFile.ExtractToDirectory(mod, tempFolder);
+            List<string> res = Directory.EnumerateFiles(tempFolder, "*", SearchOption.AllDirectories).ToList();
 
-                if (!res.Any(f => f.Contains(".dll")))
+            foreach (string Res in res)
+            {
+                switch (Path.GetExtension(Res))
                 {
-                    string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
-                    foreach (string dll in modDll)
-                    {
-                        File.Copy(dll, $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(dll)}", true);
-                    }
-                    foreach (string Mod in mods)
-                    {
-                        string[] Dll = Directory.GetFiles(Mod, "*.dll", SearchOption.AllDirectories);
-                        if (Dll.Length == 0)
-                        {
-                            MoveDirectory(Mod, $@"{Properties.Settings.Default.installFolder}/{Path.GetFileName(Mod)}/");
-                        }
-                    }
-                    foreach (string Res in res)
-                    {
-                        File.Copy(Res, $@"{Properties.Settings.Default.installFolder}/{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}", true);
-                        File.Delete(Res);
-                    }
-                }
-                else
-                {
-                    foreach (string Res in res)
-                    {
+                    case ".dll":
+                        File.Copy(Res, $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(Res)}", true);
+                        break;
+                    case ".txt":
                         File.Copy(Res,
-                            Res.Contains("*.txt")
-                                ? $@"{Properties.Settings.Default.installFolder}/{
-                                        Path.GetFileNameWithoutExtension(Res)
-                                    }({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}"
-                                : $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(Res)}", true);
-                        File.Delete(Res);
-                    }
+                            $@"{Properties.Settings.Default.installFolder}/{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}",
+                            true);
+                        break;
+                    default:
+                        string path = Path.GetDirectoryName(Res)?.Replace(Properties.Settings.Default.temp,
+                            Properties.Settings.Default.modFolder);
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+                        File.Copy(Res, $@"{path}/{Path.GetFileName(Res)}", true);
+                        break;
                 }
-                Directory.Delete(tempFolder, true);
             }
+            Directory.Delete(tempFolder, true);
+            
             installedMods.Add(mod);
         }
 
@@ -708,6 +694,10 @@ namespace ModInstaller
         private void ManualInstallClick(object sender, EventArgs e)
         {
             manualInstallList = new List<string>();
+            openFileDialog.Reset();
+            openFileDialog.Filter = "Mod files|*.zip; *.dll|All files|*.*";
+            openFileDialog.Multiselect = true;
+            openFileDialog.Title = "Select the mods you wish to install";
             openFileDialog.ShowDialog();
         }
 
