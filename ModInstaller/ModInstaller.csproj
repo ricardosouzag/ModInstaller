@@ -26,6 +26,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,15 +47,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>zote_circle_aSZ_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MessageBoxHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\source\repos\MessageBoxHandler\MessageBoxHandler\bin\Release\MessageBoxHandler.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -75,6 +74,12 @@
     <Compile Include="ConnectionFailedForm.Designer.cs">
       <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DownloadHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DownloadHelper.Designer.cs">
+      <DependentUpon>DownloadHelper.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManualPathLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +98,9 @@
     <Compile Include="Settings1.cs" />
     <EmbeddedResource Include="ConnectionFailedForm.resx">
       <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DownloadHelper.resx">
+      <DependentUpon>DownloadHelper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModManager.resx">
       <DependentUpon>ModManager.cs</DependentUpon>
@@ -136,6 +144,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
     <Content Include="zote_circle_aSZ_icon.ico" />
     <Content Include="zote_circle_WL7_icon.ico" />
   </ItemGroup>

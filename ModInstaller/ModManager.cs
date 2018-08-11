@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -115,7 +117,7 @@ namespace ModInstaller
                     XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
                 mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ConnectionFailedForm form4 = new ConnectionFailedForm(this);
                 form4.Closed += Form4_Closed;
@@ -177,7 +179,7 @@ namespace ModInstaller
                 List<Mod> modsSortedList = modsList.OrderBy(mod => mod.Name).ToList();
                 modsList = modsSortedList;
             }
-            catch (InvalidOperationException e)
+            catch (Exception)
             {
                 ConnectionFailedForm form4 = new ConnectionFailedForm(this);
                 form4.Closed += Form4_Closed;
@@ -436,7 +438,7 @@ namespace ModInstaller
 
         private void DownloadAndInstallMod(ItemCheckEventArgs e)
         {
-            if (installedMods.Contains(InstalledMods.Items[e.Index])) return;
+            if (installedMods.Contains((string) InstalledMods.Items[e.Index])) return;
             string modName = InstalledMods.Items[e.Index].ToString();
             Mod mod = modsList.Single(m => m.Name == modName);
 
@@ -452,7 +454,7 @@ namespace ModInstaller
                         {
                             if (apiIsInstalled) continue;
                             Download(new Uri(apilink),
-                                $@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
+                                $@"{Properties.Settings.Default.installFolder}/{dependency}.zip", dependency);
                             InstallApi($@"{Properties.Settings.Default.installFolder}/{dependency}.zip",
                                 Properties.Settings.Default.temp);
                             File.Delete($@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
@@ -489,16 +491,17 @@ namespace ModInstaller
             PopulateList();
         }
 
-        private static void Download(Uri uri,string path)
+        private void Download(Uri uri,string path, string name)
         {
-            WebClient webClient = new WebClient();
-            webClient.DownloadFile(uri, path);
+            DownloadHelper download = new DownloadHelper(uri, path, name);
+            download.ShowDialog();
         }
+
 
         private void Install(string mod, bool isUpdate)
         {
             Download(new Uri(modsList.Single(m => m.Name == mod).Link),
-                $@"{Properties.Settings.Default.modFolder}/{mod}.zip");
+                $@"{Properties.Settings.Default.modFolder}/{mod}.zip", mod);
 
             InstallMods($@"{Properties.Settings.Default.modFolder}/{mod}.zip",
                 Properties.Settings.Default.temp);
@@ -617,13 +620,16 @@ namespace ModInstaller
                         File.Copy(Res, $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(Res)}", true);
                         break;
                     case ".txt":
+                    case ".md":
                         File.Copy(Res,
                             $@"{Properties.Settings.Default.installFolder}/{Path.GetFileNameWithoutExtension(Res)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(Res)}",
                             true);
                         break;
+                    case ".ini":
+                        break;
                     default:
                         string path = Path.GetDirectoryName(Res)?.Replace(Properties.Settings.Default.temp,
-                            Properties.Settings.Default.modFolder);
+                            Properties.Settings.Default.installFolder);
                         if (!Directory.Exists(path))
                             Directory.CreateDirectory(path);
                         File.Copy(Res, $@"{path}/{Path.GetFileName(Res)}", true);
@@ -680,7 +686,7 @@ namespace ModInstaller
                 DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation",
                     MessageBoxButtons.YesNo);
                 if (result != DialogResult.Yes) return;
-                Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip");
+                Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip", "Modding API");
                 InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
                 File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
                 MessageBox.Show("Modding API successfully installed!");
