@@ -135,7 +135,7 @@ namespace ModInstaller
                         Name = mod.Element("Name")?.Value,
                         Link = mod.Element("Link")?.Value,
                         Files = (mod.Element("Files")?.Elements("File")).ToDictionary(element => element.Element("Name")?.Value, element => element.Element("SHA1")?.Value),
-                    Dependencies = mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList(),
+                        Dependencies = mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList(),
                         Optional = mod.Element("Optional")?.Elements("string").Select(dependency => dependency.Value).ToList() ?? new List<string>(),
                     });
                 }
@@ -215,11 +215,11 @@ namespace ModInstaller
             foreach (var modsFile in modsFiles)
             {
                 Mod mod = new Mod();
-                bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
+                bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileName(modsFile.Name)));
 
                 if (isGDriveMod)
                 {
-                    mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(modsFile.Name)));
+                    mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileName(modsFile.Name)));
                     CheckModUpdated(modsFile.FullName, mod);
                 }
                 else
@@ -227,7 +227,7 @@ namespace ModInstaller
                     mod = new Mod
                     {
                         Name = Path.GetFileNameWithoutExtension(modsFile.Name),
-                        Files = new Dictionary<string, string> { [Path.GetFileNameWithoutExtension(modsFile.Name)] = GetSHA1(modsFile.FullName) },
+                        Files = new Dictionary<string, string> { [Path.GetFileName(modsFile.Name)] = GetSHA1(modsFile.FullName) },
                         Link = "",
                         Dependencies = new List<string>(),
                         Optional = new List<string>()
@@ -244,18 +244,18 @@ namespace ModInstaller
             foreach (var file in disabledFiles)
             {
                 Mod mod = new Mod();
-                bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(file.Name)));
+                bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileName(file.Name)));
 
                 if (isGDriveMod)
                 {
-                    mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileNameWithoutExtension(file.Name)));
+                    mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileName(file.Name)));
                 }
                 else
                 {
                     mod = new Mod
                     {
                         Name = Path.GetFileNameWithoutExtension(file.Name),
-                        Files = new Dictionary<string, string> { [Path.GetFileNameWithoutExtension(file.Name)] = GetSHA1(file.FullName) },
+                        Files = new Dictionary<string, string> { [Path.GetFileName(file.Name)] = GetSHA1(file.FullName) },
                         Link = "",
                         Dependencies = new List<string>(),
                         Optional = new List<string>()
@@ -272,20 +272,17 @@ namespace ModInstaller
 
         private void CheckModUpdated(string filename, Mod mod)
         {
-            if (!MD5Equals(filename, mod.Files[mod.Files.Keys.Single(f => f == Path.GetFileNameWithoutExtension(filename))]))
-            {
-                DialogResult update = MessageBox.Show($"{mod.Name} is outdated. Would you like to update it?", "Outdated mod",
-                    MessageBoxButtons.YesNo);
-                if (update == DialogResult.Yes)
-                {
-                    Install(mod.Name, true);
-                    InstalledMods.Items.Clear();
-                    InstallList.Items.Clear();
-                    allMods.Clear();
-                    installedMods.Clear();
-                    PopulateList();
-                }
-            }
+            if (MD5Equals(filename,
+                mod.Files[mod.Files.Keys.Single(f => f == Path.GetFileName(filename))])) return;
+            DialogResult update = MessageBox.Show($"{mod.Name} is outdated. Would you like to update it?", "Outdated mod",
+                MessageBoxButtons.YesNo);
+            if (update != DialogResult.Yes) return;
+            Install(mod.Name, true);
+            InstalledMods.Items.Clear();
+            InstallList.Items.Clear();
+            allMods.Clear();
+            installedMods.Clear();
+            PopulateList();
         }
 
         private void ResizeUI()
@@ -360,28 +357,28 @@ namespace ModInstaller
 
             if (modsList.Any(m => m.Name == modname))
             {
-                foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys)
+                foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys.Where(f => Path.GetExtension(f) == ".dll"))
                 {
-                    if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll")) continue;
-                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll"))
+                    if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{s}")) continue;
+                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}"))
                     {
-                        File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
+                        File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{s}");
                     }
 
-                    File.Move($@"{Properties.Settings.Default.modFolder}/{s}.dll",
-                        $@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll");
+                    File.Move($@"{Properties.Settings.Default.modFolder}/{s}",
+                        $@"{Properties.Settings.Default.modFolder}/Disabled/{s}");
                 }
             }
             else
             {
-                if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{modname}.dll")) return;
-                if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}.dll"))
+                if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{modname}")) return;
+                if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}"))
                 {
-                    File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}.dll");
+                    File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}");
                 }
 
-                File.Move($@"{Properties.Settings.Default.modFolder}/{modname}.dll",
-                    $@"{Properties.Settings.Default.modFolder}/Disabled/{modname}.dll");
+                File.Move($@"{Properties.Settings.Default.modFolder}/{modname}",
+                    $@"{Properties.Settings.Default.modFolder}/Disabled/{modname}");
             }
         }
 
@@ -391,28 +388,28 @@ namespace ModInstaller
 
             if (modsList.Any(m => m.Name == modname))
             {
-                foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys)
+                foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys.Where(f => Path.GetExtension(f) == ".dll"))
                 {
-                    if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll")) continue;
-                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
+                    if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}")) continue;
+                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}"))
                     {
-                        File.Delete($@"{Properties.Settings.Default.modFolder}/{s}.dll");
+                        File.Delete($@"{Properties.Settings.Default.modFolder}/{s}");
                     }
 
-                    File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}.dll",
-                        $@"{Properties.Settings.Default.modFolder}/{s}.dll");
+                    File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}",
+                        $@"{Properties.Settings.Default.modFolder}/{s}");
                 }
             }
             else
             {
-                if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}.dll")) return;
-                if (File.Exists($@"{Properties.Settings.Default.modFolder}/{modname}.dll"))
+                if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}")) return;
+                if (File.Exists($@"{Properties.Settings.Default.modFolder}/{modname}"))
                 {
-                    File.Delete($@"{Properties.Settings.Default.modFolder}/{modname}.dll");
+                    File.Delete($@"{Properties.Settings.Default.modFolder}/{modname}");
                 }
 
-                File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}.dll",
-                    $@"{Properties.Settings.Default.modFolder}/{modname}.dll");
+                File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}",
+                    $@"{Properties.Settings.Default.modFolder}/{modname}");
             }
         }
 
@@ -537,9 +534,9 @@ namespace ModInstaller
             {
                 foreach (string s in mod.Files.Keys)
                 {
-                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}.dll"))
+                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}"))
                     {
-                        File.Delete($@"{Properties.Settings.Default.modFolder}/{s}.dll");
+                        File.Delete($@"{Properties.Settings.Default.modFolder}/{s}");
                     }
                 }
 
@@ -547,6 +544,12 @@ namespace ModInstaller
                 InstallList.Items[e.Index] = "Check to install";
                 InstalledMods.SetItemCheckState(e.Index, CheckState.Indeterminate);
                 installedMods.Remove(modname);
+
+                foreach (string directory in Directory.EnumerateDirectories(Properties.Settings.Default.modFolder))
+                {
+                    if (!Directory.EnumerateFileSystemEntries(directory).Any() && directory != "Disabled")
+                        Directory.Delete(directory);
+                }
             }
             else
                 e.NewValue = CheckState.Checked;
