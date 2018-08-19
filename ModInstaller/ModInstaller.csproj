@@ -144,7 +144,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
     <Content Include="zote_circle_aSZ_icon.ico" />
     <Content Include="zote_circle_WL7_icon.ico" />
   </ItemGroup>

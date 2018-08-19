@@ -24,12 +24,43 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            CheckUpdate();
             FillDefaultPaths();
             GetLocalInstallation();
             FillModsList();
             CheckApiInstalled();
             PopulateList();
             ResizeUI();
+        }
+
+        private void CheckUpdate()
+        {
+            string dir = Directory.GetCurrentDirectory();
+
+            if (File.Exists(dir + @"/lol.exe"))
+            File.Delete(dir + @"/lol.exe");
+
+            if (File.Exists(dir + @"/AU.exe"))
+            File.Delete(dir + @"/AU.exe");
+
+            XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+            XElement installer = dllist.Element("ModLinks")?.Element("Installer");
+
+            if (installer.Element("SHA1")?.Value != dir + @"/ModInstaller.exe")
+            {
+                WebClient dl = new WebClient();
+                dl.DownloadFile(new Uri(installer.Element("AULink")?.Value), dir + @"\AU.exe");
+                Process process = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = dir + @"\AU.exe",
+                        Arguments = "\"" + dir + "\"" + " " + installer.Element("Link")?.Value
+                    }
+                };
+                process.Start();
+                Application.Exit();
+            }
         }
 
         private void FillDefaultPaths()
@@ -153,7 +184,7 @@ namespace ModInstaller
             FillModsList();
         }
 
-        private bool MD5Equals(string file, string modmd5) => String.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
+        private bool SHA1Equals(string file, string modmd5) => String.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
 
         private string GetSHA1(string file)
         {
@@ -169,7 +200,7 @@ namespace ModInstaller
 
         private void CheckApiInstalled()
         {
-            apiIsInstalled = MD5Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", apiMD5);
+            apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", apiMD5);
         }
 
         private void PopulateList()
@@ -272,7 +303,7 @@ namespace ModInstaller
 
         private void CheckModUpdated(string filename, Mod mod)
         {
-            if (MD5Equals(filename,
+            if (SHA1Equals(filename,
                 mod.Files[mod.Files.Keys.Single(f => f == Path.GetFileName(filename))])) return;
             DialogResult update = MessageBox.Show($"{mod.Name} is outdated. Would you like to update it?", "Outdated mod",
                 MessageBoxButtons.YesNo);
@@ -619,9 +650,6 @@ namespace ModInstaller
             {
                 switch (Path.GetExtension(Res))
                 {
-                    case ".dll":
-                        File.Copy(Res, $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(Res)}", true);
-                        break;
                     case ".txt":
                     case ".md":
                         File.Copy(Res,
