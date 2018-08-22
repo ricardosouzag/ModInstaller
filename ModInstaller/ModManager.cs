@@ -31,35 +31,48 @@ namespace ModInstaller
             CheckApiInstalled();
             PopulateList();
             ResizeUI();
+            Text = "Mod Manager " + version;
         }
 
         private void CheckUpdate()
         {
             string dir = Directory.GetCurrentDirectory();
+            string file = Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location);
 
-            if (File.Exists(dir + @"/lol.exe"))
+            if (File.Exists(dir + @"\lol.exe"))
             File.Delete(dir + @"/lol.exe");
 
             if (File.Exists(dir + @"/AU.exe"))
             File.Delete(dir + @"/AU.exe");
 
-            XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
-            XElement installer = dllist.Element("ModLinks")?.Element("Installer");
-
-            if (installer.Element("SHA1")?.Value != dir + @"/ModInstaller.exe")
+            try
             {
-                WebClient dl = new WebClient();
-                dl.DownloadFile(new Uri(installer.Element("AULink")?.Value), dir + @"\AU.exe");
-                Process process = new Process
+                XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+
+                XElement installer = dllist.Element("ModLinks")?.Element("Installer");
+
+                if (installer.Element("SHA1")?.Value != GetSHA1(dir + $@"/{file}"))
                 {
-                    StartInfo =
+                    WebClient dl = new WebClient();
+                    dl.DownloadFile(new Uri(installer.Element("AULink")?.Value), dir + @"/AU.exe");
+                    Process process = new Process
                     {
-                        FileName = dir + @"\AU.exe",
-                        Arguments = "\"" + dir + "\"" + " " + installer.Element("Link")?.Value
-                    }
-                };
-                process.Start();
-                Application.Exit();
+                        StartInfo =
+                        {
+                            FileName = dir + @"/AU.exe",
+                            Arguments = "\"" + dir + "\"" + " " + installer.Element("Link")?.Value + " " + file
+                        }
+                    };
+                    process.Start();
+                    Application.Exit();
+                }
+            }
+            catch (Exception)
+            {
+                ConnectionFailedForm form4 = new ConnectionFailedForm(this);
+                form4.Closed += Form4_Closed;
+                Hide();
+                form4.ShowDialog();
             }
         }
 
@@ -843,6 +856,7 @@ Please select the correct installation path for Hollow Knight.");
         private string apiMD5;
         public bool isOffline;
         private bool apiIsInstalled;
+        public string version = "v7.1.1";
 
         #endregion
     }
