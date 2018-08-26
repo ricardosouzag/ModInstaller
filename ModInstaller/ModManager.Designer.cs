@@ -35,15 +35,13 @@ namespace ModInstaller
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModManager));
             openFileDialog  = new OpenFileDialog();
             this.folderBrowserDialog1 = new FolderBrowserDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.InstallList = new System.Windows.Forms.CheckedListBox();
-            this.InstalledMods = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
             panel = new Panel();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            CenterToScreen();
+            CenterToParent();
             //
             //
             //
@@ -51,38 +49,6 @@ namespace ModInstaller
             this.openFileDialog.Multiselect = true;
             this.openFileDialog.Title = "Select the mods you wish to install";
             openFileDialog.FileOk += DoManualInstall;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Name = "groupBox1";
-            //this.groupBox1.Size = new System.Drawing.Size(269, 354);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "API-Compatible Mods";
-             this.groupBox1.MinimumSize = new Size( this.groupBox1.Width,  this.InstalledMods.Height);
-             this.groupBox1.MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-             this.groupBox1.AutoSize = true;
-             this.groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            // 
-            // InstalledMods
-            // 
-            this.InstalledMods.FormattingEnabled = true;
-            this.InstalledMods.Location = new System.Drawing.Point(6, 19);
-            this.InstalledMods.Name = "InstalledMods";
-            this.InstalledMods.Size = new System.Drawing.Size(179,1);
-            this.InstalledMods.TabIndex = 1;
-            InstalledMods.ItemCheck += InstalledMods_ItemCheck;
-            // 
-            // InstallList
-            // 
-            this.InstallList.FormattingEnabled = true;
-            this.InstallList.Location = new System.Drawing.Point(150, 19);
-            this.InstallList.Name = "InstallList";
-            //this.InstallList.Size = new System.Drawing.Size(96, 319);
-            this.InstallList.TabIndex = 2;
-            InstallList.ItemCheck += InstallList_ItemCheck;
-            // Ensures the two side-by-side columns draw at the same height.
-            this.InstallList.Height = InstalledMods.Height;
             //
             // panel
             //
@@ -127,7 +93,6 @@ namespace ModInstaller
             this.Name = "ModManager";
             this.Text = "Mod Manager";
             this.Load += new System.EventHandler(this.Form2_Load);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.ControlBox = true;
@@ -140,9 +105,6 @@ namespace ModInstaller
 
         private OpenFileDialog openFileDialog;
         private FolderBrowserDialog folderBrowserDialog1;
-        private GroupBox groupBox1;
-        private CheckedListBox InstalledMods;
-        private CheckedListBox InstallList;
         private Button button1;
         private Button button2;
         private Button button3;
