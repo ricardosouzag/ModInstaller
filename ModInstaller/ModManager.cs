@@ -24,7 +24,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            CheckUpdate();
+            //CheckUpdate();
             FillDefaultPaths();
             GetLocalInstallation();
             FillModsList();
@@ -237,12 +237,115 @@ namespace ModInstaller
             foreach (Mod mod in modsList)
             {
                 if (allMods.Any(f => f.Equals(mod.Name))) continue;
-                InstalledMods.Items.Add(mod.Name, CheckState.Indeterminate);
-                InstallList.Items.Add("Check to install", CheckState.Unchecked);
+
+                ModField entry = new ModField
+                {
+                    Name = new Label(),
+                    EnableButton = new Button(),
+                    InstallButton = new Button(),
+                    ReadmeButton = new Button(),
+                    isInstalled = false,
+                    isEnabled = false
+                };
+                panel.Controls.Add(entry.Name);
+                panel.Controls.Add(entry.EnableButton);
+                panel.Controls.Add(entry.InstallButton);
+                panel.Controls.Add(entry.ReadmeButton);
+                entry.Name.Text = mod.Name;
+                modEntries.Add(entry);
                 allMods.Add(mod.Name);
             }
 
+            List<ModField> modFieldsSorted = modEntries.OrderBy(entry => entry.Name.Text).ToList();
+            modEntries = modFieldsSorted;
+
+            for (int i = 0; i < modEntries.Count; i++)
+            {
+                modEntries[i].Name.Location = new Point(6, 19 + modEntries[i].EnableButton.Height * i);
+
+                modEntries[i].EnableButton.Location = new Point(6 + 100, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].EnableButton.Text = modEntries[i].isEnabled ? "Disable" : "Enable";
+                modEntries[i].EnableButton.Enabled = modEntries[i].isInstalled;
+                modEntries[i].EnableButton.Click += OnEnableButtonClick;
+
+                modEntries[i].InstallButton.Location = new Point(6 + 200, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].InstallButton.Text = modEntries[i].isInstalled ? "Uninstall" : "Install";
+
+                modEntries[i].ReadmeButton.Location =  new Point(6 + 300, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].ReadmeButton.Text = "Readme";
+            }
+
             button1.Enabled = !isOffline;
+        }
+
+        private void OnEnableButtonClick(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            ModField entry = modEntries.Single(f => f.EnableButton == button);
+            Mod mod = modsList.Single(m => m.Name == entry.Name.Text);
+            string modname = mod.Name;
+
+            if (entry.isEnabled)
+            {
+                MessageBox.Show($"Enabling {modname}");
+                if (modsList.Any(m => m.Name == modname))
+                {
+                    foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys.Where(f => Path.GetExtension(f) == ".dll"))
+                    {
+                        if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{s}")) continue;
+                        if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}"))
+                        {
+                            File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{s}");
+                        }
+
+                        File.Move($@"{Properties.Settings.Default.modFolder}/{s}",
+                            $@"{Properties.Settings.Default.modFolder}/Disabled/{s}");
+                    }
+                }
+                else
+                {
+                    if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{modname}")) return;
+                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}"))
+                    {
+                        File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}");
+                    }
+
+                    File.Move($@"{Properties.Settings.Default.modFolder}/{modname}",
+                        $@"{Properties.Settings.Default.modFolder}/Disabled/{modname}");
+                }
+
+                button.Text = "Enable";
+            }
+            else
+            {
+                if (modsList.Any(m => m.Name == modname))
+                {
+                    foreach (string s in modsList.Single(m => m.Name == modname).Files.Keys.Where(f => Path.GetExtension(f) == ".dll"))
+                    {
+                        if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}")) continue;
+                        if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}"))
+                        {
+                            File.Delete($@"{Properties.Settings.Default.modFolder}/{s}");
+                        }
+
+                        File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}",
+                            $@"{Properties.Settings.Default.modFolder}/{s}");
+                    }
+                }
+                else
+                {
+                    if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}")) return;
+                    if (File.Exists($@"{Properties.Settings.Default.modFolder}/{modname}"))
+                    {
+                        File.Delete($@"{Properties.Settings.Default.modFolder}/{modname}");
+                    }
+
+                    File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}",
+                        $@"{Properties.Settings.Default.modFolder}/{modname}");
+                }
+                button.Text = "Disable";
+            }
+            entry.isEnabled = !entry.isEnabled;
         }
 
         private void GetInstalledFiles()
@@ -259,11 +362,25 @@ namespace ModInstaller
             foreach (var modsFile in modsFiles)
             {
                 Mod mod = new Mod();
+                ModField entry = new ModField
+                {
+                    Name = new Label(),
+                    EnableButton = new Button(),
+                    InstallButton = new Button(),
+                    ReadmeButton = new Button(),
+                    isEnabled =  true,
+                    isInstalled = true
+                };
+                panel.Controls.Add(entry.Name);
+                panel.Controls.Add(entry.EnableButton);
+                panel.Controls.Add(entry.InstallButton);
+                panel.Controls.Add(entry.ReadmeButton);
                 bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileName(modsFile.Name)));
 
                 if (isGDriveMod)
                 {
                     mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileName(modsFile.Name)));
+                    
                     CheckModUpdated(modsFile.FullName, mod);
                 }
                 else
@@ -279,20 +396,34 @@ namespace ModInstaller
                 }
 
                 if (string.IsNullOrEmpty(mod.Name) || allMods.Any(f => f == mod.Name)) continue;
+                entry.Name.Text = mod.Name;
+                modEntries.Add(entry);
                 allMods.Add(mod.Name);
                 installedMods.Add(mod.Name);
-                InstalledMods.Items.Add(mod.Name, CheckState.Checked);
-                InstallList.Items.Add("Installed", isGDriveMod ? CheckState.Checked : CheckState.Indeterminate);
             }
 
             foreach (var file in disabledFiles)
             {
                 Mod mod = new Mod();
+                ModField entry = new ModField
+                {
+                    Name = new Label(),
+                    EnableButton = new Button(),
+                    InstallButton = new Button(),
+                    ReadmeButton = new Button(),
+                    isEnabled = false,
+                    isInstalled = true
+                };
+                panel.Controls.Add(entry.Name);
+                panel.Controls.Add(entry.EnableButton);
+                panel.Controls.Add(entry.InstallButton);
+                panel.Controls.Add(entry.ReadmeButton);
                 bool isGDriveMod = modsList.Any(m => m.Files.Keys.Contains(Path.GetFileName(file.Name)));
 
                 if (isGDriveMod)
                 {
                     mod = modsList.Single(m => m.Files.Keys.Contains(Path.GetFileName(file.Name)));
+                    CheckModUpdated(file.FullName, mod);
                 }
                 else
                 {
@@ -307,10 +438,10 @@ namespace ModInstaller
                 }
 
                 if (string.IsNullOrEmpty(mod.Name) || allMods.Any(f => f == mod.Name)) continue;
+                entry.Name.Text = mod.Name;
+                modEntries.Add(entry);
                 allMods.Add(mod.Name);
                 installedMods.Add(mod.Name);
-                InstalledMods.Items.Add(mod.Name, CheckState.Unchecked);
-                InstallList.Items.Add("Installed", isGDriveMod ? CheckState.Checked : CheckState.Indeterminate);
             }
         }
 
@@ -331,33 +462,22 @@ namespace ModInstaller
 
         private void ResizeUI()
         {
-            const int extraHeight = 13;
-            int modCount = allMods.Count;
-            // Manual size in case autosize fails
-            InstalledMods.Size = new System.Drawing.Size(179, extraHeight + (modCount * InstallList.ItemHeight));
-            InstallList.Size = new System.Drawing.Size(130, extraHeight + (modCount * InstallList.ItemHeight));
-            Point installPt = InstallList.Location;
-            installPt.X = InstalledMods.Location.X + InstalledMods.Size.Width;
-            InstallList.Location = installPt;
-            // Otherwise autosize
-            groupBox1.AutoSize = true;
-            groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            InstallList.AutoSize = true;
-            InstalledMods.AutoSize = true;
-            // Set button locations
-            button1.Size = new Size(groupBox1.Width, 23);
-            button2.Size = new Size(groupBox1.Width, 23);
-            button3.Size = new Size(groupBox1.Width, 23);
+            const int height = 300;
+            panel.Size = new Size(modEntries[0].ReadmeButton.Right - modEntries[0].Name.Left + 50, height);
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.Size = new Size(panel.Width, 23);
+            button2.Size = new Size(panel.Width, 23);
+            button3.Size = new Size(panel.Width, 23);
             groupBox1.Top = 3;
             groupBox1.Left = 3;
-            button1.Top = InstallList.Bottom + 9;
+            button1.Top = height + 9;
             button1.Left = 3;
             button2.Top = button1.Bottom;
             button2.Left = 3;
             button3.Top = button2.Bottom;
             button3.Left = 3;
-            AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            PerformAutoScale();
         }
 
         private static void DeleteDirectory(string target_dir)
@@ -838,6 +958,7 @@ Please select the correct installation path for Hollow Knight.");
         private List<string> allMods = new List<string>();
         private List<string> installedMods = new List<string>();
         private List<string> manualInstallList = new List<string>();
+
         private struct Mod
         {
             public string Name { get; set; }
@@ -850,13 +971,31 @@ Please select the correct installation path for Hollow Knight.");
 
             public List<string> Optional { get; set; }
         }
+
+        private struct ModField
+        {
+            public Label Name { get; set; }
+
+            public Button EnableButton { get; set; }
+
+            public Button InstallButton { get; set; }
+
+            public Button ReadmeButton { get; set; }
+
+            public bool isInstalled { get; set; }
+
+            public bool isEnabled { get; set; }
+        }
+
         private  List<Mod> modsList = new List<Mod>();
+
+        private List<ModField> modEntries = new List<ModField>();
 
         private string apilink;
         private string apiMD5;
         public bool isOffline;
         private bool apiIsInstalled;
-        public string version = "v7.1.1";
+        public string version = "v8.0.0";
 
         #endregion
     }

@@ -41,6 +41,7 @@ namespace ModInstaller
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
+            panel = new Panel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             //
@@ -53,8 +54,6 @@ namespace ModInstaller
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.InstallList);
-            this.groupBox1.Controls.Add(this.InstalledMods);
             this.groupBox1.Name = "groupBox1";
             //this.groupBox1.Size = new System.Drawing.Size(269, 354);
             this.groupBox1.TabIndex = 0;
@@ -84,6 +83,11 @@ namespace ModInstaller
             InstallList.ItemCheck += InstallList_ItemCheck;
             // Ensures the two side-by-side columns draw at the same height.
             this.InstallList.Height = InstalledMods.Height;
+            //
+            // panel
+            //
+            panel.AutoScroll = true;
+            panel.Size = new Size(500, 1);
             // 
             // button1
             // 
@@ -113,14 +117,12 @@ namespace ModInstaller
             // 
             // ModManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            //this.ClientSize = new System.Drawing.Size(294, 436);
+            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             Controls.Add(button3);
-            this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
+            Controls.Add(panel);
+            MaximizeBox = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModManager";
             this.Text = "Mod Manager";
@@ -129,9 +131,6 @@ namespace ModInstaller
             this.ResumeLayout(false);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.ControlBox = true;
-            // This is required to see close button
-            // on shells with non-standard button sizes. Including modded Windows and Linux.
-            this.PerformAutoScale();
         }
 
         
@@ -147,5 +146,6 @@ namespace ModInstaller
         private Button button1;
         private Button button2;
         private Button button3;
+        private Panel panel;
     }
 }
