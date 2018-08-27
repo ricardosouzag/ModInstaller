@@ -37,6 +37,7 @@ namespace ModInstaller
         {
             string dir = Directory.GetCurrentDirectory();
             string file = Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            XDocument dllist = new XDocument();
 
             if (File.Exists(dir + @"/lol.exe"))
             File.Delete(dir + @"/lol.exe");
@@ -46,25 +47,7 @@ namespace ModInstaller
 
             try
             {
-                XDocument dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
-
-                XElement installer = dllist.Element("ModLinks")?.Element("Installer");
-
-                if (installer.Element("SHA1")?.Value != GetSHA1(dir + $@"/{file}"))
-                {
-                    WebClient dl = new WebClient();
-                    dl.DownloadFile(new Uri(installer.Element("AULink")?.Value), dir + @"/AU.exe");
-                    Process process = new Process
-                    {
-                        StartInfo =
-                        {
-                            FileName = dir + @"/AU.exe",
-                            Arguments = "\"" + dir + "\"" + " " + installer.Element("Link")?.Value + " " + file
-                        }
-                    };
-                    process.Start();
-                    Application.Exit();
-                }
+                dllist = XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
             }
             catch (Exception)
             {
@@ -72,6 +55,24 @@ namespace ModInstaller
                 form4.Closed += Form4_Closed;
                 Hide();
                 form4.ShowDialog();
+            }
+
+            XElement installer = dllist.Element("ModLinks")?.Element("Installer");
+
+            if (installer.Element("SHA1")?.Value != GetSHA1(dir + $@"/{file}"))
+            {
+                WebClient dl = new WebClient();
+                dl.DownloadFile(new Uri(installer.Element("AULink")?.Value), dir + @"/AU.exe");
+                Process process = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = dir + @"/AU.exe",
+                        Arguments = "\"" + dir + "\"" + " " + installer.Element("Link")?.Value + " " + file
+                    }
+                };
+                process.Start();
+                Application.Exit();
             }
         }
 
@@ -265,6 +266,7 @@ namespace ModInstaller
 
                 modEntries[i].ReadmeButton.Location =  new Point(6 + 300 + space, 19 + modEntries[i].EnableButton.Height * i);
                 modEntries[i].ReadmeButton.Text = "Readme";
+                modEntries[i].ReadmeButton.Enabled = modEntries[i].isInstalled;
                 modEntries[i].ReadmeButton.Click += OnReadmeButtonClick;
 
             }
@@ -308,6 +310,10 @@ namespace ModInstaller
             Mod mod = modsList.First(m => m.Name == entry.Name.Text);
             string modname = mod.Name;
 
+            string readmeModPathNoExtension = $@"{Properties.Settings.Default.installFolder}/README({modname})";
+            string readmeModPathTxt = $@"{readmeModPathNoExtension}.txt";
+            string readmeModPathMd = $@"{readmeModPathNoExtension}.md";
+
             if (entry.isInstalled)
             {
                 DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modname} from your computer?", caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
@@ -321,15 +327,25 @@ namespace ModInstaller
                         }
                     }
 
-                    MessageBox.Show($@"{modname} successfully uninstalled!");
-                    installedMods.Remove(modname);
-
                     foreach (string directory in Directory.EnumerateDirectories(Properties.Settings.Default.modFolder))
                     {
                         if (!Directory.EnumerateFileSystemEntries(directory).Any() && directory != "Disabled")
                             Directory.Delete(directory);
                     }
+
+                    if (File.Exists(readmeModPathTxt))
+                    {
+                        File.Delete(readmeModPathTxt);
+                    }
+                    else if (File.Exists(readmeModPathMd))
+                    {
+                        File.Delete(readmeModPathMd);
+                    }
+
+                    MessageBox.Show($@"{modname} successfully uninstalled!");
+                    installedMods.Remove(modname);
                 }
+                else return;
             }
             else
             {
@@ -382,6 +398,8 @@ namespace ModInstaller
             modEntries.First(f => f.InstallButton == button).EnableButton.Enabled =
                 modEntries.First(f => f.InstallButton == button).isInstalled;
             modEntries.First(f => f.InstallButton == button).EnableButton.Text = modEntries.First(f => f.InstallButton == button).isInstalled ? "Disable" : "Enable";
+            modEntries.First(f => f.InstallButton == button).ReadmeButton.Enabled =
+                modEntries.First(f => f.InstallButton == button).isInstalled;
         }
 
         private void OnEnableButtonClick(object sender, EventArgs e)
@@ -878,7 +896,7 @@ Please select the correct installation path for Hollow Knight.");
         private string apiMD5;
         public bool isOffline;
         private bool apiIsInstalled;
-        public string version = "v8.0.3";
+        public string version = "v8.0.5";
 
         #endregion
     }
