@@ -247,20 +247,23 @@ namespace ModInstaller
             List<ModField> modFieldsSorted = modEntries.OrderBy(entry => entry.Name.Text).ToList();
             modEntries = modFieldsSorted;
 
+            int space = 50;
+
             for (int i = 0; i < modEntries.Count; i++)
             {
-                modEntries[i].Name.Location = new Point(6, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].Name.Location = new Point(6, 22 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].Name.AutoSize = true;
 
-                modEntries[i].EnableButton.Location = new Point(6 + 100, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].EnableButton.Location = new Point(6 + 150 + space, 19 + modEntries[i].EnableButton.Height * i);
                 modEntries[i].EnableButton.Text = modEntries[i].isEnabled ? "Disable" : "Enable";
                 modEntries[i].EnableButton.Enabled = modEntries[i].isInstalled;
                 modEntries[i].EnableButton.Click += OnEnableButtonClick;
 
-                modEntries[i].InstallButton.Location = new Point(6 + 200, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].InstallButton.Location = new Point(6 + 225 + space, 19 + modEntries[i].EnableButton.Height * i);
                 modEntries[i].InstallButton.Text = modEntries[i].isInstalled ? "Uninstall" : "Install";
                 modEntries[i].InstallButton.Click += OnInstallButtonClick;
 
-                modEntries[i].ReadmeButton.Location =  new Point(6 + 300, 19 + modEntries[i].EnableButton.Height * i);
+                modEntries[i].ReadmeButton.Location =  new Point(6 + 300 + space, 19 + modEntries[i].EnableButton.Height * i);
                 modEntries[i].ReadmeButton.Text = "Readme";
                 modEntries[i].ReadmeButton.Click += OnReadmeButtonClick;
 
@@ -550,7 +553,7 @@ namespace ModInstaller
         private void CheckModUpdated(string filename, Mod mod)
         {
             if (SHA1Equals(filename,
-                mod.Files[mod.Files.Keys.Single(f => f == Path.GetFileName(filename))])) return;
+                mod.Files[mod.Files.Keys.First(f => f == Path.GetFileName(filename))])) return;
             DialogResult update = MessageBox.Show($"{mod.Name} is outdated. Would you like to update it?", "Outdated mod",
                 MessageBoxButtons.YesNo);
             if (update != DialogResult.Yes) return;
@@ -559,7 +562,7 @@ namespace ModInstaller
 
         private void ResizeUI()
         {
-            const int height = 300;
+            const int height = 480;
             panel.Size = new Size(modEntries[0].ReadmeButton.Right - modEntries[0].Name.Left + 50, height);
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -606,7 +609,7 @@ namespace ModInstaller
 
         private void Install(string mod, bool isUpdate)
         {
-            Download(new Uri(modsList.Single(m => m.Name == mod).Link),
+            Download(new Uri(modsList.First(m => m.Name == mod).Link),
                 $@"{Properties.Settings.Default.modFolder}/{mod}.zip", mod);
 
             InstallMods($@"{Properties.Settings.Default.modFolder}/{mod}.zip",
@@ -875,7 +878,7 @@ Please select the correct installation path for Hollow Knight.");
         private string apiMD5;
         public bool isOffline;
         private bool apiIsInstalled;
-        public string version = "v8.0.2";
+        public string version = "v8.0.3";
 
         #endregion
     }
