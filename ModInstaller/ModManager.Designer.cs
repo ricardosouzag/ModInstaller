@@ -88,7 +88,7 @@ namespace ModInstaller
             this.Controls.Add(this.button1);
             Controls.Add(button3);
             Controls.Add(panel);
-            MaximizeBox = true;
+            MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModManager";
             this.Text = "Mod Manager";
