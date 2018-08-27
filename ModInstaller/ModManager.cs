@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -263,9 +262,40 @@ namespace ModInstaller
 
                 modEntries[i].ReadmeButton.Location =  new Point(6 + 300, 19 + modEntries[i].EnableButton.Height * i);
                 modEntries[i].ReadmeButton.Text = "Readme";
+                modEntries[i].ReadmeButton.Click += OnReadmeButtonClick;
+
             }
 
             button1.Enabled = !isOffline;
+        }
+
+        private void OnReadmeButtonClick(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            ModField entry = modEntries.First(f => f.ReadmeButton == button);
+            Mod mod = modsList.First(m => m.Name == entry.Name.Text);
+            string modName = mod.Name;
+
+            // The only two possible options are .txt or .md, which follows from the InstallMods method
+            // The same method also describes, the way all readme files are formatted.
+            string readmeModPathNoExtension = $@"{Properties.Settings.Default.installFolder}/README({modName})";
+            string readmeModPathTxt = $@"{readmeModPathNoExtension}.txt";
+            string readmeModPathMd = $@"{readmeModPathNoExtension}.md";
+
+            // If a readme is created, open it using the default application.
+            if (File.Exists(readmeModPathTxt))
+            {
+                Process.Start(readmeModPathTxt);
+            }
+            else if (File.Exists(readmeModPathMd))
+            {
+                Process.Start(readmeModPathMd);
+            }
+            else
+            {
+                MessageBox.Show($@"No readme exists for {modName}.");
+            }
+
         }
 
         private void OnInstallButtonClick(object sender, EventArgs e)
