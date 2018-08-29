@@ -23,11 +23,11 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            //CheckUpdate();
+            CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
-            PiracyCheck();
+            //PiracyCheck();
             FillModsList();
             CheckApiInstalled();
             PopulateList();
@@ -42,10 +42,10 @@ namespace ModInstaller
             XDocument dllist = new XDocument();
 
             if (File.Exists(dir + @"/lol.exe"))
-            File.Delete(dir + @"/lol.exe");
+                File.Delete(dir + @"/lol.exe");
 
             if (File.Exists(dir + @"/AU.exe"))
-            File.Delete(dir + @"/AU.exe");
+                File.Delete(dir + @"/AU.exe");
 
             try
             {
@@ -150,6 +150,8 @@ namespace ModInstaller
                                 ? $@"{d.Name}tempMods" : $@"{d.Name}temp";
                         }
 
+                        if (!String.IsNullOrEmpty(Properties.Settings.Default.installFolder))
+                            break;
                         Properties.Settings.Default.Save();
                     }
 
@@ -192,27 +194,29 @@ namespace ModInstaller
             MessageBox.Show("Please purchase the game before attempting to play it.");
             Process.Start("https://store.steampowered.com/app/367520/Hollow_Knight/");
             //Directory.Delete(Properties.Settings.Default.installFolder, true);
-            Directory.Move(Properties.Settings.Default.installFolder + @"/hollow_knight_Data", Properties.Settings.Default.installFolder + @"/holIow_knight_Data");
+//            Directory.Move(Properties.Settings.Default.installFolder + @"/hollow_knight_Data", Properties.Settings.Default.installFolder + @"/holIow_knight_Data");
             Application.Exit();
         }
 
         public void FillModsList()
         {
-            XElement[] mods;
+            XDocument dllist;
             try
             {
-                XDocument dllist =
+                dllist =
                     XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
-                mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 ConnectionFailedForm form4 = new ConnectionFailedForm(this);
                 form4.Closed += Form4_Closed;
                 Hide();
                 form4.ShowDialog();
                 return;
             }
+            
+            var mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
 
             foreach (XElement mod in mods)
             {
@@ -426,7 +430,10 @@ namespace ModInstaller
                     foreach (string dependency in mod.Optional)
                     {
                         if (installedMods.Any(f => f.Equals(dependency))) continue;
-                        DialogResult depInstall = MessageBox.Show($"The mod author suggests installing {dependency} together with this mod.\nDo you want to install {dependency}?", "Confirm installation", MessageBoxButtons.YesNo);
+                        DialogResult depInstall =
+                            MessageBox.Show(
+                                $"The mod author suggests installing {dependency} together with this mod.\nDo you want to install {dependency}?",
+                                "Confirm installation", MessageBoxButtons.YesNo);
                         if (depInstall != DialogResult.Yes) continue;
                         Install(dependency, false);
                         MessageBox.Show($@"{dependency} successfully installed!");
@@ -740,6 +747,10 @@ namespace ModInstaller
             {
                 switch (Path.GetExtension(Res))
                 {
+                    case ".dll":
+                        File.Copy(Res,
+                            $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(Res)}", true);
+                        break;
                     case ".txt":
                     case ".md":
                         File.Copy(Res,
@@ -942,7 +953,7 @@ Please select the correct installation path for Hollow Knight.");
         public bool isOffline;
         private bool apiIsInstalled;
         private bool pirate;
-        public string version = "v8.1.0";
+    public string version = "v8.1.1";
 
 
         #endregion
