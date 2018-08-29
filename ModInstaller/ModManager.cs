@@ -23,9 +23,11 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            CheckUpdate();
+            //CheckUpdate();
+            GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
+            PiracyCheck();
             FillModsList();
             CheckApiInstalled();
             PopulateList();
@@ -76,13 +78,43 @@ namespace ModInstaller
             }
         }
 
+        private void GetCurrentOS()
+        {
+            int p = (int)Environment.OSVersion.Platform;
+            switch (p)
+            {
+                case 4:
+                case 128:
+                    OS = "Linux";
+                    break;
+                case 6:
+                    OS = "MacOS";
+                    break;
+                default:
+                    OS = "Windows";
+                    break;
+            }
+        }
+
         private void FillDefaultPaths()
         {
-            defaultPaths.Add($@"Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
-            defaultPaths.Add($@"Program Files/Steam/steamapps/Common/Hollow Knight");
-            defaultPaths.Add($@"Steam/steamapps/common/Hollow Knight");
-            // Default steam installation path for Linux.
-            defaultPaths.Add(System.Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
+            switch (OS)
+            {
+                case "Windows":
+                    //Default Steam and GOG install paths for Windows.
+                    defaultPaths.Add(@"Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
+                    defaultPaths.Add(@"Program Files/Steam/steamapps/Common/Hollow Knight");
+                    defaultPaths.Add(@"Steam/steamapps/common/Hollow Knight");
+                    defaultPaths.Add(@"Program Files (x86)/GOG Galaxy/Games/Hollow Knight");
+                    defaultPaths.Add(@"Program Files/GOG Galaxy/Games/Hollow Knight");
+                    defaultPaths.Add(@"GOG Galaxy/Games/Hollow Knight");
+                    break;
+                case "Linux":
+                    // Default steam installation path for Linux.
+                    defaultPaths.Add(System.Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
+                    break;
+
+            }
         }
         
         private void GetLocalInstallation()
@@ -150,6 +182,18 @@ namespace ModInstaller
             if (dialogResult != DialogResult.Yes) return;
             Properties.Settings.Default.installFolder = path;
             Properties.Settings.Default.Save();
+        }
+
+        private void PiracyCheck()
+        {
+            if (OS != "Windows") return;
+            if (File.Exists(Properties.Settings.Default.installFolder + @"/Galaxy.dll") ||
+                File.Exists(Properties.Settings.Default.installFolder + @"/steam_api.dll")) return;
+            MessageBox.Show("Please purchase the game before attempting to play it.");
+            Process.Start("https://store.steampowered.com/app/367520/Hollow_Knight/");
+            //Directory.Delete(Properties.Settings.Default.installFolder, true);
+            Directory.Move(Properties.Settings.Default.installFolder + @"/hollow_knight_Data", Properties.Settings.Default.installFolder + @"/holIow_knight_Data");
+            Application.Exit();
         }
 
         public void FillModsList()
@@ -894,9 +938,12 @@ Please select the correct installation path for Hollow Knight.");
 
         private string apilink;
         private string apiMD5;
+        private string OS;
         public bool isOffline;
         private bool apiIsInstalled;
-        public string version = "v8.0.5";
+        private bool pirate;
+        public string version = "v8.1.0";
+
 
         #endregion
     }
