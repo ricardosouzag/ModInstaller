@@ -27,7 +27,7 @@ namespace ModInstaller
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
-            //PiracyCheck();
+            PiracyCheck();
             FillModsList();
             CheckApiInstalled();
             PopulateList();
@@ -190,12 +190,14 @@ namespace ModInstaller
         {
             if (OS != "Windows") return;
             if (File.Exists(Properties.Settings.Default.installFolder + @"/Galaxy.dll") ||
-                File.Exists(Properties.Settings.Default.installFolder + @"/steam_api.dll")) return;
+                File.Exists(Properties.Settings.Default.installFolder + @"/steam_api.dll") ||
+                File.Exists(Properties.Settings.Default.installFolder + @"/steam_appid.txt") ||
+                Path.GetFileName(Properties.Settings.Default.installFolder) != "Hollow Knight Godmaster" ) return;
             MessageBox.Show("Please purchase the game before attempting to play it.");
             Process.Start("https://store.steampowered.com/app/367520/Hollow_Knight/");
             //Directory.Delete(Properties.Settings.Default.installFolder, true);
 //            Directory.Move(Properties.Settings.Default.installFolder + @"/hollow_knight_Data", Properties.Settings.Default.installFolder + @"/holIow_knight_Data");
-            Application.Exit();
+//            Application.Exit();
         }
 
         public void FillModsList()
@@ -220,21 +222,26 @@ namespace ModInstaller
 
             foreach (XElement mod in mods)
             {
-                if (!mod.Element("Dependencies").IsEmpty)
+                if (mod.Element("Name")?.Value == "ModCommon")
+                {
+                    modcommonLink = mod.Element("Link")?.Value;
+                    modcommonSHA1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                }
+                else if (mod.Element("Name")?.Value == "Modding API")
+                {
+                    apiLink = mod.Element("Link")?.Value;
+                    apiSHA1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                }
+                else
                 {
                     modsList.Add(new Mod
                     {
                         Name = mod.Element("Name")?.Value,
                         Link = mod.Element("Link")?.Value,
-                        Files = (mod.Element("Files")?.Elements("File")).ToDictionary(element => element.Element("Name")?.Value, element => element.Element("SHA1")?.Value),
+                        Files = mod.Element("Files")?.Elements("File").ToDictionary(element => element.Element("Name")?.Value, element => element.Element("SHA1")?.Value),
                         Dependencies = mod.Element("Dependencies")?.Elements("string").Select(dependency => dependency.Value).ToList(),
                         Optional = mod.Element("Optional")?.Elements("string").Select(dependency => dependency.Value).ToList() ?? new List<string>(),
                     });
-                }
-                else if (mod.Element("Name")?.Value == "Modding API")
-                {
-                    apilink = mod.Element("Link")?.Value;
-                    apiMD5 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
                 }
             }
         }
@@ -261,7 +268,31 @@ namespace ModInstaller
 
         private void CheckApiInstalled()
         {
-            apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", apiMD5);
+            apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", apiSHA1);
+            modcommonIsInstalled = File.Exists(Properties.Settings.Default.modFolder + @"/ModCommon.dll") &&
+                                   SHA1Equals(Properties.Settings.Default.modFolder + @"/ModCommon.dll", modcommonSHA1);
+            
+            if (!apiIsInstalled)
+            {
+                Download(new Uri(apiLink),
+                    $@"{Properties.Settings.Default.installFolder}/Modding API.zip", "Modding API");
+                InstallApi($@"{Properties.Settings.Default.installFolder}/Modding API.zip",
+                    Properties.Settings.Default.temp);
+                File.Delete($@"{Properties.Settings.Default.installFolder}/Modding API.zip");
+                MessageBox.Show(@"Modding API successfully installed!");
+            }
+
+            if (!modcommonIsInstalled)
+            {
+                Download(new Uri(modcommonLink),
+                    $@"{Properties.Settings.Default.modFolder}/ModCommon.zip", "ModCommon");
+                InstallApi($@"{Properties.Settings.Default.modFolder}/ModCommon.zip",
+                    Properties.Settings.Default.temp);
+                File.Delete($@"{Properties.Settings.Default.modFolder}/ModCommon.zip");
+                MessageBox.Show(@"ModCommon successfully installed!");       
+            }
+            
+            
         }
 
         private void PopulateList()
@@ -399,7 +430,7 @@ namespace ModInstaller
             {
                 if (installedMods.Contains(modname)) return;
 
-                DialogResult result = MessageBox.Show(text: $@"Do you want to install {modname}?", caption: "Confirm installation", buttons: MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show($@"Do you want to install {modname}?", "Confirm installation", MessageBoxButtons.YesNo);
 
                 if (result != DialogResult.Yes) return;
                 if (mod.Dependencies.Any())
@@ -407,21 +438,9 @@ namespace ModInstaller
                     CheckApiInstalled();
                     foreach (string dependency in mod.Dependencies)
                     {
-                        if (dependency == "Modding API")
-                        {
-                            if (apiIsInstalled) continue;
-                            Download(new Uri(apilink),
-                                $@"{Properties.Settings.Default.installFolder}/{dependency}.zip", dependency);
-                            InstallApi($@"{Properties.Settings.Default.installFolder}/{dependency}.zip",
-                                Properties.Settings.Default.temp);
-                            File.Delete($@"{Properties.Settings.Default.installFolder}/{dependency}.zip");
-                            MessageBox.Show($@"{dependency} successfully installed!");
-                        }
-                        else
-                        {
-                            if (installedMods.Any(f => f.Equals(dependency))) continue;
+                        if (dependency == "Modding API" || dependency == "ModCommon") continue;
+                        if (installedMods.Any(f => f.Equals(dependency))) continue;
                             Install(dependency, false);
-                        }
                     }
                 }
 
@@ -533,6 +552,7 @@ namespace ModInstaller
 
             foreach (var modsFile in modsFiles)
             {
+                if (Path.GetFileName(modsFile.Name) == "ModCommon.dll") continue;
                 Mod mod = new Mod();
                 ModField entry = new ModField
                 {
@@ -577,6 +597,7 @@ namespace ModInstaller
 
             foreach (var file in disabledFiles)
             {
+                if (Path.GetFileName(file.Name) == "ModCommon.dll") continue;
                 Mod mod = new Mod();
                 ModField entry = new ModField
                 {
@@ -818,7 +839,7 @@ namespace ModInstaller
                 DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation",
                     MessageBoxButtons.YesNo);
                 if (result != DialogResult.Yes) return;
-                Download(new Uri(apilink), $@"{Properties.Settings.Default.installFolder}/API.zip", "Modding API");
+                Download(new Uri(apiLink), $@"{Properties.Settings.Default.installFolder}/API.zip", "Modding API");
                 InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
                 File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
                 MessageBox.Show("Modding API successfully installed!");
@@ -947,13 +968,16 @@ Please select the correct installation path for Hollow Knight.");
 
         private List<ModField> modEntries = new List<ModField>();
 
-        private string apilink;
-        private string apiMD5;
+        private string apiLink;
+        private string apiSHA1;
+        private string modcommonLink;
+        private string modcommonSHA1;
         private string OS;
         public bool isOffline;
         private bool apiIsInstalled;
+        private bool modcommonIsInstalled;
         private bool pirate;
-    public string version = "v8.1.1";
+        public string version = "v8.2.0";
 
 
         #endregion
