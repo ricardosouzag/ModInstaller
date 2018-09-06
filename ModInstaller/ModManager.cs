@@ -23,7 +23,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            CheckUpdate();
+            //CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
@@ -111,7 +111,11 @@ namespace ModInstaller
                     break;
                 case "Linux":
                     // Default steam installation path for Linux.
-                    defaultPaths.Add(System.Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
+                    defaultPaths.Add(Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
+                    break;
+                case "MacOS":
+                    //Default steam installation path for Mac.
+                    defaultPaths.Add(@"~/Library/Application Support/Steam/steamapps/common/Hollow Knight");
                     break;
 
             }
@@ -160,7 +164,7 @@ namespace ModInstaller
                 }
                 if (String.IsNullOrEmpty(Properties.Settings.Default.installFolder))
                 {
-                    ManualPathLocation form3 = new ManualPathLocation();
+                    ManualPathLocation form3 = new ManualPathLocation(OS);
                     Hide();
                     form3.FormClosed += ManualPathClosed;
                     form3.ShowDialog();
@@ -977,7 +981,7 @@ Please select the correct installation path for Hollow Knight.");
         private bool apiIsInstalled;
         private bool modcommonIsInstalled;
         private bool pirate;
-        public string version = "v8.2.0";
+        private string version = "v8.3.0";
 
 
         #endregion
