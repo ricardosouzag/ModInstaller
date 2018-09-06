@@ -23,7 +23,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            //CheckUpdate();
+            CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
@@ -290,7 +290,7 @@ namespace ModInstaller
             {
                 Download(new Uri(modcommonLink),
                     $@"{Properties.Settings.Default.modFolder}/ModCommon.zip", "ModCommon");
-                InstallApi($@"{Properties.Settings.Default.modFolder}/ModCommon.zip",
+                InstallMods($@"{Properties.Settings.Default.modFolder}/ModCommon.zip",
                     Properties.Settings.Default.temp);
                 File.Delete($@"{Properties.Settings.Default.modFolder}/ModCommon.zip");
                 MessageBox.Show(@"ModCommon successfully installed!");       
