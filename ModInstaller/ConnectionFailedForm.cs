@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ModInstaller
@@ -25,18 +18,18 @@ namespace ModInstaller
             InitializeComponent();
         }
 
-        private void ClickOfflineMode(object sender, System.EventArgs e)
+        private void ClickOfflineMode(object sender, EventArgs e)
         {
-            mainForm.isOffline = true;
+            mainForm.IsOffline = true;
             Close();
         }
 
-        private void ClickRetry(object sender, System.EventArgs e)
+        private void ClickRetry(object sender, EventArgs e)
         {
             Dispose();
         }
 
-        private void ClickAbort(object sender, System.EventArgs e)
+        private void ClickAbort(object sender, EventArgs e)
         {
             Application.Exit();
             Environment.Exit(0);

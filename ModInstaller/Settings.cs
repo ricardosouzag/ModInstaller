@@ -4,9 +4,9 @@ namespace ModInstaller
 {
     public class Settings
     {
-        public string modFolder;
+        public string ModFolder;
         public string APIFolder;
-        public List<string> installedMods;
-        public string installPath;
+        public List<string> InstalledMods;
+        public string InstallPath;
     }
 }

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ModInstaller
@@ -21,25 +15,25 @@ namespace ModInstaller
 
         public DownloadHelper(Uri uri, string path, string modname)
         {
-            this.modname = modname;
+            _modname = modname;
             InitializeComponent();
             StartDownload(uri, path);
         }
 
         private void StartDownload(Uri uri, string path)
         {
-            using (webClient = new WebClient())
+            using (_webClient = new WebClient())
             {
-                webClient.DownloadFileCompleted += Completed;
-                webClient.DownloadProgressChanged += ProgressChanged;
+                _webClient.DownloadFileCompleted += Completed;
+                _webClient.DownloadProgressChanged += ProgressChanged;
 
                 // Start the stopwatch which we will be using to calculate the download speed
-                sw.Start();
+                _sw.Start();
 
                 try
                 {
                     // Start downloading the file
-                    webClient.DownloadFileAsync(uri, path);
+                    _webClient.DownloadFileAsync(uri, path);
                 }
                 catch (Exception ex)
                 {
@@ -52,10 +46,10 @@ namespace ModInstaller
         // The event that will fire whenever the progress of the WebClient is changed
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            labelModname.Text = $"Downloading {modname}";
+            labelModname.Text = $"Downloading {_modname}";
 
             // Calculate download speed and output it to labelSpeed.
-            labelSpeed.Text = $"{(e.BytesReceived / 1024d / sw.Elapsed.TotalSeconds).ToString("0.00")} kb/s";
+            labelSpeed.Text = $"{(e.BytesReceived / 1024d / _sw.Elapsed.TotalSeconds).ToString("0.00")} kb/s";
 
             // Update the progressbar percentage only when the value is not the same.
             progressBar.Value = e.ProgressPercentage;
@@ -69,13 +63,13 @@ namespace ModInstaller
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
             // Reset the stopwatch.
-            sw.Reset();
+            _sw.Reset();
 
             MessageBox.Show(e.Cancelled ? "Download has been canceled." : "Download completed!");
             Close();
         }
-        private WebClient webClient;
-        private Stopwatch sw = new Stopwatch();
-        private string modname;
+        private WebClient _webClient;
+        private readonly Stopwatch _sw = new Stopwatch();
+        private readonly string _modname;
     }
 }

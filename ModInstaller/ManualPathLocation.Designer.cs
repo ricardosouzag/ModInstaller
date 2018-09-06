@@ -34,6 +34,7 @@ namespace ModInstaller
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualPathLocation));
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            _openFileDialog = new OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             this.CenterToScreen();
@@ -55,9 +56,15 @@ namespace ModInstaller
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(226, 26);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Select your Hollow Knight installation path";
+            this.button1.Text = currOS == "MacOS" ? "Select your hollow_knight.app file.": "Select your Hollow Knight installation path";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            //
+            // OpenFileDialog
+            //
+            this._openFileDialog.Filter = "app files|*.app; *.dll|All files|*.*";
+            this._openFileDialog.Multiselect = false;
+            this._openFileDialog.Title = "Select the your hollow_knight.app file.";
             // 
             // Form3
             // 
@@ -80,6 +87,7 @@ namespace ModInstaller
 
         private Label label1;
         private FolderBrowserDialog folderBrowserDialog1;
+        private OpenFileDialog _openFileDialog;
         private Button button1;
     }
 }
