@@ -38,7 +38,7 @@ namespace ModInstaller
 
         private void CheckUpdate()
         {
-            string dir = Directory.GetCurrentDirectory();
+            string dir = AppDomain.CurrentDomain.BaseDirectory;
             string file = Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location);
             XDocument dllist = new XDocument();
 
@@ -686,16 +686,16 @@ namespace ModInstaller
             button1.Size = new Size(panel.Width, 23);
             button2.Size = new Size(panel.Width, 23);
             button3.Size = new Size(panel.Width, 23);
-            _button4.Size = new Size(panel.Width, 23);
-            _browser.Size = new Size(panel.Width, 23);
+            // _button4.Size = new Size(panel.Width, 23);
+            // _browser.Size = new Size(panel.Width, 23);
             button1.Top = height + 9;
             button1.Left = 3;
             button2.Top = button1.Bottom;
             button2.Left = 3;
             button3.Top = button2.Bottom;
             button3.Left = 3;
-            _button4.Top = button3.Bottom;
-            _button4.Left = 3;
+            // _button4.Top = button3.Bottom;
+            // _button4.Left = 3;
             PerformAutoScale();
         }
 
