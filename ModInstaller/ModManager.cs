@@ -24,7 +24,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // CheckUpdate();
+            CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
