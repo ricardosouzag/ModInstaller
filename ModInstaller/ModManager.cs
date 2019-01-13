@@ -24,7 +24,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            CheckUpdate();
+            // CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
@@ -282,6 +282,19 @@ namespace ModInstaller
 
         private void CheckApiInstalled()
         {
+            if (!Directory.Exists(Properties.Settings.Default.APIFolder))
+            {
+                MessageBox.Show("Folder does not exist! (Game is probably not installed) Exiting.");
+                
+                // Make sure to not ruin everything forever
+                Properties.Settings.Default.installFolder = null;
+                
+                Application.Exit();
+                Close();
+                
+                return;
+            }
+            
             _apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1);
             _modcommonIsInstalled = File.Exists(Properties.Settings.Default.modFolder + @"/ModCommon.dll") &&
                                     SHA1Equals(Properties.Settings.Default.modFolder + @"/ModCommon.dll",
