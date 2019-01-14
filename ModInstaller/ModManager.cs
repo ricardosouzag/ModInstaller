@@ -24,7 +24,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            //CheckUpdate();
+            CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
@@ -292,6 +292,24 @@ namespace ModInstaller
                 Application.Exit();
                 Close();
                 
+                return;
+            }
+
+            if (!File.Exists(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.dll") ||
+                (!SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                     "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d") &&
+                 (!File.Exists(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.vanilla") || !SHA1Equals(
+                      Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
+                      "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d"))))
+            {
+                MessageBox.Show(
+                    "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.", "Warning!");
+
+                // Make sure to not ruin everything forever part2
+
+                Application.Exit();
+                Close();
+
                 return;
             }
             
@@ -1119,7 +1137,7 @@ Please select the correct installation path for Hollow Knight.");
         private bool _apiIsInstalled;
         private bool _modcommonIsInstalled;
         private bool _vanillaEnabled = false;
-        private const string Version = "v8.5.0";
+        private const string Version = "v8.5.1";
 
         #endregion
     }
