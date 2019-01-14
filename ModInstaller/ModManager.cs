@@ -296,11 +296,11 @@ namespace ModInstaller
             }
 
             if (!File.Exists(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.dll") ||
-                (!SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
                      "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d") &&
                  (!File.Exists(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.vanilla") || !SHA1Equals(
                       Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
-                      "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d"))))
+                      "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d")) || !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1))
             {
                 MessageBox.Show(
                     "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.", "Warning!");
@@ -397,6 +397,8 @@ namespace ModInstaller
                 _modEntries[i].ReadmeButton.Click += OnReadmeButtonClick;
             }
 
+            _vanillaEnabled = !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1);
+            
             button1.Text = _vanillaEnabled
                 ? "Enable All Installed Mods"
                 : "Revert Back To Unmodded";
@@ -1137,7 +1139,7 @@ Please select the correct installation path for Hollow Knight.");
         private bool _apiIsInstalled;
         private bool _modcommonIsInstalled;
         private bool _vanillaEnabled = false;
-        private const string Version = "v8.5.1";
+        private const string Version = "v8.5.2";
 
         #endregion
     }
