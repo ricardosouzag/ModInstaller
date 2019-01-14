@@ -24,7 +24,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            CheckUpdate();
+            //CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
@@ -33,7 +33,7 @@ namespace ModInstaller
             CheckApiInstalled();
             PopulateList();
             ResizeUI();
-            Text = "Mod Manager " + Version;
+            Text = "Mod Manager " + Version + " by Gradow";
         }
 
         private void CheckUpdate()
@@ -295,7 +295,8 @@ namespace ModInstaller
                 return;
             }
             
-            _apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1);
+            _apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1)
+                              || (File.Exists($@"{Properties.Settings.Default.APIFolder}/Assembly-Csharp.mod") && SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod", _apiSha1));
             _modcommonIsInstalled = File.Exists(Properties.Settings.Default.modFolder + @"/ModCommon.dll") &&
                                     SHA1Equals(Properties.Settings.Default.modFolder + @"/ModCommon.dll",
                                         _modcommonSha1);
@@ -378,7 +379,9 @@ namespace ModInstaller
                 _modEntries[i].ReadmeButton.Click += OnReadmeButtonClick;
             }
 
-            button1.Enabled = !IsOffline;
+            button1.Text = _vanillaEnabled
+                ? "Enable All Installed Mods"
+                : "Revert Back To Unmodded";
         }
 
         private void OnReadmeButtonClick(object sender, EventArgs e)
@@ -699,16 +702,16 @@ namespace ModInstaller
             button1.Size = new Size(panel.Width, 23);
             button2.Size = new Size(panel.Width, 23);
             button3.Size = new Size(panel.Width, 23);
-            // _button4.Size = new Size(panel.Width, 23);
-            // _browser.Size = new Size(panel.Width, 23);
+            _button4.Size = new Size(panel.Width, 23);
+            _browser.Size = new Size(panel.Width, 23);
             button1.Top = height + 9;
             button1.Left = 3;
             button2.Top = button1.Bottom;
             button2.Left = 3;
             button3.Top = button2.Bottom;
             button3.Left = 3;
-            // _button4.Top = button3.Bottom;
-            // _button4.Left = 3;
+            _button4.Top = button3.Bottom;
+            _button4.Left = 3;
             PerformAutoScale();
         }
 
@@ -761,6 +764,11 @@ namespace ModInstaller
             ZipFile.ExtractToDirectory(api, tempFolder);
             IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder).ToList();
             IEnumerable<string> files = Directory.EnumerateFiles(tempFolder).ToList();
+            if (SHA1Equals($@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll", "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d"))
+            {
+                File.Copy($@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll",
+                    $@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.vanilla", true);
+            }
             if (!files.Any(f => f.Contains(".dll")))
             {
                 string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
@@ -885,23 +893,50 @@ namespace ModInstaller
 
         #region Event listeners
 
-        private void InstallApiClick(object sender, EventArgs e)
+        private void EnableApiClick(object sender, EventArgs e)
         {
-            CheckApiInstalled();
-            if (!_apiIsInstalled)
+            if (!_vanillaEnabled)
             {
-                DialogResult result = MessageBox.Show("Do you want to install the modding API?", "Install confirmation",
+                DialogResult result = MessageBox.Show("Do you want to disable all installed mods?", "Confirmation dialogue",
                     MessageBoxButtons.YesNo);
                 if (result != DialogResult.Yes) return;
-                Download(new Uri(_apiLink), $@"{Properties.Settings.Default.installFolder}/API.zip", "Modding API");
-                InstallApi($@"{Properties.Settings.Default.installFolder}/API.zip", Properties.Settings.Default.temp);
-                File.Delete($@"{Properties.Settings.Default.installFolder}/API.zip");
-                MessageBox.Show("Modding API successfully installed!");
+                if (File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla"))
+                {
+                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod", true);
+                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", true);
+                    MessageBox.Show("Successfully disabled all installed mods!");
+                }
+                else
+                {
+                    MessageBox.Show("Unable to locate vanilla Hollow Knight.\nPlease verify integrity of game files and relaunch this installer.");
+                    Application.Exit();
+                    Close();
+                }
             }
             else
             {
-                MessageBox.Show("Modding API is already installed!");
+                DialogResult result = MessageBox.Show("Do you want to enable all installed mods?", "Confirmation dialogue",
+                    MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes) return;
+                if (File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod"))
+                {
+                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla", true);
+                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", true);
+                    MessageBox.Show("Successfully enabled all installed mods!");
+                }
+                else
+                {
+                    MessageBox.Show("Unable to locate vanilla Hollow Knight. Please verify integrity of game files.");
+                }
             }
+            _vanillaEnabled = !_vanillaEnabled;
+            button1.Text = _vanillaEnabled
+                ? "Enable All Installed Mods"
+                : "Revert Back To Unmodded";
         }
 
         private void ManualInstallClick(object sender, EventArgs e)
@@ -948,8 +983,7 @@ Please select the correct installation path for Hollow Knight.");
 		    return os == "MacOS"
 		        ? File.Exists(fb.SelectedPath + "/Contents/Resources/Data/Managed/Assembly-CSharp.dll") &&
 		          new[] {"hollow_knight.app", "Hollow Knight.app"}.Contains(Path.GetFileName(fb.SelectedPath))
-		        : File.Exists(fb.SelectedPath + "/hollow_knight_Data/Managed/Assembly-CSharp.dll") &&
-		          Path.GetFileName(fb.SelectedPath) == "Hollow Knight";
+		        : File.Exists(fb.SelectedPath + "/hollow_knight_Data/Managed/Assembly-CSharp.dll");
 		}
 
         private void DoManualInstall(object sender, EventArgs e)
@@ -1084,7 +1118,8 @@ Please select the correct installation path for Hollow Knight.");
         public bool IsOffline;
         private bool _apiIsInstalled;
         private bool _modcommonIsInstalled;
-        private const string Version = "v8.4.0";
+        private bool _vanillaEnabled = false;
+        private const string Version = "v8.5.0";
 
         #endregion
     }

@@ -37,8 +37,10 @@ namespace ModInstaller
             this.folderBrowserDialog1 = new FolderBrowserDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            _button4 = new Button();
             button3 = new System.Windows.Forms.Button();
             panel = new Panel();
+            _browser = new WebBrowser();
             this.SuspendLayout();
             CenterToScreen();
             CenterToParent();
@@ -60,9 +62,9 @@ namespace ModInstaller
             //this.button1.Location = new System.Drawing.Point(12, 372);
             this.button1.Name = "button1";
             this.button1.TabIndex = 1;
-            this.button1.Text = "Install Modding API";
+            this.button1.Text = "Disable all mods (revert to vanilla)";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.InstallApiClick);
+            this.button1.Click += new System.EventHandler(this.EnableApiClick);
             // 
             // button2
             // 
@@ -80,6 +82,11 @@ namespace ModInstaller
             this.button3.Text = "Change Default Install Path";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.ChangePathClick);
+            //
+            //button4
+            //
+            _button4.Text = "If you liked this installer, please consider making a donation!";
+            _button4.Click += DonateButtonClick;
             // 
             // ModManager
             // 
@@ -87,7 +94,9 @@ namespace ModInstaller
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             Controls.Add(button3);
+            Controls.Add(_button4);
             Controls.Add(panel);
+//            Controls.Add(_browser);
             MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModManager";
@@ -108,6 +117,8 @@ namespace ModInstaller
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button _button4;
+        private WebBrowser _browser;
         private Panel panel;
     }
 }
