@@ -6,6 +6,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Security.Cryptography;
@@ -199,8 +200,6 @@ namespace ModInstaller
         {
             if (OS != "Windows") return;
             if (File.Exists(Properties.Settings.Default.installFolder + @"/Galaxy.dll") ||
-                File.Exists(Properties.Settings.Default.installFolder + @"/steam_api.dll") ||
-                File.Exists(Properties.Settings.Default.installFolder + @"/steam_appid.txt") ||
                 Path.GetFileName(Properties.Settings.Default.installFolder) != "Hollow Knight Godmaster") return;
             MessageBox.Show("Please purchase the game before attempting to play it.");
             Process.Start("https://store.steampowered.com/app/367520/Hollow_Knight/");
@@ -241,6 +240,7 @@ namespace ModInstaller
                     {
                         _apiLink = mod.Element("Link")?.Value;
                         _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                        _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
                     }
                     else
                     {
@@ -294,24 +294,60 @@ namespace ModInstaller
                 
                 return;
             }
+            
+            
+            // Check if either API is installed or if vanilla dll still exists
+            if (File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll"))
+            {
+                byte[] bytes = File.ReadAllBytes(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll");
+                Assembly ass = Assembly.Load(bytes);
+                
+                Type[] types;
+                try
+                {
+                    types = ass.GetTypes();
+                }
+                catch (ReflectionTypeLoadException e)
+                {
+                    types = e.Types;
+                }
 
-            if (!File.Exists(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.dll") ||
-                !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
-                     "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d") &&
-                 (!File.Exists(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.vanilla") || !SHA1Equals(
-                      Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
-                      "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d")) || !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1))
+                Type[] nonNullTypes = types.Where(t => t != null).ToArray();
+
+
+                if (!File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla") &&
+                    !nonNullTypes.Any(type => type.Name.Contains("CanvasUtil")) &&
+                    (!nonNullTypes.Any(type => type.Name.Contains("Constant")) || (string) nonNullTypes
+                         .First(type => type.Name.Contains("Constant") && type.GetFields().Any(f => f.Name == "GAME_VERSION")).GetField("GAME_VERSION").GetValue(null) !=
+                     _currentPatch))
+                {
+                    
+                    MessageBox.Show(
+                        "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.",
+                        "Warning!");
+
+                    // Make sure to not ruin everything forever part2
+
+                    Application.Exit();
+                    Close();
+
+                    return;
+                }
+            }
+            else
             {
                 MessageBox.Show(
-                    "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.", "Warning!");
+                    "Unable to locate game files.\nPlease make sure the game is installed and then try again.",
+                    "Warning!");
 
-                // Make sure to not ruin everything forever part2
+                // Make sure to not ruin everything forever part3
 
                 Application.Exit();
                 Close();
 
                 return;
             }
+            
             
             _apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1)
                               || (File.Exists($@"{Properties.Settings.Default.APIFolder}/Assembly-Csharp.mod") && SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod", _apiSha1));
@@ -1132,6 +1168,7 @@ Please select the correct installation path for Hollow Knight.");
 
         private string _apiLink;
         private string _apiSha1;
+        private string _currentPatch;
         private string _modcommonLink;
         private string _modcommonSha1;
         private string _os;
