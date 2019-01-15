@@ -314,9 +314,13 @@ namespace ModInstaller
 
                 Type[] nonNullTypes = types.Where(t => t != null).ToArray();
 
+                _assemblyIsAPI = nonNullTypes.Any(type => type.Name.Contains("CanvasUtil"));
+
+                _apiIsInstalled = _assemblyIsAPI || File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod");
+
 
                 if (!File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla") &&
-                    !nonNullTypes.Any(type => type.Name.Contains("CanvasUtil")) &&
+                    !_apiIsInstalled &&
                     (!nonNullTypes.Any(type => type.Name.Contains("Constant")) || (string) nonNullTypes
                          .First(type => type.Name.Contains("Constant") && type.GetFields().Any(f => f.Name == "GAME_VERSION")).GetField("GAME_VERSION").GetValue(null) !=
                      _currentPatch))
@@ -348,14 +352,11 @@ namespace ModInstaller
                 return;
             }
             
-            
-            _apiIsInstalled = SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1)
-                              || (File.Exists($@"{Properties.Settings.Default.APIFolder}/Assembly-Csharp.mod") && SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod", _apiSha1));
             _modcommonIsInstalled = File.Exists(Properties.Settings.Default.modFolder + @"/ModCommon.dll") &&
                                     SHA1Equals(Properties.Settings.Default.modFolder + @"/ModCommon.dll",
                                         _modcommonSha1);
 
-            if (!_apiIsInstalled)
+            if (!_apiIsInstalled || _assemblyIsAPI && !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1))
             {
                 Download(new Uri(_apiLink),
                     $@"{Properties.Settings.Default.installFolder}/Modding API.zip", "Modding API");
@@ -820,7 +821,7 @@ namespace ModInstaller
             ZipFile.ExtractToDirectory(api, tempFolder);
             IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder).ToList();
             IEnumerable<string> files = Directory.EnumerateFiles(tempFolder).ToList();
-            if (SHA1Equals($@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll", "39afa2b4f7a9f0deef3ffd97d3808378e1a1080d"))
+            if (_assemblyIsAPI)
             {
                 File.Copy($@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll",
                     $@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.vanilla", true);
@@ -962,6 +963,7 @@ namespace ModInstaller
                         Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod", true);
                     File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
                         Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", true);
+                    _assemblyIsAPI = false;
                     MessageBox.Show("Successfully disabled all installed mods!");
                 }
                 else
@@ -982,6 +984,7 @@ namespace ModInstaller
                         Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla", true);
                     File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod",
                         Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", true);
+                    _assemblyIsAPI = true;
                     MessageBox.Show("Successfully enabled all installed mods!");
                 }
                 else
@@ -1176,6 +1179,7 @@ Please select the correct installation path for Hollow Knight.");
         private bool _apiIsInstalled;
         private bool _modcommonIsInstalled;
         private bool _vanillaEnabled = false;
+        private bool _assemblyIsAPI;
         private const string Version = "v8.5.2";
 
         #endregion
