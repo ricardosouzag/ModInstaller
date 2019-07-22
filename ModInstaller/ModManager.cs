@@ -17,6 +17,8 @@ namespace ModInstaller
 {
     public partial class ModManager : Form
     {
+        private const string ModLinks = "https://raw.githubusercontent.com/Ayugradow/ModInstaller/master/modlinks.xml";
+
         public ModManager()
         {
             InitializeComponent();
@@ -54,10 +56,7 @@ namespace ModInstaller
 
             try
             {
-                dllist = XDocument.Load
-                (
-                    "https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh"
-                );
+                dllist = XDocument.Load(ModLinks);
             }
             catch (Exception)
             {
