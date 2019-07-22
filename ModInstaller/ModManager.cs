@@ -903,7 +903,6 @@ namespace ModInstaller
 
         private void InstallApi(string api, string tempFolder)
         {
-            return;
             ZipFile.ExtractToDirectory(api, tempFolder);
             IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder).ToList();
             IEnumerable<string> files = Directory.EnumerateFiles(tempFolder).ToList();
