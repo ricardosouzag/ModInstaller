@@ -221,10 +221,10 @@ namespace ModInstaller
         public void FillModsList()
         {
             XDocument dllist;
+            
             try
             {
-                dllist =
-                    XDocument.Load("https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+                dllist = XDocument.Load(ModLinks);
             }
             catch (Exception e)
             {
