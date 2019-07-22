@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Security.Cryptography;
+
 // ReSharper disable LocalizableElement
 
 namespace ModInstaller
@@ -42,7 +43,7 @@ namespace ModInstaller
         private void CheckUpdate()
         {
             string dir = AppDomain.CurrentDomain.BaseDirectory;
-            string file = Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string file = Path.GetFileName(Assembly.GetEntryAssembly()?.Location);
             XDocument dllist = new XDocument();
 
             if (File.Exists(dir + @"/lol.exe"))
@@ -53,8 +54,10 @@ namespace ModInstaller
 
             try
             {
-                dllist = XDocument.Load(
-                    "https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh");
+                dllist = XDocument.Load
+                (
+                    "https://drive.google.com/uc?export=download&id=1HN5P35vvpFcjcYQ72XvZr35QxD09GUwh"
+                );
             }
             catch (Exception)
             {
@@ -74,7 +77,7 @@ namespace ModInstaller
                 {
                     StartInfo =
                     {
-                        FileName = dir + @"/AU.exe",
+                        FileName = dir                                                               + @"/AU.exe",
                         Arguments = "\"" + dir + "\"" + " " + installer.Element("Link")?.Value + " " + file
                     }
                 };
@@ -116,12 +119,13 @@ namespace ModInstaller
                     break;
                 case "Linux":
                     // Default steam installation path for Linux.
-                    _defaultPaths.Add(Environment.GetEnvironmentVariable("HOME") +
-                                      "/.steam/steam/steamapps/common/Hollow Knight");
+                    _defaultPaths.Add(Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
                     break;
                 case "MacOS":
                     //Default steam installation path for Mac.
-                    _defaultPaths.Add(Environment.GetEnvironmentVariable("HOME") + "/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app");                    break;
+                    _defaultPaths.Add
+                        (Environment.GetEnvironmentVariable("HOME") + "/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app");
+                    break;
             }
         }
 
@@ -191,8 +195,12 @@ namespace ModInstaller
 
         private void SetDefaultPath(string path)
         {
-            DialogResult dialogResult = MessageBox.Show("Is this your Hollow Knight installation path?\n" + path,
-                "Path confirmation", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show
+            (
+                "Is this your Hollow Knight installation path?\n" + path,
+                "Path confirmation",
+                MessageBoxButtons.YesNo
+            );
             if (dialogResult != DialogResult.Yes) return;
             Properties.Settings.Default.installFolder = path;
             Properties.Settings.Default.Save();
@@ -201,13 +209,14 @@ namespace ModInstaller
         private void PiracyCheck()
         {
             if (OS != "Windows") return;
-            if (File.Exists(Properties.Settings.Default.installFolder + @"/Galaxy.dll") ||
-                Path.GetFileName(Properties.Settings.Default.installFolder) != "Hollow Knight Godmaster") return;
+            if (File.Exists
+                    (Properties.Settings.Default.installFolder + @"/Galaxy.dll")
+                || Path.GetFileName(Properties.Settings.Default.installFolder) != "Hollow Knight Godmaster") return;
             MessageBox.Show("Please purchase the game before attempting to play it.");
             Process.Start("https://store.steampowered.com/app/367520/Hollow_Knight/");
             //Directory.Delete(Properties.Settings.Default.installFolder, true);
-//            Directory.Move(Properties.Settings.Default.installFolder + @"/hollow_knight_Data", Properties.Settings.Default.installFolder + @"/holIow_knight_Data");
-//            Application.Exit();
+            //            Directory.Move(Properties.Settings.Default.installFolder + @"/hollow_knight_Data", Properties.Settings.Default.installFolder + @"/holIow_knight_Data");
+            //            Application.Exit();
         }
 
         public void FillModsList()
@@ -246,17 +255,30 @@ namespace ModInstaller
                     }
                     else
                     {
-                        _modsList.Add(new Mod
-                        {
-                            Name = mod.Element("Name")?.Value,
-                            Link = mod.Element("Link")?.Value,
-                            Files = mod.Element("Files")?.Elements("File").ToDictionary(
-                                element => element.Element("Name")?.Value, element => element.Element("SHA1")?.Value),
-                            Dependencies = mod.Element("Dependencies")?.Elements("string")
-                                .Select(dependency => dependency.Value).ToList(),
-                            Optional = mod.Element("Optional")?.Elements("string")
-                                           .Select(dependency => dependency.Value).ToList() ?? new List<string>(),
-                        });
+                        _modsList.Add
+                        (
+                            new Mod
+                            {
+                                Name = mod.Element("Name")?.Value,
+                                Link = mod.Element("Link")?.Value,
+                                Files = mod.Element("Files")
+                                           ?.Elements("File")
+                                           .ToDictionary
+                                           (
+                                               element => element.Element("Name")?.Value,
+                                               element => element.Element("SHA1")?.Value
+                                           ),
+                                Dependencies = mod.Element("Dependencies")
+                                                  ?.Elements("string")
+                                                  .Select(dependency => dependency.Value)
+                                                  .ToList(),
+                                Optional = mod.Element("Optional")
+                                              ?.Elements("string")
+                                              .Select(dependency => dependency.Value)
+                                              .ToList()
+                                    ?? new List<string>(),
+                            }
+                        );
                     }
                 }
         }
@@ -267,8 +289,7 @@ namespace ModInstaller
             FillModsList();
         }
 
-        private bool SHA1Equals(string file, string modmd5) =>
-            String.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
+        private bool SHA1Equals(string file, string modmd5) => String.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
 
         private string GetSHA1(string file)
         {
@@ -287,23 +308,23 @@ namespace ModInstaller
             if (!Directory.Exists(Properties.Settings.Default.APIFolder))
             {
                 MessageBox.Show("Folder does not exist! (Game is probably not installed) Exiting.");
-                
+
                 // Make sure to not ruin everything forever
                 Properties.Settings.Default.installFolder = null;
-                
+
                 Application.Exit();
                 Close();
-                
+
                 return;
             }
-            
-            
+
+
             // Check if either API is installed or if vanilla dll still exists
             if (File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll"))
             {
                 byte[] bytes = File.ReadAllBytes(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll");
                 Assembly ass = Assembly.Load(bytes);
-                
+
                 Type[] types;
                 try
                 {
@@ -321,16 +342,20 @@ namespace ModInstaller
                 _apiIsInstalled = _assemblyIsAPI || File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod");
 
 
-                if (!File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla") &&
-                    !_apiIsInstalled &&
-                    (!nonNullTypes.Any(type => type.Name.Contains("Constant")) || (string) nonNullTypes
-                         .First(type => type.Name.Contains("Constant") && type.GetFields().Any(f => f.Name == "GAME_VERSION")).GetField("GAME_VERSION").GetValue(null) !=
-                     _currentPatch))
+                if (!File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla")
+                    && !_apiIsInstalled
+                    && (!nonNullTypes.Any(type => type.Name.Contains("Constant"))
+                        || (string) nonNullTypes
+                                    .First(type => type.Name.Contains("Constant") && type.GetFields().Any(f => f.Name == "GAME_VERSION"))
+                                    .GetField("GAME_VERSION")
+                                    .GetValue(null)
+                        != _currentPatch))
                 {
-                    
-                    MessageBox.Show(
+                    MessageBox.Show
+                    (
                         "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.",
-                        "Warning!");
+                        "Warning!"
+                    );
 
                     // Make sure to not ruin everything forever part2
 
@@ -342,9 +367,11 @@ namespace ModInstaller
             }
             else
             {
-                MessageBox.Show(
+                MessageBox.Show
+                (
                     "Unable to locate game files.\nPlease make sure the game is installed and then try again.",
-                    "Warning!");
+                    "Warning!"
+                );
 
                 // Make sure to not ruin everything forever part3
 
@@ -353,27 +380,45 @@ namespace ModInstaller
 
                 return;
             }
-            
-            _modcommonIsInstalled = File.Exists(Properties.Settings.Default.modFolder + @"/ModCommon.dll") &&
-                                    SHA1Equals(Properties.Settings.Default.modFolder + @"/ModCommon.dll",
-                                        _modcommonSha1);
+
+            _modcommonIsInstalled = File.Exists(Properties.Settings.Default.modFolder + @"/ModCommon.dll")
+                && SHA1Equals
+                (
+                    Properties.Settings.Default.modFolder + @"/ModCommon.dll",
+                    _modcommonSha1
+                );
 
             if (!_apiIsInstalled || _assemblyIsAPI && !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1))
             {
-                // Download(new Uri(_apiLink),
-                //     $@"{Properties.Settings.Default.installFolder}/Modding API.zip", "Modding API");
-                // InstallApi($@"{Properties.Settings.Default.installFolder}/Modding API.zip",
-                //     Properties.Settings.Default.temp);
-                // File.Delete($@"{Properties.Settings.Default.installFolder}/Modding API.zip");
-                // MessageBox.Show(@"Modding API successfully installed!");
+                Download
+                (
+                    new Uri(_apiLink),
+                    $@"{Properties.Settings.Default.installFolder}/Modding API.zip",
+                    "Modding API"
+                );
+                InstallApi
+                (
+                    $@"{Properties.Settings.Default.installFolder}/Modding API.zip",
+                    Properties.Settings.Default.temp
+                );
+                File.Delete($@"{Properties.Settings.Default.installFolder}/Modding API.zip");
+                MessageBox.Show(@"Modding API successfully installed!");
             }
 
             if (!_modcommonIsInstalled)
             {
-                Download(new Uri(_modcommonLink),
-                    $@"{Properties.Settings.Default.modFolder}/ModCommon.zip", "ModCommon");
-                InstallMods($@"{Properties.Settings.Default.modFolder}/ModCommon.zip",
-                    Properties.Settings.Default.temp, true);
+                Download
+                (
+                    new Uri(_modcommonLink),
+                    $@"{Properties.Settings.Default.modFolder}/ModCommon.zip",
+                    "ModCommon"
+                );
+                InstallMods
+                (
+                    $@"{Properties.Settings.Default.modFolder}/ModCommon.zip",
+                    Properties.Settings.Default.temp,
+                    true
+                );
                 File.Delete($@"{Properties.Settings.Default.modFolder}/ModCommon.zip");
                 MessageBox.Show(@"ModCommon successfully installed!");
             }
@@ -437,7 +482,7 @@ namespace ModInstaller
             }
 
             _vanillaEnabled = !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1);
-            
+
             button1.Text = _vanillaEnabled
                 ? "Enable All Installed Mods"
                 : "Revert Back To Unmodded";
@@ -447,7 +492,7 @@ namespace ModInstaller
         {
             Button button = (Button) sender;
             ModField entry = _modEntries.First(f => f.ReadmeButton == button);
-            Mod mod = _modsList.First(m => m.Name == entry.Name.Text);
+            Mod mod = _modsList.First(m => m.Name                  == entry.Name.Text);
             string modName = mod.Name;
 
             // The only two possible options are .txt or .md, which follows from the InstallMods method
@@ -475,7 +520,7 @@ namespace ModInstaller
         {
             Button button = (Button) sender;
             ModField entry = _modEntries.First(f => f.InstallButton == button);
-            Mod mod = _modsList.First(m => m.Name == entry.Name.Text);
+            Mod mod = _modsList.First(m => m.Name                   == entry.Name.Text);
             string modname = mod.Name;
 
             string readmeModPathNoExtension = $@"{Properties.Settings.Default.installFolder}/README({modname})";
@@ -484,8 +529,12 @@ namespace ModInstaller
 
             if (entry.IsInstalled)
             {
-                DialogResult result = MessageBox.Show(text: $@"Do you want to remove {modname} from your computer?",
-                    caption: "Confirm removal", buttons: MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show
+                (
+                    text: $@"Do you want to remove {modname} from your computer?",
+                    caption: "Confirm removal",
+                    buttons: MessageBoxButtons.YesNo
+                );
                 if (result == DialogResult.Yes)
                 {
                     foreach (string s in mod.Files.Keys)
@@ -520,8 +569,12 @@ namespace ModInstaller
             {
                 if (_installedMods.Contains(modname)) return;
 
-                DialogResult result = MessageBox.Show($@"Do you want to install {modname}?", "Confirm installation",
-                    MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show
+                (
+                    $@"Do you want to install {modname}?",
+                    "Confirm installation",
+                    MessageBoxButtons.YesNo
+                );
 
                 if (result != DialogResult.Yes) return;
                 if (mod.Dependencies.Any())
@@ -541,9 +594,12 @@ namespace ModInstaller
                     {
                         if (_installedMods.Any(f => f.Equals(dependency))) continue;
                         DialogResult depInstall =
-                            MessageBox.Show(
+                            MessageBox.Show
+                            (
                                 $"The mod author suggests installing {dependency} together with this mod.\nDo you want to install {dependency}?",
-                                "Confirm installation", MessageBoxButtons.YesNo);
+                                "Confirm installation",
+                                MessageBoxButtons.YesNo
+                            );
                         if (depInstall != DialogResult.Yes) continue;
                         Install(dependency, false, true);
                         MessageBox.Show($@"{dependency} successfully installed!");
@@ -570,15 +626,16 @@ namespace ModInstaller
         {
             Button button = (Button) sender;
             ModField entry = _modEntries.First(f => f.EnableButton == button);
-            Mod mod = _modsList.First(m => m.Name == entry.Name.Text);
+            Mod mod = _modsList.First(m => m.Name                  == entry.Name.Text);
             string modname = mod.Name;
 
             if (entry.IsEnabled)
             {
                 if (_modsList.Any(m => m.Name == modname))
                 {
-                    foreach (string s in _modsList.First(m => m.Name == modname).Files.Keys
-                        .Where(f => Path.GetExtension(f) == ".dll"))
+                    foreach (string s in _modsList.First(m => m.Name == modname)
+                                                  .Files.Keys
+                                                  .Where(f => Path.GetExtension(f) == ".dll"))
                     {
                         if (!File.Exists($@"{Properties.Settings.Default.modFolder}/{s}")) continue;
                         if (File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}"))
@@ -586,8 +643,11 @@ namespace ModInstaller
                             File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{s}");
                         }
 
-                        File.Move($@"{Properties.Settings.Default.modFolder}/{s}",
-                            $@"{Properties.Settings.Default.modFolder}/Disabled/{s}");
+                        File.Move
+                        (
+                            $@"{Properties.Settings.Default.modFolder}/{s}",
+                            $@"{Properties.Settings.Default.modFolder}/Disabled/{s}"
+                        );
                     }
                 }
                 else
@@ -598,16 +658,20 @@ namespace ModInstaller
                         File.Delete($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}");
                     }
 
-                    File.Move($@"{Properties.Settings.Default.modFolder}/{modname}",
-                        $@"{Properties.Settings.Default.modFolder}/Disabled/{modname}");
+                    File.Move
+                    (
+                        $@"{Properties.Settings.Default.modFolder}/{modname}",
+                        $@"{Properties.Settings.Default.modFolder}/Disabled/{modname}"
+                    );
                 }
             }
             else
             {
                 if (_modsList.Any(m => m.Name == modname))
                 {
-                    foreach (string s in _modsList.First(m => m.Name == modname).Files.Keys
-                        .Where(f => Path.GetExtension(f) == ".dll"))
+                    foreach (string s in _modsList.First(m => m.Name == modname)
+                                                  .Files.Keys
+                                                  .Where(f => Path.GetExtension(f) == ".dll"))
                     {
                         if (!File.Exists($@"{Properties.Settings.Default.modFolder}/Disabled/{s}")) continue;
                         if (File.Exists($@"{Properties.Settings.Default.modFolder}/{s}"))
@@ -615,8 +679,11 @@ namespace ModInstaller
                             File.Delete($@"{Properties.Settings.Default.modFolder}/{s}");
                         }
 
-                        File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{s}",
-                            $@"{Properties.Settings.Default.modFolder}/{s}");
+                        File.Move
+                        (
+                            $@"{Properties.Settings.Default.modFolder}/Disabled/{s}",
+                            $@"{Properties.Settings.Default.modFolder}/{s}"
+                        );
                     }
                 }
                 else
@@ -627,8 +694,11 @@ namespace ModInstaller
                         File.Delete($@"{Properties.Settings.Default.modFolder}/{modname}");
                     }
 
-                    File.Move($@"{Properties.Settings.Default.modFolder}/Disabled/{modname}",
-                        $@"{Properties.Settings.Default.modFolder}/{modname}");
+                    File.Move
+                    (
+                        $@"{Properties.Settings.Default.modFolder}/Disabled/{modname}",
+                        $@"{Properties.Settings.Default.modFolder}/{modname}"
+                    );
                 }
             }
 
@@ -642,7 +712,7 @@ namespace ModInstaller
             DirectoryInfo modsFolder = new DirectoryInfo(Properties.Settings.Default.modFolder);
             FileInfo[] modsFiles = modsFolder.GetFiles("*.dll");
 
-            if (!Directory.Exists(Properties.Settings.Default.modFolder + @"/Disabled"))
+            if (!Directory.Exists(Properties.Settings.Default.modFolder         + @"/Disabled"))
                 Directory.CreateDirectory(Properties.Settings.Default.modFolder + @"/Disabled");
 
             DirectoryInfo disabledFolder = new DirectoryInfo(Properties.Settings.Default.modFolder + @"/Disabled");
@@ -743,11 +813,17 @@ namespace ModInstaller
 
         private void CheckModUpdated(string filename, Mod mod, bool isEnabled)
         {
-            if (SHA1Equals(filename,
-                mod.Files[mod.Files.Keys.First(f => f == Path.GetFileName(filename))])) return;
-            DialogResult update = MessageBox.Show($"{mod.Name} is outdated. Would you like to update it?",
+            if (SHA1Equals
+            (
+                filename,
+                mod.Files[mod.Files.Keys.First(f => f == Path.GetFileName(filename))]
+            )) return;
+            DialogResult update = MessageBox.Show
+            (
+                $"{mod.Name} is outdated. Would you like to update it?",
                 "Outdated mod",
-                MessageBoxButtons.YesNo);
+                MessageBoxButtons.YesNo
+            );
             if (update != DialogResult.Yes) return;
             Install(mod.Name, true, isEnabled);
         }
@@ -805,11 +881,19 @@ namespace ModInstaller
 
         private void Install(string mod, bool isUpdate, bool isEnabled)
         {
-            Download(new Uri(_modsList.First(m => m.Name == mod).Link),
-                $@"{Properties.Settings.Default.modFolder}/{mod}.zip", mod);
-            
-            InstallMods($@"{Properties.Settings.Default.modFolder}/{mod}.zip",
-                Properties.Settings.Default.temp, isEnabled);
+            Download
+            (
+                new Uri(_modsList.First(m => m.Name == mod).Link),
+                $@"{Properties.Settings.Default.modFolder}/{mod}.zip",
+                mod
+            );
+
+            InstallMods
+            (
+                $@"{Properties.Settings.Default.modFolder}/{mod}.zip",
+                Properties.Settings.Default.temp,
+                isEnabled
+            );
 
             File.Delete($@"{Properties.Settings.Default.modFolder}/{mod}.zip");
 
@@ -826,9 +910,14 @@ namespace ModInstaller
             IEnumerable<string> files = Directory.EnumerateFiles(tempFolder).ToList();
             if (_assemblyIsAPI)
             {
-                File.Copy($@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll",
-                    $@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.vanilla", true);
+                File.Copy
+                (
+                    $@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll",
+                    $@"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.vanilla",
+                    true
+                );
             }
+
             if (!files.Any(f => f.Contains(".dll")))
             {
                 string[] modDll = Directory.GetFiles(tempFolder, "*.dll", SearchOption.AllDirectories);
@@ -845,9 +934,12 @@ namespace ModInstaller
 
                 foreach (string file in files)
                 {
-                    File.Copy(file,
+                    File.Copy
+                    (
+                        file,
                         $@"{Properties.Settings.Default.installFolder}/{Path.GetFileNameWithoutExtension(file)}({Path.GetFileNameWithoutExtension(api)}){Path.GetExtension(file)}",
-                        true);
+                        true
+                    );
                     File.Delete(file);
                 }
 
@@ -857,12 +949,16 @@ namespace ModInstaller
             {
                 foreach (string file in files)
                 {
-                    File.Copy(file,
+                    File.Copy
+                    (
+                        file,
                         file.Contains("*.txt")
                             ? $@"{Properties.Settings.Default.installFolder}/{Path.GetFileNameWithoutExtension(file)}({
                                     Path.GetFileNameWithoutExtension(api)
                                 }){Path.GetExtension(file)}"
-                            : $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(file)}", true);
+                            : $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(file)}",
+                        true
+                    );
                     File.Delete(file);
                 }
 
@@ -888,20 +984,33 @@ namespace ModInstaller
                 switch (Path.GetExtension(file))
                 {
                     case ".dll":
-                        File.Copy(file,
-                            isEnabled ? $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(file)}" : $@"{Properties.Settings.Default.modFolder}/Disabled/{Path.GetFileName(file)}", true);
+                        File.Copy
+                        (
+                            file,
+                            isEnabled
+                                ? $@"{Properties.Settings.Default.modFolder}/{Path.GetFileName(file)}"
+                                : $@"{Properties.Settings.Default.modFolder}/Disabled/{Path.GetFileName(file)}",
+                            true
+                        );
                         break;
                     case ".txt":
                     case ".md":
-                        File.Copy(file,
+                        File.Copy
+                        (
+                            file,
                             $@"{Properties.Settings.Default.installFolder}/{Path.GetFileNameWithoutExtension(file)}({Path.GetFileNameWithoutExtension(mod)}){Path.GetExtension(file)}",
-                            true);
+                            true
+                        );
                         break;
                     case ".ini":
                         break;
                     default:
-                        string path = Path.GetDirectoryName(file)?.Replace(Properties.Settings.Default.temp,
-                            Properties.Settings.Default.installFolder);
+                        string path = Path.GetDirectoryName(file)
+                                          ?.Replace
+                                          (
+                                              Properties.Settings.Default.temp,
+                                              Properties.Settings.Default.installFolder
+                                          );
                         if (!Directory.Exists(path))
                             if (path != null)
                                 Directory.CreateDirectory(path);
@@ -920,7 +1029,7 @@ namespace ModInstaller
             var sourcePath = source.TrimEnd('\\', ' ');
             var targetPath = target.TrimEnd('\\', ' ');
             var files = Directory.EnumerateFiles(sourcePath, "*", SearchOption.AllDirectories)
-                .GroupBy(Path.GetDirectoryName);
+                                 .GroupBy(Path.GetDirectoryName);
             foreach (var folder in files)
             {
                 string targetFolder = folder.Key.Replace(sourcePath, targetPath);
@@ -957,15 +1066,27 @@ namespace ModInstaller
         {
             if (!_vanillaEnabled)
             {
-                DialogResult result = MessageBox.Show("Do you want to disable all installed mods?", "Confirmation dialogue",
-                    MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show
+                (
+                    "Do you want to disable all installed mods?",
+                    "Confirmation dialogue",
+                    MessageBoxButtons.YesNo
+                );
                 if (result != DialogResult.Yes) return;
                 if (File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla"))
                 {
-                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
-                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod", true);
-                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
-                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", true);
+                    File.Copy
+                    (
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod",
+                        true
+                    );
+                    File.Copy
+                    (
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                        true
+                    );
                     _assemblyIsAPI = false;
                     MessageBox.Show("Successfully disabled all installed mods!");
                 }
@@ -978,15 +1099,27 @@ namespace ModInstaller
             }
             else
             {
-                DialogResult result = MessageBox.Show("Do you want to enable all installed mods?", "Confirmation dialogue",
-                    MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show
+                (
+                    "Do you want to enable all installed mods?",
+                    "Confirmation dialogue",
+                    MessageBoxButtons.YesNo
+                );
                 if (result != DialogResult.Yes) return;
                 if (File.Exists(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod"))
                 {
-                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
-                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla", true);
-                    File.Copy(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod",
-                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", true);
+                    File.Copy
+                    (
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.vanilla",
+                        true
+                    );
+                    File.Copy
+                    (
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.mod",
+                        Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll",
+                        true
+                    );
                     _assemblyIsAPI = true;
                     MessageBox.Show("Successfully enabled all installed mods!");
                 }
@@ -995,6 +1128,7 @@ namespace ModInstaller
                     MessageBox.Show("Unable to locate vanilla Hollow Knight. Please verify integrity of game files.");
                 }
             }
+
             _vanillaEnabled = !_vanillaEnabled;
             button1.Text = _vanillaEnabled
                 ? "Enable All Installed Mods"
@@ -1027,42 +1161,47 @@ namespace ModInstaller
             }
             else
             {
-                MessageBox.Show(@"Invalid path selected.
-Please select the correct installation path for Hollow Knight.");
+                MessageBox.Show
+                (
+                    @"Invalid path selected.
+Please select the correct installation path for Hollow Knight."
+                );
                 ChangePathClick(new object(), EventArgs.Empty);
             }
         }
-        
-		internal static string OSPath(string os)
-		{
-		    return os == "MacOS"
-		        ? $"{Properties.Settings.Default.installFolder}/Contents/Resources/Data/Managed"
-		        : $"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
-		}
 
-		internal static bool PathCheck(string os, FolderBrowserDialog fb)
-		{
-		    return os == "MacOS"
-		        ? File.Exists(fb.SelectedPath + "/Contents/Resources/Data/Managed/Assembly-CSharp.dll") &&
-		          new[] {"hollow_knight.app", "Hollow Knight.app"}.Contains(Path.GetFileName(fb.SelectedPath))
-		        : File.Exists(fb.SelectedPath + "/hollow_knight_Data/Managed/Assembly-CSharp.dll");
-		}
+        internal static string OSPath(string os)
+        {
+            return os == "MacOS"
+                ? $"{Properties.Settings.Default.installFolder}/Contents/Resources/Data/Managed"
+                : $"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
+        }
+
+        internal static bool PathCheck(string os, FolderBrowserDialog fb)
+        {
+            return os == "MacOS"
+                ? File.Exists
+                    (fb.SelectedPath + "/Contents/Resources/Data/Managed/Assembly-CSharp.dll")
+                && new[] {"hollow_knight.app", "Hollow Knight.app"}.Contains(Path.GetFileName(fb.SelectedPath))
+                : File.Exists(fb.SelectedPath + "/hollow_knight_Data/Managed/Assembly-CSharp.dll");
+        }
 
         private void DoManualInstall(object sender, EventArgs e)
         {
-			if (openFileDialog.FileNames.Length < 1) return;
-			foreach (string mod in openFileDialog.FileNames)
-			{
-				if (Path.GetExtension(mod) == ".zip")
-				{
-					InstallMods(mod, Properties.Settings.Default.temp, true);
-				}
-				else
-				{
-					File.Copy(mod, $"{Properties.Settings.Default.modFolder}/{Path.GetFileName(mod)}", true);
-				}
-				MessageBox.Show($"{Path.GetFileName(mod)} successfully installed!");
-			}
+            if (openFileDialog.FileNames.Length < 1) return;
+            foreach (string mod in openFileDialog.FileNames)
+            {
+                if (Path.GetExtension(mod) == ".zip")
+                {
+                    InstallMods(mod, Properties.Settings.Default.temp, true);
+                }
+                else
+                {
+                    File.Copy(mod, $"{Properties.Settings.Default.modFolder}/{Path.GetFileName(mod)}", true);
+                }
+
+                MessageBox.Show($"{Path.GetFileName(mod)} successfully installed!");
+            }
         }
 
         private void ManualPathClosed(object sender, FormClosedEventArgs e)
@@ -1088,10 +1227,13 @@ Please select the correct installation path for Hollow Knight.");
 
             Properties.Settings.Default.Save();
         }
-        
+
         private void DonateButtonClick(object sender, EventArgs e)
         {
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G5KYSS3ULQFY6&lc=US&item_name=HK%20ModInstaller&item_number=HKMI&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted");
+            Process.Start
+            (
+                "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G5KYSS3ULQFY6&lc=US&item_name=HK%20ModInstaller&item_number=HKMI&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+            );
         }
 
         #endregion
@@ -1145,24 +1287,27 @@ Please select the correct installation path for Hollow Knight.");
                     return;
                 }
 
-                using (Process proc = Process.Start(new ProcessStartInfo
-                {
-                    FileName = "/bin/sh",
-                    Arguments = "-c uname",
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    RedirectStandardInput = true,
-                    UserName = Environment.UserName
-                }))
+                using (Process proc = Process.Start
+                (
+                    new ProcessStartInfo
+                    {
+                        FileName = "/bin/sh",
+                        Arguments = "-c uname",
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        RedirectStandardInput = true,
+                        UserName = Environment.UserName
+                    }
+                ))
                 {
                     if (proc == null)
                     {
                         _os = "Linux";
                         return;
                     }
-                    
+
                     proc.WaitForExit();
                     using (StreamReader standardOutput = proc.StandardOutput)
                     {
@@ -1181,7 +1326,7 @@ Please select the correct installation path for Hollow Knight.");
         public bool IsOffline;
         private bool _apiIsInstalled;
         private bool _modcommonIsInstalled;
-        private bool _vanillaEnabled = false;
+        private bool _vanillaEnabled;
         private bool _assemblyIsAPI;
         private const string Version = "v8.5.2";
 
