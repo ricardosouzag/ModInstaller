@@ -273,7 +273,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
-					<SHA1>e6e17cb178792f4375b6bb9f703d701dc7a95d1d</SHA1>
+					<SHA1>0d20dbde22707955817174b030af1cbc6995bec7</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
@@ -585,14 +585,14 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
-					<SHA1>714D70E5FA1592236736D25D0F36B93FCCF89BA6</SHA1>
+					<SHA1>5397D73F1FD4AFA3061D20D29A6CC89CFF9883F2</SHA1>
 				</File>
 				<File>
 					<Name>websocket-sharp.dll</Name>
 					<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1p2cWWM-PWBBwecKGBgH3wsB_7KL4rVSG]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1xGzp6k208wtnbMze9ifTStEFohfiaFCX]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
@@ -713,14 +713,30 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>BC71836A2CAA2C7090CF92A041F2091F0DD8F4D0</SHA1>
+					<SHA1>967663F79BA10F3F7AB3BA433B82FDAE7F3DE028</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1fhn-_3IJG4wozFUvOGiIwcFMYr_Y6ou3]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Pale Champion</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>PaleChampion.dll</Name>
+					<SHA1>87eabfe1b16ca038e364e3d5f69d12362a049b4a</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1D_O0dF3_alH9NWWyFmzxhUHC5SENCUsH]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>

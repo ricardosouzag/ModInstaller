@@ -25,7 +25,7 @@ namespace ModInstaller
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            CheckUpdate();
+            // CheckUpdate();
             GetCurrentOS();
             FillDefaultPaths();
             GetLocalInstallation();
@@ -358,12 +358,12 @@ namespace ModInstaller
 
             if (!_apiIsInstalled || _assemblyIsAPI && !SHA1Equals(Properties.Settings.Default.APIFolder + @"/Assembly-CSharp.dll", _apiSha1))
             {
-                Download(new Uri(_apiLink),
-                    $@"{Properties.Settings.Default.installFolder}/Modding API.zip", "Modding API");
-                InstallApi($@"{Properties.Settings.Default.installFolder}/Modding API.zip",
-                    Properties.Settings.Default.temp);
-                File.Delete($@"{Properties.Settings.Default.installFolder}/Modding API.zip");
-                MessageBox.Show(@"Modding API successfully installed!");
+                // Download(new Uri(_apiLink),
+                //     $@"{Properties.Settings.Default.installFolder}/Modding API.zip", "Modding API");
+                // InstallApi($@"{Properties.Settings.Default.installFolder}/Modding API.zip",
+                //     Properties.Settings.Default.temp);
+                // File.Delete($@"{Properties.Settings.Default.installFolder}/Modding API.zip");
+                // MessageBox.Show(@"Modding API successfully installed!");
             }
 
             if (!_modcommonIsInstalled)
@@ -818,6 +818,7 @@ namespace ModInstaller
 
         private void InstallApi(string api, string tempFolder)
         {
+            return;
             ZipFile.ExtractToDirectory(api, tempFolder);
             IEnumerable<string> mods = Directory.EnumerateDirectories(tempFolder).ToList();
             IEnumerable<string> files = Directory.EnumerateFiles(tempFolder).ToList();
