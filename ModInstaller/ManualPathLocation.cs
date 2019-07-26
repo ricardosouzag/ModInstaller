@@ -28,7 +28,8 @@ namespace ModInstaller
         {
             folderBrowserDialog1.Reset();
             folderBrowserDialog1.ShowDialog();
-            if (!String.IsNullOrEmpty(folderBrowserDialog1.SelectedPath))
+            
+            if (!string.IsNullOrEmpty(folderBrowserDialog1.SelectedPath))
             {
                 if (ModManager.PathCheck(currOS, folderBrowserDialog1))
                 {
@@ -43,9 +44,8 @@ namespace ModInstaller
                 }
                 else
                 {
-                    MessageBox.Show(@"Invalid path selected.
-Please select the correct installation path for Hollow Knight.");
-                    button1_Click(new object(), EventArgs.Empty);
+                    MessageBox.Show("Invalid path selected.\nPlease select the correct installation path for Hollow Knight.");
+                    button1_Click(null, EventArgs.Empty);
                 }
             }
             else
