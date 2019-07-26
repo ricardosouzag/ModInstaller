@@ -739,5 +739,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Elderbug God</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>ElderbugGod.dll</Name>
+					<SHA1>af43fead30e9ee5cbae9b0e7ad28b3a3fed3e6b1</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=100DQ7o7eCTrBL0Yf3wytn8qI07CskAHi]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
