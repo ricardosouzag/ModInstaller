@@ -381,7 +381,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>EnemyRandomizer.dll</Name>
-					<SHA1>7481b80cf0502dccaa446a885a51a75e88644db7</SHA1>
+					<SHA1>2fb7473b05fd53c4f28b7419ceff0df7aaf2e0dd/SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9]]></Link>
