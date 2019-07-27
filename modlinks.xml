@@ -744,7 +744,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>ElderbugGod.dll</Name>
-					<SHA1>af43fead30e9ee5cbae9b0e7ad28b3a3fed3e6b1</SHA1>
+					<SHA1>c8599093698ddbd71341298a2406777908e00554</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=100DQ7o7eCTrBL0Yf3wytn8qI07CskAHi]]></Link>
