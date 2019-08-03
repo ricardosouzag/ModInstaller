@@ -206,22 +206,6 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>InvertKnight</Name><!-- API MOD -->
-			<Files>
-				<File>
-					<Name>InvertKnight.dll</Name>
-					<SHA1>4f89b0c0b2b75a88c4cc5c594d14cc1233f57244</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1dNO9-Iw8pWf4xLTD6BgX89uk7PHj0CHw]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
-		</ModLink>
-		
-		<ModLink>
 			<Name>Lightbringer</Name><!-- API MOD -->
 				<Files>
 					<File>
