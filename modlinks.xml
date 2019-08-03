@@ -365,7 +365,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>EnemyRandomizer.dll</Name>
-					<SHA1>049318c3287439b36861050ddd1273e18eda2e29</SHA1>
+					<SHA1>ab68e3502198c00d9c1e18c5bc59f7382f8315d9</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9]]></Link>
@@ -569,14 +569,14 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
-					<SHA1>5397D73F1FD4AFA3061D20D29A6CC89CFF9883F2</SHA1>
+					<SHA1>031B3CDD7E3133C0365E85498F591A354094737B</SHA1>
 				</File>
 				<File>
 					<Name>websocket-sharp.dll</Name>
 					<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1xGzp6k208wtnbMze9ifTStEFohfiaFCX]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1wWho_N2tdgnds46N0bdaYiXJpYj_P98Z]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
@@ -712,7 +712,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PaleChampion.dll</Name>
-					<SHA1>87eabfe1b16ca038e364e3d5f69d12362a049b4a</SHA1>
+					<SHA1>594c4270c6e78b6cbfe710bc5a1a1c898e4f307d</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1D_O0dF3_alH9NWWyFmzxhUHC5SENCUsH]]></Link>
@@ -728,7 +728,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>ElderbugGod.dll</Name>
-					<SHA1>c8599093698ddbd71341298a2406777908e00554</SHA1>
+					<SHA1>af43fead30e9ee5cbae9b0e7ad28b3a3fed3e6b1</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=100DQ7o7eCTrBL0Yf3wytn8qI07CskAHi]]></Link>
