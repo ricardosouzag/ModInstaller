@@ -743,7 +743,7 @@ Mods that write to assembly-csharp are not compatible
 			<Name>Randomizer 3 (Item/Room)</Name><!-- API MOD -->
 			<Files>
 				<File>
-					<Name>Randomizer3.0.dll</Name>
+					<Name>RandomizerMod3.0.dll</Name>
 					<SHA1>5AC5373326CBFE57A0501D1D1B3D2081F761769C</SHA1>
 				</File>
 			</Files>
