@@ -740,7 +740,7 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Randomizer 3 (Item/Room)</Name><!-- API MOD -->
+			<Name>Randomizer 3 (Item, Room)</Name><!-- API MOD -->
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
