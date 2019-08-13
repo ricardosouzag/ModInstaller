@@ -569,7 +569,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
-					<SHA1>031B3CDD7E3133C0365E85498F591A354094737B</SHA1>
+					<SHA1>E834ACDD0068FC641D00123ABAEBB930ECAECBCE</SHA1>
 				</File>
 				<File>
 					<Name>websocket-sharp.dll</Name>
