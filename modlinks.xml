@@ -666,7 +666,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>DoH.dll</Name>
-					<SHA1>2e08f5d75e91a5474e2b03e8fd9e77383bb87d71</SHA1>
+					<SHA1>0ead53074e3397ac2962c06838f9431b03b7c07a</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ek4NqXPWIE9XRWd0bJjqA1ohX4GEkcvb]]></Link>
