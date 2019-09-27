@@ -756,5 +756,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>Benchwarp</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Poorly Translated</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>TranslationMod.dll</Name>
+					<SHA1>ABEFE12B66226C3C9A7A80A1C16917EE3BCA51A9</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=11xFWrOoVuw03UNvmKA_H_gLjUP3DTuDC]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
