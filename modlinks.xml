@@ -28,7 +28,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
-					<SHA1>3269E292582A079C591949E6E334AA68FC319484</SHA1>
+					<SHA1>6ef90a4a48e0039849293b360d9a45b211790013</SHA1>
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
