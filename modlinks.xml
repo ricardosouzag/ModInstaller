@@ -210,7 +210,7 @@ Mods that write to assembly-csharp are not compatible
 				<Files>
 					<File>
 						<Name>Lightbringer.dll</Name>
-						<SHA1>995e1e6af1942d3e0cc1812e3f30b59180d3beba</SHA1>
+						<SHA1>f82d2bf1ad4cef48201d739c43afbd1771a6d2cb</SHA1>
 					</File>
 				</Files>
 				<Link><![CDATA[https://drive.google.com/uc?export=download&id=1xAiQnjQ9p_qqTwZvf_vHN6l1F6TdQ3kL]]></Link>
