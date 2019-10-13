@@ -772,5 +772,37 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Crystalblobbles</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Crystalblobbles.dll</Name>
+					<SHA1>c833b14317928fc6788e66cbc968dd9227df4a32</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GeyXchgJJgUIWLQxioOu7re2dHFt19L4]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Tribe of Battle</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Tribe_of_Battle.dll</Name>
+					<SHA1>22421170af8dbffdb3a8baff5edff6fafa205f86</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lg0A4pstHdlHdbdU511Umg5uYuvG8Pd1]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
