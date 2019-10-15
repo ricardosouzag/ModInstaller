@@ -553,11 +553,11 @@ Mods that write to assembly-csharp are not compatible
 			<Name>Infinite Notches</Name><!-- API MOD -->
 			<Files>
 				<File>
-					<Name>infinitenotches.dll</Name>
-					<SHA1>a9fe070f824fb61c081507d23d38f7e666cb0909</SHA1>
+					<Name>InfiniteNotches.dll</Name>
+					<SHA1>4CCA02A9A58BDC4A2DB6C9C856DEFA0866201FB7</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/infnotches.zip]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1oq0x6XGbo1rqPPAgGubfeupwTU3N1HXr]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
