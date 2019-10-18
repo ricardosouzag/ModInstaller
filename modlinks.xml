@@ -789,6 +789,22 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Traitor God</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Traitor God.dll</Name>
+					<SHA1>8ab1f5265ad12e56dfc1e0d9569c5e11a5a4e460</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1anbQI1EpHAs62AiQZS7w616a5bcjoavh]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Tribe of Battle</Name><!-- API MOD -->
 			<Files>
 				<File>
