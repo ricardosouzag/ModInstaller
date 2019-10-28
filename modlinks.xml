@@ -335,7 +335,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>CustomKnight.dll</Name>
-					<SHA1>42d0b69e80236b86e07f524944ea788e5ff3f5a2</SHA1>
+					<SHA1>5767a3105a1703c84db3564142ef929d71b2ae28</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=17gHTBAQUv3IJU7xomNAZ8BukDok234Iu]]></Link>
