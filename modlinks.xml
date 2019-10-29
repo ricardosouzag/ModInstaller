@@ -697,7 +697,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>0B16C767BB3C5D500072DA1CC1A41EAB11484560</SHA1>
+					<SHA1>0A83E065477618714A51D0204EBA496897ED5131</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
