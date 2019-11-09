@@ -27,7 +27,6 @@ namespace ModInstaller
         private readonly List<string> _allMods = new List<string>();
 
         private readonly List<string> _installedMods = new List<string>();
-
         private struct Mod
         {
             public string Name { get; set; }
@@ -362,10 +361,21 @@ namespace ModInstaller
                         _modcommonLink = mod.Element("Link")?.Value;
                         _modcommonSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
                         break;
-                    case "Modding API":
-                        _apiLink = mod.Element("Link")?.Value;
-                        _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
-                        _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
+                    case "Modding API Windows":
+                        if (OS == "Windows")
+                        {
+                            _apiLink = mod.Element("Link")?.Value;
+                            _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                            _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
+                        }
+                        break;
+                    case "Modding API Linux":
+                        if (OS == "Linux" || OS == "MacOS")
+                        {
+                            _apiLink = mod.Element("Link")?.Value;
+                            _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                            _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
+                        }
                         break;
                     default:
                         _modsList.Add

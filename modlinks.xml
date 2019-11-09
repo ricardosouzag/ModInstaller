@@ -24,7 +24,7 @@ Mods that write to assembly-csharp are not compatible
 	</Installer>
 	<ModList>
 		<ModLink>
-			<Name>Modding API</Name><!-- WRITES TO ASSEMBLY-CSHARP -->
+			<Name>Modding API Windows</Name><!-- WRITES TO ASSEMBLY-CSHARP -->
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
@@ -34,6 +34,21 @@ Mods that write to assembly-csharp are not compatible
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
 			<GOGLink><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></GOGLink>
+			<DefaultInstallPath>/</DefaultInstallPath>
+			<WritesOverAssembly>true</WritesOverAssembly>
+			<Dependencies />
+		</ModLink>
+		<ModLink>
+			<Name>Modding API Linux</Name><!-- WRITES TO ASSEMBLY-CSHARP -->
+			<Files>
+				<File>
+					<Name>Assembly-CSharp.dll</Name>
+					<SHA1>c72ef0e32b835b8b0e615b1305f8fc26fcdb61e4</SHA1>
+					<Patch>1.4.3.2</Patch>
+				</File>
+			</Files>
+			<Link><![CDATA[https://radiance.host/mods/api.zip]]></Link>
+			<GOGLink><![CDATA[https://radiance.host/mods/api.zip]]></GOGLink>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>true</WritesOverAssembly>
 			<Dependencies />
