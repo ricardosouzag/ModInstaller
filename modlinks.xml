@@ -353,7 +353,7 @@ Mods that write to assembly-csharp are not compatible
 					<SHA1>5767a3105a1703c84db3564142ef929d71b2ae28</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=17gHTBAQUv3IJU7xomNAZ8BukDok234Iu]]></Link>
+			<Link><![CDATA[https://dying.might-be-super.fun/6TUtWD2.zip]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
