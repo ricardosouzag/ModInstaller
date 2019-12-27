@@ -730,7 +730,7 @@ Mods that write to assembly-csharp are not compatible
 					<SHA1>7d8a4f86c13532d2aa92511623271eebf2c6d42b</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1D_O0dF3_alH9NWWyFmzxhUHC5SENCUsH]]></Link>
+			<Link><![CDATA[https://dying.might-be-super.fun/6BYKabS.zip]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
