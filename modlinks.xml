@@ -618,7 +618,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>EnemyHPBar.dll</Name>
-					<SHA1>2C4E587B4FB6457FAEE263656716418755708724</SHA1>
+					<SHA1>5127F69C0F4410D36551187A82EBEE9543F7A588</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BeFOhGulOCOzbuSdHgOUpnKZ8oRFvxeJ]]></Link>
