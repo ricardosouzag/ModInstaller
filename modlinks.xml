@@ -727,10 +727,10 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PaleChampion.dll</Name>
-					<SHA1>7D8A4F86C13532D2AA92511623271EEBF2C6D42B</SHA1>
+					<SHA1>8232C1BA2CCFED7B4EFE800A3D3F1153AB477977</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://dying.might-be-super.fun/6BYKabS.zip]]></Link>
+			<Link><![CDATA[https://github.com/SalehAce1/HKFiles/blob/master/%5BAPI%5D%20Pale%20Champion%20(by%20Saleh).zip?raw=true]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
