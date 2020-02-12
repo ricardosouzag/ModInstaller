@@ -396,7 +396,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>BonfireMod.dll</Name>
-					<SHA1>136f8919accef7822fc3934bad8d9d7e90552aab</SHA1>
+					<SHA1>67F52DDD1061392CE97C3F5BA1E435A03C3999F2</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YsthSD5-k8vVtK4orQBz_mZIF4_w-I4P]]></Link>
