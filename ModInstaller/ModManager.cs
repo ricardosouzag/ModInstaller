@@ -630,7 +630,16 @@ namespace ModInstaller
             }
             else if (File.Exists(readmeModPathMd))
             {
-                Process.Start(readmeModPathMd);
+                try
+                {
+                    Process.Start(readmeModPathMd);
+                }
+                catch
+                {
+                    string tempReadme = Path.GetTempPath() + "HKModInstallerTempReadme.txt";
+                    File.Copy(readmeModPathMd, tempReadme, true);
+                    Process.Start(tempReadme);
+                }
             }
             else
             {
