@@ -288,7 +288,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Blackmoth.dll</Name>
-					<SHA1>59b8e153bbbb32162ae553a268bc907d5ff32c3d</SHA1>
+					<SHA1>74A32624CB3437460D2635BF6C220D9E5C4B441E</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz]]></Link>
