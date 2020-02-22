@@ -172,7 +172,8 @@ namespace ModInstaller
 
             XElement installer = dllist.Element("ModLinks")?.Element("Installer");
 
-            if (installer == null || installer.Element("SHA1")?.Value == GetSHA1($"{dir}/{file}")) return;
+            // If the SHA1s are non-equal, update.
+            if (installer == null || SHA1Equals($"{dir}/{file}", installer.Element("SHA1")?.Value)) return;
 
             var dl = new WebClient();
             dl.DownloadFile
