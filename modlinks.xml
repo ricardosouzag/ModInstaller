@@ -19,7 +19,7 @@ Mods that write to assembly-csharp are not compatible
 	<DriveLink>https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing</DriveLink>
 	<Installer>
 	    <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
-	    <SHA1>ad94b04b68e83386f1e62c59f0f3e196310e1634</SHA1>
+	    <SHA1>7C87306373B8A201608EE9300DBE650F411D7FF6</SHA1>
 	    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
 	</Installer>
 	<ModList>
