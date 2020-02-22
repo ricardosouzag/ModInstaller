@@ -103,7 +103,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Bindings.dll</Name>
-					<SHA1>E3E18B0F940601C7FAF2FE04C27DC56DFF702EF4</SHA1>
+					<SHA1>029C3F3F7C9FE5EF7CBF44105A6E95A8613FC2B3</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yxytX8Ulq_ZQedYmR7uBV9vOupzj5DW2]]></Link>
