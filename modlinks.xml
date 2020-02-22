@@ -83,15 +83,30 @@ Mods that write to assembly-csharp are not compatible
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
-		<ModLink>
-			<Name>Lost Lord</Name><!-- API MOD -->
+				<ModLink>
+			<Name>Hell Mod</Name><!-- API MOD -->
 			<Files>
 				<File>
-					<Name>LostLord.dll</Name>
-					<SHA1>538ccf8bce789afe962de4a43c96455442174a82</SHA1>
+					<Name>HellMod.dll</Name>
+					<SHA1>12a198bc13c388911cd22c874498ccfe63e40f65</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Z9V_GN2SDs1Kst1HjF43qNca9FECkjfx]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Bindings</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Bindings.dll</Name>
+					<SHA1>4cc5f6599f34f8037394c7a23d2e7f356a2d717c</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yxytX8Ulq_ZQedYmR7uBV9vOupzj5DW2]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
