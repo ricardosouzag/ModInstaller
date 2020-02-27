@@ -84,6 +84,21 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>HollowPoint (Beta)</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>HollowPoint.dll</Name>
+					<SHA1>03241f88d21c40551bb72e0c52fdcebea9f9b75a</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Kvi6xjES0imKALCuHWF3O98Jl3496dAl]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Bindings</Name><!-- API MOD -->
 			<Files>
 				<File>
