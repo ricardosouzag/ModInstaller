@@ -135,7 +135,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>OmnesDeorum.dll</Name>
-					<SHA1>9054d9cabd683a40a2ed2c5d6ccb72e70d3ca573</SHA1>
+					<SHA1>ADEC4A06B071D910CEFCDD5A59CFB81B65DE47CD</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1JvUSKBAcxbujeR1EA951wt6R7jYsXDWY]]></Link>
