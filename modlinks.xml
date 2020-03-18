@@ -765,7 +765,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PaleChampion.dll</Name>
-					<SHA1>8232C1BA2CCFED7B4EFE800A3D3F1153AB477977</SHA1>
+					<SHA1>9C720D739898C9EB0F98434C7E1794220F9FD9D3</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/SalehAce1/HKFiles/blob/master/%5BAPI%5D%20Pale%20Champion%20(by%20Saleh).zip?raw=true]]></Link>
