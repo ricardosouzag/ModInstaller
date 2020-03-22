@@ -47,8 +47,8 @@ Mods that write to assembly-csharp are not compatible
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/api.zip]]></Link>
-			<GOGLink><![CDATA[https://radiance.host/mods/api.zip]]></GOGLink>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></Link>
+			<GOGLink><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></GOGLink>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>true</WritesOverAssembly>
 			<Dependencies />
