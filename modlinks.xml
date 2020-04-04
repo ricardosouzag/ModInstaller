@@ -750,7 +750,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>4F755E104298D13C027AA65AA2934F347D3B0000</SHA1>
+					<SHA1>963C663631D44EFBA4C2908CE2BCC9DDFF6DAD5C</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
@@ -793,11 +793,11 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Randomizer 3 (Item, Room)</Name><!-- API MOD -->
+			<Name>Randomizer 3 (Item or Room)</Name><!-- API MOD -->
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>F613BF37EB692C457636F815DE0C0EF8E3223625</SHA1>
+					<SHA1>D0ABDD7A8B2D83243413858357F1732203496595</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
