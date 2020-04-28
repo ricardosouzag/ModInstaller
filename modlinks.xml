@@ -888,5 +888,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>PoPPV</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>PVPoP.dll</Name>
+					<SHA1>EE891F879244798DA657EF90FB10B016D53A9D8C</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1psfwT5_dH9XiU_8g7b_rkkdI6YhGfwnS]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
