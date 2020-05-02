@@ -310,7 +310,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
-					<SHA1>B38112AC7157A0C14181B367291C4C5DFCF8CF85</SHA1>
+					<SHA1>D090BD861F3591662FD7DE77DBAE1AE3009DC27B</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
