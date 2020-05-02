@@ -797,7 +797,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>BE316AA21A71B1E28316578DE61CC020245FCECE</SHA1>
+					<SHA1>79303C44611BCA04ECB0718CAAD76E1940AD79A7</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
