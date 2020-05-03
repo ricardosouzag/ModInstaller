@@ -905,5 +905,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Royal Dreamer</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>RoyalDreamer.dll</Name>
+					<SHA1>C6D7BEF8B1580FC962F8C80DDB13482BA9168C73</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://urmum.needs-to-s.top/4c56ikX.dll]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
