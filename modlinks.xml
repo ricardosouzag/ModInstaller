@@ -953,5 +953,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Floor Lava</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>FloorLava.dll</Name>
+					<SHA1>123B04102ED23ADF7EA482270682D4B8E1CC4CD1</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gAo7SihdBEz5-4-GpkPQ38KpvUY7_lcz]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
