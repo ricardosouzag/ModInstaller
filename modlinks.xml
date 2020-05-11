@@ -937,5 +937,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Transtrans</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Transtrans.dll</Name>
+					<SHA1>E05A407BAB3F4231B78D0E307E720BF86C02347D</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1MoarOHW6daSehsEccXOT19jSub7dX0k8]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
