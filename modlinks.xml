@@ -890,7 +890,7 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>PoPPV</Name><!-- API MOD -->
+			<Name>Path of Pure Vessel</Name><!-- API MOD -->
 			<Files>
 				<File>
 					<Name>PVPoP.dll</Name>
@@ -914,6 +914,22 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1vxar_-vYLQHbixvfN9PLiZmweKHBpgS9]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Dream Shield Coop</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Dshieldcoop.dll</Name>
+					<SHA1>407729D8C45AE514382804A73B645DAFE4115824</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1F17aQrAlMSLS-_HXjoDp8qHXRU4dH3Zm]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
