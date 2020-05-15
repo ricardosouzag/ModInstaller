@@ -703,7 +703,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Darkness.dll</Name>
-					<SHA1>63F78BB823AA521C2E46C59094E759C39C3A443F</SHA1>
+					<SHA1>6CC156625918BDF908CE6F4B8D433FA24AE6445A</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1t_ppIAOEwYd_SPMTPtPDSTQq8b0E8gpo]]></Link>
