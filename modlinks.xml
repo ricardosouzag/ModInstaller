@@ -248,7 +248,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
-					<SHA1>8ACEB41272A58532F950B010647E77A7280DD5C1</SHA1>
+					<SHA1>a81aa46731e7f79cf447674f09e0a9b231e99ede</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1AScQJdx0cU0cnlWnR2dpWfrB50XVNUZk]]></Link>
@@ -418,7 +418,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>EnemyRandomizer.dll</Name>
-					<SHA1>160a8b33f3906a7d8cdad9bebf58df9adc9fc98c</SHA1>
+					<SHA1>b66d059fd2a2dc24011d334968c45280b9b8e766</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9]]></Link>
