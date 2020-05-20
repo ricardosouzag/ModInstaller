@@ -622,14 +622,14 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
-					<SHA1>5b4b24c9660f674377ec39f8d4b209a8f7c8904c</SHA1>
+					<SHA1>87ec785a9dfaa56760ba7d732998f869c8c375cd</SHA1>
 				</File>
 				<File>
 					<Name>websocket-sharp.dll</Name>
 					<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BawsxzAU0ow03fnvPKI0-c_YB0SPGZ4I]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1unfblWwMxeZT2a02AJFi-72th4lPvgtz]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
