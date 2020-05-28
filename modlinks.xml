@@ -969,5 +969,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Lifeblood Master</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>LifebloodMaster.dll</Name>
+					<SHA1>E7ABB3BA35DAEC38EC80AF3780B31EC90896B36A</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1EWmHKs20Ry22oJc1q1bJtUgsapZVuWK2]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
