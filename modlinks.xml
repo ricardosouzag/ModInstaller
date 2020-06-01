@@ -985,5 +985,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>DeathCounter</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>DeathCounter.dll</Name>
+					<SHA1>D6AD7E158B3879429229E995F9F7E2B5864FF3E2</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1quyv8LSn27qAJInHO2jxbRa2AfMTKiWF]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
