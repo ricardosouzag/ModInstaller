@@ -1001,5 +1001,25 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Indie Crossover</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Fennel.dll</Name>
+					<SHA1>21F609AC0E3626D450EDE1BE1B4DE932DC94F2FE</SHA1>
+				</File>
+				<File>
+					<Name>PropellerKnight.dll</Name>
+					<SHA1>59F65A0D68CB7820E8010391FD0DBA76BCC351CB</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Woj9VRVRB_nN8a3s1YiJXGQXjQAiULda]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
