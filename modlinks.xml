@@ -1021,5 +1021,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>EasyMode</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>EasyMode.dll</Name>
+					<SHA1>FB1D78F4EB12C4872AB89EBFECA2E35B723D8A1C</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SeanprCore></string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
