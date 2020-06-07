@@ -1034,7 +1034,7 @@ Mods that write to assembly-csharp are not compatible
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore></string>
+				<string>SeanprCore</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
