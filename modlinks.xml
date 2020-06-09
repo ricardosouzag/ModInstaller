@@ -879,7 +879,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>LoadNormalizer.dll</Name>
-					<SHA1>6C73E0F0F7AE79D30C2B4E57A8A61FE922E97374</SHA1>
+					<SHA1>C72C905DFAE7126909E77CB7DC5100B411D04A33</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13v9CkQlEVKaaAPjY3ZO9VppgyeM1CVVs]]></Link>
