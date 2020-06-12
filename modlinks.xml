@@ -1014,7 +1014,7 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 				<File>
 					<Name>CagneyCarnation.dll</Name>
-					<SHA1>048a6e3a3d7afcebbbed756c7abbb3d435bba247</SHA1>
+					<SHA1>babc9fa4706862668ebdf5ef570e6f0bd8f8cd23</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.Indie.Crossover.by.Saleh.and.jngo102.zip]]></Link>
