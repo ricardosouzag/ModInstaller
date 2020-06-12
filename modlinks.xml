@@ -1014,10 +1014,10 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 				<File>
 					<Name>CagneyCarnation.dll</Name>
-					<SHA1>69dd6d25d9443157d0e5c878de6e5460d3a3912a</SHA1>
+					<SHA1>95f2212668072e6c92d5f30d76340492e3120572</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.IndieCrossover.by.Saleh.and.jngo102.zip]]></Link>
+			<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.Indie.Crossover.by.Saleh.and.jngo102.zip]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
