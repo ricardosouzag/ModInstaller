@@ -1012,8 +1012,12 @@ Mods that write to assembly-csharp are not compatible
 					<Name>PropellerKnight.dll</Name>
 					<SHA1>59F65A0D68CB7820E8010391FD0DBA76BCC351CB</SHA1>
 				</File>
+				<File>
+					<Name>CagneyCarnation.dll</Name>
+					<SHA1>69dd6d25d9443157d0e5c878de6e5460d3a3912a</SHA1>
+				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Woj9VRVRB_nN8a3s1YiJXGQXjQAiULda]]></Link>
+			<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.IndieCrossover.by.Saleh.and.jngo102.zip]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
@@ -1029,7 +1033,7 @@ Mods that write to assembly-csharp are not compatible
 					<SHA1>FB1D78F4EB12C4872AB89EBFECA2E35B723D8A1C</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YtBzj0hTp2hNM8gSmMb5fHOJd9pDQqER]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
