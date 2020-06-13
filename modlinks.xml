@@ -993,7 +993,7 @@ Mods that write to assembly-csharp are not compatible
 					<SHA1>D6AD7E158B3879429229E995F9F7E2B5864FF3E2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1quyv8LSn27qAJInHO2jxbRa2AfMTKiWF]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YtBzj0hTp2hNM8gSmMb5fHOJd9pDQqER]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
@@ -1006,11 +1006,11 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Fennel.dll</Name>
-					<SHA1>21F609AC0E3626D450EDE1BE1B4DE932DC94F2FE</SHA1>
+					<SHA1>D07D3FB200EE8D7AF7AFC7B581F440BAAABB1C9E</SHA1>
 				</File>
 				<File>
 					<Name>PropellerKnight.dll</Name>
-					<SHA1>59F65A0D68CB7820E8010391FD0DBA76BCC351CB</SHA1>
+					<SHA1>A729B8A604D1E2ED79F79D3D303B52B725D037E5</SHA1>
 				</File>
 				<File>
 					<Name>CagneyCarnation.dll</Name>
