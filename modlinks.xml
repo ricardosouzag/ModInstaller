@@ -1041,5 +1041,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>SeanprCore</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Uuwuu</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Uuwuu.dll</Name>
+					<SHA1>AC44E9B29C2028EBE1AEE4008A7C700BE2663C05</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1s5UjZIL7Fnc9mK8bjlRsVOuHnacxl5v-]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
