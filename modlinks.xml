@@ -1006,11 +1006,11 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Fennel.dll</Name>
-					<SHA1>D07D3FB200EE8D7AF7AFC7B581F440BAAABB1C9E</SHA1>
+					<SHA1>21f609ac0e3626d450ede1be1b4de932dc94f2fe</SHA1>
 				</File>
 				<File>
 					<Name>PropellerKnight.dll</Name>
-					<SHA1>A729B8A604D1E2ED79F79D3D303B52B725D037E5</SHA1>
+					<SHA1>59f65a0d68cb7820e8010391fd0dba76bcc351cb</SHA1>
 				</File>
 				<File>
 					<Name>CagneyCarnation.dll</Name>
