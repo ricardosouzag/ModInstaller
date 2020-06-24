@@ -388,10 +388,10 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>CustomKnight.dll</Name>
-					<SHA1>74c0f0f8aec5e6e52bf5e6900036c73f97a16e79</SHA1>
+					<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.1/CustomKnight.zip]]></Link>
+			<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
