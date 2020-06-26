@@ -1057,5 +1057,38 @@ Mods that write to assembly-csharp are not compatible
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>ItemChanger</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>ItemChanger.dll</Name>
+					<SHA1>CEA0EE0361A2EF82E5A83779FDD3432DE756DDCB</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SeanprCore</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>plandoplando</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>plandoplando.dll</Name>
+					<SHA1>302AB04000CB49DDFEBCBAEDEED313139ABCD661</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SeanprCore</string>
+				<string>ItemChanger</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
