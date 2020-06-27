@@ -1090,5 +1090,21 @@ Mods that write to assembly-csharp are not compatible
 				<string>ItemChanger</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Exaltation</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>Exaltation.dll</Name>
+					<SHA1>E024DBE460747C41F1ED2A59F13305F6B32640A5</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
