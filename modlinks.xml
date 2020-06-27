@@ -310,7 +310,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
-					<SHA1>51EDED57D8B3C565CAD644A093686FA7C482ED24</SHA1>
+					<SHA1>705EF3A8037C371E6A6B5A4F8C2D7664466AA9CB</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
@@ -750,7 +750,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>963C663631D44EFBA4C2908CE2BCC9DDFF6DAD5C</SHA1>
+					<SHA1>A2C4DB1D96790578B9281B1EC94C8DFA5B5FE9CC</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
@@ -797,7 +797,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>8BEB63927C2ADF17568DB65B09BC8AA6329D0C20</SHA1>
+					<SHA1>D6478CC6AA5F648E420F5379A1C9113590D728D8</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
