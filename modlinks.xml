@@ -1062,7 +1062,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>ItemChanger.dll</Name>
-					<SHA1>CEA0EE0361A2EF82E5A83779FDD3432DE756DDCB</SHA1>
+					<SHA1>C38A025D88E2D809B6AC123BE3B9B92890ACE093</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
