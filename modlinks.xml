@@ -184,6 +184,37 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>WeaverCore</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>WeaverCore.dll</Name>
+					<SHA1>DDA83C94FBB870B974588F501126BC93E3743B8B</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1-Jr2S2kIK7lhL7lgoUpG9lFYJD3WGKlP]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Inferno King Grimm</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>InfernoKingGrimm.dll</Name>
+					<SHA1>383B6AC2053106F0E0023BDD0999A1ED8ABF3303</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1hCa_dc9cTiTiM7rqcvHioG4X4d-ZZq7U]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>WeaverCore</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Sanic</Name><!-- API MOD -->
 			<Files>
 				<File>
