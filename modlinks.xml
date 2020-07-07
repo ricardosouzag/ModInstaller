@@ -353,6 +353,22 @@ Mods that write to assembly-csharp are not compatible
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Hollow Twitch</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>HollowTwitch.dll</Name>
+					<SHA1>B90D5F0A228F18E182E5A9AEE9992F908AF0F72A</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1PRv4Xypx_DgccbOjvr0i4ANAoxG6sfEr]]></Link>
+			<DefaultInstallPath>/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Blackmoth</Name><!-- API MOD -->
 			<Files>
 				<File>
