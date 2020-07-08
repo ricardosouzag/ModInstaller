@@ -58,7 +58,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>ModCommon.dll</Name>
-					<SHA1>b5936accdafedf73577f4eb7b44dcc0be83dc890</SHA1>
+					<SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XB38hwlVRhYxbZj-41sqTCg684Ig1vAL]]></Link>
