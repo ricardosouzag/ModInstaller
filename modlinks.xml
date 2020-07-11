@@ -295,7 +295,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
-					<SHA1>6ED5CB3E47419718C5AAA84BA2F979CBF12C58A8</SHA1>
+					<SHA1>91B3C63A68880085FB627C1BB5DE084F3B587E39</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nNvfsJ5AFZW3LyM8Gauz7zwXDLmxYmq1]]></Link>
