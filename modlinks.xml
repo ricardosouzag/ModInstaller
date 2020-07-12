@@ -860,7 +860,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>D6478CC6AA5F648E420F5379A1C9113590D728D8</SHA1>
+					<SHA1>22CDFFFBA95AE171333AB74AF4B25B0F6F68AE91</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
