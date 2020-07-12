@@ -1161,7 +1161,7 @@ Mods that write to assembly-csharp are not compatible
 					<SHA1>E024DBE460747C41F1ED2A59F13305F6B32640A5</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1vInXLExItvieDcukk8iKlxIB-gsGjbzr]]></Link>
 			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
