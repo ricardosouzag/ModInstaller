@@ -111,7 +111,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>BingoUI.dll</Name>
-					<SHA1>615B7400DB31F777436558F9BA75EDA6E4247592</SHA1>
+					<SHA1>8BD93ADFD4E745831492C52841A21FFA752372DC</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
