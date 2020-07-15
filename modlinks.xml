@@ -1174,7 +1174,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>PaletteSwapper.dll</Name>
-					<SHA1>23993DB290F67453D327CA22352A9900AE6597F1</SHA1>
+					<SHA1>2E7938CEEDB559C3A00E543B2B499B9853A8F90E</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1VRYzMjnnk2Jl57Y6sraEnSprd-cAo0OA]]></Link>
