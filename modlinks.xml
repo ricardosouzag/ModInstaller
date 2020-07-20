@@ -1184,5 +1184,20 @@ Mods that write to assembly-csharp are not compatible
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>NG+ (King's Pass)</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>NG+ (King's Pass).dll</Name>
+					<SHA1>25C810896421B7289C39C4EAFF2DCB68E09D6DFC</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1zo2ch0ggwdWgDp0gjk9TF-McQYuvGm29]]></Link>
+			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
