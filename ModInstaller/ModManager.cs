@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -60,47 +61,7 @@ namespace ModInstaller
 
         private List<ModField> _modEntries = new List<ModField>();
 
-        private string OS
-        {
-            get => _os;
-            set
-            {
-                if (value == "Windows")
-                {
-                    _os = value;
-                    return;
-                }
-
-                using (Process proc = Process.Start
-                (
-                    new ProcessStartInfo
-                    {
-                        FileName = "/bin/sh",
-                        Arguments = "-c uname",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        RedirectStandardInput = true,
-                        UserName = Environment.UserName
-                    }
-                ))
-                {
-                    if (proc == null)
-                    {
-                        _os = "Linux";
-                        return;
-                    }
-
-                    proc.WaitForExit();
-
-                    using (StreamReader standardOutput = proc.StandardOutput)
-                    {
-                        _os = standardOutput.ReadLine() == "Darwin" ? "MacOS" : "Linux";
-                    }
-                }
-            }
-        }
+        private string OS { get; set; }
 
         private string _apiLink;
 
@@ -111,8 +72,6 @@ namespace ModInstaller
         private string _modcommonLink;
 
         private string _modcommonSha1;
-
-        private string _os;
 
         public bool IsOffline;
 
@@ -199,20 +158,14 @@ namespace ModInstaller
 
         private void GetCurrentOS()
         {
-            int p = (int) Environment.OSVersion.Platform;
-            switch (p)
-            {
-                case 4:
-                case 128:
-                    OS = "Linux";
-                    break;
-                case 6:
-                    OS = "MacOS";
-                    break;
-                default:
-                    OS = "Windows";
-                    break;
-            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                OS = "Windows";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                OS = "MacOS";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                OS = "Linux";
+            else
+                OS = "Windows";
         }
 
         private void FillDefaultPaths()
