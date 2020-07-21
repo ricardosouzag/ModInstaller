@@ -373,7 +373,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>HollowTwitch.dll</Name>
-					<SHA1>4478A1E07BCB275F78E9174A6A82883A545BE0A0</SHA1>
+					<SHA1>501434945F535A54025C4A47090BECB5B7B590CC</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1PRv4Xypx_DgccbOjvr0i4ANAoxG6sfEr]]></Link>
