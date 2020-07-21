@@ -69,15 +69,9 @@ namespace ModInstaller
 
         private string _currentPatch;
 
-        private string _modcommonLink;
-
-        private string _modcommonSha1;
-
         public bool IsOffline;
 
         private bool _apiIsInstalled;
-
-        private bool _modcommonIsInstalled;
 
         private bool _vanillaEnabled;
 
@@ -312,10 +306,6 @@ namespace ModInstaller
             {
                 switch (mod.Element("Name")?.Value)
                 {
-                    case "ModCommon":
-                        _modcommonLink = mod.Element("Link")?.Value;
-                        _modcommonSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
-                        break;
                     case "Modding API Windows":
                         if (OS == "Windows")
                         {
@@ -459,13 +449,6 @@ namespace ModInstaller
                 return;
             }
 
-            _modcommonIsInstalled = File.Exists($"{Properties.Settings.Default.modFolder}/ModCommon.dll")
-                && SHA1Equals
-                (
-                    $"{Properties.Settings.Default.modFolder}/ModCommon.dll",
-                    _modcommonSha1
-                );
-
             if (!_apiIsInstalled || _assemblyIsAPI && !SHA1Equals($"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll", _apiSha1))
             {
                 Download
@@ -482,23 +465,6 @@ namespace ModInstaller
                 File.Delete($"{Properties.Settings.Default.installFolder}/Modding API.zip");
                 MessageBox.Show("Modding API successfully installed!");
             }
-
-            if (_modcommonIsInstalled) return;
-
-            Download
-            (
-                new Uri(_modcommonLink),
-                $"{Properties.Settings.Default.modFolder}/ModCommon.zip",
-                "ModCommon"
-            );
-            InstallMods
-            (
-                $"{Properties.Settings.Default.modFolder}/ModCommon.zip",
-                Properties.Settings.Default.temp,
-                true
-            );
-            File.Delete($"{Properties.Settings.Default.modFolder}/ModCommon.zip");
-            MessageBox.Show("ModCommon successfully installed!");
         }
 
         private void PopulateList()
@@ -510,7 +476,8 @@ namespace ModInstaller
 
             foreach (Mod mod in _modsList)
             {
-                if (_allMods.Any(f => f.Equals(mod.Name))) continue;
+                if (_allMods.Contains(mod.Name)) 
+                    continue;
 
                 var entry = new ModField
                 {
@@ -816,8 +783,6 @@ namespace ModInstaller
 
             foreach (FileInfo modsFile in modsFiles)
             {
-                if (Path.GetFileName(modsFile.Name) == "ModCommon.dll") continue;
-
                 Mod mod;
 
                 var entry = new ModField
@@ -829,6 +794,7 @@ namespace ModInstaller
                     IsEnabled = true,
                     IsInstalled = true
                 };
+                
                 panel.Controls.Add(entry.Name);
                 panel.Controls.Add(entry.EnableButton);
                 panel.Controls.Add(entry.InstallButton);
@@ -839,12 +805,6 @@ namespace ModInstaller
                 if (isGDriveMod)
                 {
                     mod = _modsList.First(m => m.Files.Keys.Contains(Path.GetFileName(modsFile.Name)));
-
-                    // If it's not outdated, ensure we have all dependencies
-                    if (!CheckModUpdated(modsFile.FullName, mod, true))
-                    {
-                        InstallDependencies(mod);
-                    }
                 }
                 else
                 {
@@ -861,7 +821,9 @@ namespace ModInstaller
                     };
                 }
 
-                if (string.IsNullOrEmpty(mod.Name) || _allMods.Any(f => f == mod.Name)) continue;
+                if (string.IsNullOrEmpty(mod.Name) || _allMods.Contains(mod.Name)) 
+                    continue;
+                
                 entry.Name.Text = mod.Name;
                 _modEntries.Add(entry);
                 _modsList.Add(mod);
@@ -871,8 +833,6 @@ namespace ModInstaller
 
             foreach (FileInfo file in disabledFiles)
             {
-                if (Path.GetFileName(file.Name) == "ModCommon.dll") continue;
-
                 Mod mod;
 
                 var entry = new ModField
@@ -889,12 +849,12 @@ namespace ModInstaller
                 panel.Controls.Add(entry.EnableButton);
                 panel.Controls.Add(entry.InstallButton);
                 panel.Controls.Add(entry.ReadmeButton);
+                
                 bool isGDriveMod = _modsList.Any(m => m.Files.Keys.Contains(Path.GetFileName(file.Name)));
 
                 if (isGDriveMod)
                 {
                     mod = _modsList.First(m => m.Files.Keys.Contains(Path.GetFileName(file.Name)));
-                    CheckModUpdated(file.FullName, mod, false);
                 }
                 else
                 {
@@ -908,12 +868,29 @@ namespace ModInstaller
                     };
                 }
 
-                if (string.IsNullOrEmpty(mod.Name) || _allMods.Any(f => f == mod.Name)) continue;
+                if (string.IsNullOrEmpty(mod.Name) || _allMods.Contains(mod.Name)) 
+                   continue;
+                
                 entry.Name.Text = mod.Name;
+                
                 _modsList.Add(mod);
                 _modEntries.Add(entry);
                 _allMods.Add(mod.Name);
                 _installedMods.Add(mod.Name);
+            }
+
+            foreach ((FileInfo file, bool enabled) in modsFiles.Select(x => (x, true)).Union(disabledFiles.Select(x => (x, false))))
+            {
+                // High-key hate having to do it again but i cba refactoring the entire method
+                // If it's in the modlinks
+                Mod? mod = _modsList.Cast<Mod?>().FirstOrDefault(x => x is Mod m && m.Files.Keys.Contains(Path.GetFileName(file.Name)));
+
+                if (!(mod is Mod modlinksMod)) continue;
+                
+                if (!CheckModUpdated(file.FullName, modlinksMod, enabled))
+                {
+                    InstallDependencies(modlinksMod);
+                }
             }
         }
 
