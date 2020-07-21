@@ -20,13 +20,14 @@ namespace ModInstaller
     {
         private const string ModLinks = "https://raw.githubusercontent.com/Ayugradow/ModInstaller/master/modlinks.xml";
 
-        private const string Version = "v8.5.2";
+        private const string Version = "v8.6.0";
 
         private readonly List<string> _defaultPaths = new List<string>();
 
         private readonly List<string> _allMods = new List<string>();
 
         private readonly List<string> _installedMods = new List<string>();
+        
         private struct Mod
         {
             public string Name { get; set; }
@@ -709,33 +710,29 @@ namespace ModInstaller
                 );
 
                 if (result != DialogResult.Yes) return;
-
-                if (mod.Dependencies.Any())
-                {
-                    CheckApiInstalled();
-                    foreach (string dependency in mod.Dependencies)
-                    {
-                        if (dependency == "Modding API" || dependency == "ModCommon") continue;
-                        if (_installedMods.Any(f => f.Equals(dependency))) continue;
-                        Install(dependency, false, true);
-                    }
-                }
+                
+                InstallDependencies(mod);
 
                 if (mod.Optional.Any())
                 {
-                    foreach (string dependency in mod.Optional)
+                    // ReSharper disable once ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
+                    foreach (string optional in mod.Optional)
                     {
-                        if (_installedMods.Any(f => f.Equals(dependency))) continue;
-                        DialogResult depInstall =
-                            MessageBox.Show
-                            (
-                                $"The mod author suggests installing {dependency} together with this mod.\nDo you want to install {dependency}?",
-                                "Confirm installation",
-                                MessageBoxButtons.YesNo
-                            );
-                        if (depInstall != DialogResult.Yes) continue;
-                        Install(dependency, false, true);
-                        MessageBox.Show($"{dependency} successfully installed!");
+                        if (_installedMods.Contains(optional)) continue;
+                        
+                        DialogResult depInstall = MessageBox.Show
+                        (
+                            $"The mod author suggests installing {optional} together with this mod.\nDo you want to install {optional}?",
+                            "Confirm installation",
+                            MessageBoxButtons.YesNo
+                        );
+                        
+                        if (depInstall != DialogResult.Yes) 
+                            continue;
+                        
+                        Install(optional, false, true);
+                        
+                        MessageBox.Show($"{optional} successfully installed!");
                     }
                 }
 
@@ -748,6 +745,25 @@ namespace ModInstaller
             entry.EnableButton.Enabled = entry.IsInstalled;
             entry.EnableButton.Text = entry.IsInstalled ? "Disable" : "Enable";
             entry.ReadmeButton.Enabled = entry.IsInstalled;
+        }
+
+        private void InstallDependencies(Mod mod)
+        {
+            if (!mod.Dependencies.Any()) return;
+            
+            CheckApiInstalled();
+            
+            // ReSharper disable once ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
+            foreach (string dependency in mod.Dependencies)
+            {
+                if (dependency == "Modding API")
+                    continue;
+
+                if (_installedMods.Contains(dependency))
+                    continue;
+                
+                Install(dependency, false, true);
+            }
         }
 
         private void OnEnableButtonClick(object sender, EventArgs e)
@@ -872,7 +888,11 @@ namespace ModInstaller
                 {
                     mod = _modsList.First(m => m.Files.Keys.Contains(Path.GetFileName(modsFile.Name)));
 
-                    CheckModUpdated(modsFile.FullName, mod, true);
+                    // If it's not outdated, ensure we have all dependencies
+                    if (!CheckModUpdated(modsFile.FullName, mod, true))
+                    {
+                        InstallDependencies(mod);
+                    }
                 }
                 else
                 {
@@ -945,14 +965,14 @@ namespace ModInstaller
             }
         }
 
-        private void CheckModUpdated(string filename, Mod mod, bool isEnabled)
+        private bool CheckModUpdated(string filename, Mod mod, bool isEnabled)
         {
             if (SHA1Equals
             (
                 filename,
                 mod.Files[mod.Files.Keys.First(f => f == Path.GetFileName(filename))]
             ))
-                return;
+                return false;
 
             DialogResult update = MessageBox.Show
             (
@@ -961,9 +981,14 @@ namespace ModInstaller
                 MessageBoxButtons.YesNo
             );
 
-            if (update != DialogResult.Yes) return;
+            if (update != DialogResult.Yes) 
+                return true;
+            
+            InstallDependencies(mod);
 
             Install(mod.Name, true, isEnabled);
+
+            return true;
         }
 
         private void ResizeUI()
@@ -1025,7 +1050,7 @@ namespace ModInstaller
                 $"{Properties.Settings.Default.modFolder}/{mod}.zip",
                 mod
             );
-
+            
             InstallMods
             (
                 $"{Properties.Settings.Default.modFolder}/{mod}.zip",
