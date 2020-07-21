@@ -372,14 +372,13 @@ namespace ModInstaller
 
         private static string GetSHA1(string file)
         {
-            using (SHA1 sha1 = SHA1.Create())
-            {
-                using (FileStream stream = File.OpenRead(file))
-                {
-                    byte[] hash = sha1.ComputeHash(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
-                }
-            }
+            using var sha1 = SHA1.Create();
+
+            using FileStream stream = File.OpenRead(file);
+            
+            byte[] hash = sha1.ComputeHash(stream);
+            
+            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
         }
 
         private void CheckApiInstalled()

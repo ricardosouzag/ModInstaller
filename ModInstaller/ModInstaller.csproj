@@ -22,11 +22,12 @@
         <Product>ModInstaller</Product>
         <Copyright>Copyright © 2018</Copyright>
         <OutputPath>bin\$(Configuration)\</OutputPath>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="zote_circle_aSZ_icon.ico"/>
-        <Content Include="zote_circle_WL7_icon.ico"/>
+        <Content Include="zote_circle_aSZ_icon.ico" />
+        <Content Include="zote_circle_WL7_icon.ico" />
     </ItemGroup>
     
     <PropertyGroup>
@@ -34,12 +35,12 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <Reference Include="System.IO.Compression"/>
-        <Reference Include="System.Data.DataSetExtensions"/>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="System.Deployment"/>
-        <Reference Include="System.Net.Http"/>
-        <Reference Include="System.Windows.Forms"/>
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Deployment" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.Windows.Forms" />
     </ItemGroup>
     
     <ItemGroup>
