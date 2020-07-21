@@ -357,7 +357,7 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
-					<SHA1>1890ABA5071E8BADDFCEA895F62850674207C717</SHA1>
+					<SHA1>B74853FF227E6DF458C8105525FD5FDD185127B6</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
@@ -365,7 +365,7 @@ Mods that write to assembly-csharp are not compatible
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>ModCommon</string>
+				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
