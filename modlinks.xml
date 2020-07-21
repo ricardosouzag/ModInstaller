@@ -415,7 +415,7 @@ Mods that write to assembly-csharp are not compatible
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
-        <ModLink>
+       	        <ModLink>
 			<Name>SeanprCore</Name><!-- NOT A MOD BUT WHATEVER -->
 			<Files>
 				<File>
@@ -424,6 +424,21 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ez1JKQiHK7RrLJ7y4YL_z8_Rwf2jMvCI]]></Link>
+			<DefaultInstallPath>/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+       	        <ModLink>
+			<Name>Vasi</Name><!-- NOT A MOD BUT WHATEVER -->
+			<Files>
+				<File>
+					<Name>Vasi.dll</Name>
+					<SHA1>5EE92847D8578ED3F3666A99493794ACF29EC9BE</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
