@@ -19,7 +19,7 @@
 	<DriveLink>https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing</DriveLink>
 	<Installer>
 	    <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
-	    <SHA1>6ACCC6D3A53DA23AD2E5652025EA1AB6BFA1C9F9</SHA1>
+	    <SHA1>DE28555B158C41616227D0A2CFD8F04C86E3C188</SHA1>
 	    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
 	</Installer>
 	<ModList>
