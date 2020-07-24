@@ -37,18 +37,6 @@
 			<Dependencies />
 		</ModLink>
 		<ModLink>
-			<Name>Modding API Linux</Name><!-- WRITES TO ASSEMBLY-CSHARP -->
-			<Files>
-				<File>
-					<Name>Assembly-CSharp.dll</Name>
-					<SHA1>08A4246CAE7B871B0DDF731601C64A25FE2C365D</SHA1>
-					<Patch>1.4.3.2</Patch>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></Link>
-			<Dependencies />
-		</ModLink>
-		<ModLink>
 			<Name>ModCommon</Name><!-- API MOD -->
 			<Files>
 				<File>
