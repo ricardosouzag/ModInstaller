@@ -307,20 +307,9 @@ namespace ModInstaller
                 switch (mod.Element("Name")?.Value)
                 {
                     case "Modding API Windows":
-                        if (OS == "Windows")
-                        {
-                            _apiLink = mod.Element("Link")?.Value;
-                            _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
-                            _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
-                        }
-                        break;
-                    case "Modding API Linux":
-                        if (OS == "Linux" || OS == "MacOS")
-                        {
-                            _apiLink = mod.Element("Link")?.Value;
-                            _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
-                            _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
-                        }
+                        _apiLink = OS == "Windows" ? mod.Element("Link")?.Value : mod.Element("UnixLink")?.Value;
+                        _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                        _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
                         break;
                     default:
                         _modsList.Add
