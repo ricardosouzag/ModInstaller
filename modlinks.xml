@@ -1059,5 +1059,47 @@
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Custom Knight</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>CustomKnight.dll</Name>
+					<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multipalyer/releases/download/1.2.2/CustomKnight.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Multiplayer Client (Alpha Pre-Release)</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>MultiplayerClient.dll</Name>
+					<SHA1>6ce627732202925896a635c9542de87a18ab1733</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerClient.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Multiplayer Server (Alpha Pre-Release)</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>MultiplayerServer.dll</Name>
+					<SHA1>6fc0bfba959f5bee2a33a43c2acc850ed929655a</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerServer.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
