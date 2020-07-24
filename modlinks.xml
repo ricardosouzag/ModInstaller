@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
+
 <!--
 
-To update or change a mod link:
-1. Go to https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing
-2. Select the mod you want to get the link for and open the folder.
-3. Open the .zip file of the mod.
-4. Select "Get sharable link"
-5. Copy the link (example from lightbringer: https://drive.google.com/file/d/1JGfVZ9UpkkI8r6DdOm9-dFEcSkL6Ouf9/view?usp=sharing )
-6. Copy the ID from the link into the mod's ID field: (example: 1JGfVZ9UpkkI8r6DdOm9-dFEcSkL6Ouf9 goes into <![CDATA[https://drive.google.com/uc?export=download&id=1JGfVZ9UpkkI8r6DdOm9-dFEcSkL6Ouf9]]>
-7. done!
-nb. To figure out where the default install path should go, open the zip and match it to that level of the hollow knight folder.
-Hopefully in the future, mods will provide a modfiles.xml file that describes where things should go.
-modfiles.xml is a dumb idea. Properly zipped zip files are better. Keep it simple, stupid.
+    To update, change, or add a mod link:
+    1.   Go to https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing
+    2.   Select the mod you want to get the link for and open the folder.
+    3.   Open the .zip file of the mod.
+    4.   Select "Get sharable link"
+    5.   Copy the link (example from lightbringer: https://drive.google.com/file/d/1JGfVZ9UpkkI8r6DdOm9-dFEcSkL6Ouf9/view?usp=sharing )
+    6.   Take the ID (e.g., for the previous link: "1JGfVZ9UpkkI8r6DdOm9-dFEcSkL6Ouf9"), and replace the old ID if updating
+    6.5  If adding a new mod, replace the id in the template <![CDATA[https://drive.google.com/uc?export=download&id=YOUR_ID_HERE]]>
+    7.   If adding a new mod, create a ModLinks element similar to the others, only changing the Name, File, SHA1, and Link.
+    8.   Done.
 
-Mods that write to assembly-csharp are not compatible
 -->
+
 <ModLinks xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<DriveLink>https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing</DriveLink>
 	<Installer>
 	    <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
-	    <SHA1>7C87306373B8A201608EE9300DBE650F411D7FF6</SHA1>
+	    <SHA1>DE28555B158C41616227D0A2CFD8F04C86E3C188</SHA1>
 	    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
 	</Installer>
 	<ModList>
@@ -33,9 +33,7 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
-			<GOGLink><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></GOGLink>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>true</WritesOverAssembly>
+			<UnixLink><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></UnixLink>
 			<Dependencies />
 		</ModLink>
 		<ModLink>
@@ -48,9 +46,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></Link>
-			<GOGLink><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></GOGLink>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>true</WritesOverAssembly>
 			<Dependencies />
 		</ModLink>
 		<ModLink>
@@ -62,8 +57,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XB38hwlVRhYxbZj-41sqTCg684Ig1vAL]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -85,8 +78,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GQzyLQmYMXsPhzuxKKjHEjOXZVFTLU1J]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -100,8 +91,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -115,8 +104,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
@@ -131,10 +118,9 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Kvi6xjES0imKALCuHWF3O98Jl3496dAl]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -146,8 +132,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yxytX8Ulq_ZQedYmR7uBV9vOupzj5DW2]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -162,8 +146,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=10haKYAnDuSGsAqOZkTA-5GiFgjsgt9v0]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -178,8 +160,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1JvUSKBAcxbujeR1EA951wt6R7jYsXDWY]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -193,8 +173,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1mZgGfNDpR4QyTfQ0qPP9vkMw8900iTPM]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -208,8 +186,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1-Jr2S2kIK7lhL7lgoUpG9lFYJD3WGKlP]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -223,8 +199,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1hCa_dc9cTiTiM7rqcvHioG4X4d-ZZq7U]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>WeaverCore</string>
@@ -239,8 +213,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1tQ-RULOsUR3wPXSCPX3ldJQe7YHlfEvk]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -254,8 +226,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1Su68ndGG-YLVTJuCVwaMdI9B_nHkK6c5]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -269,8 +239,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1o875EXE0L5-X0BAx2BjqgyG0qWsX6shY]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -284,8 +252,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1xCoTQFKHRIELNS5xH4ouMcfF-ai50xha]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -299,8 +265,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nNvfsJ5AFZW3LyM8Gauz7zwXDLmxYmq1]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -314,8 +278,6 @@ Mods that write to assembly-csharp are not compatible
 					</File>
 				</Files>
 				<Link><![CDATA[https://drive.google.com/uc?export=download&id=1xAiQnjQ9p_qqTwZvf_vHN6l1F6TdQ3kL]]></Link>
-				<DefaultInstallPath>/</DefaultInstallPath>
-				<WritesOverAssembly>false</WritesOverAssembly>
 				<Dependencies>
 					<string>Modding API</string>
 					<string>ModCommon</string>
@@ -330,8 +292,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yr832lq_jSCvX8Ve5qVIWlIl4kVVAmPD]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -346,8 +306,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lvvNutNW917oRVHRCNbnxrQdUneccR8o]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -361,8 +319,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
@@ -373,12 +329,10 @@ Mods that write to assembly-csharp are not compatible
 			<Files>
 				<File>
 					<Name>HollowTwitch.dll</Name>
-					<SHA1>501434945F535A54025C4A47090BECB5B7B590CC</SHA1>
+					<SHA1>E201CC8BC94551A761CF34BB0502833970156398</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1PRv4Xypx_DgccbOjvr0i4ANAoxG6sfEr]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -393,8 +347,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -409,8 +361,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpWXhoS2hyZ2JUMEU]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -424,8 +374,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ez1JKQiHK7RrLJ7y4YL_z8_Rwf2jMvCI]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -439,8 +387,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -454,8 +400,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1KYygwL2kYyCoASt-TMIpiiNUN6tVO3rG]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
@@ -470,10 +414,9 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
         <ModLink>
@@ -485,8 +428,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1McNr6AWvJMWzcewCf4DCmyMZfyzmNe7b]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -500,8 +441,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -516,8 +455,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YsthSD5-k8vVtK4orQBz_mZIF4_w-I4P]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -531,8 +468,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/gcombos.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -547,8 +482,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/infinitegrimm.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -563,8 +496,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/grimmchildupgrades.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -582,8 +513,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/UHKP.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -602,8 +531,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/redwing.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -634,8 +561,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/redwingAssets.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -673,8 +598,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/artmods.zip]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -689,8 +612,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1oq0x6XGbo1rqPPAgGubfeupwTU3N1HXr]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -708,8 +629,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1x_nx2Nhfm_GPWqis0k-3tAuiYfvEpSNr]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -723,8 +642,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpUVQ5ZGlEdlcxOXM]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -738,8 +655,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BeFOhGulOCOzbuSdHgOUpnKZ8oRFvxeJ]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -754,8 +669,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ccDSG_ZSDaGZKgn2kmPBgtAiDdw2jqQJ]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -769,8 +682,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BpR6Yha3CU36c1Lz0XAjYlONj2INjPvX]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -785,8 +696,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1t_ppIAOEwYd_SPMTPtPDSTQq8b0E8gpo]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -801,8 +710,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ek4NqXPWIE9XRWd0bJjqA1ohX4GEkcvb]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -817,8 +724,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1hBS81YDHy4PIYH7pxidPBd9IchmpF4NG]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -832,8 +737,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -847,8 +750,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/SalehAce1/HKFiles/blob/master/%5BAPI%5D%20Pale%20Champion%20(by%20Saleh).zip?raw=true]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -863,8 +764,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=100DQ7o7eCTrBL0Yf3wytn8qI07CskAHi]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -879,8 +778,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
@@ -897,8 +794,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=11xFWrOoVuw03UNvmKA_H_gLjUP3DTuDC]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -913,8 +808,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GeyXchgJJgUIWLQxioOu7re2dHFt19L4]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -929,8 +822,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_u6XJ-71n_PIL9m1taehsWcUqwJ0Ey0V]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -945,8 +836,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lg0A4pstHdlHdbdU511Umg5uYuvG8Pd1]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -961,8 +850,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13v9CkQlEVKaaAPjY3ZO9VppgyeM1CVVs]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -976,8 +863,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1psfwT5_dH9XiU_8g7b_rkkdI6YhGfwnS]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -992,8 +877,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1vxar_-vYLQHbixvfN9PLiZmweKHBpgS9]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1008,8 +891,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1F17aQrAlMSLS-_HXjoDp8qHXRU4dH3Zm]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1024,8 +905,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1MoarOHW6daSehsEccXOT19jSub7dX0k8]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1040,8 +919,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gAo7SihdBEz5-4-GpkPQ38KpvUY7_lcz]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1056,8 +933,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1EWmHKs20Ry22oJc1q1bJtUgsapZVuWK2]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1072,8 +947,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YtBzj0hTp2hNM8gSmMb5fHOJd9pDQqER]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1096,8 +969,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.Indie.Crossover.by.Saleh.and.jngo102.zip]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1112,8 +983,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
@@ -1128,8 +997,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1s5UjZIL7Fnc9mK8bjlRsVOuHnacxl5v-]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1144,8 +1011,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
@@ -1160,8 +1025,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
@@ -1177,8 +1040,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1vInXLExItvieDcukk8iKlxIB-gsGjbzr]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1193,8 +1054,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1VRYzMjnnk2Jl57Y6sraEnSprd-cAo0OA]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1208,8 +1067,6 @@ Mods that write to assembly-csharp are not compatible
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1zo2ch0ggwdWgDp0gjk9TF-McQYuvGm29]]></Link>
-			<DefaultInstallPath>/hollow_knight_Data/Managed/Mods/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
