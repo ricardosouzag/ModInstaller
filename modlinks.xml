@@ -1060,20 +1060,6 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Custom Knight</Name><!-- API MOD -->
-			<Files>
-				<File>
-					<Name>CustomKnight.dll</Name>
-					<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multipalyer/releases/download/1.2.2/CustomKnight.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
-		</ModLink>
-		<ModLink>
 			<Name>Multiplayer Client (Alpha Pre-Release)</Name><!-- API MOD -->
 			<Files>
 				<File>
