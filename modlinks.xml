@@ -88,7 +88,7 @@
 			<Files>
 				<File>
 					<Name>BingoUI.dll</Name>
-					<SHA1>77EA098B46B6E94F54489396008BC631E096215F</SHA1>
+					<SHA1>C3D7A41B7C1FD2EB1E05D51D507BAE5489EF843A</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
@@ -701,19 +701,6 @@
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
-			</Dependencies>
-		</ModLink>
-        <ModLink>
-			<Name>Spent Geo Tracker</Name><!-- API MOD -->
-			<Files>
-				<File>
-					<Name>GeoTracker.dll</Name>
-					<SHA1>117baa8483e6d006aebec6cf9a99218e60629fcc</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1hBS81YDHy4PIYH7pxidPBd9IchmpF4NG]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
