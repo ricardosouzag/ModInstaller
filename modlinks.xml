@@ -703,19 +703,6 @@
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
-        <ModLink>
-			<Name>Spent Geo Tracker</Name><!-- API MOD -->
-			<Files>
-				<File>
-					<Name>GeoTracker.dll</Name>
-					<SHA1>117baa8483e6d006aebec6cf9a99218e60629fcc</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1hBS81YDHy4PIYH7pxidPBd9IchmpF4NG]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
-		</ModLink>
 		<ModLink>
 			<Name>Benchwarp</Name><!-- API MOD -->
 			<Files>
