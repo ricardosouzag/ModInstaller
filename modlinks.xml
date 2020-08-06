@@ -921,7 +921,7 @@
 					<SHA1>D6AD7E158B3879429229E995F9F7E2B5864FF3E2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YtBzj0hTp2hNM8gSmMb5fHOJd9pDQqER]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1quyv8LSn27qAJInHO2jxbRa2AfMTKiWF]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1069,6 +1069,20 @@
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerServer.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>SFCore</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>SFCore.dll</Name>
+					<SHA1>A3C86BBC0341899C2B1E2C7171C3435150AF74BC</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Jy2eUsW6hBN_o6H39fzjB_55e5iCuf_W]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
