@@ -95,6 +95,7 @@
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SeanprCore</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -758,7 +759,6 @@
 				<string>SeanprCore</string>
 				<string>Benchwarp</string>
 				<string>QoL</string>
-				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
