@@ -758,6 +758,7 @@
 				<string>SeanprCore</string>
 				<string>Benchwarp</string>
 				<string>QoL</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
