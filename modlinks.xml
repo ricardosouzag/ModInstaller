@@ -313,6 +313,20 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>ASCII Camera</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>AsciiCamera.dll</Name>
+					<SHA1>7704344C9873855C204B3B9C922EBC84C5F1A5EC</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1OX7BXG7q3hfyqiW6D74Z5_WyQsHUclKk]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Hollow Twitch</Name><!-- API MOD -->
 			<Files>
 				<File>
