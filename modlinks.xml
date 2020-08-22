@@ -24,7 +24,7 @@
 	</Installer>
 	<ModList>
 		<ModLink>
-			<Name>Modding API Windows</Name><!-- WRITES TO ASSEMBLY-CSHARP -->
+			<Name>Modding API Windows</Name>
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
@@ -37,7 +37,7 @@
 			<Dependencies />
 		</ModLink>
 		<ModLink>
-			<Name>ModCommon</Name><!-- API MOD -->
+			<Name>ModCommon</Name>
 			<Files>
 				<File>
 					<Name>ModCommon.dll</Name>
@@ -50,7 +50,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>ModConsole</Name><!-- API MOD -->
+			<Name>ModConsole</Name>
 			<Files>
 				<File>
 					<Name>ModConsole.dll</Name>
@@ -71,7 +71,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Hell Mod</Name><!-- API MOD -->
+			<Name>Hell Mod</Name>
 			<Files>
 				<File>
 					<Name>HellMod.dll</Name>
@@ -84,7 +84,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Bingo UI</Name><!-- API MOD -->
+			<Name>Bingo UI</Name>
 			<Files>
 				<File>
 					<Name>BingoUI.dll</Name>
@@ -98,7 +98,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>HollowPoint (Beta)</Name><!-- API MOD -->
+			<Name>HollowPoint (Beta)</Name>
 			<Files>
 				<File>
 					<Name>HollowPoint.dll</Name>
@@ -112,7 +112,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Bindings</Name><!-- API MOD -->
+			<Name>Bindings</Name>
 			<Files>
 				<File>
 					<Name>Bindings.dll</Name>
@@ -126,7 +126,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Pale Prince</Name><!-- API MOD -->
+			<Name>Pale Prince</Name>
 			<Files>
 				<File>
 					<Name>Pale_Prince.dll</Name>
@@ -140,7 +140,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Omnēs Deōrum</Name><!-- API MOD -->
+			<Name>Omnēs Deōrum</Name>
 			<Files>
 				<File>
 					<Name>OmnesDeorum.dll</Name>
@@ -153,7 +153,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Mantis Gods</Name><!-- API MOD -->
+			<Name>Mantis Gods</Name>
 			<Files>
 				<File>
 					<Name>Mantis Gods.dll</Name>
@@ -166,7 +166,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>WeaverCore</Name><!-- API MOD -->
+			<Name>WeaverCore</Name>
 			<Files>
 				<File>
 					<Name>WeaverCore.dll</Name>
@@ -179,7 +179,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Inferno King Grimm</Name><!-- API MOD -->
+			<Name>Inferno King Grimm</Name>
 			<Files>
 				<File>
 					<Name>InfernoKingGrimm.dll</Name>
@@ -193,7 +193,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Sanic</Name><!-- API MOD -->
+			<Name>Sanic</Name>
 			<Files>
 				<File>
 					<Name>Sanic.dll</Name>
@@ -206,7 +206,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>RNG</Name><!-- API MOD -->
+			<Name>RNG</Name>
 			<Files>
 				<File>
 					<Name>why.dll</Name>
@@ -219,7 +219,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>CharmOverhaul</Name><!-- API MOD -->
+			<Name>CharmOverhaul</Name>
 			<Files>
 				<File>
 					<Name>BetterCharms.dll</Name>
@@ -232,7 +232,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Chaos Mode</Name><!-- API MOD -->
+			<Name>Chaos Mode</Name>
 			<Files>
 				<File>
 					<Name>ChaosMode.dll</Name>
@@ -245,7 +245,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>RandoMapMod</Name><!-- API MOD -->
+			<Name>RandoMapMod</Name>
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
@@ -258,7 +258,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Lightbringer</Name><!-- API MOD -->
+			<Name>Lightbringer</Name>
 				<Files>
 					<File>
 						<Name>Lightbringer.dll</Name>
@@ -272,7 +272,7 @@
 				</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>MoreSaves</Name><!-- API MOD -->
+			<Name>MoreSaves</Name>
 			<Files>
 				<File>
 					<Name>MoreSaves.dll</Name>
@@ -286,7 +286,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>The Pain of the Path</Name><!-- API MOD -->
+			<Name>The Pain of the Path</Name>
 			<Files>
 				<File>
 					<Name>ThePainOfThePath.dll</Name>
@@ -299,7 +299,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>QoL</Name><!-- API MOD -->
+			<Name>QoL</Name>
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
@@ -313,7 +313,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>ASCII Camera</Name><!-- API MOD -->
+			<Name>ASCII Camera</Name>
 			<Files>
 				<File>
 					<Name>AsciiCamera.dll</Name>
@@ -327,7 +327,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Hollow Twitch</Name><!-- API MOD -->
+			<Name>Hollow Twitch</Name>
 			<Files>
 				<File>
 					<Name>HollowTwitch.dll</Name>
@@ -341,7 +341,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Blackmoth</Name><!-- API MOD -->
+			<Name>Blackmoth</Name>
 			<Files>
 				<File>
 					<Name>Blackmoth.dll</Name>
@@ -355,7 +355,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Debug Mod</Name><!-- API MOD -->
+			<Name>Debug Mod</Name>
 			<Files>
 				<File>
 					<Name>DebugMod.dll</Name>
@@ -368,7 +368,7 @@
 			</Dependencies>
 		</ModLink>
        	        <ModLink>
-			<Name>SeanprCore</Name><!-- NOT A MOD BUT WHATEVER -->
+			<Name>SeanprCore</Name>
 			<Files>
 				<File>
 					<Name>SeanprCore.dll</Name>
@@ -381,7 +381,7 @@
 			</Dependencies>
 		</ModLink>
        	        <ModLink>
-			<Name>Vasi</Name><!-- NOT A MOD BUT WHATEVER -->
+			<Name>Vasi</Name>
 			<Files>
 				<File>
 					<Name>Vasi.dll</Name>
@@ -394,7 +394,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Randomizer 2 (Old)</Name><!-- API MOD -->
+			<Name>Randomizer 2 (Old)</Name>
 			<Files>
 				<File>
 					<Name>RandomizerMod2.0.dll</Name>
@@ -407,22 +407,22 @@
 				<string>SeanprCore</string>
 			</Dependencies>
 		</ModLink>
-        <ModLink>
-			<Name>Custom Knight</Name><!-- API MOD -->
-			<Files>
-				<File>
-					<Name>CustomKnight.dll</Name>
-					<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
-		</ModLink>
-        <ModLink>
-			<Name>Show Hitboxes</Name><!-- API MOD -->
+		<ModLink>
+				<Name>Custom Knight</Name>
+				<Files>
+					<File>
+						<Name>CustomKnight.dll</Name>
+						<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
+					</File>
+				</Files>
+				<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
+				<Dependencies>
+					<string>Modding API</string>
+					<string>ModCommon</string>
+				</Dependencies>
+			</ModLink>
+		<ModLink>
+			<Name>Show Hitboxes</Name>
 			<Files>
 				<File>
 					<Name>ShowHitboxes.dll</Name>
@@ -435,7 +435,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Enemy Randomizer</Name><!-- API MOD -->
+			<Name>Enemy Randomizer</Name>
 			<Files>
 				<File>
 					<Name>EnemyRandomizer.dll</Name>
@@ -449,7 +449,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Bonfire Mod</Name><!-- API MOD -->
+			<Name>Bonfire Mod</Name>
 			<Files>
 				<File>
 					<Name>BonfireMod.dll</Name>
@@ -462,7 +462,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Glorious Combos</Name><!-- API MOD -->
+			<Name>Glorious Combos</Name>
 			<Files>
 				<File>
 					<Name>combomod.dll</Name>
@@ -476,7 +476,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Infinite Grimm</Name><!-- API MOD -->
+			<Name>Infinite Grimm</Name>
 			<Files>
 				<File>
 					<Name>infinitegrimm.dll</Name>
@@ -490,7 +490,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Grimmchild Upgrades</Name><!-- API MOD -->
+			<Name>Grimmchild Upgrades</Name>
 			<Files>
 				<File>
 					<Name>grimmchildupgrades.dll</Name>
@@ -507,7 +507,7 @@
 			</Optional>
 		</ModLink>
 		<ModLink>
-			<Name>Unofficial Hollow Knight Patch</Name><!-- API MOD -->
+			<Name>Unofficial Hollow Knight Patch</Name>
 			<Files>
 				<File>
 					<Name>UHKP.dll</Name>
@@ -521,7 +521,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Redwing</Name><!-- API MOD -->
+			<Name>Redwing</Name>
 			<Files>
 				<File>
 					<Name>redwing.dll</Name>
@@ -543,7 +543,7 @@
 			</Optional>
 		</ModLink>
 		<ModLink>
-			<Name>Redwing Assets</Name><!-- API MOD -->
+			<Name>Redwing Assets</Name>
 			<Files>
 				<File>
 					<Name>dummy.dll</Name>
@@ -568,7 +568,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>'Art' Mods</Name><!-- API MOD -->
+			<Name>'Art' Mods</Name>
 			<Files>
 				<File>
 					<Name>infinitemyla.dll</Name>
@@ -606,7 +606,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Infinite Notches</Name><!-- API MOD -->
+			<Name>Infinite Notches</Name>
 			<Files>
 				<File>
 					<Name>InfiniteNotches.dll</Name>
@@ -619,7 +619,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Player Data Tracker</Name><!-- API MOD CONTAINS EXTRA DLLS.... ADD SUPPORT FOR THIS -->
+			<Name>Player Data Tracker</Name>
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
@@ -636,7 +636,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Charm Notch Mod</Name><!-- API MOD -->
+			<Name>Charm Notch Mod</Name>
 			<Files>
 				<File>
 					<Name>CharmNotchMod.dll</Name>
@@ -649,7 +649,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>EnemyHPBar</Name><!-- API MOD -->
+			<Name>EnemyHPBar</Name>
 			<Files>
 				<File>
 					<Name>EnemyHPBar.dll</Name>
@@ -663,7 +663,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Fragile Strength for Nail Arts</Name><!-- API MOD -->
+			<Name>Fragile Strength for Nail Arts</Name>
 			<Files>
 				<File>
 					<Name>FragileStrengthForNailArts.dll</Name>
@@ -676,7 +676,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Ultimatum Radiance</Name><!-- API MOD -->
+			<Name>Ultimatum Radiance</Name>
 			<Files>
 				<File>
 					<Name>Ultimatum Radiance.dll</Name>
@@ -690,7 +690,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Darkness</Name><!-- API MOD -->
+			<Name>Darkness</Name>
 			<Files>
 				<File>
 					<Name>Darkness.dll</Name>
@@ -704,7 +704,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Daughter of Hallownest</Name><!-- API MOD -->
+			<Name>Daughter of Hallownest</Name>
 			<Files>
 				<File>
 					<Name>DoH.dll</Name>
@@ -718,7 +718,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Benchwarp</Name><!-- API MOD -->
+			<Name>Benchwarp</Name>
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
@@ -731,7 +731,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Pale Champion</Name><!-- API MOD -->
+			<Name>Pale Champion</Name>
 			<Files>
 				<File>
 					<Name>PaleChampion.dll</Name>
@@ -745,7 +745,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Elderbug God</Name><!-- API MOD -->
+			<Name>Elderbug God</Name>
 			<Files>
 				<File>
 					<Name>ElderbugGod.dll</Name>
@@ -759,7 +759,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Randomizer 3 (Item or Room)</Name><!-- API MOD -->
+			<Name>Randomizer 3 (Item or Room)</Name>
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
@@ -776,7 +776,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Poorly Translated</Name><!-- API MOD -->
+			<Name>Poorly Translated</Name>
 			<Files>
 				<File>
 					<Name>TranslationMod.dll</Name>
@@ -790,7 +790,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Crystalblobbles</Name><!-- API MOD -->
+			<Name>Crystalblobbles</Name>
 			<Files>
 				<File>
 					<Name>Crystalblobbles.dll</Name>
@@ -804,7 +804,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Traitor God</Name><!-- API MOD -->
+			<Name>Traitor God</Name>
 			<Files>
 				<File>
 					<Name>Traitor God.dll</Name>
@@ -818,7 +818,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Tribe of Battle</Name><!-- API MOD -->
+			<Name>Tribe of Battle</Name>
 			<Files>
 				<File>
 					<Name>Tribe_of_Battle.dll</Name>
@@ -832,7 +832,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>LoadNormalizer</Name><!-- API MOD -->
+			<Name>LoadNormalizer</Name>
 			<Files>
 				<File>
 					<Name>LoadNormalizer.dll</Name>
@@ -845,7 +845,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Path of Pure Vessel</Name><!-- API MOD -->
+			<Name>Path of Pure Vessel</Name>
 			<Files>
 				<File>
 					<Name>PVPoP.dll</Name>
@@ -859,7 +859,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Royal Dreamer</Name><!-- API MOD -->
+			<Name>Royal Dreamer</Name>
 			<Files>
 				<File>
 					<Name>RoyalDreamer.dll</Name>
@@ -873,7 +873,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Dream Shield Coop</Name><!-- API MOD -->
+			<Name>Dream Shield Coop</Name>
 			<Files>
 				<File>
 					<Name>Dshieldcoop.dll</Name>
@@ -887,7 +887,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Transtrans</Name><!-- API MOD -->
+			<Name>Transtrans</Name>
 			<Files>
 				<File>
 					<Name>Transtrans.dll</Name>
@@ -901,7 +901,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Floor Lava</Name><!-- API MOD -->
+			<Name>Floor Lava</Name>
 			<Files>
 				<File>
 					<Name>FloorLava.dll</Name>
@@ -915,7 +915,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Lifeblood Master</Name><!-- API MOD -->
+			<Name>Lifeblood Master</Name>
 			<Files>
 				<File>
 					<Name>LifebloodMaster.dll</Name>
@@ -929,7 +929,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>DeathCounter</Name><!-- API MOD -->
+			<Name>DeathCounter</Name>
 			<Files>
 				<File>
 					<Name>DeathCounter.dll</Name>
@@ -943,7 +943,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Indie Crossover</Name><!-- API MOD -->
+			<Name>Indie Crossover</Name>
 			<Files>
 				<File>
 					<Name>Fennel.dll</Name>
@@ -965,7 +965,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>EasyMode</Name><!-- API MOD -->
+			<Name>EasyMode</Name>
 			<Files>
 				<File>
 					<Name>EasyMode.dll</Name>
@@ -979,7 +979,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Uuwuu</Name><!-- API MOD -->
+			<Name>Uuwuu</Name>
 			<Files>
 				<File>
 					<Name>Uuwuu.dll</Name>
@@ -993,7 +993,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>ItemChanger</Name><!-- API MOD -->
+			<Name>ItemChanger</Name>
 			<Files>
 				<File>
 					<Name>ItemChanger.dll</Name>
@@ -1007,7 +1007,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>plandoplando</Name><!-- API MOD -->
+			<Name>plandoplando</Name>
 			<Files>
 				<File>
 					<Name>plandoplando.dll</Name>
@@ -1022,7 +1022,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Exaltation</Name><!-- API MOD -->
+			<Name>Exaltation</Name>
 			<Files>
 				<File>
 					<Name>Exaltation.dll</Name>
@@ -1036,7 +1036,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>PaletteSwapper</Name><!-- API MOD -->
+			<Name>PaletteSwapper</Name>
 			<Files>
 				<File>
 					<Name>PaletteSwapper.dll</Name>
@@ -1049,7 +1049,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>NG+ (King's Pass)</Name><!-- API MOD -->
+			<Name>NG+ (King's Pass)</Name>
 			<Files>
 				<File>
 					<Name>NG+ (King's Pass).dll</Name>
@@ -1062,7 +1062,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Multiplayer Client (Alpha Pre-Release)</Name><!-- API MOD -->
+			<Name>Multiplayer Client (Alpha Pre-Release)</Name>
 			<Files>
 				<File>
 					<Name>MultiplayerClient.dll</Name>
@@ -1076,7 +1076,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Multiplayer Server (Alpha Pre-Release)</Name><!-- API MOD -->
+			<Name>Multiplayer Server (Alpha Pre-Release)</Name>
 			<Files>
 				<File>
 					<Name>MultiplayerServer.dll</Name>
@@ -1090,7 +1090,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>SFCore</Name><!-- API MOD -->
+			<Name>SFCore</Name>
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
@@ -1104,7 +1104,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Child of Light</Name><!-- API MOD -->
+			<Name>Child of Light</Name>
 			<Files>
 				<File>
 					<Name>ChildOfLight.dll</Name>
