@@ -765,7 +765,7 @@
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>22CDFFFBA95AE171333AB74AF4B25B0F6F68AE91</SHA1>
+					<SHA1>2453BA6E69716CEC11A44F86C88941ACB20C191B</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
@@ -774,6 +774,7 @@
 				<string>SeanprCore</string>
 				<string>Benchwarp</string>
 				<string>QoL</string>
+				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -970,7 +971,7 @@
 			<Files>
 				<File>
 					<Name>EasyMode.dll</Name>
-					<SHA1>FB1D78F4EB12C4872AB89EBFECA2E35B723D8A1C</SHA1>
+					<SHA1>EEF956C6BC4F36CD9E5D9D9787B1559874F1B2A6</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
