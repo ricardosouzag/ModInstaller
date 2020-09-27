@@ -127,6 +127,22 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Lost Lord</Name><!-- API MOD -->
+			<Files>
+				<File>
+					<Name>LostLord.dll</Name>
+					<SHA1>538ccf8bce789afe962de4a43c96455442174a82</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Z9V_GN2SDs1Kst1HjF43qNca9FECkjfx]]></Link>
+			<DefaultInstallPath>/</DefaultInstallPath>
+			<WritesOverAssembly>false</WritesOverAssembly>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Pale Prince</Name>
 			<Files>
 				<File>
