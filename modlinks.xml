@@ -1126,10 +1126,10 @@
 			<Files>
 				<File>
 					<Name>ChildOfLight.dll</Name>
-					<SHA1>DB42D62A3D7F7EF24918C478F49DDD0366927516</SHA1>
+					<SHA1>1B37BA0A4DD0074E3E26BEB767F8542389AA8480</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1y5nNr4dZTonX_RcZqJD4GOJ0glajKTc0]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Cuq-pcRqE4rlJ3BLmDy2KlKmZWrL49Hj]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
