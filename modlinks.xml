@@ -188,7 +188,7 @@
 			<Files>
 				<File>
 					<Name>WeaverCore.dll</Name>
-					<SHA1>79DD38B412584BCFB9E4A93AA44A1C82D61CCFC4</SHA1>
+					<SHA1>15A7FFF065FF4671BF42C438659E2B1E2DB3B6B3</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1-Jr2S2kIK7lhL7lgoUpG9lFYJD3WGKlP]]></Link>
@@ -201,7 +201,7 @@
 			<Files>
 				<File>
 					<Name>InfernoKingGrimm.dll</Name>
-					<SHA1>FA0219A87DBBC716378387FF837BEF95996F82A6</SHA1>
+					<SHA1>5C7144D63182AF57992C65C4570A8A6DCF8A5C55</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1hCa_dc9cTiTiM7rqcvHioG4X4d-ZZq7U]]></Link>
@@ -1001,13 +1001,14 @@
 			<Files>
 				<File>
 					<Name>Uuwuu.dll</Name>
-					<SHA1>30A2A5355C8116BD7ABA6ABB49E404EFD74BC172</SHA1>
+					<SHA1>AD79285237CF6648B73201586D18817616998EE9</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1s5UjZIL7Fnc9mK8bjlRsVOuHnacxl5v-]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
+				<string>SFCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
