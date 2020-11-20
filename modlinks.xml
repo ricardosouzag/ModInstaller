@@ -38,6 +38,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>ModCommon</Name>
+			<Description>Library used by many mods.</Description>
 			<Files>
 				<File>
 					<Name>ModCommon.dll</Name>
@@ -73,6 +74,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Hell Mod</Name>
+			<Description>Various nerfs to the player (nail, spells, damage, SOUL, etc.) and several buffs to enemies/bosses (health and damage)</Description>
 			<Files>
 				<File>
 					<Name>HellMod.dll</Name>
@@ -86,6 +88,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Bingo UI</Name>
+			<Description>Automatic tracking of bingo goals for randomizer or vanilla bingo speedrun races</Description>
 			<Files>
 				<File>
 					<Name>BingoUI.dll</Name>
@@ -101,6 +104,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>HollowPoint (Beta)</Name>
+			<Description>Gives the player a gun, reworks charms and abilities to play around the concept of gun usage</Description>
 			<Files>
 				<File>
 					<Name>HollowPoint.dll</Name>
@@ -115,6 +119,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Bindings</Name>
+			<Description>Applies the bindings from the Godhome Pantheons to the main game. Intended for practicing for bound pantheons in the Hall of Gods</Description>
 			<Files>
 				<File>
 					<Name>Bindings.dll</Name>
@@ -129,6 +134,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Lost Lord</Name><!-- API MOD -->
+			<Description>Significant buff to Lost Kin</Description>
 			<Files>
 				<File>
 					<Name>LostLord.dll</Name>
@@ -145,6 +151,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Pale Prince</Name>
+			<Description>Significant buff for Pure Vessel with new moves</Description>
 			<Files>
 				<File>
 					<Name>Pale_Prince.dll</Name>
@@ -159,6 +166,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Random Pantheons</Name>
+			<Description>Randomizes Godhome’s Pantheons. Bosses appear in random order.</Description>
 			<Files>
 				<File>
 					<Name>RandomPantheons.dll</Name>
@@ -173,6 +181,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Mantis Gods</Name>
+			<Description>Significantly buffs Mantis Lords</Description>
 			<Files>
 				<File>
 					<Name>Mantis Gods.dll</Name>
@@ -186,6 +195,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>WeaverCore</Name>
+			<Description>Library used by Inferno King Grimm</Description>
 			<Files>
 				<File>
 					<Name>WeaverCore.dll</Name>
@@ -199,6 +209,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Inferno King Grimm</Name>
+			<Description>Significantly buffs Nightmare King Grimm</Description>
 			<Files>
 				<File>
 					<Name>InfernoKingGrimm.dll</Name>
@@ -213,6 +224,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Sanic</Name>
+			<Description>Allows for modification of game speed for going fast</Description>
 			<Files>
 				<File>
 					<Name>Sanic.dll</Name>
@@ -226,6 +238,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>RNG</Name>
+			<Description>Randomizes animation speeds, waits, and velocities (not recommended for serious use)</Description>
 			<Files>
 				<File>
 					<Name>why.dll</Name>
@@ -239,6 +252,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>CharmOverhaul</Name>
+			<Description>Rebalances charms to make them stronger</Description>
 			<Files>
 				<File>
 					<Name>BetterCharms.dll</Name>
@@ -252,6 +266,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Chaos Mode</Name>
+			<Description>Randomizeshttps://clips.twitch.tv/ManlyBusyOstrichPRChase</Description>
 			<Files>
 				<File>
 					<Name>ChaosMode.dll</Name>
@@ -265,6 +280,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>RandoMapMod</Name>
+			<Description>Mod which shows randomizer items on the map.</Description>
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
@@ -278,6 +294,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Lightbringer</Name>
+			<Description>Changes nail attack to a lance of light, reworks charms, many other changes</Description>
 				<Files>
 					<File>
 						<Name>Lightbringer.dll</Name>
@@ -292,6 +309,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>MoreSaves</Name>
+			<Description>Allows for more than 4 save slots, organized into multiple pages in the save menu</Description>
 			<Files>
 				<File>
 					<Name>MoreSaves.dll</Name>
@@ -306,6 +324,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>The Pain of the Path</Name>
+			<Description>Allows the player to complete the Path of Pain backwards, starting just above the final drop to the Kingsmoulds</Description>
 			<Files>
 				<File>
 					<Name>ThePainOfThePath.dll</Name>
@@ -319,6 +338,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>QoL</Name>
+			<Description>Slight improvements to gameplay (skippable cutscenes/credits, “unfixed” menu drop and storage, etc.)</Description>
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
@@ -333,6 +353,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>ASCII Camera</Name>
+			<Description>Replaces the camera with an ASCII overlay of it</Description>
 			<Files>
 				<File>
 					<Name>AsciiCamera.dll</Name>
@@ -347,6 +368,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Hollow Twitch</Name>
+			<Description>Configures twitch chat to handle several commands that spice up gameplay</Description>
 			<Files>
 				<File>
 					<Name>HollowTwitch.dll</Name>
@@ -361,6 +383,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Blackmoth</Name>
+			<Description>Changes main mode of attack from nail to shade dash, some charms changed to affect dash</Description>
 			<Files>
 				<File>
 					<Name>Blackmoth.dll</Name>
@@ -375,6 +398,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Debug Mod</Name>
+			<Description>Allows for debug tools and features like no clip, invincibility, removing and giving items and abilities</Description>
 			<Files>
 				<File>
 					<Name>DebugMod.dll</Name>
@@ -388,6 +412,7 @@
 		</ModLink>
        	        <ModLink>
 			<Name>SeanprCore</Name>
+			<Description>Library used mostly by the Randomizer mods</Description>
 			<Files>
 				<File>
 					<Name>SeanprCore.dll</Name>
@@ -401,6 +426,7 @@
 		</ModLink>
        	        <ModLink>
 			<Name>Vasi</Name>
+			<Description>Helper mod, required for some mods to function</Description>
 			<Files>
 				<File>
 					<Name>Vasi.dll</Name>
@@ -414,6 +440,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Randomizer 2 (Old)</Name>
+			<Description>Mixes up charms, spells, abilities, etc. for new saves, difficulty settings and randomization seeds included</Description>
 			<Files>
 				<File>
 					<Name>RandomizerMod2.0.dll</Name>
@@ -428,6 +455,7 @@
 		</ModLink>
 		<ModLink>
 				<Name>Custom Knight</Name>
+				<Description>Allows for the player character’s sprites to be edited by modifying image files in the Hollow Knight directory</Description>
 				<Files>
 					<File>
 						<Name>CustomKnight.dll</Name>
@@ -442,6 +470,7 @@
 			</ModLink>
 		<ModLink>
 			<Name>Show Hitboxes</Name>
+			<Description>Displays Hitboxes</Description>
 			<Files>
 				<File>
 					<Name>ShowHitboxes.dll</Name>
@@ -455,6 +484,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Enemy Randomizer</Name>
+			<Description>Randomizes enemy spawns (with some limitations), several randomization modes (may break)</Description>
 			<Files>
 				<File>
 					<Name>EnemyRandomizer.dll</Name>
@@ -469,6 +499,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Bonfire Mod</Name>
+			<Description>Adds upgradeable stat bonuses to the game (purchased with geo)</Description>
 			<Files>
 				<File>
 					<Name>BonfireMod.dll</Name>
@@ -482,6 +513,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Glorious Combos</Name>
+			<Description>Nerfs player damage, but gradually increases it as the player chains attacks, rewarding skill in combat with increased DPS. Recommended for use in Godhome only, but settings allow it to be used in Hallownest proper</Description>
 			<Files>
 				<File>
 					<Name>combomod.dll</Name>
