@@ -528,6 +528,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Infinite Grimm</Name>
+			<Description>Includes multiple modes like Time Attack and One Hit, Nightmare God Grimm is packaged with this, (takes place in Dirtmouth, not Godhome)</Description>
 			<Files>
 				<File>
 					<Name>infinitegrimm.dll</Name>
@@ -542,6 +543,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Grimmchild Upgrades</Name>
+			<Description>Buffs/modifies level 4 Grimmchild, and makes it fully customizable</Description>
 			<Files>
 				<File>
 					<Name>grimmchildupgrades.dll</Name>
@@ -559,6 +561,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Unofficial Hollow Knight Patch</Name>
+			<Description>Fixes Absrad hazard spawn bug, sharp shadow fix, and adds new PV statue in Hall of Gods</Description>
 			<Files>
 				<File>
 					<Name>UHKP.dll</Name>
@@ -573,6 +576,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Redwing</Name>
+			<Description>Gives the player several new fiery attacks and abilities making them stronger. Fully configurable with optional "hard" mode</Description>
 			<Files>
 				<File>
 					<Name>redwing.dll</Name>
@@ -595,6 +599,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Redwing Assets</Name>
+			<Description>Video assets for the Redwing mod.</Description>
 			<Files>
 				<File>
 					<Name>dummy.dll</Name>
@@ -620,6 +625,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>'Art' Mods</Name>
+			<Description>Shitpost mod</Description>
 			<Files>
 				<File>
 					<Name>infinitemyla.dll</Name>
@@ -658,6 +664,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Infinite Notches</Name>
+			<Description>Gives the player infinite notches, might mess with save</Description>
 			<Files>
 				<File>
 					<Name>InfiniteNotches.dll</Name>
@@ -671,6 +678,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Player Data Tracker</Name>
+			<Description>Tracks player data. Most frequently used to display abilities/charms during Randomizer streams</Description>
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
@@ -688,6 +696,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Charm Notch Mod</Name>
+			<Description>Automatically grants notches normally bought from Salubra upon collecting the required number of charms</Description>
 			<Files>
 				<File>
 					<Name>CharmNotchMod.dll</Name>
@@ -701,6 +710,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>EnemyHPBar</Name>
+			<Description>Displays customizable  health bars above enemies and big health bar for bosses</Description>
 			<Files>
 				<File>
 					<Name>EnemyHPBar.dll</Name>
@@ -715,6 +725,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Fragile Strength for Nail Arts</Name>
+			<Description>Fragile/Unbreakable Strength increases the damage of Nail Arts</Description>
 			<Files>
 				<File>
 					<Name>FragileStrengthForNailArts.dll</Name>
@@ -728,6 +739,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Ultimatum Radiance</Name>
+			<Description>Significantly buffs Absolute Radiance</Description>
 			<Files>
 				<File>
 					<Name>Ultimatum Radiance.dll</Name>
@@ -742,6 +754,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Darkness</Name>
+			<Description>Renders the Lumafly Lantern useless and makes every room dark (akin to Deepnest without the lantern)</Description>
 			<Files>
 				<File>
 					<Name>Darkness.dll</Name>
@@ -756,6 +769,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Daughter of Hallownest</Name>
+			<Description>Modifies Hornet Sentinel to a 3-phase boss, focused on projectile attacks from other bosses.</Description>
 			<Files>
 				<File>
 					<Name>DoH.dll</Name>
@@ -770,6 +784,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Benchwarp</Name>
+			<Description>Allows warping to benches, has an option to display room names, required for Randomizer 2 and 3</Description>
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
@@ -783,6 +798,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Pale Champion</Name>
+			<Description>Significant rework to Pale Lurker</Description>
 			<Files>
 				<File>
 					<Name>PaleChampion.dll</Name>
@@ -797,6 +813,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Elderbug God</Name>
+			<Description>monkaU</Description>
 			<Files>
 				<File>
 					<Name>ElderbugGod.dll</Name>
@@ -811,6 +828,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Randomizer 3 (Item or Room)</Name>
+			<Description>Mixes up charms, spells, abilities, etc. for new saves, difficulty settings and randomization seeds included. Includes a room and area rando mode.</Description>
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
@@ -842,6 +860,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Crystalblobbles</Name>
+			<Description>Oblobbles but with Crystal Hunter crystals</Description>
 			<Files>
 				<File>
 					<Name>Crystalblobbles.dll</Name>
@@ -856,6 +875,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Traitor God</Name>
+			<Description>Singificant buff to Traitor Lord</Description>
 			<Files>
 				<File>
 					<Name>Traitor God.dll</Name>
@@ -870,6 +890,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Tribe of Battle</Name>
+			<Description>Mantis Lords and Traitor Lord simultaneously</Description>
 			<Files>
 				<File>
 					<Name>Tribe_of_Battle.dll</Name>
@@ -884,6 +905,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>LoadNormalizer</Name>
+			<Description>Normalizes loads across computers, used for races.</Description>
 			<Files>
 				<File>
 					<Name>LoadNormalizer.dll</Name>
@@ -897,6 +919,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Path of Pure Vessel</Name>
+			<Description>
 			<Files>
 				<File>
 					<Name>PVPoP.dll</Name>
@@ -911,6 +934,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Royal Dreamer</Name>
+			<Description>🥶</Description>
 			<Files>
 				<File>
 					<Name>RoyalDreamer.dll</Name>
@@ -925,6 +949,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Dream Shield Coop</Name>
+			<Description>Adds a controllable Dreamshield alongside the player character</Description>
 			<Files>
 				<File>
 					<Name>Dshieldcoop.dll</Name>
@@ -939,6 +964,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Transtrans</Name>
+			<Description>TikTiks support trans rights</Description>
 			<Files>
 				<File>
 					<Name>Transtrans.dll</Name>
@@ -967,6 +993,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Lifeblood Master</Name>
+			<Description>Significantly buffs Hive Knight.</Description>
 			<Files>
 				<File>
 					<Name>LifebloodMaster.dll</Name>
@@ -981,6 +1008,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>DeathCounter</Name>
+			<Description>Counts your deaths with a slot in the inventory</Description>
 			<Files>
 				<File>
 					<Name>DeathCounter.dll</Name>
@@ -995,6 +1023,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Indie Crossover</Name>
+			<Description>Integrates Propeller Knight, Fennel, and Cagney Carnation into the game as a boss fight</Description>
 			<Files>
 				<File>
 					<Name>Fennel.dll</Name>
@@ -1017,6 +1046,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>EasyMode</Name>
+			<Description>Adds a variety of assisting effects that is meant to help newer or struggling players.</Description>
 			<Files>
 				<File>
 					<Name>EasyMode.dll</Name>
@@ -1031,6 +1061,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Uuwuu</Name>
+			<Description>Significantly buffs Uumuu</Description>
 			<Files>
 				<File>
 					<Name>Uuwuu.dll</Name>
@@ -1046,6 +1077,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>ItemChanger</Name>
+			<Description>A library which performs many of the same tasks as Randomizer such as modifying and creating items</Description>
 			<Files>
 				<File>
 					<Name>ItemChanger.dll</Name>
@@ -1060,6 +1092,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>plandoplando</Name>
+			<Description>Reads from an XML file to change item locations and add preloaded objects.</Description>
 			<Files>
 				<File>
 					<Name>plandoplando.dll</Name>
@@ -1075,6 +1108,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Exaltation</Name>
+			<Description>Overhauls charms, implementing unused “charm glorification” concept teased prior to Godmaster. Charms are buffed by completing Pantheons in Godhome, making them much stronger.</Description>
 			<Files>
 				<File>
 					<Name>Exaltation.dll</Name>
@@ -1089,6 +1123,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>PaletteSwapper</Name>
+			<Description>Randomizes the color tints of rooms for each area. Configurable.</Description>
 			<Files>
 				<File>
 					<Name>PaletteSwapper.dll</Name>
@@ -1102,6 +1137,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>NG+ (King's Pass)</Name>
+			<Description>Make's King's pass significantly more difficult by adding platforming challenges while disabling pogos.</Description>
 			<Files>
 				<File>
 					<Name>NG+ (King's Pass).dll</Name>
@@ -1157,6 +1193,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Child of Light</Name>
+			<Description>Replaces your spells with Radiance attacks.</Description>
 			<Files>
 				<File>
 					<Name>ChildOfLight.dll</Name>
