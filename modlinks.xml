@@ -919,7 +919,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Path of Pure Vessel</Name>
-			<Description>
+			<Description>Adds pure vessel at the end of Path of Pain</Description>
 			<Files>
 				<File>
 					<Name>PVPoP.dll</Name>
