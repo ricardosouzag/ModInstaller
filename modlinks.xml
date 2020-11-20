@@ -266,7 +266,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Chaos Mode</Name>
-			<Description>Randomizeshttps://clips.twitch.tv/ManlyBusyOstrichPRChase</Description>
+			<Description>Adds a variety of random effects which swap every few seconds</Description>
 			<Files>
 				<File>
 					<Name>ChaosMode.dll</Name>
