@@ -51,6 +51,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>ModConsole</Name>
+			<Description>An in-game REPL which allows you to easily run C#</Description>
 			<Files>
 				<File>
 					<Name>ModConsole.dll</Name>
