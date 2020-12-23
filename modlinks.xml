@@ -1068,11 +1068,12 @@
 					<SHA1>AD79285237CF6648B73201586D18817616998EE9</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1s5UjZIL7Fnc9mK8bjlRsVOuHnacxl5v-]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1RcGmh1I-mEklrhHdJKDjtUQjW4LHVE84]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
 				<string>SFCore</string>
+				<string>FrogCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1218,6 +1219,22 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1d-JG9EhO66fMhf3BKjwBgNKfoSVM_Ldo]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>FrogCore</Name>
+			<Description>Library mod containing stuff for adding journal entries and npcs</Description>
+			<Files>
+				<File>
+					<Name>FrogCore.dll</Name>
+					<SHA1>6E2754CDB5948AE0F2EAE22ED7CA9D5E4369D497</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lShQu2ScACvIQXZO7-vctUi3Vu_GiZM-]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
