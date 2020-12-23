@@ -1206,5 +1206,19 @@
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Howwow Knyight</Name>
+			<Description>Twanswates aww of de text in Howwow Knyight into de much supewiow UwU wanguage, incwuding menyus, usew intewface and in-game diawogues! &gt;w&lt;</Description>
+			<Files>
+				<File>
+					<Name>HowwowKnyight.dll</Name>
+					<SHA1>F10F668C05B8B0D306E825572173DFAD5C98357C</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1d-JG9EhO66fMhf3BKjwBgNKfoSVM_Ldo]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
