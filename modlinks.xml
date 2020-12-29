@@ -426,11 +426,11 @@
 		</ModLink>
        	        <ModLink>
 			<Name>Vasi</Name>
-			<Description>Helper mod, required for some mods to function</Description>
+			<Description>Library required for some mods to function</Description>
 			<Files>
 				<File>
 					<Name>Vasi.dll</Name>
-					<SHA1>45142EDF69885EFFC64B08564EB6D693B9388E17</SHA1>
+					<SHA1>4F77923DA0C82882B3442FB934F0480597D95E07</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
