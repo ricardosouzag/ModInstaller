@@ -1168,10 +1168,10 @@
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
-					<SHA1>8382b58b2d801bfb23fd7c5f889c286be7bd351a</SHA1>
+					<SHA1>6f144e053dfa70a120096e7c4aa20735acdee2fd</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.0/SFCore.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.1/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
