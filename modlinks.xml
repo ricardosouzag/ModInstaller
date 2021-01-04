@@ -103,6 +103,20 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+		    <Name>Dumbmod</Name>
+		    <Description>Makes most animated things invisible</Description>
+		    <Files>
+			<File>
+			    <Name>dumbmod.dll</Name>
+			    <SHA1>863b4fbc3580f754561bc73c98957e0476dae0c3</SHA1>
+			</File>
+		    </Files>
+		    <Link><![CDATA[https://drive.google.com/uc?export=download&id=1DvwCYLYDV7C1T4Xb0RT_hCiERo0mfagM]]></Link>
+		    <Dependencies>
+			<string>Modding API</string>
+		    </Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>HollowPoint (SEE README)</Name>
 			<Description>Gives the player a gun, reworks charms and abilities to play around the concept of gun usage</Description>
 			<Files>
