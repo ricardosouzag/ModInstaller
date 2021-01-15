@@ -947,6 +947,20 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Press G to Dab</Name>
+			<Description>Press G to dab.</Description>
+			<Files>
+				<File>
+					<Name>PressGToDab.dll</Name>
+					<SHA1>30a26c5910e8881555971e46d0b645a79bc0bf5a</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1MROspqNmyNwq_e3sN5Gkze4WqFv1WX4X]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Royal Dreamer</Name>
 			<Description>markoth buff cold_face</Description>
 			<Files>
