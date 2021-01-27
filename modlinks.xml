@@ -1271,10 +1271,10 @@
 			<Files>
 				<File>
 					<Name>BlindRadiance.dll</Name>
-					<SHA1>93D4F3C83E9D05924C2F775D80E2AB88CF424971</SHA1>
+					<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5/BlindRadiance.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
