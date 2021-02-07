@@ -1265,5 +1265,21 @@
 				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Lunatic Radiance</Name>
+			<Description>Bullet Hell Radiance Boss in Hollow Knight</Description>
+			<Files>
+				<File>
+					<Name>HKBulletHell.dll</Name>
+					<SHA1>37FABA4BF4632178F0FB166574FD70752632326B</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1rou4bbOrYOO7kVMNMziBgFCpCAxG7MqF]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
