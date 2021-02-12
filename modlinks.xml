@@ -28,7 +28,7 @@
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
-					<SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+					<SHA1>416d9491ffa672ef2517c6b7c078a26c21915f3d</SHA1>
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
@@ -98,7 +98,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
@@ -298,7 +298,7 @@
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
-					<SHA1>7387B6F75C619D2695A97867F2B8223301A7DF12</SHA1>
+					<SHA1>25718a24d23b09f672190bb49ffadb1429beabc2</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nNvfsJ5AFZW3LyM8Gauz7zwXDLmxYmq1]]></Link>
@@ -425,15 +425,15 @@
 			</Dependencies>
 		</ModLink>
        	        <ModLink>
-			<Name>SeanprCore</Name>
+			<Name>SereCore</Name>
 			<Description>Library used mostly by the Randomizer mods</Description>
 			<Files>
 				<File>
-					<Name>SeanprCore.dll</Name>
-					<SHA1>ba09f0088a5573da442281ae1a18ce9c5baff191</SHA1>
+					<Name>SereCore.dll</Name>
+					<SHA1>4792c0b3272e788f61ecd82ba8222663a5af6e60</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ez1JKQiHK7RrLJ7y4YL_z8_Rwf2jMvCI]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=189-2P-CFUJkZYpK00YNWNX4fPZnzB7Qx]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -464,7 +464,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1KYygwL2kYyCoASt-TMIpiiNUN6tVO3rG]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -852,7 +852,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 				<string>Benchwarp</string>
 				<string>QoL</string>
 				<string>Vasi</string>
@@ -1084,7 +1084,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1116,7 +1116,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1131,7 +1131,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 				<string>ItemChanger</string>
 			</Dependencies>
 		</ModLink>
@@ -1277,6 +1277,22 @@
 			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Lunatic Radiance</Name>
+			<Description>Bullet Hell Radiance Boss in Hollow Knight</Description>
+			<Files>
+				<File>
+					<Name>HKBulletHell.dll</Name>
+					<SHA1>37FABA4BF4632178F0FB166574FD70752632326B</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1rou4bbOrYOO7kVMNMziBgFCpCAxG7MqF]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
