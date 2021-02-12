@@ -1211,10 +1211,10 @@
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
-					<SHA1>b87d56a73eba7ce55a55ea07e2776741b54399ff</SHA1>
+					<SHA1>544DC27E7037288D8CC222F95DAA825C4051FEE0</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.1.1/SFCore.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.1.2.1/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1263,6 +1263,20 @@
 				<string>Modding API</string>
 				<string>ModCommon</string>
 				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>BlindRadiance</Name>
+			<Description>Mod to darken selected scenes for visibility</Description>
+			<Files>
+				<File>
+					<Name>BlindRadiance.dll</Name>
+					<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
