@@ -1304,7 +1304,7 @@
 					<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.dll]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
