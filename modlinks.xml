@@ -28,7 +28,7 @@
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
-					<SHA1>416d9491ffa672ef2517c6b7c078a26c21915f3d</SHA1>
+					<SHA1>29C95B930D42CCD7E3686807DA8819A0BAF1CDF9</SHA1>
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
@@ -444,7 +444,7 @@
 			<Files>
 				<File>
 					<Name>Vasi.dll</Name>
-					<SHA1>04EE181B6011B3EDD1012A735D175B78D13D9C0C</SHA1>
+					<SHA1>21D94D4DB77CC1786F2F0FE81E8B3B7E46B4C027</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
@@ -1211,10 +1211,10 @@
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
-					<SHA1>544DC27E7037288D8CC222F95DAA825C4051FEE0</SHA1>
+					<SHA1>6C704B1A14393CD87A977B0EA9F224D32DD6CFB5</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.1.2.1/SFCore.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.2/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1293,6 +1293,21 @@
 				<string>Modding API</string>
 				<string>ModCommon</string>
 				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Language Support</Name>
+			<Description>Adds support for additional languages in a CustomKnight style</Description>
+			<Files>
+				<File>
+					<Name>LanguageSupport.dll</Name>
+					<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
