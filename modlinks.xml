@@ -1310,5 +1310,20 @@
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>GrassBag</Name>
+			<Description>Tracks how much grass you've mowed and leads you to unmowed grass</Description>
+			<Files>
+				<File>
+					<Name>GrassBag.dll</Name>
+					<SHA1>1b4c4a4a2eda183a270cd2ecd850d86fa39869b1</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/itsjohncs/GrassBag/releases/download/1.4.1/GrassBag.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
