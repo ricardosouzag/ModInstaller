@@ -28,7 +28,7 @@
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
-					<SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+					<SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
@@ -98,9 +98,23 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 				<string>ModCommon</string>
 			</Dependencies>
+		</ModLink>
+		<ModLink>
+		    <Name>Dumbmod</Name>
+		    <Description>Makes most animated things invisible</Description>
+		    <Files>
+			<File>
+			    <Name>dumbmod.dll</Name>
+			    <SHA1>863b4fbc3580f754561bc73c98957e0476dae0c3</SHA1>
+			</File>
+		    </Files>
+		    <Link><![CDATA[https://drive.google.com/uc?export=download&id=1DvwCYLYDV7C1T4Xb0RT_hCiERo0mfagM]]></Link>
+		    <Dependencies>
+			<string>Modding API</string>
+		    </Dependencies>
 		</ModLink>
 		<ModLink>
 			<Name>HollowPoint (SEE README)</Name>
@@ -284,7 +298,7 @@
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
-					<SHA1>06b040adbbcd7be06fc87628b288b2ac9b807e5f</SHA1>
+					<SHA1>25718a24d23b09f672190bb49ffadb1429beabc2</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nNvfsJ5AFZW3LyM8Gauz7zwXDLmxYmq1]]></Link>
@@ -342,7 +356,7 @@
 			<Files>
 				<File>
 					<Name>QoL.dll</Name>
-					<SHA1>F5601837018716F2CE53EC5B221DBA5F580B183D</SHA1>
+					<SHA1>F6EC59D9522342E812661E72DD6380A7068B5136</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
@@ -411,26 +425,26 @@
 			</Dependencies>
 		</ModLink>
        	        <ModLink>
-			<Name>SeanprCore</Name>
+			<Name>SereCore</Name>
 			<Description>Library used mostly by the Randomizer mods</Description>
 			<Files>
 				<File>
-					<Name>SeanprCore.dll</Name>
-					<SHA1>ba09f0088a5573da442281ae1a18ce9c5baff191</SHA1>
+					<Name>SereCore.dll</Name>
+					<SHA1>4792c0b3272e788f61ecd82ba8222663a5af6e60</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ez1JKQiHK7RrLJ7y4YL_z8_Rwf2jMvCI]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=189-2P-CFUJkZYpK00YNWNX4fPZnzB7Qx]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
        	        <ModLink>
 			<Name>Vasi</Name>
-			<Description>Helper mod, required for some mods to function</Description>
+			<Description>Library required for some mods to function</Description>
 			<Files>
 				<File>
 					<Name>Vasi.dll</Name>
-					<SHA1>45142EDF69885EFFC64B08564EB6D693B9388E17</SHA1>
+					<SHA1>21D94D4DB77CC1786F2F0FE81E8B3B7E46B4C027</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
@@ -450,7 +464,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1KYygwL2kYyCoASt-TMIpiiNUN6tVO3rG]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -832,13 +846,13 @@
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>2453BA6E69716CEC11A44F86C88941ACB20C191B</SHA1>
+					<SHA1>88FCB2BE21C2534F1DF143A94D9FCEC41A38021D</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 				<string>Benchwarp</string>
 				<string>QoL</string>
 				<string>Vasi</string>
@@ -930,6 +944,20 @@
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Press G to Dab</Name>
+			<Description>Press G to dab.</Description>
+			<Files>
+				<File>
+					<Name>PressGToDab.dll</Name>
+					<SHA1>063B0603C5EB0B9E3BFF62A5BF2CCBC91D758389</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1MROspqNmyNwq_e3sN5Gkze4WqFv1WX4X]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1056,7 +1084,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1065,14 +1093,15 @@
 			<Files>
 				<File>
 					<Name>Uuwuu.dll</Name>
-					<SHA1>AD79285237CF6648B73201586D18817616998EE9</SHA1>
+					<SHA1>0EBF6913A0E9108AE496A59481BA3114DE66A168</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1s5UjZIL7Fnc9mK8bjlRsVOuHnacxl5v-]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1RcGmh1I-mEklrhHdJKDjtUQjW4LHVE84]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
 				<string>SFCore</string>
+				<string>FrogCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1081,13 +1110,13 @@
 			<Files>
 				<File>
 					<Name>ItemChanger.dll</Name>
-					<SHA1>35DD406F8D9936B8FA39278BF46F9E14550210DA</SHA1>
+					<SHA1>43E0C5131A97B7BB37A383668D3945EB6CA28992</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1102,7 +1131,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>SeanprCore</string>
+				<string>SereCore</string>
 				<string>ItemChanger</string>
 			</Dependencies>
 		</ModLink>
@@ -1182,10 +1211,10 @@
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
-					<SHA1>8382b58b2d801bfb23fd7c5f889c286be7bd351a</SHA1>
+					<SHA1>6C704B1A14393CD87A977B0EA9F224D32DD6CFB5</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.0/SFCore.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.2/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1218,6 +1247,67 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1d-JG9EhO66fMhf3BKjwBgNKfoSVM_Ldo]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>FrogCore</Name>
+			<Description>Library mod containing stuff for adding journal entries and npcs</Description>
+			<Files>
+				<File>
+					<Name>FrogCore.dll</Name>
+					<SHA1>21F9B2E92A52369BBCC8021280C82568080B6F3A</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lShQu2ScACvIQXZO7-vctUi3Vu_GiZM-]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>BlindRadiance</Name>
+			<Description>Mod to darken selected scenes for visibility</Description>
+			<Files>
+				<File>
+					<Name>BlindRadiance.dll</Name>
+					<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Lunatic Radiance</Name>
+			<Description>Bullet Hell Radiance Boss in Hollow Knight</Description>
+			<Files>
+				<File>
+					<Name>HKBulletHell.dll</Name>
+					<SHA1>37FABA4BF4632178F0FB166574FD70752632326B</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1rou4bbOrYOO7kVMNMziBgFCpCAxG7MqF]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Language Support</Name>
+			<Description>Adds support for additional languages in a CustomKnight style</Description>
+			<Files>
+				<File>
+					<Name>LanguageSupport.dll</Name>
+					<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
