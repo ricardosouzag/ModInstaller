@@ -516,7 +516,7 @@ namespace ModInstaller
             _vanillaEnabled = !SHA1Equals(Properties.Settings.Default.APIFolder + "/Assembly-CSharp.dll", _apiSha1);
 
             button1.Text = _vanillaEnabled
-                ? "Enable All Installed Mods"
+                ? "Enable Modding API"
                 : "Revert Back To Unmodded";
         }
 
