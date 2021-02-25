@@ -1316,10 +1316,10 @@
 			<Files>
 				<File>
 					<Name>GrassBag.dll</Name>
-					<SHA1>1b4c4a4a2eda183a270cd2ecd850d86fa39869b1</SHA1>
+					<SHA1>a74e65e1c8bf4acca1d9d83828b54000d6c56edc</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/itsjohncs/GrassBag/releases/download/1.4.1/GrassBag.zip]]></Link>
+			<Link><![CDATA[https://github.com/itsjohncs/GrassBag/releases/download/1.4.2/GrassBag.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
