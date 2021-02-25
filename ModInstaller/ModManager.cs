@@ -80,6 +80,7 @@ namespace ModInstaller
         public ModManager()
         {
             InitializeComponent();
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
         }
 
         private void Form2_Load(object sender, EventArgs e)
