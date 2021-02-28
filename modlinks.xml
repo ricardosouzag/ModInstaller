@@ -213,10 +213,10 @@
 			<Files>
 				<File>
 					<Name>WeaverCore.dll</Name>
-					<SHA1>15A7FFF065FF4671BF42C438659E2B1E2DB3B6B3</SHA1>
+					<SHA1>5C6CEA3A0C988328ADD288E8411D3151089135CF</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1-Jr2S2kIK7lhL7lgoUpG9lFYJD3WGKlP]]></Link>
+			<Link><![CDATA[https://github.com/nickc01/Inferno-King-Grimm/releases/latest/download/WeaverCore.dll]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -227,10 +227,10 @@
 			<Files>
 				<File>
 					<Name>InfernoKingGrimm.dll</Name>
-					<SHA1>5C7144D63182AF57992C65C4570A8A6DCF8A5C55</SHA1>
+					<SHA1>72A933B05EA9390BCCBD87D90F7566342692EEC6</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1hCa_dc9cTiTiM7rqcvHioG4X4d-ZZq7U]]></Link>
+			<Link><![CDATA[https://github.com/nickc01/Inferno-King-Grimm/releases/latest/download/InfernoKingGrimm.dll]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>WeaverCore</string>
