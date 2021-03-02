@@ -685,7 +685,7 @@
 					<SHA1>4CCA02A9A58BDC4A2DB6C9C856DEFA0866201FB7</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1oq0x6XGbo1rqPPAgGubfeupwTU3N1HXr]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.InfiniteNotches/releases/download/v2000/InfiniteNotches.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -802,10 +802,10 @@
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>4C1AF13D5101EB1A09AF341DCA399639566C0EEF</SHA1>
+					<SHA1>0A15B5528D155F2483780929A11DFB3B8CBBDA27</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/download/v2.3/Benchwarp.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -849,7 +849,7 @@
 					<SHA1>0486D3D3CE43FD34DAFCF94CE230F14B31B3C8C3</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/download/v3.10(992)/RandomizerMod3.0.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -926,7 +926,7 @@
 					<SHA1>C72C905DFAE7126909E77CB7DC5100B411D04A33</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13v9CkQlEVKaaAPjY3ZO9VppgyeM1CVVs]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.LoadNormalizer/releases/download/v1.25/LoadNormalizer.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1081,7 +1081,7 @@
 					<SHA1>EBBEC9B2F482ABEAF84AE58D91B5559DE61804C2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.EasyMode/releases/download/v1.0/EasyMode.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1113,7 +1113,7 @@
 					<SHA1>D31B5C898352F8941724AF2E401405C39420E27D</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/download/v1.0/ItemChanger.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1128,7 +1128,7 @@
 					<SHA1>1930D727B1880670CDDAC00BD1C9039C83D0E118</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.plandoplando/releases/download/v1.0/plandoplando.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1159,7 +1159,7 @@
 					<SHA1>2E7938CEEDB559C3A00E543B2B499B9853A8F90E</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1VRYzMjnnk2Jl57Y6sraEnSprd-cAo0OA]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.PaletteSwapper/releases/download/v1.0/PaletteSwapper.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
