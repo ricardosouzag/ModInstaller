@@ -802,10 +802,10 @@
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>0A15B5528D155F2483780929A11DFB3B8CBBDA27</SHA1>
+					<SHA1>60CB50E8C2F9EB7756410EFF48A3C4FD6DD3C264</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/download/v2.3/Benchwarp.zip]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/download/v2.3DW/Benchwarp.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
