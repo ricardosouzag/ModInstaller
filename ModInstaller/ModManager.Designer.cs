@@ -41,6 +41,7 @@ namespace ModInstaller
             button3 = new System.Windows.Forms.Button();
             panel = new Panel();
             _browser = new WebBrowser();
+            search = new TextBox();
             this.SuspendLayout();
             CenterToScreen();
             CenterToParent();
@@ -52,12 +53,18 @@ namespace ModInstaller
             this.openFileDialog.Title = "Select the mods you wish to install";
             openFileDialog.FileOk += DoManualInstall;
             //
+            // searchbox
+            //
+            search.Text = "Search...";
+            search.ForeColor = Color.Gray;
+            search.Enter += SearchOnGotFocus;
+            search.Leave += SearchOnLostFocus;
+            search.KeyUp += SearchOnKeyUp;
+            //
             // panel
             //
             panel.AutoScroll = true;
-            panel.Size = new Size(500, 1);
-            // 
-            // button1
+            panel.Size = new Size(1, 1);
             // 
             //this.button1.Location = new System.Drawing.Point(12, 372);
             this.button1.Name = "button1";
@@ -96,6 +103,7 @@ namespace ModInstaller
             Controls.Add(button3);
             Controls.Add(_button4);
             Controls.Add(panel);
+            Controls.Add(search);
 //            Controls.Add(_browser);
             MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,5 +128,6 @@ namespace ModInstaller
         private Button _button4;
         private WebBrowser _browser;
         private Panel panel;
+        private TextBox search;
     }
 }

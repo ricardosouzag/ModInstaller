@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 // ReSharper disable LocalizableElement
@@ -165,6 +166,28 @@ namespace ModInstaller
             (
                 "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G5KYSS3ULQFY6&lc=US&item_name=HK%20ModInstaller&item_number=HKMI&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
             );
+        }
+
+        private void SearchOnGotFocus(object sender, EventArgs e)
+        {
+            search.Text = "";
+            search.ForeColor = Color.Black;
+        }
+
+        private void SearchOnLostFocus(object sender, EventArgs e)
+        {
+            if (search.Text == "")
+            {
+                search.Text = "Search...";
+                search.ForeColor = Color.Gray;
+            }
+        }
+
+        private void SearchOnKeyUp(object sender, KeyEventArgs e)
+        {
+            Controls.Remove(panel);
+            FillPanel();
+            ResizeUI();
         }
     }
 }
