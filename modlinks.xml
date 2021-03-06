@@ -1340,5 +1340,20 @@
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>ToggleableBindings</Name>
+			<Description>A mod that allows you to enable and disable bindings at any time.</Description>
+			<Files>
+				<File>
+					<Name>ToggleableBindings.dll</Name>
+					<SHA1>B9B2D53AB664B3BF8D5D51659DAF2612F70FB26E</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/Unordinal/HollowKnight.ToggleableBindings/releases/download/v0.1.0/ToggleableBindings.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
