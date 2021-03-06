@@ -1341,6 +1341,22 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Controller Vibration</Name>
+			<Description>Adds in controller vibration through any XInput device (Xbox controllers).</Description>
+			<Files>
+				<File>
+					<Name>ControllerVibration.dll</Name>
+					<SHA1>DC4B7F8DBEFFB096E13E9862C3509B49A508F4CB</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1eUHVc36Z3l8rTS835gXCp37uwCwjYH-O]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SereCore</string>
+				<string>ModCommon</string>
+			</Dependencies> 
+		</ModLink>
+    <ModLink>
 			<Name>ToggleableBindings</Name>
 			<Description>A mod that allows you to enable and disable bindings at any time.</Description>
 			<Files>
