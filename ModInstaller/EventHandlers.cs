@@ -15,7 +15,7 @@ namespace ModInstaller
             {
                 DialogResult result = MessageBox.Show
                 (
-                    "Do you want to disable all installed mods?",
+                    "Do you want to disable the modding api/revert to vanilla?",
                     "Confirmation dialogue",
                     MessageBoxButtons.YesNo
                 );
@@ -48,7 +48,7 @@ namespace ModInstaller
             {
                 DialogResult result = MessageBox.Show
                 (
-                    "Do you want to enable all installed mods?",
+                    "Do you want to enable the Modding API?",
                     "Confirmation dialogue",
                     MessageBoxButtons.YesNo
                 );
@@ -78,7 +78,7 @@ namespace ModInstaller
 
             _vanillaEnabled = !_vanillaEnabled;
             button1.Text = _vanillaEnabled
-                ? "Enable All Installed Mods"
+                ? "Enable Modding API"
                 : "Revert Back To Unmodded";
         }
 
