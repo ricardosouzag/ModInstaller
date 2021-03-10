@@ -1330,11 +1330,11 @@
 			<Description>A mod that significantly buffs Hive Knight</Description>
 			<Files>
 				<File>
-					<Name>Buzzbo (Bloodless).dll</Name>
-					<SHA1>19582B880BA6199E4CCB94E6E43104BC935F9200</SHA1>
+					<Name>BuzzboMod.dll</Name>
+					<SHA1>CE8B46D2DB8DF61AB05416B28C711911E87BE361</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=16jwpaLDiBRdXf-KFJ5xW1qG0q6ZsUNzD]]></Link>
+			<Link><![CDATA[https://github.com/thegodfriend/buzzbo/releases/download/v0.4.2.0/Buzzbo.v0.4.2.0.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
