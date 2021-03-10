@@ -24,7 +24,7 @@
 	</Installer>
 	<ModList>
 		<ModLink>
-			<Name>Modding API Windows</Name>
+			<Name>Modding API</Name>
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
