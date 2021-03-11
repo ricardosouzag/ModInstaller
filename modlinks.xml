@@ -87,6 +87,21 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Job change mod</Name>
+		    	<Files>
+				<File>
+			    		<Name>jobChange.dll</Name>
+			    		<SHA1>1DyTevGgekQ7PEbuB6q8iV5RYpQH886bR</SHA1>
+				</File>
+			</Files>
+			<Link>![CDATA[https://drive.google.com/uc?export=download&id=1DyTevGgekQ7PEbuB6q8iV5RYpQH886bR]]</Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SFCore</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Bingo UI</Name>
 			<Description>Automatic tracking of bingo goals for randomizer or vanilla bingo speedrun races</Description>
 			<Files>
