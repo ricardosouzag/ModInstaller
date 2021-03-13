@@ -1386,5 +1386,19 @@
 				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>SlyMod</Name>
+			<Description>Things cost Geo (first mod)</Description>
+			<Files>
+				<File>
+					<Name>SlyMod.dll</Name>
+					<SHA1>04469ea5e580afd3f1d61f158df55d07c2cf4bb2</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1rrxXes4l9kvOqHdidtpa95wHYmV-cVCE]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
