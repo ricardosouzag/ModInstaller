@@ -1326,18 +1326,17 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>GrassBag</Name>
-			<Description>Tracks how much grass you've mowed and leads you to unmowed grass</Description>
+			<Name>Grassy Knight</Name>
+			<Description>Tracks and shows you how much grass you've cut.</Description>
 			<Files>
 				<File>
-					<Name>GrassBag.dll</Name>
-					<SHA1>a74e65e1c8bf4acca1d9d83828b54000d6c56edc</SHA1>
+					<Name>GrassyKnight.zip</Name>
+					<SHA1>9a507497f448f33ac6a72827c83ff5176bce7192</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/itsjohncs/GrassBag/releases/download/1.4.2/GrassBag.zip]]></Link>
+			<Link><![CDATA[https://github.com/itsjohncs/GrassyKnight/releases/download/1.3.0/GrassyKnight.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
