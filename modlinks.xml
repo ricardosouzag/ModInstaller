@@ -319,6 +319,7 @@
 			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=12HBxTX29d2f5I-SeB3rFb1Kjx6_XZd6L]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
