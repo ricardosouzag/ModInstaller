@@ -94,7 +94,7 @@
 			    		<SHA1>1DyTevGgekQ7PEbuB6q8iV5RYpQH886bR</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/RechercheJewel/HK-Job-Change/files/6126538/Job.change.by.Jewel.zip]]></Link>
+			<Link><![CDATA[https://github.com/RechercheJewel/jobChange/releases/download/v1/Job.change.by.Jewel.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SFCore</string>
