@@ -16,15 +16,15 @@
 -->
 
 <ModLinks xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<DriveLink>https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing</DriveLink>
+	<DriveLink>https://drive.google.com/drive/u/0/folders/1lnjtSYMfRe1LyA_qSq2CoXKI6NRm_I-e</DriveLink>
 	<Installer>
 	    <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
-	    <SHA1>DE28555B158C41616227D0A2CFD8F04C86E3C188</SHA1>
+	    <SHA1>B51FCE1DC9CF80D95BBC370C72CC80C7A711AB54</SHA1>
 	    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
 	</Installer>
 	<ModList>
 		<ModLink>
-			<Name>Modding API Windows</Name>
+			<Name>Modding API</Name>
 			<Files>
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
@@ -32,8 +32,8 @@
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
-			<UnixLink><![CDATA[https://drive.google.com/uc?export=download&id=1f4NZOpNDgeREkssjmOHUyAVj_1INk4ga]]></UnixLink>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></Link>
+			<UnixLink><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></UnixLink>
 			<Dependencies />
 		</ModLink>
 		<ModLink>
@@ -45,7 +45,7 @@
 					<SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XB38hwlVRhYxbZj-41sqTCg684Ig1vAL]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TVAIN2Oh_RJwStoxkReoyRxVmrqju9wg]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -67,7 +67,7 @@
 					<SHA1>8DA34D415672223140F3A3DD21AF327892C2B378</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GQzyLQmYMXsPhzuxKKjHEjOXZVFTLU1J]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1sd5JFElaoW14Wgj7H4ZxEQe8d9nKb7cP]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -81,9 +81,24 @@
 					<SHA1>F36A50ED11069DE6C61DB7DF93E08E746E308EAE</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_VkTWanS5Tx8H50RAc2S3zEX_QhADJuV]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nrtiAEIwSC9xcjBv5W6ZK3qdF1ykofj7]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Job change</Name>
+		    	<Files>
+				<File>
+			    		<Name>jobChange.dll</Name>
+			    		<SHA1>1CB0AD30AFEEB5F7C663BD498B33CF721211A5C6</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/RechercheJewel/jobChange/releases/download/v1/Job.change.by.Jewel.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SFCore</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -95,7 +110,7 @@
 					<SHA1>C3D7A41B7C1FD2EB1E05D51D507BAE5489EF843A</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1U8u98qFQcASFMTNloGJbDp2gJsJ0YHq_]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -111,7 +126,7 @@
 			    <SHA1>863b4fbc3580f754561bc73c98957e0476dae0c3</SHA1>
 			</File>
 		    </Files>
-		    <Link><![CDATA[https://drive.google.com/uc?export=download&id=1DvwCYLYDV7C1T4Xb0RT_hCiERo0mfagM]]></Link>
+		    <Link><![CDATA[https://drive.google.com/uc?export=download&id=1hXkMIgtRQcOUfV61ORt3eAq959CTa797]]></Link>
 		    <Dependencies>
 			<string>Modding API</string>
 		    </Dependencies>
@@ -125,7 +140,7 @@
 					<SHA1>03241f88d21c40551bb72e0c52fdcebea9f9b75a</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Kvi6xjES0imKALCuHWF3O98Jl3496dAl]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-ScZIDVuCjj1exI6C1AHi8gfDdUkMVSV]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -140,7 +155,7 @@
 					<SHA1>029C3F3F7C9FE5EF7CBF44105A6E95A8613FC2B3</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yxytX8Ulq_ZQedYmR7uBV9vOupzj5DW2]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XRB49NMyEiau427uwYDGer5kJCXF9-Na]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -155,7 +170,7 @@
 					<SHA1>538ccf8bce789afe962de4a43c96455442174a82</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Z9V_GN2SDs1Kst1HjF43qNca9FECkjfx]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13dHBj3RiXYm2exOmreF2yu_eiw1rZnZB]]></Link>
 			<DefaultInstallPath>/</DefaultInstallPath>
 			<WritesOverAssembly>false</WritesOverAssembly>
 			<Dependencies>
@@ -172,7 +187,7 @@
 					<SHA1>4dd343d598878235bd149b495c55c6a6a7ef8caa</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=10haKYAnDuSGsAqOZkTA-5GiFgjsgt9v0]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yIULlnHH074He53eT-JsRARgGYJgzeDW]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -187,7 +202,7 @@
 					<SHA1>39D60082BA78B66AE687C6A60E8516E24496A3D9</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1JvUSKBAcxbujeR1EA951wt6R7jYsXDWY]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13iMd5i2xey1qjC8SvL_6hLHftqcJ4PKu]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
@@ -202,7 +217,7 @@
 					<SHA1>0618e8e9fba19d22c8c6e4d3498e82f534b6158f</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1mZgGfNDpR4QyTfQ0qPP9vkMw8900iTPM]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1YDedda50PyqAIacRGIeEF7NcLixHtsX4]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -216,7 +231,7 @@
 					<SHA1>5C6CEA3A0C988328ADD288E8411D3151089135CF</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/nickc01/Inferno-King-Grimm/releases/latest/download/WeaverCore.dll]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1hxKgCx9S3O_AAzAMjo_3IXyhakB5tkin]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -230,7 +245,7 @@
 					<SHA1>72A933B05EA9390BCCBD87D90F7566342692EEC6</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/nickc01/Inferno-King-Grimm/releases/latest/download/InfernoKingGrimm.dll]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1vg3NUEfjTCTaenQQf4FHlmhnjsWwYcVR]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>WeaverCore</string>
@@ -245,7 +260,7 @@
 					<SHA1>7613615a22785fdd22178dfe8f41e31cae423bdd</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1tQ-RULOsUR3wPXSCPX3ldJQe7YHlfEvk]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1LDOGwM6f3R4Ti5GPnRmM5_mlTUy1NU13]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -259,7 +274,7 @@
 					<SHA1>2e9ccf8c3f40a3f8a28c48fcedcc083f0acaf1b8</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1Su68ndGG-YLVTJuCVwaMdI9B_nHkK6c5]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1gm8w6066L-L7PJL39XaABi0-Mp9_O0z7]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -273,7 +288,7 @@
 					<SHA1>5837a56bdc8f5ed377a78340165af198d7b915f4</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1o875EXE0L5-X0BAx2BjqgyG0qWsX6shY]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1qUCxymWrSJ1Z-FWtd4R76N1oghIHGTSb]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -287,7 +302,7 @@
 					<SHA1>bf15663926c8c72dbd458c205baa7ea5af1a00e7</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1xCoTQFKHRIELNS5xH4ouMcfF-ai50xha]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nMBGpRp-QhoCoRUmda68MNpRqn7aPOOI]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -301,9 +316,10 @@
 					<SHA1>25718a24d23b09f672190bb49ffadb1429beabc2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nNvfsJ5AFZW3LyM8Gauz7zwXDLmxYmq1]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=12HBxTX29d2f5I-SeB3rFb1Kjx6_XZd6L]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -315,7 +331,7 @@
 						<SHA1>f82d2bf1ad4cef48201d739c43afbd1771a6d2cb</SHA1>
 					</File>
 				</Files>
-				<Link><![CDATA[https://drive.google.com/uc?export=download&id=1xAiQnjQ9p_qqTwZvf_vHN6l1F6TdQ3kL]]></Link>
+				<Link><![CDATA[https://drive.google.com/uc?export=download&id=1726O5SC9zlJbTAK0BWhl3tQmUthg--oN]]></Link>
 				<Dependencies>
 					<string>Modding API</string>
 					<string>ModCommon</string>
@@ -330,7 +346,7 @@
 					<SHA1>06149f8423a6708e35ceb44b6fc0379cb6153ad2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yr832lq_jSCvX8Ve5qVIWlIl4kVVAmPD]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nnfaD8m8wELVXKdWdyCyu9IX1RmSuOI4]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -345,7 +361,7 @@
 					<SHA1>2dd7893e3cdaec4bb7c1129a1bf6ceb6734f1383</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lvvNutNW917oRVHRCNbnxrQdUneccR8o]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TYAOxr9Ymp2BG7Qvr7hzeVPM0NFW0urU]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -359,7 +375,7 @@
 					<SHA1>F6EC59D9522342E812661E72DD6380A7068B5136</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f1u6gfPO9HTKZXidcisfuZtwMSinafvW]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1X35qzJmch1Wx24qjARbvjJXeCNq9h53k]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
@@ -374,7 +390,7 @@
 					<SHA1>7704344C9873855C204B3B9C922EBC84C5F1A5EC</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1OX7BXG7q3hfyqiW6D74Z5_WyQsHUclKk]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gV00Zu5mqScL2KBNX9sLyWxDduq0oo90]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
@@ -389,7 +405,7 @@
 					<SHA1>9D7345D0FCF81E988639BBDE98F471B31D439663</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1PRv4Xypx_DgccbOjvr0i4ANAoxG6sfEr]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1uQSQpT9Mbawbihpoc4Vzr_CSB8wD-MUU]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -404,7 +420,7 @@
 					<SHA1>74A32624CB3437460D2635BF6C220D9E5C4B441E</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=11u4QTDUeq_09t8DjXrMY0qIyKaWGz7Gz]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BUk_9yZJ7KQZh5U995SZuxAho3C_902d]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -419,7 +435,7 @@
 					<SHA1>68FD1BBF0502A221FD2DB2B3EA2B89CD759A4112</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpWXhoS2hyZ2JUMEU]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XmmomyluehEi5xot91SKQ7Vzl6cVst3u]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -433,7 +449,7 @@
 					<SHA1>4792c0b3272e788f61ecd82ba8222663a5af6e60</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=189-2P-CFUJkZYpK00YNWNX4fPZnzB7Qx]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1jFrtOfsa8KSNRbMi8m6_ihAxTo9UADx0]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -447,7 +463,7 @@
 					<SHA1>21D94D4DB77CC1786F2F0FE81E8B3B7E46B4C027</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1UsR4IF-B_yGO1dsP-VUOzzLESYXgvrt5]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -461,7 +477,7 @@
 					<SHA1>c86cb9e1ec01ea6e24d72a68fe903305a8b59110</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1KYygwL2kYyCoASt-TMIpiiNUN6tVO3rG]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=14m4oR8m_VQii2wxOE_KCznk56i1QmkCL]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -491,7 +507,7 @@
 					<SHA1>e9b4d33168af737ac3568047f2c1eb42b1adabac</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1McNr6AWvJMWzcewCf4DCmyMZfyzmNe7b]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15V2qY430s1UK--bs7UY83B54uFX0AY_c]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -505,7 +521,7 @@
 					<SHA1>b66d059fd2a2dc24011d334968c45280b9b8e766</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LG4gnSiSPZWbLM-6e5DM0ACC0zf_jZX9]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1AGj0p0MIzqsIYJDK8OqP4WxC4ZG_RbMQ]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -520,7 +536,7 @@
 					<SHA1>67F52DDD1061392CE97C3F5BA1E435A03C3999F2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YsthSD5-k8vVtK4orQBz_mZIF4_w-I4P]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1axdeJvpO_D-41oPLrAc7CTGfAQgy6K-V]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -685,7 +701,7 @@
 					<SHA1>4CCA02A9A58BDC4A2DB6C9C856DEFA0866201FB7</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1oq0x6XGbo1rqPPAgGubfeupwTU3N1HXr]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.InfiniteNotches/releases/download/v2000/InfiniteNotches.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -703,7 +719,7 @@
 					<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1x_nx2Nhfm_GPWqis0k-3tAuiYfvEpSNr]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=10NBvn-wOVYTWQEBRu-QqXcUHIjpm2QGX]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -717,7 +733,7 @@
 					<SHA1>0731a7f278acd73d71cead033911a0a298b5c8a7</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=0BzihlMHqh5UpUVQ5ZGlEdlcxOXM]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GaTX22e-mZGKY8Vti_rZ-f6wsdt1GndW]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -731,7 +747,7 @@
 					<SHA1>F7C58BA46137AEBC537DC5B9A2CCACEAB0DA44E1</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BeFOhGulOCOzbuSdHgOUpnKZ8oRFvxeJ]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GAOiMlnea2A3LwI_DRbwBbKBH48vxr_a]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -746,7 +762,7 @@
 					<SHA1>3d1da1ac278e6fede54c06c88417c6271c358f6d</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ccDSG_ZSDaGZKgn2kmPBgtAiDdw2jqQJ]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YX9OrfWSIfLfH0c_3F-tQD7RyBW5feo9]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -760,7 +776,7 @@
 					<SHA1>8f05c5b7143ce061b33451c00ef91e03dea96580</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BpR6Yha3CU36c1Lz0XAjYlONj2INjPvX]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LzwnIZ2T6hAcO-TaK53NtUO4mH-KG7mJ]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -775,7 +791,7 @@
 					<SHA1>6CC156625918BDF908CE6F4B8D433FA24AE6445A</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1t_ppIAOEwYd_SPMTPtPDSTQq8b0E8gpo]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f0WoOYqoreAZ7TwrTtoNTL8XdPlaruh5]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -790,7 +806,7 @@
 					<SHA1>0ead53074e3397ac2962c06838f9431b03b7c07a</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ek4NqXPWIE9XRWd0bJjqA1ohX4GEkcvb]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_D3FtqTINAvdV-zQEzMn6OeRmNqYR9zQ]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -802,10 +818,10 @@
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>4C1AF13D5101EB1A09AF341DCA399639566C0EEF</SHA1>
+					<SHA1>60CB50E8C2F9EB7756410EFF48A3C4FD6DD3C264</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1adKpIMsyQMsE_5SGZu16X6rbi6btfXez]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/download/v2.3DW/Benchwarp.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -834,7 +850,7 @@
 					<SHA1>af43fead30e9ee5cbae9b0e7ad28b3a3fed3e6b1</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=100DQ7o7eCTrBL0Yf3wytn8qI07CskAHi]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1dW-kev8iX4bIgpaZawNM8yCk1dO27zR8]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -849,7 +865,7 @@
 					<SHA1>0486D3D3CE43FD34DAFCF94CE230F14B31B3C8C3</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/download/v3.10(992)/RandomizerMod3.0.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -866,7 +882,7 @@
 					<SHA1>ABEFE12B66226C3C9A7A80A1C16917EE3BCA51A9</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=11xFWrOoVuw03UNvmKA_H_gLjUP3DTuDC]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-rCDkRfgFCntk7ecAKo8MRpzW8FIGg63]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -881,7 +897,7 @@
 					<SHA1>c833b14317928fc6788e66cbc968dd9227df4a32</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GeyXchgJJgUIWLQxioOu7re2dHFt19L4]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Wiui72JHJ0aJw3qmdRXvRr-Ph3smxv7F]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -896,7 +912,7 @@
 					<SHA1>190b3d418ae6acad17bc526035d13464e6694a00</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_u6XJ-71n_PIL9m1taehsWcUqwJ0Ey0V]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1twrzItzcw_-l2fZNZr_ECFcU3wP1jxE0]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -911,7 +927,7 @@
 					<SHA1>22421170af8dbffdb3a8baff5edff6fafa205f86</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lg0A4pstHdlHdbdU511Umg5uYuvG8Pd1]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q4lrxisQNLI6P5gh-kBS1_CklVZoxndo]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -926,7 +942,7 @@
 					<SHA1>C72C905DFAE7126909E77CB7DC5100B411D04A33</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13v9CkQlEVKaaAPjY3ZO9VppgyeM1CVVs]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.LoadNormalizer/releases/download/v1.25/LoadNormalizer.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -940,7 +956,7 @@
 					<SHA1>EE891F879244798DA657EF90FB10B016D53A9D8C</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1psfwT5_dH9XiU_8g7b_rkkdI6YhGfwnS]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-OKKXgdQhDUE8uUEA5zNGP6NhH3iDXCW]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -955,7 +971,7 @@
 					<SHA1>063B0603C5EB0B9E3BFF62A5BF2CCBC91D758389</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1MROspqNmyNwq_e3sN5Gkze4WqFv1WX4X]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1k-THUGXsMZ_TTXoZC-E5pUz51LcVO7DV]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -969,7 +985,7 @@
 					<SHA1>C6D7BEF8B1580FC962F8C80DDB13482BA9168C73</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1vxar_-vYLQHbixvfN9PLiZmweKHBpgS9]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ZWh0XrIO43NebPYHWpULYgA9Y60HHpG0]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -984,7 +1000,7 @@
 					<SHA1>E368E59DA164A575B1C82DFAD99E66606D4BBD34</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1F17aQrAlMSLS-_HXjoDp8qHXRU4dH3Zm]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gjDQVuShjJMnFibvH9m3uONhbsSgdanY]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -999,7 +1015,7 @@
 					<SHA1>E05A407BAB3F4231B78D0E307E720BF86C02347D</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1MoarOHW6daSehsEccXOT19jSub7dX0k8]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1213H5pk8PEaplCCb3Ije8BwUpZ0J8AYt]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1013,7 +1029,7 @@
 					<SHA1>123B04102ED23ADF7EA482270682D4B8E1CC4CD1</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gAo7SihdBEz5-4-GpkPQ38KpvUY7_lcz]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1m_zAzN_CH0ssAo_DTXcEdVLm_lp8aRbm]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1028,7 +1044,7 @@
 					<SHA1>E7ABB3BA35DAEC38EC80AF3780B31EC90896B36A</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1EWmHKs20Ry22oJc1q1bJtUgsapZVuWK2]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1HMe7macr_PVP95iTCdSbZsgH5RV7i3B3]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1043,7 +1059,7 @@
 					<SHA1>15D921B88D39643CC765A099234267EC05AE1DF0</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1quyv8LSn27qAJInHO2jxbRa2AfMTKiWF]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ECe4HU0w2T0YY-3qIgLw6Ek43sRTiQ4U]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1081,7 +1097,7 @@
 					<SHA1>EBBEC9B2F482ABEAF84AE58D91B5559DE61804C2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.EasyMode/releases/download/v1.0/EasyMode.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1096,7 +1112,7 @@
 					<SHA1>0EBF6913A0E9108AE496A59481BA3114DE66A168</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1RcGmh1I-mEklrhHdJKDjtUQjW4LHVE84]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=10q9zVmxQMbWd-ONVp5ntEP7ZHPIA0Z2q]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1113,7 +1129,7 @@
 					<SHA1>D31B5C898352F8941724AF2E401405C39420E27D</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/download/v1.0/ItemChanger.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1128,7 +1144,7 @@
 					<SHA1>1930D727B1880670CDDAC00BD1C9039C83D0E118</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.plandoplando/releases/download/v1.0/plandoplando.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1144,7 +1160,7 @@
 					<SHA1>E024DBE460747C41F1ED2A59F13305F6B32640A5</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1vInXLExItvieDcukk8iKlxIB-gsGjbzr]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BLBNfB_5ZTvq5OCH7bi23LzxTThM2S26]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1159,7 +1175,7 @@
 					<SHA1>2E7938CEEDB559C3A00E543B2B499B9853A8F90E</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1VRYzMjnnk2Jl57Y6sraEnSprd-cAo0OA]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.PaletteSwapper/releases/download/v1.0/PaletteSwapper.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1173,7 +1189,7 @@
 					<SHA1>B6C5DBC87F09453DD51536EB8F1EE16A28772188</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1qbuU9JDhJ8mmpyd9juvdKWsEhCz4RcxA]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TjzIEL6Ft4vSpKf88shcDjS_u06pQP9f]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1211,10 +1227,10 @@
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
-					<SHA1>6C704B1A14393CD87A977B0EA9F224D32DD6CFB5</SHA1>
+					<SHA1>94BCC7A6DC54B6D683087E847FC8F649D970278E</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.2/SFCore.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.4.3.2-1/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1229,7 +1245,7 @@
 					<SHA1>1B37BA0A4DD0074E3E26BEB767F8542389AA8480</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Cuq-pcRqE4rlJ3BLmDy2KlKmZWrL49Hj]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1bozleaWUC_Lt68Q3fQMNN9fHX7dnKX3r]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1244,7 +1260,7 @@
 					<SHA1>F10F668C05B8B0D306E825572173DFAD5C98357C</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1d-JG9EhO66fMhf3BKjwBgNKfoSVM_Ldo]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_JezFrLyYBhrDr3PXH3fRWNbeSbiJNHL]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1258,7 +1274,7 @@
 					<SHA1>21F9B2E92A52369BBCC8021280C82568080B6F3A</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lShQu2ScACvIQXZO7-vctUi3Vu_GiZM-]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1pvvpZ7Dbx5krlcco_NkFDWge_Dxmiwur]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -1311,18 +1327,17 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>GrassBag</Name>
-			<Description>Tracks how much grass you've mowed and leads you to unmowed grass</Description>
+			<Name>Grassy Knight</Name>
+			<Description>Tracks and shows you how much grass you've cut.</Description>
 			<Files>
 				<File>
-					<Name>GrassBag.dll</Name>
-					<SHA1>a74e65e1c8bf4acca1d9d83828b54000d6c56edc</SHA1>
+					<Name>GrassyKnight.zip</Name>
+					<SHA1>9a507497f448f33ac6a72827c83ff5176bce7192</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/itsjohncs/GrassBag/releases/download/1.4.2/GrassBag.zip]]></Link>
+			<Link><![CDATA[https://github.com/itsjohncs/GrassyKnight/releases/download/1.3.0/GrassyKnight.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1330,14 +1345,45 @@
 			<Description>A mod that significantly buffs Hive Knight</Description>
 			<Files>
 				<File>
-					<Name>Buzzbo (Bloodless).dll</Name>
-					<SHA1>19582B880BA6199E4CCB94E6E43104BC935F9200</SHA1>
+					<Name>BuzzboMod.dll</Name>
+					<SHA1>CE8B46D2DB8DF61AB05416B28C711911E87BE361</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1mVKg2VxPcovrhVR03hJ_okfKj4QW3RDc]]></Link>
+			<Link><![CDATA[https://github.com/thegodfriend/buzzbo/releases/download/v0.4.2.0/Buzzbo.v0.4.2.0.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Controller Vibration</Name>
+			<Description>Adds in controller vibration through any XInput device (Xbox controllers).</Description>
+			<Files>
+				<File>
+					<Name>ControllerVibration.dll</Name>
+					<SHA1>DC4B7F8DBEFFB096E13E9862C3509B49A508F4CB</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1eUHVc36Z3l8rTS835gXCp37uwCwjYH-O]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SereCore</string>
+				<string>ModCommon</string>
+			</Dependencies> 
+		</ModLink>
+    <ModLink>
+			<Name>ToggleableBindings</Name>
+			<Description>A mod that allows you to enable and disable bindings at any time.</Description>
+			<Files>
+				<File>
+					<Name>ToggleableBindings.dll</Name>
+					<SHA1>B9B2D53AB664B3BF8D5D51659DAF2612F70FB26E</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/Unordinal/HollowKnight.ToggleableBindings/releases/download/v0.1.0/ToggleableBindings.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
