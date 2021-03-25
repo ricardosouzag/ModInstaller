@@ -312,7 +312,7 @@ namespace ModInstaller
             {
                 switch (mod.Element("Name")?.Value)
                 {
-                    case "Modding API Windows":
+                    case "Modding API":
                         _apiLink = OS == "Windows" ? mod.Element("Link")?.Value : mod.Element("UnixLink")?.Value;
                         _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
                         _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
