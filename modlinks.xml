@@ -1377,10 +1377,10 @@
 			<Files>
 				<File>
 					<Name>ToggleableBindings.dll</Name>
-					<SHA1>B9B2D53AB664B3BF8D5D51659DAF2612F70FB26E</SHA1>
+					<SHA1>92B100A6CDA00BEA60ECD3B786D483590B127925</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/Unordinal/HollowKnight.ToggleableBindings/releases/download/v0.1.0/ToggleableBindings.zip]]></Link>
+			<Link><![CDATA[https://github.com/Unordinal/HollowKnight.ToggleableBindings/releases/download/v0.1.2/ToggleableBindings.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
