@@ -865,7 +865,7 @@
 					<SHA1>0486D3D3CE43FD34DAFCF94CE230F14B31B3C8C3</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/download/v3.10(992)/RandomizerMod3.0.zip]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/download/v3.11(186)/RandomizerMod3.0.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
