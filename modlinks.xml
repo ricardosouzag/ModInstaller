@@ -1356,6 +1356,21 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
+			<Name>Easier Ascended</Name>
+			<Description>A mod that allows practice for P5 in HoG. It also adds additional features such as giving the ability to remove health (for fury practice), add soul or add lifeblood before each fight starts.</Description>
+			<Files>
+				<File>
+					<Name>Easier-Ascended.dll</Name>
+					<SHA1>58D6D9567313FF4C287F5BA7B544E25D185FF54B</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/TheMulhima/Easier-Ascended/releases/download/v1.0.0.2/Easier-Ascended.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
 			<Name>Controller Vibration</Name>
 			<Description>Adds in controller vibration through any XInput device (Xbox controllers).</Description>
 			<Files>
