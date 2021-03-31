@@ -1371,7 +1371,7 @@
 				<string>ModCommon</string>
 			</Dependencies> 
 		</ModLink>
-    <ModLink>
+    	<ModLink>
 			<Name>ToggleableBindings</Name>
 			<Description>A mod that allows you to enable and disable bindings at any time.</Description>
 			<Files>
@@ -1384,6 +1384,21 @@
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
+    	<ModLink>
+			<Name>AdditionalMaps</Name>
+			<Description>A mod that adds maps for the White Palace and Godhome.</Description>
+			<Files>
+				<File>
+					<Name>AdditionalMaps.dll</Name>
+					<SHA1>D15AA4DAA08483B6C4803771F0C5E23D72D4C88E</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.1/AdditionalMaps.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SFCore</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
