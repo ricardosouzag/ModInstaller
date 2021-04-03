@@ -1224,6 +1224,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>SFCore</Name>
+			<Description>Library required for some mods to function</Description>
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
@@ -1233,7 +1234,65 @@
 			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.4.3.3/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>BlindRadiance</Name>
+			<Description>Mod to darken selected scenes for visibility</Description>
+			<Files>
+				<File>
+					<Name>BlindRadiance.dll</Name>
+					<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Language Support</Name>
+			<Description>Adds support for additional languages in a CustomKnight style</Description>
+			<Files>
+				<File>
+					<Name>LanguageSupport.dll</Name>
+					<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
 				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
+    	<ModLink>
+			<Name>AdditionalMaps</Name>
+			<Description>A mod that adds maps for the White Palace and Godhome.</Description>
+			<Files>
+				<File>
+					<Name>AdditionalMaps.dll</Name>
+					<SHA1>D15AA4DAA08483B6C4803771F0C5E23D72D4C88E</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.1/AdditionalMaps.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SFCore</string>
+			</Dependencies>
+		</ModLink>
+    	<ModLink>
+			<Name>Test of Teamwork</Name>
+			<Description>This mod adds a platforming section to the White Palace.</Description>
+			<Files>
+				<File>
+					<Name>TestOfTeamwork.dll</Name>
+					<SHA1>BFE0F844E63B9909F500B7A2E4AE9737AB2EB6E0</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/SFGrenade/TestOfTeamwork/releases/download/v0.9.9.9/TestOfTeamwork.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>SFCore</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1282,20 +1341,6 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>BlindRadiance</Name>
-			<Description>Mod to darken selected scenes for visibility</Description>
-			<Files>
-				<File>
-					<Name>BlindRadiance.dll</Name>
-					<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
-		</ModLink>
-		<ModLink>
 			<Name>Lunatic Radiance</Name>
 			<Description>Bullet Hell Radiance Boss in Hollow Knight</Description>
 			<Files>
@@ -1309,21 +1354,6 @@
 				<string>Modding API</string>
 				<string>ModCommon</string>
 				<string>Vasi</string>
-			</Dependencies>
-		</ModLink>
-		<ModLink>
-			<Name>Language Support</Name>
-			<Description>Adds support for additional languages in a CustomKnight style</Description>
-			<Files>
-				<File>
-					<Name>LanguageSupport.dll</Name>
-					<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
@@ -1399,21 +1429,6 @@
 			<Dependencies>
 				<string>Modding API</string>
 				<string>Vasi</string>
-			</Dependencies>
-		</ModLink>
-    	<ModLink>
-			<Name>AdditionalMaps</Name>
-			<Description>A mod that adds maps for the White Palace and Godhome.</Description>
-			<Files>
-				<File>
-					<Name>AdditionalMaps.dll</Name>
-					<SHA1>D15AA4DAA08483B6C4803771F0C5E23D72D4C88E</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.1/AdditionalMaps.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SFCore</string>
 			</Dependencies>
 		</ModLink>
 	</ModList>
