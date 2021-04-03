@@ -1431,5 +1431,19 @@
 				<string>Vasi</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>HollowKnightDPRC</Name>
+			<Description>A mod that adds Discord RPC (detailed game) status to your Discord profile.</Description>
+			<Files>
+				<File>
+					<Name>HollowKnightDRPC.dll</Name>
+					<SHA1>FB2DAA6852F9D0A5F793C1B8BC34006559AC48A4</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.0.0Beta/HollowKnightDRPC.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
