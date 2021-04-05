@@ -1432,7 +1432,7 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>HollowKnightDRPC</Name>
+			<Name>HollowKnightDRPC (CHECK README!)</Name>
 			<Description>A mod that adds Discord RPC (detailed game) status to your Discord profile.</Description>
 			<Files>
 				<File>
