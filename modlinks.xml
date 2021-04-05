@@ -1386,18 +1386,17 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>Easier Ascended</Name>
-			<Description>A mod that allows practice for P5 in HoG. It also adds additional features such as giving the ability to remove health (for fury practice), add soul or add lifeblood before each fight starts.</Description>
+			<Name>Bettter P5 Practice</Name>
+			<Description>A mod that allows practice for P5 in HoG. This mod changes the health and damage of ascended bosses to match with P5 and adds the ability to remove health (for fury practice), add soul or lifeblood before each fight starts and an option for hitless practice.</Description>
 			<Files>
 				<File>
-					<Name>Easier-Ascended.dll</Name>
-					<SHA1>58D6D9567313FF4C287F5BA7B544E25D185FF54B</SHA1>
+					<Name>Better-P5-Practice.dll</Name>
+					<SHA1>1F0027AB94A08AC36F8084D55A5A7E45BDADB38D</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/TheMulhima/Easier-Ascended/releases/download/v1.0.0.2/Easier-Ascended.zip]]></Link>
+			<Link><![CDATA[https://github.com/TheMulhima/Better-P5-Practice/releases/download/v1.0.0.3/Better-P5-Practice.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
-				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
 		<ModLink>
