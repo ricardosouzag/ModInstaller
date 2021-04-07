@@ -1431,15 +1431,47 @@
 			</Dependencies>
 		</ModLink>
 		<ModLink>
-			<Name>HollowKnightDRPC (CHECK README!)</Name>
+			<Name>HollowKnightDRPC</Name>
 			<Description>A mod that adds Discord RPC (detailed game) status to your Discord profile.</Description>
 			<Files>
 				<File>
 					<Name>HollowKnightDRPC.dll</Name>
 					<SHA1>859A6F42DD9CF4C73BA3614E92A625766762FD4A</SHA1>
 				</File>
+				<File>
+					<Name>ICSharpCode.SharpZipLib.dll</Name>
+					<SHA1>7A9DF9C25D49690B6A3C451607D311A866B131F4</SHA1>
+				</File>
+				<File>
+					<Name>x86/discord_game_sdk.dll</Name>
+					<SHA1>62CD6F527BE6C82E1C1669FDE807A4B34774691B</SHA1>
+				</File>
+				<File>
+					<Name>x86/discord_game_sdk.dll.lib</Name>
+					<SHA1>6F832923BFB109A80918DE5DE2BA65D670A7A0E3</SHA1>
+				</File>
+				<File>
+					<Name>x86_64/discord_game_sdk.dll</Name>
+					<SHA1>E5D8120A8A8583FE7E3177AE7D8FE797C002F263</SHA1>
+				</File>
+				<File>
+					<Name>x86_64/discord_game_sdk.dll.lib</Name>
+					<SHA1>9D4258CCED17469498FF749A1439ABB5FE702253</SHA1>
+				</File>
+				<File>
+					<Name>x86_64/discord_game_sdk.dylib</Name>
+					<SHA1>EE78B265B827A8B7C803C4BD7E8EB94285826BA3</SHA1>
+				</File>
+				<File>
+					<Name>x86_64/discord_game_sdk.so</Name>
+					<SHA1>FC7435068CE0003937EB7BAE6A3B1FF5F00C2E21</SHA1>
+				</File>
+				<File>
+					<Name>x86_64/discord_game_sdk.bundle</Name>
+					<SHA1>EE78B265B827A8B7C803C4BD7E8EB94285826BA3</SHA1>
+				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.1.1Beta/HollowKnightDRPC.zip]]></Link>
+			<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.1.2Beta/HollowKnightDRPC.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
