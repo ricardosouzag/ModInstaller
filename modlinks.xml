@@ -712,7 +712,7 @@
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
-					<SHA1>3c31332b324adaf32a6d8c3da3f188a58e2df4c7</SHA1>
+					<SHA1>5397d73f1fd4afa3061d20d29a6cc89cff9883f2</SHA1>
 				</File>
 				<File>
 					<Name>websocket-sharp.dll</Name>
