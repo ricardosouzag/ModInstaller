@@ -1271,10 +1271,10 @@
 			<Files>
 				<File>
 					<Name>AdditionalMaps.dll</Name>
-					<SHA1>D15AA4DAA08483B6C4803771F0C5E23D72D4C88E</SHA1>
+					<SHA1>01BEF9210574D6EDA169F8515B9054B3665542EA</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.1/AdditionalMaps.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.2/AdditionalMaps.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SFCore</string>
