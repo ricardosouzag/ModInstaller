@@ -1286,10 +1286,10 @@
 			<Files>
 				<File>
 					<Name>TestOfTeamwork.dll</Name>
-					<SHA1>BFE0F844E63B9909F500B7A2E4AE9737AB2EB6E0</SHA1>
+					<SHA1>7F0A6B2BAE4E71DA7008FBC8F40F4BAA863B8758</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/TestOfTeamwork/releases/download/v0.9.9.9/TestOfTeamwork.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/TestOfTeamwork/releases/download/v0.9.9.10/TestOfTeamwork.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SFCore</string>
