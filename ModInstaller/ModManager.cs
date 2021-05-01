@@ -742,9 +742,16 @@ namespace ModInstaller
                 if (_installedMods.Contains(dependency))
                     continue;
 
-                var dependencyMod = _modEntries.First(dep => dep.Name.Text == dependency);
-                
-                Install(dependency, true, false, true, dependencyMod);
+                var dependencyMod = _modEntries.FirstOrDefault(dep => dep.Name.Text == dependency);
+
+                if (dependencyMod != null)
+                {
+                    Install(dependency, true, false, true, dependencyMod);
+                }
+                else
+                {
+                    MessageBox.Show($"Could not find \"{dependency}\" which is required to run \"{mod.Name}\"!\r\nYou may need to install \"{dependency}\" manually.");
+                }
             }
         }
 
