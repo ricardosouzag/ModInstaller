@@ -749,9 +749,9 @@ namespace ModInstaller
                     Install(dependency, true, false, true, dependencyMod);
                 }
                 else
-				{
+                {
                     MessageBox.Show($"Could not find \"{dependency}\" which is required to run \"{mod.Name}\"!\r\nYou may need to install \"{dependency}\" manually.");
-				}
+                }
             }
         }
 
