@@ -228,10 +228,10 @@
 			<Files>
 				<File>
 					<Name>WeaverCore.dll</Name>
-					<SHA1>5C6CEA3A0C988328ADD288E8411D3151089135CF</SHA1>
+					<SHA1>6989E5BAA0EAB56278E1797AC3BCA36E87544C33</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1hxKgCx9S3O_AAzAMjo_3IXyhakB5tkin]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1-PTPyO8SZDHaV6--BCTZYkZESJtjn38B]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -242,10 +242,25 @@
 			<Files>
 				<File>
 					<Name>InfernoKingGrimm.dll</Name>
-					<SHA1>72A933B05EA9390BCCBD87D90F7566342692EEC6</SHA1>
+					<SHA1>CC54EC1EAA29352CAEAA6B6420F461CC585FC66E</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1vg3NUEfjTCTaenQQf4FHlmhnjsWwYcVR]]></Link>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1dhiQsFXK40gop1onuKMFuVOndrtMOEwS]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>WeaverCore</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Corrupted Kin</Name>
+			<Description>Turns Lost Kin into a two phase boss fight and makes it harder.</Description>
+			<Files>
+				<File>
+					<Name>CorruptedKin.dll</Name>
+					<SHA1>D24E5637BA7ADF6A6691DEA6FE8CABF60157A53E</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=17IilGkETjlVVK4JGC0dC3-HzTVBYKdXN]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>WeaverCore</string>
