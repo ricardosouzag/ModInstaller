@@ -231,7 +231,7 @@
 					<SHA1>6989E5BAA0EAB56278E1797AC3BCA36E87544C33</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1-PTPyO8SZDHaV6--BCTZYkZESJtjn38B]]></Link>
+			<Link><![CDATA[https://github.com/nickc01/WeaverCore/releases/download/v0.3.0.0-beta/WeaverCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
