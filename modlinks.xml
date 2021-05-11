@@ -1243,10 +1243,10 @@
 			<Files>
 				<File>
 					<Name>SFCore.dll</Name>
-					<SHA1>45C3D385A82E7F36D38242A72A9A5748DFF7D923</SHA1>
+					<SHA1>F75504A3D4D688F9FDFD29A6FD136171B9EC0D0F</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.4.3.3/SFCore.zip]]></Link>
+			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.4.3.4/SFCore.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
