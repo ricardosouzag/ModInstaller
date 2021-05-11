@@ -833,7 +833,7 @@
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
-					<SHA1>B6452ECF100B5D1122872B396D59FBF421A50B2A</SHA1>
+					<SHA1>F80B83F8A3A8D77843D691C422A1C450E3653B83</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/latest/download/Benchwarp.zip]]></Link>
@@ -1141,7 +1141,7 @@
 			<Files>
 				<File>
 					<Name>ItemChanger.dll</Name>
-					<SHA1>50C6157C67D1B006DBBB672EB8AB5C099A3FA96D</SHA1>
+					<SHA1>AEC7B22A62917CFF600EE4CD102E19B1541CBB32</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip]]></Link>
