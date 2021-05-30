@@ -1460,5 +1460,31 @@
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>SmolKnight</Name>
+			<Files>
+				<File>
+					<Name>SmolKnight.dll</Name>
+					<SHA1>8a6db86d2e1ef3ca38d0c6702ac0c07edd04c17c</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/PrashantMohta/Smolknight/releases/download/v1.0/Smolknight.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>Hkmote</Name>
+			<Files>
+				<File>
+					<Name>Hkmote.dll</Name>
+					<SHA1>47f50fc037e34930a527f98c70c33b75e6beddc3</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/PrashantMohta/hkmote/releases/download/v1.0/Hkmote.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
