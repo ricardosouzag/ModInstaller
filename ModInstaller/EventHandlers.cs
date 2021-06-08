@@ -107,6 +107,9 @@ namespace ModInstaller
                 if (!Directory.Exists(Properties.Settings.Default.modFolder))
                     Directory.CreateDirectory(Properties.Settings.Default.modFolder);
                 MessageBox.Show($"Hollow Knight installation path:\n{Properties.Settings.Default.installFolder}");
+
+                Application.Restart();
+                Close();
             }
             else
             {

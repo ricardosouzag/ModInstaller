@@ -21,27 +21,30 @@ namespace ModInstaller
 {
     public partial class ModManager : Form
     {
-        private const string ModLinks = "https://raw.githubusercontent.com/Ayugradow/ModInstaller/master/modlinks.xml";
+        //private const string ModLinks = "https://raw.githubusercontent.com/Ayugradow/ModInstaller/master/modlinks.xml";
+        private const string ModLinks = "https://raw.githubusercontent.com/RedFrog6002/ModInstaller/master/modlinks.xml";
 
-        private const string Version = "v8.7.1";
+        private const string Version = "v8.8.0";
 
         private readonly List<string> _defaultPaths = new List<string>();
 
         private readonly List<string> _allMods = new List<string>();
 
         private readonly List<string> _installedMods = new List<string>();
+
+        private Button button5;
         
         private struct Mod
         {
             public string Name { get; set; }
 
-            public Dictionary<string, string> Files { get; set; }
+            public Dictionary<string, Dictionary<string, string>> Files { get; set; }
 
-            public string Link { get; set; }
+            public Dictionary<string, string> Links { get; set; }
 
-            public List<string> Dependencies { get; set; }
+            public Dictionary<string, List<string>> Dependencies { get; set; }
 
-            public List<string> Optional { get; set; }
+            public Dictionary<string, List<string>> Optional { get; set; }
         }
 
         private class ModField
@@ -96,8 +99,9 @@ namespace ModInstaller
             FillDefaultPaths();
             GetLocalInstallation();
             PiracyCheck();
+            GetVersion();
             FillModsList();
-            CheckApiInstalled();
+            InstallApi();
             PopulateList();
             FillPanel();
             ResizeUI();
@@ -286,87 +290,7 @@ namespace ModInstaller
             Process.Start("https://store.steampowered.com/app/367520/Hollow_Knight/");
         }
 
-        private void FillModsList()
-        {
-            XDocument dllist;
-
-            try
-            {
-                dllist = XDocument.Load(ModLinks);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                var form4 = new ConnectionFailedForm(this);
-                form4.Closed += Form4_Closed;
-                Hide();
-                form4.ShowDialog();
-                return;
-            }
-
-            XElement[] mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
-
-            if (mods == null) return;
-
-            foreach (XElement mod in mods)
-            {
-                switch (mod.Element("Name")?.Value)
-                {
-                    case "Modding API":
-                        _apiLink = OS == "Windows" ? mod.Element("Link")?.Value : mod.Element("UnixLink")?.Value;
-                        _apiSha1 = mod.Element("Files")?.Element("File")?.Element("SHA1")?.Value;
-                        _currentPatch = mod.Element("Files")?.Element("File")?.Element("Patch")?.Value;
-                        break;
-                    default:
-                        _modsList.Add
-                        (
-                            new Mod
-                            {
-                                Name = mod.Element("Name")?.Value,
-                                Link = mod.Element("Link")?.Value,
-                                Files = mod.Element("Files")
-                                           ?.Elements("File")
-                                           .ToDictionary
-                                           (
-                                               element => element.Element("Name")?.Value,
-                                               element => element.Element("SHA1")?.Value
-                                           ),
-                                Dependencies = mod.Element("Dependencies")
-                                                  ?.Elements("string")
-                                                  .Select(dependency => dependency.Value)
-                                                  .ToList(),
-                                Optional = mod.Element("Optional")
-                                              ?.Elements("string")
-                                              .Select(dependency => dependency.Value)
-                                              .ToList()
-                                    ?? new List<string>()
-                            }
-                        );
-                        break;
-                }
-            }
-        }
-
-        private void Form4_Closed(object sender, EventArgs e)
-        {
-            if (IsOffline) return;
-            FillModsList();
-        }
-
-        private static bool SHA1Equals(string file, string modmd5) => string.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
-
-        private static string GetSHA1(string file)
-        {
-            using var sha1 = SHA1.Create();
-
-            using FileStream stream = File.OpenRead(file);
-            
-            byte[] hash = sha1.ComputeHash(stream);
-            
-            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
-        }
-
-        private void CheckApiInstalled()
+        private void GetVersion()
         {
             if (!Directory.Exists(Properties.Settings.Default.APIFolder))
             {
@@ -374,6 +298,7 @@ namespace ModInstaller
 
                 // Make sure to not ruin everything forever
                 Properties.Settings.Default.installFolder = null;
+                Properties.Settings.Default.Save();
 
                 Application.Exit();
                 Close();
@@ -404,29 +329,10 @@ namespace ModInstaller
 
                 _apiIsInstalled = _assemblyIsAPI || File.Exists($"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.mod");
 
-
-                if (!File.Exists($"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.vanilla")
-                    && !_apiIsInstalled
-                    && (!nonNullTypes.Any(type => type.Name.Contains("Constant"))
-                        || (string) nonNullTypes
+                _currentPatch = (string)nonNullTypes
                                     .First(type => type.Name.Contains("Constant") && type.GetFields().Any(f => f.Name == "GAME_VERSION"))
                                     .GetField("GAME_VERSION")
-                                    .GetValue(null)
-                        != _currentPatch))
-                {
-                    MessageBox.Show
-                    (
-                        "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.",
-                        "Warning!"
-                    );
-
-                    // Make sure to not ruin everything forever part2
-
-                    Application.Exit();
-                    Close();
-
-                    return;
-                }
+                                    .GetValue(null);
             }
             else
             {
@@ -437,13 +343,140 @@ namespace ModInstaller
                 );
 
                 // Make sure to not ruin everything forever part3
+                Properties.Settings.Default.installFolder = null;
+                Properties.Settings.Default.Save();
 
                 Application.Exit();
                 Close();
 
                 return;
             }
+        }
 
+        private void FillModsList()
+        {
+            XDocument dllist;
+
+            try
+            {
+                dllist = XDocument.Load(ModLinks);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                var form4 = new ConnectionFailedForm(this);
+                form4.Closed += Form4_Closed;
+                Hide();
+                form4.ShowDialog();
+                return;
+            }
+
+            XElement[] mods = dllist.Element("ModLinks")?.Element("ModList")?.Elements("ModLink").ToArray();
+
+            if (mods == null) return;
+
+            foreach (XElement mod in mods)
+            {
+                switch (mod.Element("Name")?.Value)
+                {
+                    case "Modding API":
+                        if ((bool)!mod.Element("Patches")?.Elements("Patch")?.Where(element => element.Element("Name")?.Value == _currentPatch).Any())
+                        {
+                            MessageBox.Show
+                            (
+                                $"This installer does not support your version of hollow knight({_currentPatch}).\nPlease update your game to a supported patch and then try again.",
+                                "Warning!"
+                            );
+
+                            Properties.Settings.Default.installFolder = null;
+                            Properties.Settings.Default.Save();
+
+                            Application.Exit();
+                            Close();
+
+                            return;
+                        }
+                        _apiLink = OS == "Windows" ? 
+                            mod.Element("Patches")?.Elements("Patch")?.First(element => element.Element("Name").Value == _currentPatch).Element("Link")?.Value :
+                            mod.Element("Patches")?.Elements("Patch")?.First(element => element.Element("Name").Value == _currentPatch).Element("UnixLink")?.Value;
+                        _apiSha1 = mod.Element("Patches")?.Elements("Patch")?.First(element => element.Element("Name").Value == _currentPatch).Element("Files")?.Element("File")?.Element("SHA1")?.Value;
+                        break;
+                    default:
+                        if ((bool)mod.Element("Patches")?.Elements("Patch")?.Where(element => element.Element("Name")?.Value == _currentPatch).Any())
+                            _modsList.Add
+                        (
+                            new Mod
+                            {
+                                Name = mod.Element("Name")?.Value,
+                                Links = mod.Element("Patches")
+                                           ?.Elements("Patch")
+                                           .ToDictionary
+                                           (
+                                               element => element.Element("Name").Value,
+                                               element => element.Element("Link").Value
+                                           ),
+                                Files = mod.Element("Patches")
+                                           ?.Elements("Patch")
+                                           .ToDictionary
+                                           (
+                                               element => element.Element("Name").Value,
+                                               element => element.Element("Files")
+                                                ?.Elements("File")
+                                                .ToDictionary
+                                                (
+                                                    element => element.Element("Name")?.Value,
+                                                    element => element.Element("SHA1")?.Value
+                                                )
+                                           ),
+                                Dependencies = mod.Element("Patches")
+                                               ?.Elements("Patch")
+                                               .ToDictionary
+                                               (
+                                                    element => element.Element("Name").Value,
+                                                    element => element.Element("Dependencies")
+                                                     ?.Elements("string")
+                                                     .Select(dependency => dependency.Value)
+                                                     .ToList()
+                                               ),
+                                Optional = mod.Element("Patches")
+                                              ?.Elements("Patch")
+                                              .ToDictionary
+                                              (
+                                                    element => element.Element("Name").Value,
+                                                    element => element.Element("Optional")
+                                                    ?.Elements("string")
+                                                    .Select(dependency => dependency.Value)
+                                                    .ToList()
+                                                    ?? new List<string>()
+                                              )
+                            }
+                        );
+                        break;
+                }
+            }
+        }
+
+        private void Form4_Closed(object sender, EventArgs e)
+        {
+            if (IsOffline) return;
+            FillModsList();
+        }
+
+        private static bool SHA1Equals(string file, string modmd5) => string.Equals(GetSHA1(file), modmd5, StringComparison.InvariantCultureIgnoreCase);
+
+        private static string GetSHA1(string file)
+        {
+            using var sha1 = SHA1.Create();
+
+            using FileStream stream = File.OpenRead(file);
+            
+            byte[] hash = sha1.ComputeHash(stream);
+            
+            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+        }
+
+        private void InstallApi()
+        {
             if (!_apiIsInstalled || _assemblyIsAPI && !SHA1Equals($"{Properties.Settings.Default.APIFolder}/Assembly-CSharp.dll", _apiSha1))
             {
                 Download
@@ -702,7 +735,7 @@ namespace ModInstaller
 
                 if (mod.Optional.Any())
                 {
-                    foreach (string optional in mod.Optional)
+                    foreach (string optional in mod.Optional[_currentPatch])
                     {
                         if (_installedMods.Contains(optional)) continue;
 
@@ -732,9 +765,9 @@ namespace ModInstaller
         {
             if (!mod.Dependencies.Any()) return;
             
-            CheckApiInstalled();
+            InstallApi();
             
-            foreach (string dependency in mod.Dependencies)
+            foreach (string dependency in mod.Dependencies[_currentPatch])
             {
                 if (dependency == "Modding API")
                     continue;
@@ -881,13 +914,17 @@ namespace ModInstaller
                     mod = new Mod
                     {
                         Name = Path.GetFileNameWithoutExtension(modsFile.Name),
-                        Files = new Dictionary<string, string>
+                        Files = new Dictionary<string, Dictionary<string, string>>
                         {
-                            [Path.GetFileName(modsFile.Name)] = GetSHA1(modsFile.FullName)
+                            { _currentPatch, new Dictionary<string, string>()
+                            {
+                                [Path.GetFileName(modsFile.Name)] = GetSHA1(modsFile.FullName)
+                            }
+                            }
                         },
-                        Link = "",
-                        Dependencies = new List<string>(),
-                        Optional = new List<string>()
+                        Links = new Dictionary<string, string>() { { _currentPatch, "" } },
+                        Dependencies = new Dictionary<string, List<string>>() { { _currentPatch, new List<string>() } },
+                        Optional = new Dictionary<string, List<string>> { { _currentPatch, new List<string>() } },
                     };
                 }
 
@@ -931,10 +968,17 @@ namespace ModInstaller
                     mod = new Mod
                     {
                         Name = Path.GetFileNameWithoutExtension(file.Name),
-                        Files = new Dictionary<string, string> {[Path.GetFileName(file.Name)] = GetSHA1(file.FullName)},
-                        Link = "",
-                        Dependencies = new List<string>(),
-                        Optional = new List<string>()
+                        Files = new Dictionary<string, Dictionary<string, string>>
+                        {
+                            { _currentPatch, new Dictionary<string, string>()
+                            {
+                                [Path.GetFileName(file.Name)] = GetSHA1(file.FullName)
+                            }
+                            }
+                        },
+                        Links = new Dictionary<string, string>() { { _currentPatch, "" } },
+                        Dependencies = new Dictionary<string, List<string>>() { { _currentPatch, new List<string>() } },
+                        Optional = new Dictionary<string, List<string>> { { _currentPatch, new List<string>() } },
                     };
                 }
 
@@ -969,7 +1013,7 @@ namespace ModInstaller
             if (SHA1Equals
             (
                 filename,
-                mod.Files[mod.Files.Keys.First(f => f == Path.GetFileName(filename))]
+                mod.Files[_currentPatch][mod.Files.Keys.First(f => f == Path.GetFileName(filename))]
             ))
                 return false;
 
@@ -994,6 +1038,9 @@ namespace ModInstaller
 
         private void ResizeUI()
         {
+            button5 = new Button() { Text = "Open Mods Folder" };
+            button5.Click += OpenModsFolderClick;
+            Controls.Add(button5);
             const int height = 480;
             panel.Width = panel.Controls.Count > 0 ? panel.Controls[0].Width + 20 : 480;
             panel.Height = height;
@@ -1005,6 +1052,7 @@ namespace ModInstaller
             button3.Size = new Size(panel.Width, 23);
             _button4.Size = new Size(panel.Width, 23);
             _browser.Size = new Size(panel.Width, 23);
+            button5.Size = new Size(panel.Width, 23);
             search.Top = height + 9;
             search.Left = 5;
             button1.Top = search.Bottom + 9;
@@ -1015,8 +1063,15 @@ namespace ModInstaller
             button3.Left = 3;
             _button4.Top = button3.Bottom;
             _button4.Left = 3;
+            button5.Top = _button4.Bottom;
+            button5.Left = 3;
             panel.PerformLayout();
             PerformAutoScale();
+        }
+
+        private void OpenModsFolderClick(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", Properties.Settings.Default.modFolder.Replace('/', '\\'));
         }
 
         private static void DeleteDirectory(string targetDir)
@@ -1054,7 +1109,7 @@ namespace ModInstaller
             {
                 Download
                 (
-                    new Uri(_modsList.First(m => m.Name == modname).Link),
+                    new Uri(_modsList.First(m => m.Name == modname).Links[_currentPatch]),
                     $"{Properties.Settings.Default.modFolder}/{modname}.zip",
                     modname
                 );

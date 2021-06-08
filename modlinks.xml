@@ -18,1475 +18,1948 @@
 <ModLinks xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<DriveLink>https://drive.google.com/drive/u/0/folders/1lnjtSYMfRe1LyA_qSq2CoXKI6NRm_I-e</DriveLink>
 	<Installer>
-	    <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
-	    <SHA1>B51FCE1DC9CF80D95BBC370C72CC80C7A711AB54</SHA1>
-	    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
+		<Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
+		<SHA1>B51FCE1DC9CF80D95BBC370C72CC80C7A711AB54</SHA1>
+		<AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
 	</Installer>
 	<ModList>
 		<ModLink>
 			<Name>Modding API</Name>
-			<Files>
-				<File>
-					<Name>Assembly-CSharp.dll</Name>
-					<SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
-					<Patch>1.4.3.2</Patch>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></Link>
-			<UnixLink><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></UnixLink>
-			<Dependencies />
+			<Description></Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Assembly-CSharp.dll</Name>
+							<SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
+							<Patch>1.4.3.2</Patch>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></Link>
+					<UnixLink><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></UnixLink>
+					<Dependencies />
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>ModCommon</Name>
 			<Description>Library used by many mods.</Description>
-			<Files>
-				<File>
-					<Name>ModCommon.dll</Name>
-					<SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TVAIN2Oh_RJwStoxkReoyRxVmrqju9wg]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ModCommon.dll</Name>
+							<SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TVAIN2Oh_RJwStoxkReoyRxVmrqju9wg]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>ModConsole</Name>
 			<Description>An in-game REPL which allows you to easily run C#</Description>
-			<Files>
-				<File>
-					<Name>ModConsole.dll</Name>
-					<SHA1>F6AAA6E263539B6A7995DE5DE29F8DC25912319B</SHA1>
-				</File>
-				<File>
-					<Name>Mono.CSharp.dll</Name>
-					<SHA1>F75E0DFBFEA8971CA81CA8EC1F0D4A18BBFAF82B</SHA1>
-				</File>
-				<File>
-					<Name>Mono.Security.dll</Name>
-					<SHA1>8DA34D415672223140F3A3DD21AF327892C2B378</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1sd5JFElaoW14Wgj7H4ZxEQe8d9nKb7cP]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ModConsole.dll</Name>
+							<SHA1>F6AAA6E263539B6A7995DE5DE29F8DC25912319B</SHA1>
+						</File>
+						<File>
+							<Name>Mono.CSharp.dll</Name>
+							<SHA1>F75E0DFBFEA8971CA81CA8EC1F0D4A18BBFAF82B</SHA1>
+						</File>
+						<File>
+							<Name>Mono.Security.dll</Name>
+							<SHA1>8DA34D415672223140F3A3DD21AF327892C2B378</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1sd5JFElaoW14Wgj7H4ZxEQe8d9nKb7cP]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Hell Mod</Name>
 			<Description>Various nerfs to the player (nail, spells, damage, SOUL, etc.) and several buffs to enemies/bosses (health and damage)</Description>
-			<Files>
-				<File>
-					<Name>HellMod.dll</Name>
-					<SHA1>F36A50ED11069DE6C61DB7DF93E08E746E308EAE</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nrtiAEIwSC9xcjBv5W6ZK3qdF1ykofj7]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>HellMod.dll</Name>
+							<SHA1>F36A50ED11069DE6C61DB7DF93E08E746E308EAE</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nrtiAEIwSC9xcjBv5W6ZK3qdF1ykofj7]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Job change</Name>
-		    	<Files>
-				<File>
-			    		<Name>jobChange.dll</Name>
-			    		<SHA1>d0a5359b74e4e8c81009d3fb5f3b6278ee431a7f</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/RechercheJewel/jobChange/releases/download/v1/Job.change.by.Jewel.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SFCore</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Description></Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>jobChange.dll</Name>
+							<SHA1>d0a5359b74e4e8c81009d3fb5f3b6278ee431a7f</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/RechercheJewel/jobChange/releases/download/v1/Job.change.by.Jewel.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SFCore</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Bingo UI</Name>
 			<Description>Automatic tracking of bingo goals for randomizer or vanilla bingo speedrun races</Description>
-			<Files>
-				<File>
-					<Name>BingoUI.dll</Name>
-					<SHA1>C3D7A41B7C1FD2EB1E05D51D507BAE5489EF843A</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1U8u98qFQcASFMTNloGJbDp2gJsJ0YHq_]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>BingoUI.dll</Name>
+							<SHA1>C3D7A41B7C1FD2EB1E05D51D507BAE5489EF843A</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1U8u98qFQcASFMTNloGJbDp2gJsJ0YHq_]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
-		    <Name>Dumbmod</Name>
-		    <Description>Makes most animated things invisible</Description>
-		    <Files>
-			<File>
-			    <Name>dumbmod.dll</Name>
-			    <SHA1>863b4fbc3580f754561bc73c98957e0476dae0c3</SHA1>
-			</File>
-		    </Files>
-		    <Link><![CDATA[https://drive.google.com/uc?export=download&id=1hXkMIgtRQcOUfV61ORt3eAq959CTa797]]></Link>
-		    <Dependencies>
-			<string>Modding API</string>
-		    </Dependencies>
+			<Name>Dumbmod</Name>
+			<Description>Makes most animated things invisible</Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>dumbmod.dll</Name>
+							<SHA1>863b4fbc3580f754561bc73c98957e0476dae0c3</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1hXkMIgtRQcOUfV61ORt3eAq959CTa797]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>HollowPoint (SEE README)</Name>
 			<Description>Gives the player a gun, reworks charms and abilities to play around the concept of gun usage</Description>
-			<Files>
-				<File>
-					<Name>HollowPoint.dll</Name>
-					<SHA1>0251880f26f56f92cc5690ef2d8c0349c1622782</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-ScZIDVuCjj1exI6C1AHi8gfDdUkMVSV]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>HollowPoint.dll</Name>
+							<SHA1>0251880f26f56f92cc5690ef2d8c0349c1622782</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-ScZIDVuCjj1exI6C1AHi8gfDdUkMVSV]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Bindings</Name>
 			<Description>Applies the bindings from the Godhome Pantheons to the main game. Intended for practicing for bound pantheons in the Hall of Gods</Description>
-			<Files>
-				<File>
-					<Name>Bindings.dll</Name>
-					<SHA1>029C3F3F7C9FE5EF7CBF44105A6E95A8613FC2B3</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XRB49NMyEiau427uwYDGer5kJCXF9-Na]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Bindings.dll</Name>
+							<SHA1>029C3F3F7C9FE5EF7CBF44105A6E95A8613FC2B3</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XRB49NMyEiau427uwYDGer5kJCXF9-Na]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
-			<Name>Lost Lord</Name><!-- API MOD -->
+			<Name>Lost Lord</Name>
 			<Description>Significant buff to Lost Kin</Description>
-			<Files>
-				<File>
-					<Name>LostLord.dll</Name>
-					<SHA1>538ccf8bce789afe962de4a43c96455442174a82</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13dHBj3RiXYm2exOmreF2yu_eiw1rZnZB]]></Link>
-			<DefaultInstallPath>/</DefaultInstallPath>
-			<WritesOverAssembly>false</WritesOverAssembly>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>LostLord.dll</Name>
+							<SHA1>538ccf8bce789afe962de4a43c96455442174a82</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=13dHBj3RiXYm2exOmreF2yu_eiw1rZnZB]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Pale Prince</Name>
 			<Description>Significant buff for Pure Vessel with new moves</Description>
-			<Files>
-				<File>
-					<Name>Pale_Prince.dll</Name>
-					<SHA1>4dd343d598878235bd149b495c55c6a6a7ef8caa</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yIULlnHH074He53eT-JsRARgGYJgzeDW]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Pale_Prince.dll</Name>
+							<SHA1>4dd343d598878235bd149b495c55c6a6a7ef8caa</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1yIULlnHH074He53eT-JsRARgGYJgzeDW]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Random Pantheons</Name>
 			<Description>Randomizes Godhome’s Pantheons. Bosses appear in random order.</Description>
-			<Files>
-				<File>
-					<Name>RandomPantheons.dll</Name>
-					<SHA1>39D60082BA78B66AE687C6A60E8516E24496A3D9</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=13iMd5i2xey1qjC8SvL_6hLHftqcJ4PKu]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>RandomPantheons.dll</Name>
+							<SHA1>39D60082BA78B66AE687C6A60E8516E24496A3D9</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=13iMd5i2xey1qjC8SvL_6hLHftqcJ4PKu]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Mantis Gods</Name>
 			<Description>Significantly buffs Mantis Lords</Description>
-			<Files>
-				<File>
-					<Name>Mantis Gods.dll</Name>
-					<SHA1>0618e8e9fba19d22c8c6e4d3498e82f534b6158f</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1YDedda50PyqAIacRGIeEF7NcLixHtsX4]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Mantis Gods.dll</Name>
+							<SHA1>0618e8e9fba19d22c8c6e4d3498e82f534b6158f</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1YDedda50PyqAIacRGIeEF7NcLixHtsX4]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>WeaverCore</Name>
 			<Description>Library used by Inferno King Grimm</Description>
-			<Files>
-				<File>
-					<Name>WeaverCore.dll</Name>
-					<SHA1>6989E5BAA0EAB56278E1797AC3BCA36E87544C33</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/nickc01/WeaverCore/releases/download/v0.3.0.0-beta/WeaverCore.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>WeaverCore.dll</Name>
+							<SHA1>6989E5BAA0EAB56278E1797AC3BCA36E87544C33</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/nickc01/WeaverCore/releases/download/v0.3.0.0-beta/WeaverCore.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Inferno King Grimm</Name>
 			<Description>Significantly buffs Nightmare King Grimm</Description>
-			<Files>
-				<File>
-					<Name>InfernoKingGrimm.dll</Name>
-					<SHA1>CC54EC1EAA29352CAEAA6B6420F461CC585FC66E</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1dhiQsFXK40gop1onuKMFuVOndrtMOEwS]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>WeaverCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>InfernoKingGrimm.dll</Name>
+							<SHA1>CC54EC1EAA29352CAEAA6B6420F461CC585FC66E</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1dhiQsFXK40gop1onuKMFuVOndrtMOEwS]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>WeaverCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Corrupted Kin</Name>
 			<Description>Turns Lost Kin into a two phase boss fight and makes it harder.</Description>
-			<Files>
-				<File>
-					<Name>CorruptedKin.dll</Name>
-					<SHA1>D24E5637BA7ADF6A6691DEA6FE8CABF60157A53E</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=17IilGkETjlVVK4JGC0dC3-HzTVBYKdXN]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>WeaverCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>CorruptedKin.dll</Name>
+							<SHA1>D24E5637BA7ADF6A6691DEA6FE8CABF60157A53E</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=17IilGkETjlVVK4JGC0dC3-HzTVBYKdXN]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>WeaverCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Sanic</Name>
 			<Description>Allows for modification of game speed for going fast</Description>
-			<Files>
-				<File>
-					<Name>Sanic.dll</Name>
-					<SHA1>7613615a22785fdd22178dfe8f41e31cae423bdd</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1LDOGwM6f3R4Ti5GPnRmM5_mlTUy1NU13]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Sanic.dll</Name>
+							<SHA1>7613615a22785fdd22178dfe8f41e31cae423bdd</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1LDOGwM6f3R4Ti5GPnRmM5_mlTUy1NU13]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>RNG</Name>
 			<Description>Randomizes animation speeds, waits, and velocities (not recommended for serious use)</Description>
-			<Files>
-				<File>
-					<Name>why.dll</Name>
-					<SHA1>2e9ccf8c3f40a3f8a28c48fcedcc083f0acaf1b8</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1gm8w6066L-L7PJL39XaABi0-Mp9_O0z7]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>why.dll</Name>
+							<SHA1>2e9ccf8c3f40a3f8a28c48fcedcc083f0acaf1b8</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1gm8w6066L-L7PJL39XaABi0-Mp9_O0z7]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>CharmOverhaul</Name>
 			<Description>Rebalances charms to make them stronger</Description>
-			<Files>
-				<File>
-					<Name>BetterCharms.dll</Name>
-					<SHA1>5837a56bdc8f5ed377a78340165af198d7b915f4</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1qUCxymWrSJ1Z-FWtd4R76N1oghIHGTSb]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>BetterCharms.dll</Name>
+							<SHA1>5837a56bdc8f5ed377a78340165af198d7b915f4</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1qUCxymWrSJ1Z-FWtd4R76N1oghIHGTSb]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Chaos Mode</Name>
 			<Description>Adds a variety of random effects which swap every few seconds</Description>
-			<Files>
-				<File>
-					<Name>ChaosMode.dll</Name>
-					<SHA1>bf15663926c8c72dbd458c205baa7ea5af1a00e7</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nMBGpRp-QhoCoRUmda68MNpRqn7aPOOI]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ChaosMode.dll</Name>
+							<SHA1>bf15663926c8c72dbd458c205baa7ea5af1a00e7</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=1nMBGpRp-QhoCoRUmda68MNpRqn7aPOOI]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>RandoMapMod</Name>
 			<Description>Mod which shows randomizer items on the map.</Description>
-			<Files>
-				<File>
-					<Name>RandoMapMod.dll</Name>
-					<SHA1>25718a24d23b09f672190bb49ffadb1429beabc2</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=12HBxTX29d2f5I-SeB3rFb1Kjx6_XZd6L]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>RandoMapMod.dll</Name>
+							<SHA1>25718a24d23b09f672190bb49ffadb1429beabc2</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=12HBxTX29d2f5I-SeB3rFb1Kjx6_XZd6L]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Lightbringer</Name>
 			<Description>Changes nail attack to a lance of light, reworks charms, many other changes</Description>
-				<Files>
-					<File>
-						<Name>Lightbringer.dll</Name>
-						<SHA1>f82d2bf1ad4cef48201d739c43afbd1771a6d2cb</SHA1>
-					</File>
-				</Files>
-				<Link><![CDATA[https://drive.google.com/uc?export=download&id=1726O5SC9zlJbTAK0BWhl3tQmUthg--oN]]></Link>
-				<Dependencies>
-					<string>Modding API</string>
-					<string>ModCommon</string>
-				</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Lightbringer.dll</Name>
+							<SHA1>f82d2bf1ad4cef48201d739c43afbd1771a6d2cb</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1726O5SC9zlJbTAK0BWhl3tQmUthg--oN]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>MoreSaves</Name>
 			<Description>Allows for more than 4 save slots, organized into multiple pages in the save menu</Description>
-			<Files>
-				<File>
-					<Name>MoreSaves.dll</Name>
-					<SHA1>06149f8423a6708e35ceb44b6fc0379cb6153ad2</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nnfaD8m8wELVXKdWdyCyu9IX1RmSuOI4]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>MoreSaves.dll</Name>
+							<SHA1>06149f8423a6708e35ceb44b6fc0379cb6153ad2</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nnfaD8m8wELVXKdWdyCyu9IX1RmSuOI4]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>The Pain of the Path</Name>
 			<Description>Allows the player to complete the Path of Pain backwards, starting just above the final drop to the Kingsmoulds</Description>
-			<Files>
-				<File>
-					<Name>ThePainOfThePath.dll</Name>
-					<SHA1>2dd7893e3cdaec4bb7c1129a1bf6ceb6734f1383</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TYAOxr9Ymp2BG7Qvr7hzeVPM0NFW0urU]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ThePainOfThePath.dll</Name>
+							<SHA1>2dd7893e3cdaec4bb7c1129a1bf6ceb6734f1383</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TYAOxr9Ymp2BG7Qvr7hzeVPM0NFW0urU]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>QoL</Name>
 			<Description>Slight improvements to gameplay (skippable cutscenes/credits, “unfixed” menu drop and storage, etc.)</Description>
-			<Files>
-				<File>
-					<Name>QoL.dll</Name>
-					<SHA1>F6EC59D9522342E812661E72DD6380A7068B5136</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1X35qzJmch1Wx24qjARbvjJXeCNq9h53k]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>QoL.dll</Name>
+							<SHA1>F6EC59D9522342E812661E72DD6380A7068B5136</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1X35qzJmch1Wx24qjARbvjJXeCNq9h53k]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>ASCII Camera</Name>
 			<Description>Replaces the camera with an ASCII overlay of it</Description>
-			<Files>
-				<File>
-					<Name>AsciiCamera.dll</Name>
-					<SHA1>7704344C9873855C204B3B9C922EBC84C5F1A5EC</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gV00Zu5mqScL2KBNX9sLyWxDduq0oo90]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>AsciiCamera.dll</Name>
+							<SHA1>7704344C9873855C204B3B9C922EBC84C5F1A5EC</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gV00Zu5mqScL2KBNX9sLyWxDduq0oo90]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Hollow Twitch</Name>
 			<Description>Configures twitch chat to handle several commands that spice up gameplay</Description>
-			<Files>
-				<File>
-					<Name>HollowTwitch.dll</Name>
-					<SHA1>9D7345D0FCF81E988639BBDE98F471B31D439663</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1uQSQpT9Mbawbihpoc4Vzr_CSB8wD-MUU]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>HollowTwitch.dll</Name>
+							<SHA1>9D7345D0FCF81E988639BBDE98F471B31D439663</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1uQSQpT9Mbawbihpoc4Vzr_CSB8wD-MUU]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Blackmoth</Name>
 			<Description>Changes main mode of attack from nail to shade dash, some charms changed to affect dash</Description>
-			<Files>
-				<File>
-					<Name>Blackmoth.dll</Name>
-					<SHA1>74A32624CB3437460D2635BF6C220D9E5C4B441E</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BUk_9yZJ7KQZh5U995SZuxAho3C_902d]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Blackmoth.dll</Name>
+							<SHA1>74A32624CB3437460D2635BF6C220D9E5C4B441E</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BUk_9yZJ7KQZh5U995SZuxAho3C_902d]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Debug Mod</Name>
 			<Description>Allows for debug tools and features like no clip, invincibility, removing and giving items and abilities</Description>
-			<Files>
-				<File>
-					<Name>DebugMod.dll</Name>
-					<SHA1>68FD1BBF0502A221FD2DB2B3EA2B89CD759A4112</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XmmomyluehEi5xot91SKQ7Vzl6cVst3u]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>DebugMod.dll</Name>
+							<SHA1>68FD1BBF0502A221FD2DB2B3EA2B89CD759A4112</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1XmmomyluehEi5xot91SKQ7Vzl6cVst3u]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
-       	        <ModLink>
+		<ModLink>
 			<Name>SereCore</Name>
 			<Description>Library used mostly by the Randomizer mods</Description>
-			<Files>
-				<File>
-					<Name>SereCore.dll</Name>
-					<SHA1>4792c0b3272e788f61ecd82ba8222663a5af6e60</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1jFrtOfsa8KSNRbMi8m6_ihAxTo9UADx0]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>SereCore.dll</Name>
+							<SHA1>4792c0b3272e788f61ecd82ba8222663a5af6e60</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1jFrtOfsa8KSNRbMi8m6_ihAxTo9UADx0]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
-       	        <ModLink>
+		<ModLink>
 			<Name>Vasi</Name>
 			<Description>Library required for some mods to function</Description>
-			<Files>
-				<File>
-					<Name>Vasi.dll</Name>
-					<SHA1>21D94D4DB77CC1786F2F0FE81E8B3B7E46B4C027</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1UsR4IF-B_yGO1dsP-VUOzzLESYXgvrt5]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Vasi.dll</Name>
+							<SHA1>21D94D4DB77CC1786F2F0FE81E8B3B7E46B4C027</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1UsR4IF-B_yGO1dsP-VUOzzLESYXgvrt5]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Randomizer 2 (Old)</Name>
 			<Description>Mixes up charms, spells, abilities, etc. for new saves, difficulty settings and randomization seeds included</Description>
-			<Files>
-				<File>
-					<Name>RandomizerMod2.0.dll</Name>
-					<SHA1>c86cb9e1ec01ea6e24d72a68fe903305a8b59110</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=14m4oR8m_VQii2wxOE_KCznk56i1QmkCL]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>RandomizerMod2.0.dll</Name>
+							<SHA1>c86cb9e1ec01ea6e24d72a68fe903305a8b59110</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=14m4oR8m_VQii2wxOE_KCznk56i1QmkCL]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
-				<Name>Custom Knight</Name>
-				<Description>Allows for the player character’s sprites to be edited by modifying image files in the Hollow Knight directory</Description>
-				<Files>
-					<File>
-						<Name>CustomKnight.dll</Name>
-						<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
-					</File>
-				</Files>
-				<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
-				<Dependencies>
-					<string>Modding API</string>
-					<string>ModCommon</string>
-				</Dependencies>
-			</ModLink>
+			<Name>Custom Knight</Name>
+			<Description>Allows for the player character’s sprites to be edited by modifying image files in the Hollow Knight directory</Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>CustomKnight.dll</Name>
+							<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
+		</ModLink>
 		<ModLink>
 			<Name>Show Hitboxes</Name>
 			<Description>Displays Hitboxes</Description>
-			<Files>
-				<File>
-					<Name>ShowHitboxes.dll</Name>
-					<SHA1>e9b4d33168af737ac3568047f2c1eb42b1adabac</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=15V2qY430s1UK--bs7UY83B54uFX0AY_c]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ShowHitboxes.dll</Name>
+							<SHA1>e9b4d33168af737ac3568047f2c1eb42b1adabac</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=15V2qY430s1UK--bs7UY83B54uFX0AY_c]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Enemy Randomizer</Name>
 			<Description>Randomizes enemy spawns (with some limitations), several randomization modes (may break)</Description>
-			<Files>
-				<File>
-					<Name>EnemyRandomizer.dll</Name>
-					<SHA1>b66d059fd2a2dc24011d334968c45280b9b8e766</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1AGj0p0MIzqsIYJDK8OqP4WxC4ZG_RbMQ]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>EnemyRandomizer.dll</Name>
+							<SHA1>b66d059fd2a2dc24011d334968c45280b9b8e766</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1AGj0p0MIzqsIYJDK8OqP4WxC4ZG_RbMQ]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Bonfire Mod</Name>
 			<Description>Adds upgradeable stat bonuses to the game (purchased with geo)</Description>
-			<Files>
-				<File>
-					<Name>BonfireMod.dll</Name>
-					<SHA1>67F52DDD1061392CE97C3F5BA1E435A03C3999F2</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1axdeJvpO_D-41oPLrAc7CTGfAQgy6K-V]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>BonfireMod.dll</Name>
+							<SHA1>67F52DDD1061392CE97C3F5BA1E435A03C3999F2</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1axdeJvpO_D-41oPLrAc7CTGfAQgy6K-V]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Glorious Combos</Name>
 			<Description>Nerfs player damage, but gradually increases it as the player chains attacks, rewarding skill in combat with increased DPS. Recommended for use in Godhome only, but settings allow it to be used in Hallownest proper</Description>
-			<Files>
-				<File>
-					<Name>combomod.dll</Name>
-					<SHA1>33063dc026cb0afee17d4001e5d5b36484e9083a</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/gcombos.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>combomod.dll</Name>
+							<SHA1>33063dc026cb0afee17d4001e5d5b36484e9083a</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/gcombos.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Infinite Grimm</Name>
 			<Description>Includes multiple modes like Time Attack and One Hit, Nightmare God Grimm is packaged with this, (takes place in Dirtmouth, not Godhome)</Description>
-			<Files>
-				<File>
-					<Name>infinitegrimm.dll</Name>
-					<SHA1>453268a062a91012ab66ec1f36ff53e4b8851dbe</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/infinitegrimm.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>infinitegrimm.dll</Name>
+							<SHA1>453268a062a91012ab66ec1f36ff53e4b8851dbe</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/infinitegrimm.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Grimmchild Upgrades</Name>
 			<Description>Buffs/modifies level 4 Grimmchild, and makes it fully customizable</Description>
-			<Files>
-				<File>
-					<Name>grimmchildupgrades.dll</Name>
-					<SHA1>d278313554d1fc02b5907980cc55b3f1573462f6</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/grimmchildupgrades.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
-			<Optional>
-				<string>Infinite Grimm</string>
-			</Optional>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>grimmchildupgrades.dll</Name>
+							<SHA1>d278313554d1fc02b5907980cc55b3f1573462f6</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/grimmchildupgrades.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Unofficial Hollow Knight Patch</Name>
 			<Description>Fixes Absrad hazard spawn bug, sharp shadow fix, and adds new PV statue in Hall of Gods</Description>
-			<Files>
-				<File>
-					<Name>UHKP.dll</Name>
-					<SHA1>e613567027d4c0e74544865968d014bbff6e5baa</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/UHKP.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>UHKP.dll</Name>
+							<SHA1>e613567027d4c0e74544865968d014bbff6e5baa</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/UHKP.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Redwing</Name>
 			<Description>Gives the player several new fiery attacks and abilities making them stronger. Fully configurable with optional "hard" mode</Description>
-			<Files>
-				<File>
-					<Name>redwing.dll</Name>
-					<SHA1>9da091bb6a995ac99c13ceb92cdde7699ce6ce9e</SHA1>
-				</File>
-				<File>
-					<Name>AAngleRedwingIntegration.dll</Name>
-					<SHA1>6aef3d8aca455fb08a2ca4cdbd6488e0e68f1559</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/redwing.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-				<string>Redwing Assets</string>
-			</Dependencies>
-			<Optional>
-				<string>Blackmoth</string>
-			</Optional>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>redwing.dll</Name>
+							<SHA1>9da091bb6a995ac99c13ceb92cdde7699ce6ce9e</SHA1>
+						</File>
+						<File>
+							<Name>AAngleRedwingIntegration.dll</Name>
+							<SHA1>6aef3d8aca455fb08a2ca4cdbd6488e0e68f1559</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/redwing.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+						<string>Redwing Assets</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Redwing Assets</Name>
 			<Description>Video assets for the Redwing mod.</Description>
-			<Files>
-				<File>
-					<Name>dummy.dll</Name>
-					<SHA1>65150d277adc4d6d3e01ef5c4d9ad5620a1a184f</SHA1>
-				</File>
-				<File>
-				    <Name>redwing\ending3.webm</Name>
-				    <SHA1>3d3eb119faab3039fde72dfded3e05e380afc3fb</SHA1>
-				</File>
-				<File>
-				    <Name>redwing\ending2.webm</Name>
-				    <SHA1>bb23b47fa016b86858e7e710349882266f14117d</SHA1>
-				</File>
-				<File>
-				    <Name>redwing\ending1.webm</Name>
-				    <SHA1>09559c228d4efabd4b690645593e9a1df9d855ca</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/redwingAssets.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>dummy.dll</Name>
+							<SHA1>65150d277adc4d6d3e01ef5c4d9ad5620a1a184f</SHA1>
+						</File>
+						<File>
+							<Name>redwing\ending3.webm</Name>
+							<SHA1>3d3eb119faab3039fde72dfded3e05e380afc3fb</SHA1>
+						</File>
+						<File>
+							<Name>redwing\ending2.webm</Name>
+							<SHA1>bb23b47fa016b86858e7e710349882266f14117d</SHA1>
+						</File>
+						<File>
+							<Name>redwing\ending1.webm</Name>
+							<SHA1>09559c228d4efabd4b690645593e9a1df9d855ca</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/redwingAssets.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>'Art' Mods</Name>
 			<Description>Shitpost mod</Description>
-			<Files>
-				<File>
-					<Name>infinitemyla.dll</Name>
-					<SHA1>bb280b38d75f5366586a944ba924c84667e6edac</SHA1>
-				</File>
-				<File>
-				    <Name>halfmod.assets</Name>
-				    <SHA1>5a629d929df2bdf022f41ff7623613492da0f2ba</SHA1>
-				</File>
-				<File>
-				    <Name>halfmod.dll</Name>
-				    <SHA1>e30deb3f322ec8a883543ab6482c08e250ce0e19</SHA1>
-				</File>
-				<File>
-				    <Name>halfmod.webm</Name>
-				    <SHA1>81281b9e8573605effc19843f373fef90aaa37c7</SHA1>
-				</File>
-				<File>
-				    <Name>nuke.webm</Name>
-				    <SHA1>0c298f9f0f3bda1e5db4f8c4e6d33b701ed77c9b</SHA1>
-				</File>
-				<File>
-				    <Name>shitmothst.dll</Name>
-				    <SHA1>71aa0223e7c63ac0fdeccc18e2530fe468115cb4</SHA1>
-				</File>
-				<File>
-				    <Name>atomicradiance.dll</Name>
-				    <SHA1>0c31659935ecde6c1bfe6801087b6e28d1a4f71a</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://radiance.host/mods/artmods.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>infinitemyla.dll</Name>
+							<SHA1>bb280b38d75f5366586a944ba924c84667e6edac</SHA1>
+						</File>
+						<File>
+							<Name>halfmod.assets</Name>
+							<SHA1>5a629d929df2bdf022f41ff7623613492da0f2ba</SHA1>
+						</File>
+						<File>
+							<Name>halfmod.dll</Name>
+							<SHA1>e30deb3f322ec8a883543ab6482c08e250ce0e19</SHA1>
+						</File>
+						<File>
+							<Name>halfmod.webm</Name>
+							<SHA1>81281b9e8573605effc19843f373fef90aaa37c7</SHA1>
+						</File>
+						<File>
+							<Name>nuke.webm</Name>
+							<SHA1>0c298f9f0f3bda1e5db4f8c4e6d33b701ed77c9b</SHA1>
+						</File>
+						<File>
+							<Name>shitmothst.dll</Name>
+							<SHA1>71aa0223e7c63ac0fdeccc18e2530fe468115cb4</SHA1>
+						</File>
+						<File>
+							<Name>atomicradiance.dll</Name>
+							<SHA1>0c31659935ecde6c1bfe6801087b6e28d1a4f71a</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://radiance.host/mods/artmods.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Infinite Notches</Name>
 			<Description>Gives the player infinite notches, might mess with save</Description>
-			<Files>
-				<File>
-					<Name>InfiniteNotches.dll</Name>
-					<SHA1>4CCA02A9A58BDC4A2DB6C9C856DEFA0866201FB7</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.InfiniteNotches/releases/download/v2000/InfiniteNotches.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>InfiniteNotches.dll</Name>
+							<SHA1>4CCA02A9A58BDC4A2DB6C9C856DEFA0866201FB7</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.InfiniteNotches/releases/download/v2000/InfiniteNotches.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Player Data Tracker</Name>
 			<Description>Tracks player data. Most frequently used to display abilities/charms during Randomizer streams</Description>
-			<Files>
-				<File>
-					<Name>PlayerDataDump.dll</Name>
-					<SHA1>3C31332B324ADAF32A6D8C3DA3F188A58E2DF4C7</SHA1>
-				</File>
-				<File>
-					<Name>websocket-sharp.dll</Name>
-					<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1sU7olevHbe3yXtOv9dUTVqXmYo6wjMUg]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>PlayerDataDump.dll</Name>
+							<SHA1>3C31332B324ADAF32A6D8C3DA3F188A58E2DF4C7</SHA1>
+						</File>
+						<File>
+							<Name>websocket-sharp.dll</Name>
+							<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1sU7olevHbe3yXtOv9dUTVqXmYo6wjMUg]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Charm Notch Mod</Name>
 			<Description>Automatically grants notches normally bought from Salubra upon collecting the required number of charms</Description>
-			<Files>
-				<File>
-					<Name>CharmNotchMod.dll</Name>
-					<SHA1>0731a7f278acd73d71cead033911a0a298b5c8a7</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GaTX22e-mZGKY8Vti_rZ-f6wsdt1GndW]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>CharmNotchMod.dll</Name>
+							<SHA1>0731a7f278acd73d71cead033911a0a298b5c8a7</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GaTX22e-mZGKY8Vti_rZ-f6wsdt1GndW]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>EnemyHPBar</Name>
-			<Description>Displays customizable  health bars above enemies and big health bar for bosses</Description>
-			<Files>
-				<File>
-					<Name>EnemyHPBar.dll</Name>
-					<SHA1>F7C58BA46137AEBC537DC5B9A2CCACEAB0DA44E1</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GAOiMlnea2A3LwI_DRbwBbKBH48vxr_a]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Description>Displays customizable	health bars above enemies and big health bar for bosses</Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>EnemyHPBar.dll</Name>
+							<SHA1>F7C58BA46137AEBC537DC5B9A2CCACEAB0DA44E1</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1GAOiMlnea2A3LwI_DRbwBbKBH48vxr_a]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Fragile Strength for Nail Arts</Name>
 			<Description>Fragile/Unbreakable Strength increases the damage of Nail Arts</Description>
-			<Files>
-				<File>
-					<Name>FragileStrengthForNailArts.dll</Name>
-					<SHA1>3d1da1ac278e6fede54c06c88417c6271c358f6d</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YX9OrfWSIfLfH0c_3F-tQD7RyBW5feo9]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>FragileStrengthForNailArts.dll</Name>
+							<SHA1>3d1da1ac278e6fede54c06c88417c6271c358f6d</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1YX9OrfWSIfLfH0c_3F-tQD7RyBW5feo9]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Ultimatum Radiance</Name>
 			<Description>Significantly buffs Absolute Radiance</Description>
-			<Files>
-				<File>
-					<Name>Ultimatum Radiance.dll</Name>
-					<SHA1>8f05c5b7143ce061b33451c00ef91e03dea96580</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LzwnIZ2T6hAcO-TaK53NtUO4mH-KG7mJ]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Ultimatum Radiance.dll</Name>
+							<SHA1>8f05c5b7143ce061b33451c00ef91e03dea96580</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1LzwnIZ2T6hAcO-TaK53NtUO4mH-KG7mJ]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Darkness</Name>
 			<Description>Renders the Lumafly Lantern useless and makes every room dark (akin to Deepnest without the lantern)</Description>
-			<Files>
-				<File>
-					<Name>Darkness.dll</Name>
-					<SHA1>6CC156625918BDF908CE6F4B8D433FA24AE6445A</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f0WoOYqoreAZ7TwrTtoNTL8XdPlaruh5]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Darkness.dll</Name>
+							<SHA1>6CC156625918BDF908CE6F4B8D433FA24AE6445A</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1f0WoOYqoreAZ7TwrTtoNTL8XdPlaruh5]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Daughter of Hallownest</Name>
 			<Description>Modifies Hornet Sentinel to a 3-phase boss, focused on projectile attacks from other bosses.</Description>
-			<Files>
-				<File>
-					<Name>DoH.dll</Name>
-					<SHA1>0ead53074e3397ac2962c06838f9431b03b7c07a</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_D3FtqTINAvdV-zQEzMn6OeRmNqYR9zQ]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>DoH.dll</Name>
+							<SHA1>0ead53074e3397ac2962c06838f9431b03b7c07a</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_D3FtqTINAvdV-zQEzMn6OeRmNqYR9zQ]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Benchwarp</Name>
 			<Description>Allows warping to benches, has an option to display room names, required for Randomizer 2 and 3</Description>
-			<Files>
-				<File>
-					<Name>Benchwarp.dll</Name>
-					<SHA1>F80B83F8A3A8D77843D691C422A1C450E3653B83</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/latest/download/Benchwarp.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Benchwarp.dll</Name>
+							<SHA1>F80B83F8A3A8D77843D691C422A1C450E3653B83</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/latest/download/Benchwarp.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Pale Champion</Name>
 			<Description>Significant rework to Pale Lurker</Description>
-			<Files>
-				<File>
-					<Name>PaleChampion.dll</Name>
-					<SHA1>9C720D739898C9EB0F98434C7E1794220F9FD9D3</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SalehAce1/HKFiles/blob/master/%5BAPI%5D%20Pale%20Champion%20(by%20Saleh).zip?raw=true]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>PaleChampion.dll</Name>
+							<SHA1>9C720D739898C9EB0F98434C7E1794220F9FD9D3</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/SalehAce1/HKFiles/blob/master/%5BAPI%5D%20Pale%20Champion%20(by%20Saleh).zip?raw=true]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Elderbug God</Name>
 			<Description>monkaU</Description>
-			<Files>
-				<File>
-					<Name>ElderbugGod.dll</Name>
-					<SHA1>af43fead30e9ee5cbae9b0e7ad28b3a3fed3e6b1</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1dW-kev8iX4bIgpaZawNM8yCk1dO27zR8]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ElderbugGod.dll</Name>
+							<SHA1>af43fead30e9ee5cbae9b0e7ad28b3a3fed3e6b1</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1dW-kev8iX4bIgpaZawNM8yCk1dO27zR8]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Randomizer 3 (Item or Room)</Name>
 			<Description>Mixes up charms, spells, abilities, etc. for new saves, difficulty settings and randomization seeds included. Includes a room and area rando mode.</Description>
-			<Files>
-				<File>
-					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>2EAB88DA8A07FE4A2B856CB3BEA3A227A5B2CC8C</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/latest/download/RandomizerMod3.0.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-				<string>Benchwarp</string>
-				<string>QoL</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>RandomizerMod3.0.dll</Name>
+							<SHA1>2EAB88DA8A07FE4A2B856CB3BEA3A227A5B2CC8C</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/latest/download/RandomizerMod3.0.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+						<string>Benchwarp</string>
+						<string>QoL</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Poorly Translated</Name>
-			<Files>
-				<File>
-					<Name>TranslationMod.dll</Name>
-					<SHA1>ABEFE12B66226C3C9A7A80A1C16917EE3BCA51A9</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nbhmxf9eABEjeXZ4DEdhWuN3mVFPkS18]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Description></Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>TranslationMod.dll</Name>
+							<SHA1>ABEFE12B66226C3C9A7A80A1C16917EE3BCA51A9</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1nbhmxf9eABEjeXZ4DEdhWuN3mVFPkS18]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Crystalblobbles</Name>
 			<Description>Oblobbles but with Crystal Hunter crystals</Description>
-			<Files>
-				<File>
-					<Name>Crystalblobbles.dll</Name>
-					<SHA1>c833b14317928fc6788e66cbc968dd9227df4a32</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Wiui72JHJ0aJw3qmdRXvRr-Ph3smxv7F]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Crystalblobbles.dll</Name>
+							<SHA1>c833b14317928fc6788e66cbc968dd9227df4a32</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1Wiui72JHJ0aJw3qmdRXvRr-Ph3smxv7F]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Traitor God</Name>
 			<Description>Singificant buff to Traitor Lord</Description>
-			<Files>
-				<File>
-					<Name>Traitor God.dll</Name>
-					<SHA1>190b3d418ae6acad17bc526035d13464e6694a00</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1twrzItzcw_-l2fZNZr_ECFcU3wP1jxE0]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Traitor God.dll</Name>
+							<SHA1>190b3d418ae6acad17bc526035d13464e6694a00</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1twrzItzcw_-l2fZNZr_ECFcU3wP1jxE0]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Tribe of Battle</Name>
 			<Description>Mantis Lords and Traitor Lord simultaneously</Description>
-			<Files>
-				<File>
-					<Name>Tribe_of_Battle.dll</Name>
-					<SHA1>22421170af8dbffdb3a8baff5edff6fafa205f86</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q4lrxisQNLI6P5gh-kBS1_CklVZoxndo]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Tribe_of_Battle.dll</Name>
+							<SHA1>22421170af8dbffdb3a8baff5edff6fafa205f86</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1q4lrxisQNLI6P5gh-kBS1_CklVZoxndo]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>LoadNormalizer</Name>
 			<Description>Normalizes loads across computers, used for races.</Description>
-			<Files>
-				<File>
-					<Name>LoadNormalizer.dll</Name>
-					<SHA1>C72C905DFAE7126909E77CB7DC5100B411D04A33</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.LoadNormalizer/releases/download/v1.25/LoadNormalizer.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>LoadNormalizer.dll</Name>
+							<SHA1>C72C905DFAE7126909E77CB7DC5100B411D04A33</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.LoadNormalizer/releases/download/v1.25/LoadNormalizer.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Path of Pure Vessel</Name>
 			<Description>Adds pure vessel at the end of Path of Pain</Description>
-			<Files>
-				<File>
-					<Name>PVPoP.dll</Name>
-					<SHA1>EE891F879244798DA657EF90FB10B016D53A9D8C</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-OKKXgdQhDUE8uUEA5zNGP6NhH3iDXCW]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>PVPoP.dll</Name>
+							<SHA1>EE891F879244798DA657EF90FB10B016D53A9D8C</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1-OKKXgdQhDUE8uUEA5zNGP6NhH3iDXCW]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Press G to Dab</Name>
 			<Description>Press G to dab.</Description>
-			<Files>
-				<File>
-					<Name>PressGToDab.dll</Name>
-					<SHA1>063B0603C5EB0B9E3BFF62A5BF2CCBC91D758389</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1k-THUGXsMZ_TTXoZC-E5pUz51LcVO7DV]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>PressGToDab.dll</Name>
+							<SHA1>063B0603C5EB0B9E3BFF62A5BF2CCBC91D758389</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1k-THUGXsMZ_TTXoZC-E5pUz51LcVO7DV]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Royal Dreamer</Name>
 			<Description>markoth buff cold_face</Description>
-			<Files>
-				<File>
-					<Name>RoyalDreamer.dll</Name>
-					<SHA1>C6D7BEF8B1580FC962F8C80DDB13482BA9168C73</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ZWh0XrIO43NebPYHWpULYgA9Y60HHpG0]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>RoyalDreamer.dll</Name>
+							<SHA1>C6D7BEF8B1580FC962F8C80DDB13482BA9168C73</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ZWh0XrIO43NebPYHWpULYgA9Y60HHpG0]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Dream Shield Coop</Name>
 			<Description>Adds a controllable Dreamshield alongside the player character</Description>
-			<Files>
-				<File>
-					<Name>Dshieldcoop.dll</Name>
-					<SHA1>E368E59DA164A575B1C82DFAD99E66606D4BBD34</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gjDQVuShjJMnFibvH9m3uONhbsSgdanY]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Dshieldcoop.dll</Name>
+							<SHA1>E368E59DA164A575B1C82DFAD99E66606D4BBD34</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1gjDQVuShjJMnFibvH9m3uONhbsSgdanY]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Transtrans</Name>
 			<Description>TikTiks support trans rights</Description>
-			<Files>
-				<File>
-					<Name>Transtrans.dll</Name>
-					<SHA1>E05A407BAB3F4231B78D0E307E720BF86C02347D</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1213H5pk8PEaplCCb3Ije8BwUpZ0J8AYt]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Transtrans.dll</Name>
+							<SHA1>E05A407BAB3F4231B78D0E307E720BF86C02347D</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1213H5pk8PEaplCCb3Ije8BwUpZ0J8AYt]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Floor Lava</Name>
-			<Files>
-				<File>
-					<Name>FloorLava.dll</Name>
-					<SHA1>123B04102ED23ADF7EA482270682D4B8E1CC4CD1</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1m_zAzN_CH0ssAo_DTXcEdVLm_lp8aRbm]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Description></Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>FloorLava.dll</Name>
+							<SHA1>123B04102ED23ADF7EA482270682D4B8E1CC4CD1</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1m_zAzN_CH0ssAo_DTXcEdVLm_lp8aRbm]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Lifeblood Master</Name>
 			<Description>Significantly buffs Hive Knight.</Description>
-			<Files>
-				<File>
-					<Name>LifebloodMaster.dll</Name>
-					<SHA1>E7ABB3BA35DAEC38EC80AF3780B31EC90896B36A</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1HMe7macr_PVP95iTCdSbZsgH5RV7i3B3]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>LifebloodMaster.dll</Name>
+							<SHA1>E7ABB3BA35DAEC38EC80AF3780B31EC90896B36A</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1HMe7macr_PVP95iTCdSbZsgH5RV7i3B3]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>DeathCounter</Name>
 			<Description>Counts your deaths with a slot in the inventory</Description>
-			<Files>
-				<File>
-					<Name>DeathCounter.dll</Name>
-					<SHA1>15D921B88D39643CC765A099234267EC05AE1DF0</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ECe4HU0w2T0YY-3qIgLw6Ek43sRTiQ4U]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>DeathCounter.dll</Name>
+							<SHA1>15D921B88D39643CC765A099234267EC05AE1DF0</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1ECe4HU0w2T0YY-3qIgLw6Ek43sRTiQ4U]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Indie Crossover</Name>
 			<Description>Integrates Propeller Knight, Fennel, and Cagney Carnation into the game as a boss fight</Description>
-			<Files>
-				<File>
-					<Name>Fennel.dll</Name>
-					<SHA1>21f609ac0e3626d450ede1be1b4de932dc94f2fe</SHA1>
-				</File>
-				<File>
-					<Name>PropellerKnight.dll</Name>
-					<SHA1>59f65a0d68cb7820e8010391fd0dba76bcc351cb</SHA1>
-				</File>
-				<File>
-					<Name>CagneyCarnation.dll</Name>
-					<SHA1>babc9fa4706862668ebdf5ef570e6f0bd8f8cd23</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.Indie.Crossover.by.Saleh.and.jngo102.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Fennel.dll</Name>
+							<SHA1>21f609ac0e3626d450ede1be1b4de932dc94f2fe</SHA1>
+						</File>
+						<File>
+							<Name>PropellerKnight.dll</Name>
+							<SHA1>59f65a0d68cb7820e8010391fd0dba76bcc351cb</SHA1>
+						</File>
+						<File>
+							<Name>CagneyCarnation.dll</Name>
+							<SHA1>babc9fa4706862668ebdf5ef570e6f0bd8f8cd23</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/jngo102/CagneyCarnation/releases/download/1.0.2/API.Indie.Crossover.by.Saleh.and.jngo102.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>EasyMode</Name>
 			<Description>Adds a variety of assisting effects that is meant to help newer or struggling players.</Description>
-			<Files>
-				<File>
-					<Name>EasyMode.dll</Name>
-					<SHA1>EBBEC9B2F482ABEAF84AE58D91B5559DE61804C2</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.EasyMode/releases/download/v1.0/EasyMode.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>EasyMode.dll</Name>
+							<SHA1>EBBEC9B2F482ABEAF84AE58D91B5559DE61804C2</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.EasyMode/releases/download/v1.0/EasyMode.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Uuwuu</Name>
 			<Description>Significantly buffs Uumuu</Description>
-			<Files>
-				<File>
-					<Name>Uuwuu.dll</Name>
-					<SHA1>0EBF6913A0E9108AE496A59481BA3114DE66A168</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=10q9zVmxQMbWd-ONVp5ntEP7ZHPIA0Z2q]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-				<string>SFCore</string>
-				<string>FrogCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Uuwuu.dll</Name>
+							<SHA1>0EBF6913A0E9108AE496A59481BA3114DE66A168</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=10q9zVmxQMbWd-ONVp5ntEP7ZHPIA0Z2q]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+						<string>SFCore</string>
+						<string>FrogCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>ItemChanger</Name>
 			<Description>A library which performs many of the same tasks as Randomizer such as modifying and creating items</Description>
-			<Files>
-				<File>
-					<Name>ItemChanger.dll</Name>
-					<SHA1>AEC7B22A62917CFF600EE4CD102E19B1541CBB32</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ItemChanger.dll</Name>
+							<SHA1>AEC7B22A62917CFF600EE4CD102E19B1541CBB32</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>plandoplando</Name>
 			<Description>Reads from an XML file to change item locations and add preloaded objects.</Description>
-			<Files>
-				<File>
-					<Name>plandoplando.dll</Name>
-					<SHA1>1930D727B1880670CDDAC00BD1C9039C83D0E118</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.plandoplando/releases/download/v1.0/plandoplando.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-				<string>ItemChanger</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>plandoplando.dll</Name>
+							<SHA1>1930D727B1880670CDDAC00BD1C9039C83D0E118</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.plandoplando/releases/download/v1.0/plandoplando.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+						<string>ItemChanger</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Exaltation</Name>
 			<Description>Overhauls charms, implementing unused “charm glorification” concept teased prior to Godmaster. Charms are buffed by completing Pantheons in Godhome, making them much stronger.</Description>
-			<Files>
-				<File>
-					<Name>Exaltation.dll</Name>
-					<SHA1>E024DBE460747C41F1ED2A59F13305F6B32640A5</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BLBNfB_5ZTvq5OCH7bi23LzxTThM2S26]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Exaltation.dll</Name>
+							<SHA1>E024DBE460747C41F1ED2A59F13305F6B32640A5</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1BLBNfB_5ZTvq5OCH7bi23LzxTThM2S26]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>PaletteSwapper</Name>
 			<Description>Randomizes the color tints of rooms for each area. Configurable.</Description>
-			<Files>
-				<File>
-					<Name>PaletteSwapper.dll</Name>
-					<SHA1>2E7938CEEDB559C3A00E543B2B499B9853A8F90E</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.PaletteSwapper/releases/download/v1.0/PaletteSwapper.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>PaletteSwapper.dll</Name>
+							<SHA1>2E7938CEEDB559C3A00E543B2B499B9853A8F90E</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.PaletteSwapper/releases/download/v1.0/PaletteSwapper.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>NG+ (King's Pass)</Name>
 			<Description>Make's King's pass significantly more difficult by adding platforming challenges while disabling pogos.</Description>
-			<Files>
-				<File>
-					<Name>NG+ (King's Pass).dll</Name>
-					<SHA1>B6C5DBC87F09453DD51536EB8F1EE16A28772188</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TjzIEL6Ft4vSpKf88shcDjS_u06pQP9f]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>NG+ (King's Pass).dll</Name>
+							<SHA1>B6C5DBC87F09453DD51536EB8F1EE16A28772188</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1TjzIEL6Ft4vSpKf88shcDjS_u06pQP9f]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Multiplayer Client (Alpha Pre-Release)</Name>
-			<Files>
-				<File>
-					<Name>MultiplayerClient.dll</Name>
-					<SHA1>6ce627732202925896a635c9542de87a18ab1733</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerClient.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Description></Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>MultiplayerClient.dll</Name>
+							<SHA1>6ce627732202925896a635c9542de87a18ab1733</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerClient.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Multiplayer Server (Alpha Pre-Release)</Name>
-			<Files>
-				<File>
-					<Name>MultiplayerServer.dll</Name>
-					<SHA1>6fc0bfba959f5bee2a33a43c2acc850ed929655a</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerServer.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Description></Description>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>MultiplayerServer.dll</Name>
+							<SHA1>6fc0bfba959f5bee2a33a43c2acc850ed929655a</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/jngo102/HollowKnight.Multiplayer/releases/download/0.0.2/MultiplayerServer.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>SFCore</Name>
 			<Description>Library required for some mods to function</Description>
-			<Files>
-				<File>
-					<Name>SFCore.dll</Name>
-					<SHA1>F75504A3D4D688F9FDFD29A6FD136171B9EC0D0F</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.4.3.4/SFCore.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>SFCore.dll</Name>
+							<SHA1>F75504A3D4D688F9FDFD29A6FD136171B9EC0D0F</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.4.3.4/SFCore.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>BlindRadiance</Name>
 			<Description>Mod to darken selected scenes for visibility</Description>
-			<Files>
-				<File>
-					<Name>BlindRadiance.dll</Name>
-					<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>BlindRadiance.dll</Name>
+							<SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Language Support</Name>
 			<Description>Adds support for additional languages in a CustomKnight style</Description>
-			<Files>
-				<File>
-					<Name>LanguageSupport.dll</Name>
-					<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>LanguageSupport.dll</Name>
+							<SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
-    	<ModLink>
+		<ModLink>
 			<Name>AdditionalMaps</Name>
 			<Description>A mod that adds maps for the White Palace and Godhome.</Description>
-			<Files>
-				<File>
-					<Name>AdditionalMaps.dll</Name>
-					<SHA1>01BEF9210574D6EDA169F8515B9054B3665542EA</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.2/AdditionalMaps.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SFCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>AdditionalMaps.dll</Name>
+							<SHA1>01BEF9210574D6EDA169F8515B9054B3665542EA</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/SFGrenade/AdditionalMaps/releases/download/v0.0.2/AdditionalMaps.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SFCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
-    	<ModLink>
+		<ModLink>
 			<Name>Test of Teamwork</Name>
 			<Description>This mod adds a platforming section to the White Palace.</Description>
-			<Files>
-				<File>
-					<Name>TestOfTeamwork.dll</Name>
-					<SHA1>7F0A6B2BAE4E71DA7008FBC8F40F4BAA863B8758</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/SFGrenade/TestOfTeamwork/releases/download/v0.9.9.10/TestOfTeamwork.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SFCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>TestOfTeamwork.dll</Name>
+							<SHA1>7F0A6B2BAE4E71DA7008FBC8F40F4BAA863B8758</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/SFGrenade/TestOfTeamwork/releases/download/v0.9.9.10/TestOfTeamwork.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SFCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Child of Light</Name>
 			<Description>Replaces your spells with Radiance attacks.</Description>
-			<Files>
-				<File>
-					<Name>ChildOfLight.dll</Name>
-					<SHA1>1B37BA0A4DD0074E3E26BEB767F8542389AA8480</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1bozleaWUC_Lt68Q3fQMNN9fHX7dnKX3r]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ChildOfLight.dll</Name>
+							<SHA1>1B37BA0A4DD0074E3E26BEB767F8542389AA8480</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1bozleaWUC_Lt68Q3fQMNN9fHX7dnKX3r]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Howwow Knyight</Name>
 			<Description>Twanswates aww of de text in Howwow Knyight into de much supewiow UwU wanguage, incwuding menyus, usew intewface and in-game diawogues! &gt;w&lt;</Description>
-			<Files>
-				<File>
-					<Name>HowwowKnyight.dll</Name>
-					<SHA1>F10F668C05B8B0D306E825572173DFAD5C98357C</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_JezFrLyYBhrDr3PXH3fRWNbeSbiJNHL]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>HowwowKnyight.dll</Name>
+							<SHA1>F10F668C05B8B0D306E825572173DFAD5C98357C</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_JezFrLyYBhrDr3PXH3fRWNbeSbiJNHL]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>FrogCore</Name>
 			<Description>Library mod containing stuff for adding journal entries and npcs</Description>
-			<Files>
-				<File>
-					<Name>FrogCore.dll</Name>
-					<SHA1>21F9B2E92A52369BBCC8021280C82568080B6F3A</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1pvvpZ7Dbx5krlcco_NkFDWge_Dxmiwur]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>FrogCore.dll</Name>
+							<SHA1>21F9B2E92A52369BBCC8021280C82568080B6F3A</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1pvvpZ7Dbx5krlcco_NkFDWge_Dxmiwur]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Lunatic Radiance</Name>
 			<Description>Bullet Hell Radiance Boss in Hollow Knight</Description>
-			<Files>
-				<File>
-					<Name>HKBulletHell.dll</Name>
-					<SHA1>37FABA4BF4632178F0FB166574FD70752632326B</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1rou4bbOrYOO7kVMNMziBgFCpCAxG7MqF]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>HKBulletHell.dll</Name>
+							<SHA1>37FABA4BF4632178F0FB166574FD70752632326B</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1rou4bbOrYOO7kVMNMziBgFCpCAxG7MqF]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Grassy Knight</Name>
 			<Description>Tracks and shows you how much grass you've cut.</Description>
-			<Files>
-				<File>
-					<Name>GrassyKnight.zip</Name>
-					<SHA1>9a507497f448f33ac6a72827c83ff5176bce7192</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/itsjohncs/GrassyKnight/releases/download/1.3.0/GrassyKnight.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>GrassyKnight.zip</Name>
+							<SHA1>9a507497f448f33ac6a72827c83ff5176bce7192</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/itsjohncs/GrassyKnight/releases/download/1.3.0/GrassyKnight.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Buzzbo</Name>
 			<Description>A mod that significantly buffs Hive Knight</Description>
-			<Files>
-				<File>
-					<Name>BuzzboMod.dll</Name>
-					<SHA1>CE8B46D2DB8DF61AB05416B28C711911E87BE361</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/thegodfriend/buzzbo/releases/download/v0.4.2.0/Buzzbo.v0.4.2.0.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>ModCommon</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>BuzzboMod.dll</Name>
+							<SHA1>CE8B46D2DB8DF61AB05416B28C711911E87BE361</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/thegodfriend/buzzbo/releases/download/v0.4.2.0/Buzzbo.v0.4.2.0.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Easier Pantheon Practice</Name>
 			<Description>A mod that makes practicing in HoG easier. It adds many features some of them include, allowing you to press a key to reload bosses much quicker, matcheing the health and damage of bosses with P5, and giving you the ability to do fury practice in HoG. There are more but you can read the readme for that :)</Description>
-			<Files>
-				<File>
-					<Name>Easier-Pantheon-Practice.dll</Name>
-					<SHA1>154824A21F3FA477172C985426999762DABEE55D</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/TheMulhima/Easier-Pantheon-Practice/releases/download/v1.0.0.6/Easier-Pantheon-Practice.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SFCore</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Easier-Pantheon-Practice.dll</Name>
+							<SHA1>154824A21F3FA477172C985426999762DABEE55D</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/TheMulhima/Easier-Pantheon-Practice/releases/download/v1.0.0.6/Easier-Pantheon-Practice.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SFCore</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Controller Vibration</Name>
 			<Description>Adds in controller vibration through any XInput device (Xbox controllers).</Description>
-			<Files>
-				<File>
-					<Name>ControllerVibration.dll</Name>
-					<SHA1>DC4B7F8DBEFFB096E13E9862C3509B49A508F4CB</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1eUHVc36Z3l8rTS835gXCp37uwCwjYH-O]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>SereCore</string>
-				<string>ModCommon</string>
-			</Dependencies> 
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ControllerVibration.dll</Name>
+							<SHA1>DC4B7F8DBEFFB096E13E9862C3509B49A508F4CB</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://drive.google.com/uc?export=download&id=1eUHVc36Z3l8rTS835gXCp37uwCwjYH-O]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>SereCore</string>
+						<string>ModCommon</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
-    	<ModLink>
+		<ModLink>
 			<Name>ToggleableBindings</Name>
 			<Description>A mod that allows you to enable and disable bindings at any time.</Description>
-			<Files>
-				<File>
-					<Name>ToggleableBindings.dll</Name>
-					<SHA1>92B100A6CDA00BEA60ECD3B786D483590B127925</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/Unordinal/HollowKnight.ToggleableBindings/releases/download/v0.1.2/ToggleableBindings.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-				<string>Vasi</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>ToggleableBindings.dll</Name>
+							<SHA1>92B100A6CDA00BEA60ECD3B786D483590B127925</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/Unordinal/HollowKnight.ToggleableBindings/releases/download/v0.1.2/ToggleableBindings.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+						<string>Vasi</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>HollowKnightDRPC</Name>
 			<Description>A mod that adds Discord RPC (detailed game) status to your Discord profile.</Description>
-			<Files>
-				<File>
-					<Name>HollowKnightDRPC.dll</Name>
-					<SHA1>859A6F42DD9CF4C73BA3614E92A625766762FD4A</SHA1>
-				</File>
-			</Files>
-				<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.1.1Beta/HollowKnightDRPC.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>HollowKnightDRPC.dll</Name>
+							<SHA1>859A6F42DD9CF4C73BA3614E92A625766762FD4A</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.1.1Beta/HollowKnightDRPC.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>SmolKnight</Name>
 			<Description>A mod that makes the knight smol.</Description>
-			<Files>
-				<File>
-					<Name>SmolKnight.dll</Name>
-					<SHA1>8a6db86d2e1ef3ca38d0c6702ac0c07edd04c17c</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/PrashantMohta/Smolknight/releases/download/v1.0/Smolknight.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>SmolKnight.dll</Name>
+							<SHA1>8a6db86d2e1ef3ca38d0c6702ac0c07edd04c17c</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/PrashantMohta/Smolknight/releases/download/v1.0/Smolknight.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 		<ModLink>
 			<Name>Hkmote</Name>
 			<Description>A mod that allows players to send emotes on HKMP during Multiplayer.</Description>
-			<Files>
-				<File>
-					<Name>Hkmote.dll</Name>
-					<SHA1>47f50fc037e34930a527f98c70c33b75e6beddc3</SHA1>
-				</File>
-			</Files>
-			<Link><![CDATA[https://github.com/PrashantMohta/hkmote/releases/download/v1.0/Hkmote.zip]]></Link>
-			<Dependencies>
-				<string>Modding API</string>
-			</Dependencies>
+			<Patches>
+				<Patch>
+					<Name>1.4.3.2</Name>
+					<Files>
+						<File>
+							<Name>Hkmote.dll</Name>
+							<SHA1>47f50fc037e34930a527f98c70c33b75e6beddc3</SHA1>
+						</File>
+					</Files>
+					<Link><![CDATA[https://github.com/PrashantMohta/hkmote/releases/download/v1.0/Hkmote.zip]]></Link>
+					<Dependencies>
+						<string>Modding API</string>
+					</Dependencies>
+				</Patch>
+			</Patches>
 		</ModLink>
 	</ModList>
 </ModLinks>
