@@ -504,10 +504,10 @@
 				<Files>
 					<File>
 						<Name>CustomKnight.dll</Name>
-						<SHA1>1518b67eed0b23020c33fe05149b991713343fcc</SHA1>
+						<SHA1>700e82620297aad6f6a0e21c0f149bfd22e4218e</SHA1>
 					</File>
 				</Files>
-				<Link><![CDATA[https://github.com/jngo102/HollowKnight.CustomKnight/releases/download/1.2.2/CustomKnight.zip]]></Link>
+				<Link><![CDATA[https://github.com/PrashantMohta/HollowKnight.CustomKnight/releases/download/v1.2.4c/CustomKnight.zip]]></Link>
 				<Dependencies>
 					<string>Modding API</string>
 					<string>ModCommon</string>
