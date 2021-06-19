@@ -1284,9 +1284,21 @@ namespace ModInstaller
 
         internal static string OSPath(string os)
         {
-            return os == "MacOS"
-                ? $"{Properties.Settings.Default.installFolder}/Contents/Resources/Data/Managed"
-                : $"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
+            if (os == "MacOS")
+            {
+                return $"{Properties.Settings.Default.installFolder}/Contents/Resources/Data/Managed";
+            }
+            else
+            {
+                if (Properties.Settings.Default.installFolder.ToUpper().Contains("GOG"))
+                {
+                    return $"{Properties.Settings.Default.installFolder}/Hollow Knight_Data/Managed";
+                }
+                else
+                {
+                    return $"{Properties.Settings.Default.installFolder}/hollow_knight_Data/Managed";
+                }
+            }
         }
 
         internal static bool PathCheck(string os, FolderBrowserDialog fb)
