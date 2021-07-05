@@ -673,6 +673,9 @@
 			<Description>Shitpost mod</Description>
 			<Files>
 				<File>
+					<Name>BeansDefender</Name>
+					<SHA1>ab49dff3e3b61a82fc8d4f5b8b7bf6aaec1b8811</SHA1>
+				<File>
 					<Name>infinitemyla.dll</Name>
 					<SHA1>bb280b38d75f5366586a944ba924c84667e6edac</SHA1>
 				</File>
@@ -702,6 +705,7 @@
 				</File>
 			</Files>
 			<Link><![CDATA[https://radiance.host/mods/artmods.zip]]></Link>
+			<Link><![CDATA[https://github.com/Ruttie2006/BeansDefender/releases/download/v1.1/BeansDefender.dll]]>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
