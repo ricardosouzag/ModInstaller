@@ -1495,7 +1495,7 @@
 				<File>
 					<Name>BeansDefender</Name>
 					<SHA1>ab49dff3e3b61a82fc8d4f5b8b7bf6aaec1b8811</SHA1>
-				<File>
+				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/Ruttie2006/BeansDefender/releases/download/v1.1/BeansDefender.dll]]></Link>
 			<Dependencies>
