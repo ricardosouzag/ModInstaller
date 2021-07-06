@@ -1330,11 +1330,11 @@
 			<Description>Twanswates aww of de text in Howwow Knyight into de much supewiow UwU wanguage, incwuding menyus, usew intewface and in-game diawogues! &gt;w&lt;</Description>
 			<Files>
 				<File>
-					<Name>HowwowKnyight.dll</Name>
-					<SHA1>F10F668C05B8B0D306E825572173DFAD5C98357C</SHA1>
+					<Name>HowwowKnyight.1.5.dll</Name>
+					<SHA1>0d66b9f15539757368090237eb203be12c9b46f6</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1_JezFrLyYBhrDr3PXH3fRWNbeSbiJNHL]]></Link>
+			<Link><![CDATA[https://github.com/Ruttie2006/HowwowKnyight-1/releases/download/v1.5/HowwowKnyight.1.5.dll]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1484,6 +1484,20 @@
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/PrashantMohta/hkmote/releases/download/v1.0/Hkmote.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+			</Dependencies>
+		</ModLink>
+		<ModLink>
+			<Name>BeansDefender</Name>
+			<Description>Just a meme</Description>
+			<Files>
+				<File>
+					<Name>BeansDefender</Name>
+					<SHA1>ab49dff3e3b61a82fc8d4f5b8b7bf6aaec1b8811</SHA1>
+				<File>
+			</Files>
+			<Link><![CDATA[https://github.com/Ruttie2006/BeansDefender/releases/download/v1.1/BeansDefender.dll]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
