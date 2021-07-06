@@ -328,10 +328,10 @@
 			<Files>
 				<File>
 					<Name>RandoMapMod.dll</Name>
-					<SHA1>25718a24d23b09f672190bb49ffadb1429beabc2</SHA1>
+					<SHA1>0BE3BB0319F9CC579DD1F7D74A01DBCF93F240C4</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=downloads&id=12HBxTX29d2f5I-SeB3rFb1Kjx6_XZd6L]]></Link>
+			<Link><![CDATA[https://github.com/CaptainDapper/HollowKnight.RandoMapMod/releases/download/v0.5.1/RandoMapMod.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
