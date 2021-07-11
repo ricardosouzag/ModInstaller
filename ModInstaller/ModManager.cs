@@ -416,7 +416,7 @@ namespace ModInstaller
                 {
                     MessageBox.Show
                     (
-                        "This installer requires the most recent stable version to run.\nPlease update your game to current stable patch and then try again.",
+                        "This installer only works on patch 1.4.3.2.\nPlease downgrade your game to 1.4.3.2 and then try again.",
                         "Warning!"
                     );
 
