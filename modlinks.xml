@@ -1452,10 +1452,10 @@
 			<Files>
 				<File>
 					<Name>HollowKnightDRPC.dll</Name>
-					<SHA1>859A6F42DD9CF4C73BA3614E92A625766762FD4A</SHA1>
+					<SHA1>3B806ABB31E86438019C3ED714999C5F70E13165</SHA1>
 				</File>
 			</Files>
-				<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.1.1Beta/HollowKnightDRPC.zip]]></Link>
+			<Link><![CDATA[https://github.com/KaanGaming/HollowKnightDRPC/releases/download/1.1.3Beta/HollowKnightDRPC.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
