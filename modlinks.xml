@@ -1517,6 +1517,5 @@
 				<string>ModCommon</string>
 			</Dependencies>
 		</ModLink>
-		<ModLink>
 	</ModList>
 </ModLinks>
