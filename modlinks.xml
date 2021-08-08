@@ -1508,10 +1508,10 @@
 			<Files>
 				<File>
 					<Name>9soulz_NG_Plus_ModPack.dll</Name>
-					<SHA1>64C248900D6BC8FCCD1C47CF65910AE37AF0C822</SHA1>
+					<SHA1>E33C3706501FF34A5EF8EAD3115427400B533DA2</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/exsersewo/HK_NewGamePlus/releases/download/2/NewGamePlus.zip]]></Link>
+			<Link><![CDATA[https://github.com/exsersewo/HK_NewGamePlus/releases/download/2.1/NewGamePlus.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
