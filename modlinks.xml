@@ -1334,7 +1334,7 @@
 					<SHA1>0d66b9f15539757368090237eb203be12c9b46f6</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/Ruttie2006/HowwowKnyight-1/releases/download/v1.5/HowwowKnyight.1.5.dll]]></Link>
+			<Link><![CDATA[https://github.com/Ruttie2006/HowwowKnyight-1/releases/download/v1.5/HowwowKnyight.1.5.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -1431,7 +1431,7 @@
 				<string>ModCommon</string>
 			</Dependencies> 
 		</ModLink>
-    	<ModLink>
+    		<ModLink>
 			<Name>ToggleableBindings</Name>
 			<Description>A mod that allows you to enable and disable bindings at any time.</Description>
 			<Files>
