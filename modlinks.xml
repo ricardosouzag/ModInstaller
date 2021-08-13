@@ -29,11 +29,12 @@
 				<File>
 					<Name>Assembly-CSharp.dll</Name>
 					<SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
+					<UnixSHA1>E5BFD2C3BD46B98492FE9FCEB2D5DD9B04E2043B</UnixSHA1>
 					<Patch>1.4.3.2</Patch>
 				</File>
 			</Files>
 			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></Link>
-			<UnixLink><![CDATA[https://drive.google.com/uc?export=download&id=1lMvPf30KGvHKcOW-q0-tQnJ_zyljmyex]]></UnixLink>
+			<UnixLink><![CDATA[https://github.com/hk-modding/api/releases/download/1.4.3.2-60/Unix.zip]]></UnixLink>
 			<Dependencies />
 		</ModLink>
 		<ModLink>
