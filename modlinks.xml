@@ -1502,5 +1502,20 @@
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>9soulz_NG_Plus_ModPack</Name>
+			<Description>A mod that boosts enemy health and damage output to your choice.</Description>
+			<Files>
+				<File>
+					<Name>9soulz_NG_Plus_ModPack.dll</Name>
+					<SHA1>E33C3706501FF34A5EF8EAD3115427400B533DA2</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/exsersewo/HK_NewGamePlus/releases/download/2.1/NewGamePlus.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>ModCommon</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
