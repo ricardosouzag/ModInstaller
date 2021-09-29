@@ -829,7 +829,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Benchwarp</Name>
-			<Description>Allows warping to benches, has an option to display room names, required for Randomizer 2 and 3</Description>
+			<Description>Allows warping to benches, has an option to display room names, required for Randomizer 3</Description>
 			<Files>
 				<File>
 					<Name>Benchwarp.dll</Name>
@@ -877,7 +877,7 @@
 			<Files>
 				<File>
 					<Name>RandomizerMod3.0.dll</Name>
-					<SHA1>2EAB88DA8A07FE4A2B856CB3BEA3A227A5B2CC8C</SHA1>
+					<SHA1>6D543E9B29D9DEA71F25EAC7730F51CAECEF4BCE</SHA1>
 				</File>
 			</Files>
 			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/latest/download/RandomizerMod3.0.zip]]></Link>
