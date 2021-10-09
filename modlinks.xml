@@ -1502,5 +1502,19 @@
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>Randomizer Map S</Name>
+			<Description>Map for Randomizer 3 with options to show where and what items are</Description>
+			<Files>
+				<File>
+					<Name>MapModS.dll</Name>
+					<SHA1>C8B72CCEB24C3680208F4A18A7C212C0665AEC82</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/syyePhenomenol/HollowKnight.RandoMapMod/releases/download/v1.1.1/MapModS.zip]]></Link>
+			<Dependencies>
+				<string>Randomizer 3 (Item or Room)</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
