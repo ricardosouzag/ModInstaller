@@ -447,10 +447,10 @@
 			<Files>
 				<File>
 					<Name>DebugMod.dll</Name>
-					<SHA1>BD9C5DBD441D8F5E7DB40B1B2C0E3FA57F34B10B</SHA1>
+					<SHA1>D3922895B08EDA7E478A8B346F329C16007DCE3A</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/TheMulhima/HollowKnight.DebugMod/releases/download/v1.4.7/DebugMod1_4.zip]]></Link>
+			<Link><![CDATA[https://github.com/TheMulhima/HollowKnight.DebugMod/releases/download/v1.4.8/DebugMod1_4.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
