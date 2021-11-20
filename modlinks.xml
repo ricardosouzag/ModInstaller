@@ -1508,10 +1508,10 @@
 			<Files>
 				<File>
 					<Name>MapModS.dll</Name>
-					<SHA1>F7023F9DF291DB92A8E2F223DE270AE89EF2EFAA</SHA1>
+					<SHA1>B33E01C8709B9C6C92EBAEB621E923DDCE9CA044</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/syyePhenomenol/HollowKnight.RandoMapMod/releases/download/v1.1.2/MapModS.zip]]></Link>
+			<Link><![CDATA[https://github.com/syyePhenomenol/HollowKnight.RandoMapMod/releases/download/v1.1.3/MapModS.zip]]></Link>
 			<Dependencies>
 				<string>Randomizer 3 (Item or Room)</string>
 			</Dependencies>
