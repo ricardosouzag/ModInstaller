@@ -1516,5 +1516,19 @@
 				<string>Randomizer 3 (Item or Room)</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>RandoStats</Name>
+			<Description>Extension for Randomizer 3 that shows additional statistics on the end screen.</Description>
+			<Files>
+				<File>
+					<Name>RandoStats.dll</Name>
+					<SHA1>71D418C5539156F371D8606F027BCE2B73128019</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/The-Demp/HollowKnight.Rando3Stats/releases/download/v1.0.1/RandoStats.zip]]></Link>
+			<Dependencies>
+				<string>Randomizer 3 (Item or Room)</string>
+			</Dependencies>
+		</ModLink>
 	</ModList>
 </ModLinks>
