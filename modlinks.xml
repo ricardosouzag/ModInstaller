@@ -1522,10 +1522,10 @@
 			<Files>
 				<File>
 					<Name>RandoStats.dll</Name>
-					<SHA1>4333AAF83241BFB4E10F4888F9E24182C1181268</SHA1>
+					<SHA1>C3B9F046A0E4CDBD961794992A231798A353E5fD</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/The-Demp/HollowKnight.Rando3Stats/releases/download/v1.1.0/RandoStats.zip]]></Link>
+			<Link><![CDATA[https://github.com/The-Demp/HollowKnight.Rando3Stats/releases/download/v1.1.1/RandoStats.zip]]></Link>
 			<Dependencies>
 				<string>Randomizer 3 (Item or Room)</string>
 			</Dependencies>
