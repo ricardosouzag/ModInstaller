@@ -727,14 +727,14 @@
 			<Files>
 				<File>
 					<Name>PlayerDataDump.dll</Name>
-					<SHA1>3C31332B324ADAF32A6D8C3DA3F188A58E2DF4C7</SHA1>
+					<SHA1>2f5e0fe10a0b2226d4e20a9db750c53e0f7a4022</SHA1>
 				</File>
 				<File>
 					<Name>websocket-sharp.dll</Name>
 					<SHA1>998550d8bd5d050a8a45679324bce9cbbfff0b6c</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://drive.google.com/uc?export=download&id=1sU7olevHbe3yXtOv9dUTVqXmYo6wjMUg]]></Link>
+			<Link><![CDATA[https://github.com/kingkiller39/HollowKnightRandomizerTracker2.8/releases/download/v3.3.4.2/3.3.4.2PlayerDataTracker.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
