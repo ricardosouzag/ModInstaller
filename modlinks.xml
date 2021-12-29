@@ -455,6 +455,21 @@
 				<string>Modding API</string>
 			</Dependencies>
 		</ModLink>
+		<ModLink>
+			<Name>RandomTeleport</Name>
+			<Description>A mod that randomly teleports you to another scene</Description>
+			<Files>
+				<File>
+					<Name>RandomTeleport.dll</Name>
+					<SHA1>C796C539251DEC44B4882A8A79193B66BAC397A5</SHA1>
+				</File>
+			</Files>
+			<Link><![CDATA[https://github.com/TheMulhima/HollowKnight.RandomTeleport/releases/download/v0.3.1/RandomTeleport1_4.zip]]></Link>
+			<Dependencies>
+				<string>Modding API</string>
+				<string>Vasi</string>
+			</Dependencies>
+		</ModLink>
        	        <ModLink>
 			<Name>SereCore</Name>
 			<Description>Library used mostly by the Randomizer mods</Description>
