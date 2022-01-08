@@ -851,7 +851,7 @@
 					<SHA1>F80B83F8A3A8D77843D691C422A1C450E3653B83</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/latest/download/Benchwarp.zip]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.BenchwarpMod/releases/download/v2.4.1/Benchwarp.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -895,7 +895,7 @@
 					<SHA1>6D543E9B29D9DEA71F25EAC7730F51CAECEF4BCE</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/latest/download/RandomizerMod3.0.zip]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.RandomizerMod/releases/download/v3.13(288)/RandomizerMod3.0.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
@@ -1159,7 +1159,7 @@
 					<SHA1>AEC7B22A62917CFF600EE4CD102E19B1541CBB32</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip]]></Link>
+			<Link><![CDATA[https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/download/v1.0.1/ItemChanger.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>SereCore</string>
