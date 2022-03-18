@@ -1447,7 +1447,7 @@
 		</ModLink>
 		<ModLink>
 			<Name>Controller Vibration</Name>
-			<Description>Adds in controller vibration through any XInput device (Xbox controllers).</Description>
+			<Description>Adds in controller vibration through any XInput device (Xbox controllers). WARNING: Installing HollowKnightDRPC or other incompatible mods, will causing an inability to pause the game. If that happens, uninstall me. </Description>
 			<Files>
 				<File>
 					<Name>ControllerVibration.dll</Name>
