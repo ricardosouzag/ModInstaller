@@ -37,6 +37,21 @@
 			<Dependencies />
 		</ModLink>
 		<ModLink>
+			<Name>! NOTICE ! Modding on Patch 1.5 is recommended</Name>
+			<Files />
+			<Dependencies />
+		</ModLink>
+		<ModLink>
+			<Name>!! Most of the mods and more can be downloaded in 1.5</Name>
+			<Files />
+			<Dependencies />
+		</ModLink>
+		<ModLink>
+			<Name>!!! Update to the latest patch and switch to Scarab mod installer to gain access to them</Name>
+			<Files />
+			<Dependencies />
+		</ModLink>
+		<ModLink>
 			<Name>ModCommon</Name>
 			<Description>Library used by many mods.</Description>
 			<Files>
