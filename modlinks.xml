@@ -18,7 +18,7 @@
 <ModLinks xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<DriveLink>https://drive.google.com/drive/u/0/folders/1lnjtSYMfRe1LyA_qSq2CoXKI6NRm_I-e</DriveLink>
 	<Installer>
-	    <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
+	    <Link><![CDATA[https://radiance.synthagen.net/mods/ModInstaller.exe]]></Link>
 	    <SHA1>67CBF380062125C8B3408341D0724E8A0A4726EA</SHA1>
 	    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
 	</Installer>
@@ -595,7 +595,7 @@
 					<SHA1>33063dc026cb0afee17d4001e5d5b36484e9083a</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/gcombos.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/gcombos.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -610,7 +610,7 @@
 					<SHA1>453268a062a91012ab66ec1f36ff53e4b8851dbe</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/infinitegrimm.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/infinitegrimm.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -625,7 +625,7 @@
 					<SHA1>d278313554d1fc02b5907980cc55b3f1573462f6</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/grimmchildupgrades.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/grimmchildupgrades.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -643,7 +643,7 @@
 					<SHA1>e613567027d4c0e74544865968d014bbff6e5baa</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/UHKP.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/UHKP.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -662,7 +662,7 @@
 					<SHA1>6aef3d8aca455fb08a2ca4cdbd6488e0e68f1559</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/redwing.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/redwing.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
@@ -693,7 +693,7 @@
 				    <SHA1>09559c228d4efabd4b690645593e9a1df9d855ca</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/redwingAssets.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/redwingAssets.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 			</Dependencies>
@@ -731,7 +731,7 @@
 				    <SHA1>0c31659935ecde6c1bfe6801087b6e28d1a4f71a</SHA1>
 				</File>
 			</Files>
-			<Link><![CDATA[https://radiance.host/mods/artmods.zip]]></Link>
+			<Link><![CDATA[https://radiance.synthagen.net/mods/artmods.zip]]></Link>
 			<Dependencies>
 				<string>Modding API</string>
 				<string>ModCommon</string>
